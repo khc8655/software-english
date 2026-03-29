@@ -19,6 +19,33 @@
             --success: #34C759;
             --warning: #FF9500;
         }
+        [data-theme="green"] {
+            --primary: #34C759;
+            --bg: #F0F9F0;
+            --card: #FFFFFF;
+            --text: #1C1C1E;
+            --text-secondary: #8E8E93;
+            --success: #007AFF;
+            --warning: #FF9500;
+        }
+        [data-theme="dark"] {
+            --primary: #0A84FF;
+            --bg: #1C1C1E;
+            --card: #2C2C2E;
+            --text: #FFFFFF;
+            --text-secondary: #8E8E93;
+            --success: #30D158;
+            --warning: #FF9F0A;
+        }
+        [data-theme="orange"] {
+            --primary: #FF9500;
+            --bg: #FFF8F0;
+            --card: #FFFFFF;
+            --text: #1C1C1E;
+            --text-secondary: #8E8E93;
+            --success: #34C759;
+            --warning: #FF3B30;
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg);
@@ -39,6 +66,30 @@
         .header p {
             color: var(--text-secondary);
             font-size: 14px;
+        }
+        .theme-switcher {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .theme-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .theme-btn[data-theme="blue"] { background: #007AFF; color: white; }
+        .theme-btn[data-theme="green"] { background: #34C759; color: white; }
+        .theme-btn[data-theme="dark"] { background: #1C1C1E; color: white; border-color: #555; }
+        .theme-btn[data-theme="orange"] { background: #FF9500; color: white; }
+        .theme-btn.active {
+            transform: scale(1.15);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
         .stats {
             display: flex;
@@ -295,6 +346,12 @@
     <div class="header">
         <h1>Software English</h1>
         <p>软件英语学习 · 每天进步一点</p>
+        <div class="theme-switcher">
+            <button class="theme-btn active" data-theme="blue" onclick="setTheme('blue')">蓝</button>
+            <button class="theme-btn" data-theme="green" onclick="setTheme('green')">绿</button>
+            <button class="theme-btn" data-theme="dark" onclick="setTheme('dark')">暗</button>
+            <button class="theme-btn" data-theme="orange" onclick="setTheme('orange')">暖</button>
+        </div>
     </div>
 
     <div class="stats">
@@ -428,6 +485,20 @@
             renderTabs();
             renderWords();
             updateStats();
+            loadTheme();
+        }
+
+        function setTheme(theme) {
+            document.body.setAttribute('data-theme', theme === 'blue' ? '' : theme);
+            localStorage.setItem('softwareEnglishTheme', theme);
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.theme === theme);
+            });
+        }
+
+        function loadTheme() {
+            const saved = localStorage.getItem('softwareEnglishTheme') || 'blue';
+            setTheme(saved);
         }
 
         function loadTodayWords() {
