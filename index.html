@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Software English</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --primary: #007AFF;
             --bg: #F2F2F7;
@@ -19,333 +15,176 @@
             --success: #34C759;
             --warning: #FF9500;
         }
-        [data-theme="green"] {
-            --primary: #34C759;
-            --bg: #F0F9F0;
-            --card: #FFFFFF;
-            --text: #1C1C1E;
-            --text-secondary: #8E8E93;
-            --success: #007AFF;
-            --warning: #FF9500;
-        }
-        [data-theme="dark"] {
-            --primary: #0A84FF;
-            --bg: #1C1C1E;
-            --card: #2C2C2E;
-            --text: #FFFFFF;
-            --text-secondary: #8E8E93;
-            --success: #30D158;
-            --warning: #FF9F0A;
-        }
-        [data-theme="orange"] {
-            --primary: #FF9500;
-            --bg: #FFF8F0;
-            --card: #FFFFFF;
-            --text: #1C1C1E;
-            --text-secondary: #8E8E93;
-            --success: #34C759;
-            --warning: #FF3B30;
-        }
+        [data-theme="green"] { --primary: #34C759; --bg: #F0F9F0; --success: #007AFF; }
+        [data-theme="dark"] { --primary: #0A84FF; --bg: #1C1C1E; --card: #2C2C2E; --text: #FFFFFF; --text-secondary: #98989D; --success: #30D158; }
+        [data-theme="orange"] { --primary: #FF9500; --bg: #FFF8F0; --success: #34C759; --warning: #FF3B30; }
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg);
             color: var(--text);
             min-height: 100vh;
-            padding: 20px;
-            padding-bottom: 100px;
+            padding: 16px;
+            padding-bottom: 90px;
         }
-        .header {
-            text-align: center;
-            margin-bottom: 24px;
-        }
-        .header h1 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        .header p {
-            color: var(--text-secondary);
-            font-size: 14px;
-        }
+        
+        .header { text-align: center; margin-bottom: 16px; }
+        .header h1 { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+        .header p { color: var(--text-secondary); font-size: 13px; }
+        
         .theme-switcher {
             display: flex;
             justify-content: center;
             gap: 8px;
-            margin-top: 12px;
+            margin-top: 10px;
         }
         .theme-btn {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            border: 2px solid transparent;
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: 600;
-            transition: all 0.2s;
+            width: 28px; height: 28px; border-radius: 50%;
+            border: 2px solid transparent; cursor: pointer; font-size: 11px; font-weight: 600;
         }
         .theme-btn[data-theme="blue"] { background: #007AFF; color: white; }
         .theme-btn[data-theme="green"] { background: #34C759; color: white; }
-        .theme-btn[data-theme="dark"] { background: #1C1C1E; color: white; border-color: #555; }
+        .theme-btn[data-theme="dark"] { background: #2C2C2E; color: white; border-color: #555; }
         .theme-btn[data-theme="orange"] { background: #FF9500; color: white; }
-        .theme-btn.active {
-            transform: scale(1.15);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
+        .theme-btn.active { transform: scale(1.15); box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+        
         .stats {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 24px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 16px;
         }
         .stat-card {
-            flex: 1;
             background: var(--card);
             border-radius: 12px;
-            padding: 16px;
+            padding: 12px 8px;
             text-align: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
         }
-        .stat-value {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary);
-        }
-        .stat-label {
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-top: 4px;
-        }
+        .stat-value { font-size: 20px; font-weight: 700; color: var(--primary); }
+        .stat-label { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
+        
         .section-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            font-size: 15px; font-weight: 600; margin-bottom: 8px;
+            display: flex; justify-content: space-between; align-items: center;
         }
+        
         .category-tabs {
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            padding-bottom: 12px;
-            margin-bottom: 16px;
+            display: flex; gap: 6px; overflow-x: auto;
+            padding-bottom: 10px; margin-bottom: 12px;
             -webkit-overflow-scrolling: touch;
         }
         .category-tab {
-            flex-shrink: 0;
-            padding: 8px 16px;
-            border-radius: 20px;
-            background: var(--card);
-            border: 1px solid #E5E5EA;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.2s;
+            flex-shrink: 0; padding: 6px 14px; border-radius: 16px;
+            background: var(--card); border: 1px solid #E5E5EA;
+            font-size: 13px; cursor: pointer;
         }
-        .category-tab.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-        .card-grid {
-            display: grid;
-            gap: 12px;
-        }
+        .category-tab.active { background: var(--primary); color: white; border-color: var(--primary); }
+        
+        .card-grid { display: grid; gap: 10px; }
         .word-card {
             background: var(--card);
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-radius: 14px; padding: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.15s;
         }
-        .word-card:active {
-            transform: scale(0.98);
-        }
-        .word-card.learned {
-            opacity: 0.6;
-            border-left: 4px solid var(--success);
-        }
+        .word-card:active { transform: scale(0.98); }
+        .word-card.learned { opacity: 0.55; border-left: 4px solid var(--success); }
+        
         .word-en {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 4px;
-            display: flex;
-            align-items: baseline;
-            gap: 8px;
-            flex-wrap: wrap;
+            font-size: 17px; font-weight: 600; margin-bottom: 2px;
+            display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap;
         }
-        .word-phon {
-            font-size: 13px;
-            color: var(--text-secondary);
-            font-weight: normal;
-        }
+        .word-phon { font-size: 12px; color: var(--text-secondary); font-weight: normal; }
         .speaker-btn {
-            padding: 4px 10px;
-            border-radius: 6px;
-            background: rgba(0,122,255,0.1);
-            border: 1px solid rgba(0,122,255,0.3);
-            color: var(--primary);
-            font-size: 12px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-family: inherit;
-            margin-left: auto;
+            margin-left: auto; padding: 3px 10px; border-radius: 5px;
+            background: rgba(0,122,255,0.1); border: 1px solid rgba(0,122,255,0.25);
+            color: var(--primary); font-size: 12px; cursor: pointer;
         }
-        .speaker-btn:active {
-            transform: scale(0.95);
-            background: rgba(0,122,255,0.2);
-        }
-        .word-zh {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-        }
+        .speaker-btn:active { background: rgba(0,122,255,0.2); }
+        
+        .word-zh { font-size: 14px; color: var(--text-secondary); margin: 4px 0; }
         .word-example {
-            font-size: 13px;
-            color: var(--primary);
-            background: rgba(0,122,255,0.1);
-            padding: 8px 12px;
-            border-radius: 8px;
-            margin-top: 8px;
+            font-size: 12px; color: var(--primary);
+            background: rgba(0,122,255,0.08); padding: 6px 10px;
+            border-radius: 6px; margin-top: 6px;
         }
-        .word-tags {
-            display: flex;
-            gap: 6px;
-            margin-top: 8px;
-            flex-wrap: wrap;
-        }
+        .word-tags { display: flex; gap: 4px; margin-top: 6px; flex-wrap: wrap; }
         .tag {
-            font-size: 11px;
-            padding: 4px 8px;
-            border-radius: 4px;
-            background: #E5E5EA;
-            color: var(--text-secondary);
+            font-size: 10px; padding: 2px 6px; border-radius: 3px;
+            background: #E5E5EA; color: var(--text-secondary);
         }
         .tag.config { background: rgba(255,149,0,0.15); color: #FF9500; }
         .tag.log { background: rgba(52,199,89,0.15); color: #34C759; }
         .tag.error { background: rgba(255,59,48,0.15); color: #FF3B30; }
         .tag.cli { background: rgba(88,86,214,0.15); color: #5856D6; }
+        
+        .empty-state { text-align: center; padding: 40px; color: var(--text-secondary); }
+        
         .bottom-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: var(--card);
-            padding: 12px 20px;
-            display: flex;
-            gap: 12px;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: var(--card); padding: 10px 16px;
+            display: flex; gap: 10px; box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
         }
         .btn {
-            flex: 1;
-            padding: 14px;
-            border-radius: 12px;
-            border: none;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: opacity 0.2s;
+            flex: 1; padding: 12px; border-radius: 10px;
+            border: none; font-size: 14px; font-weight: 600; cursor: pointer;
         }
         .btn:active { opacity: 0.8; }
         .btn-primary { background: var(--primary); color: white; }
         .btn-secondary { background: #E5E5EA; color: var(--text); }
-        .quiz-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.5);
-            justify-content: center;
-            align-items: flex-end;
-            z-index: 100;
+        .btn-history { background: var(--success); color: white; }
+        
+        .modal {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.45); justify-content: center; align-items: flex-end; z-index: 100;
         }
-        .quiz-modal.show { display: flex; }
-        .quiz-content {
-            background: var(--card);
-            width: 100%;
-            max-height: 80vh;
-            border-radius: 20px 20px 0 0;
-            padding: 24px;
-            overflow-y: auto;
+        .modal.show { display: flex; }
+        .modal-content {
+            background: var(--card); width: 100%; max-height: 80vh;
+            border-radius: 18px 18px 0 0; padding: 20px; overflow-y: auto;
         }
-        .quiz-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
+        .modal-header {
+            display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;
         }
-        .quiz-title {
-            font-size: 20px;
-            font-weight: 700;
+        .modal-title { font-size: 18px; font-weight: 700; }
+        .modal-close {
+            width: 28px; height: 28px; border-radius: 50%;
+            background: #E5E5EA; border: none; font-size: 16px; cursor: pointer;
         }
-        .quiz-close {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: #E5E5EA;
-            border: none;
-            font-size: 18px;
-            cursor: pointer;
-        }
+        
         .quiz-question {
-            font-size: 18px;
-            text-align: center;
-            padding: 20px;
-            background: var(--bg);
-            border-radius: 12px;
-            margin-bottom: 20px;
+            font-size: 16px; text-align: center; padding: 16px;
+            background: var(--bg); border-radius: 10px; margin-bottom: 14px;
         }
-        .quiz-options {
-            display: grid;
-            gap: 12px;
-        }
+        .quiz-options { display: grid; gap: 8px; }
         .quiz-option {
-            padding: 16px;
-            border-radius: 12px;
-            background: var(--bg);
-            border: 2px solid transparent;
-            font-size: 16px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s;
+            padding: 14px; border-radius: 10px; background: var(--bg);
+            border: 2px solid transparent; font-size: 15px; text-align: center; cursor: pointer;
         }
-        .quiz-option.selected { border-color: var(--primary); }
         .quiz-option.correct { background: rgba(52,199,89,0.2); border-color: var(--success); }
         .quiz-option.wrong { background: rgba(255,59,48,0.2); border-color: #FF3B30; }
-        .quiz-result {
-            text-align: center;
-            padding: 20px;
+        .quiz-score { font-size: 44px; font-weight: 700; color: var(--primary); text-align: center; }
+        
+        .history-list { display: grid; gap: 6px; }
+        .history-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 12px; background: var(--bg); border-radius: 8px;
         }
-        .quiz-score {
-            font-size: 48px;
-            font-weight: 700;
-            color: var(--primary);
-        }
-        .progress-ring {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 12px;
-        }
-        .progress-ring circle {
-            fill: none;
-            stroke-width: 6;
-        }
-        .progress-ring .bg { stroke: #E5E5EA; }
-        .progress-ring .fg { 
-            stroke: var(--primary); 
-            stroke-linecap: round;
-            transform: rotate(-90deg);
-            transform-origin: center;
-            transition: stroke-dashoffset 0.5s;
-        }
+        .history-word { font-weight: 600; }
+        .history-date { font-size: 12px; color: var(--text-secondary); }
+        
         @media (min-width: 600px) {
             .card-grid { grid-template-columns: repeat(2, 1fr); }
-            .stats { max-width: 400px; margin: 0 auto 24px; }
+            .stats { max-width: 500px; margin: 0 auto 16px; }
         }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>Software English</h1>
-        <p>软件英语学习 · 每天进步一点</p>
+        <p>软件英语学习</p>
         <div class="theme-switcher">
             <button class="theme-btn active" data-theme="blue" onclick="setTheme('blue')">蓝</button>
             <button class="theme-btn" data-theme="green" onclick="setTheme('green')">绿</button>
@@ -355,19 +194,15 @@
     </div>
 
     <div class="stats">
+        <div class="stat-card"><div class="stat-value" id="totalCount">-</div><div class="stat-label">总词汇</div></div>
+        <div class="stat-card"><div class="stat-value" id="learnedCount">-</div><div class="stat-label">已掌握</div></div>
+        <div class="stat-card"><div class="stat-value" id="streakCount">-</div><div class="stat-label">连续</div></div>
         <div class="stat-card">
-            <div class="stat-value" id="totalCount">0</div>
-            <div class="stat-label">总词汇</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-value" id="learnedCount">0</div>
-            <div class="stat-label">已掌握</div>
-        </div>
-        <div class="stat-card">
-            <svg class="progress-ring" viewBox="0 0 60 60">
-                <circle class="bg" cx="30" cy="30" r="26"/>
-                <circle class="fg" cx="30" cy="30" r="26" 
-                    stroke-dasharray="163.36" stroke-dashoffset="163.36" id="progressCircle"/>
+            <svg viewBox="0 0 36 36" style="width:36px;height:36px">
+                <circle cx="18" cy="18" r="15.9" fill="none" stroke="#E5E5EA" stroke-width="3"/>
+                <circle id="progressCircle" cx="18" cy="18" r="15.9" fill="none" stroke="var(--primary)" stroke-width="3"
+                    stroke-dasharray="100" stroke-dashoffset="100" stroke-linecap="round"
+                    transform="rotate(-90 18 18)"/>
             </svg>
             <div class="stat-label" id="progressText">0%</div>
         </div>
@@ -380,330 +215,39 @@
 
     <div class="section-title">
         <span>今日学习</span>
-        <span style="font-size:14px;color:var(--text-secondary)" id="todayCount"></span>
+        <span style="font-size:13px;color:var(--text-secondary)" id="todayCount"></span>
     </div>
     <div class="card-grid" id="wordList"></div>
 
     <div class="bottom-bar">
         <button class="btn btn-secondary" onclick="showQuiz()">测验</button>
+        <button class="btn btn-history" onclick="showHistory()">记录</button>
         <button class="btn btn-primary" onclick="nextWord()">下一个</button>
     </div>
 
-    <div class="quiz-modal" id="quizModal">
-        <div class="quiz-content">
-            <div class="quiz-header">
-                <span class="quiz-title">词汇测验</span>
-                <button class="quiz-close" onclick="closeQuiz()">×</button>
+    <!-- Quiz Modal -->
+    <div class="modal" id="quizModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">词汇测验</span>
+                <button class="modal-close" onclick="closeQuiz()">×</button>
             </div>
             <div id="quizBody"></div>
         </div>
     </div>
 
-    <script>
-        const WORDS = [
-            // 配置相关 Config
-            { en: "configure", zh: "配置", phon: "kənˈfɪɡər", category: "config", example: "sudo ./configure --prefix=/usr/local", tags: ["config"] },
-            { en: "enable", zh: "启用/允许", phon: "ɪˈneɪbəl", category: "config", example: "enable ssl_verify_peer=1 in php.ini", tags: ["config"] },
-            { en: "disable", zh: "禁用", phon: "dɪsˈeɪbəl", category: "config", example: "disable the firewall temporarily", tags: ["config"] },
-            { en: "set", zh: "设置", phon: "set", category: "config", example: "set JAVA_HOME=/usr/lib/jvm/java", tags: ["config"] },
-            { en: "option", zh: "选项", phon: "ˈɒpʃən", category: "config", example: "--with-openssl is an optional configure option", tags: ["config"] },
-            { en: "parameter", zh: "参数", phon: "pəˈræmɪtər", category: "config", example: "timeout is a critical parameter", tags: ["config"] },
-            { en: "default", zh: "默认值", phon: "dɪˈfɔːlt", category: "config", example: "The default port is 8080", tags: ["config"] },
-            { en: "override", zh: "覆盖/重写", phon: "ˌəʊvəˈraɪd", category: "config", example: "Environment variables override config files", tags: ["config"] },
-            { en: "inherit", zh: "继承", phon: "ɪnˈherɪt", category: "config", example: "Child theme inherits parent styles", tags: ["config"] },
-            { en: "fallback", zh: "回退/备用", phon: "ˈfɔːlbæk", category: "config", example: "Use 8.8.8.8 as DNS fallback", tags: ["config"] },
-            { en: "retry", zh: "重试", phon: "riːˈtraɪ", category: "config", example: "retry connection after 5 seconds", tags: ["config"] },
-            { en: "timeout", zh: "超时", phon: "ˈtaɪmaʊt", category: "config", example: "set timeout=30 in ssh_config", tags: ["config"] },
-            { en: "cache", zh: "缓存", phon: "kæʃ", category: "config", example: "clear the browser cache", tags: ["config"] },
-            { en: "persistent", zh: "持久化", phon: "pəˈsɪstənt", category: "config", example: "enable persistent connections in nginx", tags: ["config"] },
-            { en: "verbose", zh: "详细输出", phon: "vɜːˈbəʊs", category: "config", example: "run make verbose=1 for detailed logs", tags: ["config"] },
+    <!-- History Modal -->
+    <div class="modal" id="historyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">学习记录</span>
+                <button class="modal-close" onclick="closeHistory()">×</button>
+            </div>
+            <div id="historyBody"></div>
+        </div>
+    </div>
 
-            // 日志相关 Log
-            { en: "info", zh: "信息日志", phon: "ˈɪnfəʊ", category: "log", example: "[INFO] Server started on port 3000", tags: ["log"] },
-            { en: "debug", zh: "调试信息", phon: "diːˈbʌɡ", category: "log", example: "[DEBUG] Variable x = 42", tags: ["log"] },
-            { en: "warning", zh: "警告", phon: "ˈwɔːnɪŋ", category: "log", example: "[WARN] Memory usage above 80%", tags: ["log"] },
-            { en: "error", zh: "错误", phon: "ˈerər", category: "log", example: "[ERROR] Connection refused", tags: ["log"] },
-            { en: "fatal", zh: "致命错误", phon: "ˈfeɪtəl", category: "log", example: "[FATAL] Out of memory, exiting", tags: ["log"] },
-            { en: "trace", zh: "追踪", phon: "treɪs", category: "log", example: "[TRACE] Entering function calculate()", tags: ["log"] },
-            { en: "log", zh: "日志", phon: "lɒɡ", category: "log", example: "Check the access log for details", tags: ["log"] },
-            { en: "entry", zh: "日志条目", phon: "ˈentri", category: "log", example: "Parse each log entry with regex", tags: ["log"] },
-            { en: "level", zh: "级别", phon: "ˈlevəl", category: "log", example: "Set log level to DEBUG", tags: ["log"] },
-            { en: "timestamp", zh: "时间戳", phon: "ˈtaɪmstæmp", category: "log", example: "2026-03-29T10:30:00Z", tags: ["log"] },
-            { en: "stack trace", zh: "堆栈跟踪", phon: "stæk treɪs", category: "log", example: "See full stack trace in error.log", tags: ["log"] },
-            { en: "dump", zh: "转储", phon: "dʌmp", category: "log", example: "core dump generated", tags: ["log"] },
-            { en: "tail", zh: "查看尾部", phon: "teɪl", category: "log", example: "tail -f /var/log/syslog", tags: ["log"] },
-            { en: "rotate", zh: "轮转", phon: "rəʊˈteɪt", category: "log", example: "Logs rotate daily", tags: ["log"] },
-            { en: "flush", zh: "刷新", phon: "flʌʃ", category: "log", example: "flush log buffer to disk", tags: ["log"] },
-
-            // 错误相关 Error
-            { en: "failed", zh: "失败", phon: "feɪld", category: "error", example: "Build failed with exit code 1", tags: ["error"] },
-            { en: "success", zh: "成功", phon: "səkˈses", category: "error", example: "Deployment success", tags: ["error"] },
-            { en: "denied", zh: "拒绝访问", phon: "dɪˈnaɪd", category: "error", example: "Permission denied", tags: ["error"] },
-            { en: "not found", zh: "未找到", phon: "nɒt faʊnd", category: "error", example: "404 Not Found", tags: ["error"] },
-            { en: "invalid", zh: "无效的", phon: "ɪnˈvælɪd", category: "error", example: "Invalid argument supplied", tags: ["error"] },
-            { en: "undefined", zh: "未定义", phon: "ˌʌndɪˈfaɪnd", category: "error", example: "ReferenceError: x is undefined", tags: ["error"] },
-            { en: "null", zh: "空值", phon: "nʌl", category: "error", example: "NullPointerException", tags: ["error"] },
-            { en: "exception", zh: "异常", phon: "ɪkˈsepʃən", category: "error", example: "Unhandled exception in main", tags: ["error"] },
-            { en: "abort", zh: "中止", phon: "əˈbɔːt", category: "error", example: "Transaction aborted", tags: ["error"] },
-            { en: "crash", zh: "崩溃", phon: "kræʃ", category: "error", example: "Application crashed unexpectedly", tags: ["error"] },
-            { en: "hang", zh: "卡住", phon: "hæŋ", category: "error", example: "Process hang detected", tags: ["error"] },
-            { en: "leak", zh: "泄漏", phon: "liːk", category: "error", example: "Memory leak detected", tags: ["error"] },
-            { en: "corrupt", zh: "损坏", phon: "kəˈrʌpt", category: "error", example: "Corrupt disk image", tags: ["error"] },
-            { en: "mismatch", zh: "不匹配", phon: "ˈmɪsmætʃ", category: "error", example: "Checksum mismatch", tags: ["error"] },
-            { en: "conflict", zh: "冲突", phon: "ˈkɒnflɪkt", category: "error", example: "Port conflict detected", tags: ["error"] },
-
-            // CLI 命令相关
-            { en: "install", zh: "安装", phon: "ɪnˈstɔːl", category: "cli", example: "npm install express", tags: ["cli"] },
-            { en: "uninstall", zh: "卸载", phon: "ˌʌnɪnˈstɔːl", category: "cli", example: "pip uninstall requests", tags: ["cli"] },
-            { en: "initialize", zh: "初始化", phon: "ɪˈnɪʃəlaɪz", category: "cli", example: "git init", tags: ["cli"] },
-            { en: "execute", zh: "执行", phon: "ˈeksɪkjuːt", category: "cli", example: "execute the script", tags: ["cli"] },
-            { en: "terminate", zh: "终止", phon: "ˈtɜːmɪneɪt", category: "cli", example: "Terminate the process", tags: ["cli"] },
-            { en: "kill", zh: "杀死进程", phon: "kɪl", category: "cli", example: "kill -9 1234", tags: ["cli"] },
-            { en: "restart", zh: "重启", phon: "riːˈstɑːt", category: "cli", example: "systemctl restart nginx", tags: ["cli"] },
-            { en: "reload", zh: "重新加载", phon: "riːˈləʊd", category: "cli", example: "reload nginx configuration", tags: ["cli"] },
-            { en: "start", zh: "启动", phon: "stɑːt", category: "cli", example: "start the service", tags: ["cli"] },
-            { en: "stop", zh: "停止", phon: "stɒp", category: "cli", example: "stop the background job", tags: ["cli"] },
-            { en: "status", zh: "状态", phon: "ˈsteɪtəs", category: "cli", example: "docker ps status", tags: ["cli"] },
-            { en: "list", zh: "列出", phon: "lɪst", category: "cli", example: "ls -la", tags: ["cli"] },
-            { en: "remove", zh: "删除", phon: "rɪˈmuːv", category: "cli", example: "rm -rf node_modules", tags: ["cli"] },
-            { en: "copy", zh: "复制", phon: "ˈkɒpi", category: "cli", example: "cp source dest", tags: ["cli"] },
-            { en: "move", zh: "移动", phon: "muːv", category: "cli", example: "mv file.txt /tmp/", tags: ["cli"] },
-            { en: "extract", zh: "解压", phon: "ɪkˈstrækt", category: "cli", example: "tar -xzf archive.tar.gz", tags: ["cli"] },
-            { en: "compress", zh: "压缩", phon: "kəmˈpres", category: "cli", example: "zip -r backup.zip data/", tags: ["cli"] },
-            { en: "sync", zh: "同步", phon: "sɪŋk", category: "cli", example: "rsync -avz source/ dest/", tags: ["cli"] },
-            { en: "backup", zh: "备份", phon: "ˈbækʌp", category: "cli", example: "backup database to S3", tags: ["cli"] },
-            { en: "restore", zh: "恢复", phon: "rɪˈstɔːr", category: "cli", example: "restore from backup", tags: ["cli"] },
-        ];
-
-        let learned = JSON.parse(localStorage.getItem('softwareEnglishLearned') || '[]');
-        let currentCategory = 'all';
-        let currentIndex = 0;
-        let todayWords = [];
-
-        function init() {
-            loadTodayWords();
-            renderTabs();
-            renderWords();
-            updateStats();
-            loadTheme();
-        }
-
-        function setTheme(theme) {
-            document.body.setAttribute('data-theme', theme === 'blue' ? '' : theme);
-            localStorage.setItem('softwareEnglishTheme', theme);
-            document.querySelectorAll('.theme-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.theme === theme);
-            });
-        }
-
-        function loadTheme() {
-            const saved = localStorage.getItem('softwareEnglishTheme') || 'blue';
-            setTheme(saved);
-        }
-
-        function loadTodayWords() {
-            const today = new Date().toDateString();
-            const stored = localStorage.getItem('softwareEnglishDate');
-            if (stored !== today) {
-                todayWords = shuffleArray([...WORDS]).slice(0, 10);
-                localStorage.setItem('softwareEnglishDate', today);
-                localStorage.setItem('softwareEnglishToday', JSON.stringify(todayWords));
-            } else {
-                todayWords = JSON.parse(localStorage.getItem('softwareEnglishToday') || '[]');
-            }
-            document.getElementById('todayCount').textContent = todayWords.length + ' 词';
-        }
-
-        function shuffleArray(arr) {
-            for (let i = arr.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [arr[i], arr[j]] = [arr[j], arr[i]];
-            }
-            return arr;
-        }
-
-        function renderTabs() {
-            const categories = [
-                { id: 'all', name: '全部' },
-                { id: 'config', name: '配置' },
-                { id: 'log', name: '日志' },
-                { id: 'error', name: '错误' },
-                { id: 'cli', name: '命令' }
-            ];
-            const tabs = document.getElementById('categoryTabs');
-            tabs.innerHTML = categories.map(c => 
-                `<div class="category-tab ${c.id === currentCategory ? 'active' : ''}" onclick="selectCategory('${c.id}')">${c.name}</div>`
-            ).join('');
-        }
-
-        function selectCategory(cat) {
-            currentCategory = cat;
-            renderTabs();
-            renderWords();
-        }
-
-        function getFilteredWords() {
-            if (currentCategory === 'all') return todayWords;
-            return todayWords.filter(w => w.category === currentCategory);
-        }
-
-        function renderWords() {
-            const words = getFilteredWords();
-            const list = document.getElementById('wordList');
-            list.innerHTML = words.map((w, i) => `
-                <div class="word-card ${learned.includes(w.en) ? 'learned' : ''}" onclick="toggleLearn('${w.en}')">
-                    <div class="word-en">
-                        <span>${w.en}</span>
-                        <button class="speaker-btn" onclick="event.stopPropagation(); speak('${w.en.replace(/'/g, "\\'")}')">发音</button>
-                    </div>
-                    ${w.phon ? `<div class="word-phon">[${w.phon}]</div>` : ''}
-                    <div class="word-zh">${w.zh}</div>
-                    <div class="word-example">${w.example}</div>
-                    <div class="word-tags">
-                        ${w.tags.map(t => `<span class="tag ${t}">${t}</span>`).join('')}
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function speak(text) {
-            if (!window.speechSynthesis) {
-                alert('您的浏览器不支持语音合成');
-                return;
-            }
-            // 停止之前的朗读
-            window.speechSynthesis.cancel();
-            
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'en-US';
-            utterance.rate = 0.9;
-            utterance.pitch = 1;
-            utterance.volume = 1;
-            
-            // 尝试获取美式发音
-            const voices = window.speechSynthesis.getVoices();
-            const enVoice = voices.find(v => v.lang.includes('en') && v.lang.includes('US')) 
-                         || voices.find(v => v.lang.includes('en'));
-            if (enVoice) utterance.voice = enVoice;
-            
-            // 添加动画效果
-            document.querySelectorAll('.speaker-btn').forEach(btn => btn.classList.remove('speaking'));
-            const btns = document.querySelectorAll('.speaker-btn');
-            btns.forEach && btns[currentIndex] && btns[currentIndex].classList.add('speaking');
-            
-            utterance.onend = () => {
-                document.querySelectorAll('.speaker-btn').forEach(btn => btn.classList.remove('speaking'));
-            };
-            
-            window.speechSynthesis.speak(utterance);
-        }
-
-        // 预加载语音
-        if (window.speechSynthesis) {
-            window.speechSynthesis.getVoices();
-            window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
-        }
-
-        function toggleLearn(word) {
-            const idx = learned.indexOf(word);
-            if (idx > -1) {
-                learned.splice(idx, 1);
-            } else {
-                learned.push(word);
-            }
-            localStorage.setItem('softwareEnglishLearned', JSON.stringify(learned));
-            updateStats();
-            renderWords();
-        }
-
-        function updateStats() {
-            document.getElementById('totalCount').textContent = WORDS.length;
-            document.getElementById('learnedCount').textContent = learned.length;
-            const pct = Math.round((learned.length / WORDS.length) * 100);
-            document.getElementById('progressText').textContent = pct + '%';
-            const circle = document.getElementById('progressCircle');
-            const offset = 163.36 * (1 - pct / 100);
-            circle.style.strokeDashoffset = offset;
-        }
-
-        function nextWord() {
-            const words = getFilteredWords();
-            if (words.length === 0) return;
-            currentIndex = (currentIndex + 1) % words.length;
-            const card = document.querySelectorAll('.word-card')[currentIndex];
-            if (card) {
-                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                card.style.boxShadow = '0 0 20px rgba(0,122,255,0.5)';
-                setTimeout(() => card.style.boxShadow = '', 500);
-            }
-        }
-
-        function showQuiz() {
-            const modal = document.getElementById('quizModal');
-            const body = document.getElementById('quizBody');
-            const questions = generateQuiz();
-            let current = 0;
-            let correct = 0;
-
-            function renderQuestion() {
-                const q = questions[current];
-                body.innerHTML = `
-                    <div class="quiz-question">${q.word.zh} 的英文是？</div>
-                    <div class="quiz-options">
-                        ${q.options.map((opt, i) => `<div class="quiz-option" onclick="selectOption(this, ${i === q.correct})">${opt}</div>`).join('')}
-                    </div>
-                    <div style="text-align:center;margin-top:20px">
-                        <span>${current + 1} / ${questions.length}</span>
-                    </div>
-                `;
-            }
-
-            window.selectOption = function(el, correct) {
-                if (correct) {
-                    el.classList.add('correct');
-                    correct++;
-                } else {
-                    el.classList.add('wrong');
-                    document.querySelectorAll('.quiz-option')[questions[current].correct].classList.add('correct');
-                }
-                setTimeout(() => {
-                    current++;
-                    if (current < questions.length) {
-                        renderQuestion();
-                    } else {
-                        body.innerHTML = `
-                            <div class="quiz-result">
-                                <div class="quiz-score">${correct}/${questions.length}</div>
-                                <p>正确率 ${Math.round(correct/questions.length*100)}%</p>
-                                <button class="btn btn-primary" style="margin-top:20px" onclick="closeQuiz()">完成</button>
-                            </div>
-                        `;
-                    }
-                }, 800);
-            };
-
-            renderQuestion();
-            modal.classList.add('show');
-        }
-
-        function generateQuiz() {
-            const shuffled = shuffleArray([...WORDS]).slice(0, 5);
-            return shuffled.map(word => {
-                const others = WORDS.filter(w => w.zh !== word.zh).slice(0, 3);
-                const options = shuffleArray([word.en, ...others.map(w => w.en)]);
-                return {
-                    word,
-                    options,
-                    correct: options.indexOf(word.en)
-                };
-            });
-        }
-
-        function closeQuiz() {
-            document.getElementById('quizModal').classList.remove('show');
-        }
-
-        init();
-    </script>
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
