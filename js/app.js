@@ -65,7 +65,11 @@ function renderTabs() {
         { id: 'config', name: '配置' },
         { id: 'log', name: '日志' },
         { id: 'error', name: '错误' },
-        { id: 'cli', name: '命令' }
+        { id: 'cli', name: '命令' },
+        { id: 'devops', name: '运维' },
+        { id: 'dev', name: '开发' },
+        { id: 'db', name: '数据库' },
+        { id: 'git', name: 'Git' }
     ];
     const tabs = document.getElementById('categoryTabs');
     tabs.innerHTML = categories.map(c => 
