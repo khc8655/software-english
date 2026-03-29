@@ -165,22 +165,52 @@ function loadTheme() {
 
 // Text-to-speech
 function speak(text) {
-    if (!window.speechSynthesis) {
-        console.warn('Speech synthesis not supported');
+    // Try Web Speech API first
+    if (window.speechSynthesis && window.speechSynthesis.getVoices().length > 0) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.9;
+        
+        const voices = window.speechSynthesis.getVoices();
+        const enVoice = voices.find(v => v.lang.includes('en') && v.lang.includes('US')) 
+                     || voices.find(v => v.lang.includes('en'));
+        if (enVoice) utterance.voice = enVoice;
+        
+        window.speechSynthesis.speak(utterance);
         return;
     }
-    window.speechSynthesis.cancel();
     
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'en-US';
-    utterance.rate = 0.9;
+    // Fallback: Use Google Translate TTS via audio
+    const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=en&client=tw-ob`;
+    const audio = new Audio(audioUrl);
+    audio.play().catch(() => {
+        // If all fails, show tooltip
+        showToast('发音不可用，请使用系统浏览器');
+    });
+}
+
+function showToast(msg) {
+    const existing = document.querySelector('.toast');
+    if (existing) existing.remove();
     
-    const voices = window.speechSynthesis.getVoices();
-    const enVoice = voices.find(v => v.lang.includes('en') && v.lang.includes('US')) 
-                 || voices.find(v => v.lang.includes('en'));
-    if (enVoice) utterance.voice = enVoice;
-    
-    window.speechSynthesis.speak(utterance);
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = msg;
+    toast.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0,0,0,0.8);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 14px;
+        z-index: 9999;
+    `;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 2000);
 }
 
 // Preload voices
