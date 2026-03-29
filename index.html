@@ -122,29 +122,20 @@
             gap: 8px;
         }
         .speaker-btn {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: var(--primary);
-            border: none;
-            color: white;
-            font-size: 14px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(0,122,255,0.1);
+            border: 1px solid rgba(0,122,255,0.3);
+            color: var(--primary);
+            font-size: 12px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s, background 0.2s;
+            transition: all 0.2s;
+            font-family: inherit;
+            margin-left: auto;
         }
         .speaker-btn:active {
-            transform: scale(0.9);
-            background: #0056b3;
-        }
-        .speaker-btn.speaking {
-            animation: pulse 0.5s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            transform: scale(0.95);
+            background: rgba(0,122,255,0.2);
         }
         .word-zh {
             font-size: 14px;
@@ -485,8 +476,8 @@
             list.innerHTML = words.map((w, i) => `
                 <div class="word-card ${learned.includes(w.en) ? 'learned' : ''}" onclick="toggleLearn('${w.en}')">
                     <div class="word-en">
-                        ${w.en}
-                        <button class="speaker-btn" onclick="event.stopPropagation(); speak('${w.en.replace(/'/g, "\\'")}')">🔊</button>
+                        <span>${w.en}</span>
+                        <button class="speaker-btn" onclick="event.stopPropagation(); speak('${w.en.replace(/'/g, "\\'")}')">发音</button>
                     </div>
                     <div class="word-zh">${w.zh}</div>
                     <div class="word-example">${w.example}</div>
