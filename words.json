@@ -1,5 +1,5 @@
 {
-  "version": "2026-03-30-v2",
+  "version": "2026-03-30-v3",
   "categories": [
     "config",
     "log",
@@ -8,9 +8,21 @@
     "devops",
     "dev",
     "db",
-    "git"
+    "git",
+    "ai"
   ],
   "words": [
+    {
+      "en": "A/B testing",
+      "zh": "A/B测试",
+      "phon": "eɪ biː ˈtestɪŋ",
+      "category": "devops",
+      "example": "A/B test two model versions in production",
+      "tags": [
+        "devops",
+        "ai"
+      ]
+    },
     {
       "en": "abort",
       "zh": "中止",
@@ -32,6 +44,16 @@
       ]
     },
     {
+      "en": "agent",
+      "zh": "AI智能体",
+      "phon": "ˈeɪdʒənt",
+      "category": "ai",
+      "example": "build an AI agent that uses multiple tools",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
       "en": "aggregate",
       "zh": "聚合",
       "phon": "ˈæɡrɪɡət",
@@ -39,6 +61,17 @@
       "example": "aggregate logs by error type and count",
       "tags": [
         "log"
+      ]
+    },
+    {
+      "en": "AI gateway",
+      "zh": "AI网关",
+      "phon": "eɪ-aɪ ˈɡetweɪ",
+      "category": "devops",
+      "example": "deploy AI gateway for model routing and rate limiting",
+      "tags": [
+        "devops",
+        "ai"
       ]
     },
     {
@@ -62,6 +95,16 @@
       ]
     },
     {
+      "en": "alignment",
+      "zh": "对齐",
+      "phon": "əˈlaɪnmənt",
+      "category": "ai",
+      "example": "RLHF for aligning model with human values",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
       "en": "ansible",
       "zh": "自动化配置工具",
       "phon": "ˈænsɪbəl",
@@ -69,6 +112,49 @@
       "example": "ansible-playbook site.yml to provision servers",
       "tags": [
         "devops"
+      ]
+    },
+    {
+      "en": "Anthropic SDK",
+      "zh": "Anthropic开发包",
+      "phon": "ænˈθrɒpɪk es-diː-keɪ",
+      "category": "dev",
+      "example": "pip install anthropic for Claude API",
+      "tags": [
+        "dev",
+        "ai"
+      ]
+    },
+    {
+      "en": "API key",
+      "zh": "API密钥",
+      "phon": "eɪ-piː-aɪ kiː",
+      "category": "ai",
+      "example": "export OPENAI_API_KEY=sk-...",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "api_base",
+      "zh": "API接口地址",
+      "phon": "eɪ-piː-eɪ beɪs",
+      "category": "config",
+      "example": "set api_base for custom LLM endpoint",
+      "tags": [
+        "config",
+        "ai"
+      ]
+    },
+    {
+      "en": "api_version",
+      "zh": "API版本",
+      "phon": "eɪ-piː-aɪ ˈvɜːʃən",
+      "category": "config",
+      "example": "set api_version=2024-01-01 for Azure OpenAI",
+      "tags": [
+        "config",
+        "ai"
       ]
     },
     {
@@ -102,11 +188,32 @@
       ]
     },
     {
+      "en": "assistant message",
+      "zh": "助手消息",
+      "phon": "əˈsɪstənt ˈmesɪdʒ",
+      "category": "dev",
+      "example": "store assistant message in conversation history",
+      "tags": [
+        "dev",
+        "ai"
+      ]
+    },
+    {
       "en": "async",
       "zh": "异步",
       "phon": "ˈeɪsɪŋk",
       "category": "dev",
       "example": "async function fetchData()",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "asyncio",
+      "zh": "异步IO库",
+      "phon": "eɪ-es-aɪ-en-es-wai",
+      "category": "dev",
+      "example": "use asyncio.gather for concurrent LLM calls",
       "tags": [
         "dev"
       ]
@@ -119,6 +226,17 @@
       "example": "implement JWT authentication",
       "tags": [
         "dev"
+      ]
+    },
+    {
+      "en": "authentication error",
+      "zh": "认证失败",
+      "phon": "ɔːˌθentɪˈkeɪʃən ˈerər",
+      "category": "error",
+      "example": "Error: incorrect API key authentication failed",
+      "tags": [
+        "error",
+        "ai"
       ]
     },
     {
@@ -152,6 +270,16 @@
       ]
     },
     {
+      "en": "backoff",
+      "zh": "退避重试",
+      "phon": "ˈbækɒf",
+      "category": "dev",
+      "example": "exponential backoff after API rate limit",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
       "en": "backup",
       "zh": "备份",
       "phon": "ˈbækʌp",
@@ -162,6 +290,27 @@
       ]
     },
     {
+      "en": "base_url",
+      "zh": "服务基础URL",
+      "phon": "beɪs yuː-ar-el",
+      "category": "config",
+      "example": "base_url=https://api.openai.com/v1",
+      "tags": [
+        "config",
+        "ai"
+      ]
+    },
+    {
+      "en": "batch processing",
+      "zh": "批量处理",
+      "phon": "bætʃ ˈprəʊsesɪŋ",
+      "category": "ai",
+      "example": "batch process 1000 prompts via API",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
       "en": "benchmark",
       "zh": "性能基准测试",
       "phon": "ˈbentʃmɑːk",
@@ -169,6 +318,16 @@
       "example": "benchmark query performance with EXPLAIN ANALYZE",
       "tags": [
         "dev"
+      ]
+    },
+    {
+      "en": "bias",
+      "zh": "偏差",
+      "phon": "ˈbaɪəs",
+      "category": "ai",
+      "example": "check for demographic bias in model outputs",
+      "tags": [
+        "ai"
       ]
     },
     {
@@ -272,6 +431,16 @@
       ]
     },
     {
+      "en": "chain-of-thought",
+      "zh": "思维链",
+      "phon": "tʃeɪn əv θɔːt",
+      "category": "ai",
+      "example": "chain-of-thought prompting for reasoning tasks",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
       "en": "charset",
       "zh": "字符集",
       "phon": "ˈtʃɑːsət",
@@ -279,6 +448,17 @@
       "example": "mysql charset is utf8mb4",
       "tags": [
         "config"
+      ]
+    },
+    {
+      "en": "chat completion",
+      "zh": "对话补全",
+      "phon": "tʃæt kəmˈpliːʃən",
+      "category": "dev",
+      "example": "client.chat.completions.create(messages=[...])",
+      "tags": [
+        "dev",
+        "ai"
       ]
     },
     {
@@ -352,6 +532,17 @@
       ]
     },
     {
+      "en": "claude",
+      "zh": "Claude CLI客户端",
+      "phon": "klɔːd",
+      "category": "cli",
+      "example": "claude --print 'explain recursion'",
+      "tags": [
+        "cli",
+        "ai"
+      ]
+    },
+    {
       "en": "clone",
       "zh": "克隆仓库",
       "phon": "kləʊn",
@@ -392,6 +583,17 @@
       ]
     },
     {
+      "en": "completion",
+      "zh": "文本补全",
+      "phon": "kəmˈpliːʃən",
+      "category": "dev",
+      "example": "client.completion(model='gpt-4', prompt='...')",
+      "tags": [
+        "dev",
+        "ai"
+      ]
+    },
+    {
       "en": "compress",
       "zh": "压缩",
       "phon": "kəmˈpres",
@@ -409,6 +611,16 @@
       "example": "enable gzip compression in nginx.conf",
       "tags": [
         "config"
+      ]
+    },
+    {
+      "en": "concurrent",
+      "zh": "并发",
+      "phon": "kənˈkʌrənt",
+      "category": "dev",
+      "example": "run 10 concurrent API requests with asyncio",
+      "tags": [
+        "dev"
       ]
     },
     {
@@ -482,6 +694,38 @@
       ]
     },
     {
+      "en": "content filtered",
+      "zh": "内容被过滤",
+      "phon": "ˈkɒntent ˈfɪltəd",
+      "category": "error",
+      "example": "Error: content filtered by safety system",
+      "tags": [
+        "error",
+        "ai"
+      ]
+    },
+    {
+      "en": "context length",
+      "zh": "上下文超长",
+      "phon": "ˈkɒntekst leŋθ",
+      "category": "error",
+      "example": "Error: max context length 4096 tokens exceeded",
+      "tags": [
+        "error",
+        "ai"
+      ]
+    },
+    {
+      "en": "context window",
+      "zh": "上下文窗口",
+      "phon": "ˈkɒntekst ˈwɪndəʊ",
+      "category": "ai",
+      "example": "Claude has 200k token context window",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
       "en": "copy",
       "zh": "复制",
       "phon": "ˈkɒpi",
@@ -499,6 +743,17 @@
       "example": "Corrupt disk image",
       "tags": [
         "error"
+      ]
+    },
+    {
+      "en": "cost",
+      "zh": "费用",
+      "phon": "kɒst",
+      "category": "log",
+      "example": "log: API cost=$0.03 for this request",
+      "tags": [
+        "log",
+        "ai"
       ]
     },
     {
@@ -549,6 +804,16 @@
       "example": "daemonset ensures pod runs on every node",
       "tags": [
         "devops"
+      ]
+    },
+    {
+      "en": "dataset",
+      "zh": "数据集",
+      "phon": "ˈdeɪtəset",
+      "category": "ai",
+      "example": "split dataset into train/val/test sets",
+      "tags": [
+        "ai"
       ]
     },
     {
@@ -712,6 +977,16 @@
       ]
     },
     {
+      "en": "embedding",
+      "zh": "向量嵌入",
+      "phon": "ɪmˈbedɪŋ",
+      "category": "ai",
+      "example": "use OpenAI embedding for semantic search",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
       "en": "enable",
       "zh": "启用/允许",
       "phon": "ɪˈneɪbəl",
@@ -772,6 +1047,16 @@
       ]
     },
     {
+      "en": "epoch",
+      "zh": "训练轮次",
+      "phon": "ˈepɒk",
+      "category": "ai",
+      "example": "train for 3 epochs over the dataset",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
       "en": "error",
       "zh": "错误",
       "phon": "ˈerər",
@@ -779,6 +1064,16 @@
       "example": "[ERROR] Connection refused",
       "tags": [
         "log"
+      ]
+    },
+    {
+      "en": "evaluation",
+      "zh": "评估",
+      "phon": "ɪˌvæljʊˈeɪʃən",
+      "category": "ai",
+      "example": "run automated evaluation on test set",
+      "tags": [
+        "ai"
       ]
     },
     {
@@ -892,6 +1187,36 @@
       ]
     },
     {
+      "en": "few-shot",
+      "zh": "少样本学习",
+      "phon": "fjuː ʃɒt",
+      "category": "ai",
+      "example": "few-shot learning with 3 examples in prompt",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "fine-tune",
+      "zh": "微调",
+      "phon": "faɪn tuːn",
+      "category": "ai",
+      "example": "fine-tune GPT-3.5 with company knowledge base",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "fine-tuning",
+      "zh": "微调",
+      "phon": "faɪn ˈtuːnɪŋ",
+      "category": "ai",
+      "example": "fine-tune Llama2 with custom dataset",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
       "en": "fixture",
       "zh": "测试fixture",
       "phon": "ˈfɪkstʃər",
@@ -952,6 +1277,17 @@
       ]
     },
     {
+      "en": "frequency penalty",
+      "zh": "频率惩罚",
+      "phon": "ˈfriːkwənsi ˈpenəlti",
+      "category": "dev",
+      "example": "frequency_penalty=0.5 reduces token repetition",
+      "tags": [
+        "dev",
+        "ai"
+      ]
+    },
+    {
       "en": "frozen",
       "zh": "进程冻结",
       "phon": "ˈfrəʊzən",
@@ -982,6 +1318,16 @@
       ]
     },
     {
+      "en": "function calling",
+      "zh": "函数调用",
+      "phon": "ˈfʌŋkʃən ˈkɔːlɪŋ",
+      "category": "ai",
+      "example": "use function calling to get weather data",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
       "en": "gitignore",
       "zh": "忽略文件配置",
       "phon": "ɡɪtɪɡˈnɔːr",
@@ -989,6 +1335,27 @@
       "example": "add node_modules to .gitignore",
       "tags": [
         "git"
+      ]
+    },
+    {
+      "en": "GPU",
+      "zh": "图形处理器",
+      "phon": "dʒiː-piː-yuː",
+      "category": "ai",
+      "example": "A100 GPU with 80GB VRAM for LLM training",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "GPU cluster",
+      "zh": "GPU集群",
+      "phon": "dʒiː-piː-yuː ˈklʌstər",
+      "category": "devops",
+      "example": "provision GPU cluster for LLM training",
+      "tags": [
+        "devops",
+        "ai"
       ]
     },
     {
@@ -1009,6 +1376,26 @@
       "example": "grep -r 'error' /var/log",
       "tags": [
         "cli"
+      ]
+    },
+    {
+      "en": "grounding",
+      "zh": "事实 grounding",
+      "phon": "ˈɡraʊndɪŋ",
+      "category": "ai",
+      "example": "web search grounding for factual responses",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "hallucination",
+      "zh": "AI幻觉/胡说八道",
+      "phon": "həˌluːsɪˈneɪʃən",
+      "category": "ai",
+      "example": "LLMs may produce hallucination on rare facts",
+      "tags": [
+        "ai"
       ]
     },
     {
@@ -1059,6 +1446,16 @@
       "example": "useEffect hook in React",
       "tags": [
         "dev"
+      ]
+    },
+    {
+      "en": "hyperparameter",
+      "zh": "超参数",
+      "phon": "ˌhaɪpəpəˈræmɪtər",
+      "category": "ai",
+      "example": "tune hyperparameters like learning rate",
+      "tags": [
+        "ai"
       ]
     },
     {
@@ -1119,6 +1516,26 @@
       "example": "create index on column",
       "tags": [
         "db"
+      ]
+    },
+    {
+      "en": "inference",
+      "zh": "推理/推断",
+      "phon": "ˈɪnfərəns",
+      "category": "ai",
+      "example": "run LLM inference on GPU cluster",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "inference endpoint",
+      "zh": "推理端点",
+      "phon": "ˈɪnfərəns ˈendpɔɪnt",
+      "category": "ai",
+      "example": "deploy model as serverless inference endpoint",
+      "tags": [
+        "ai"
       ]
     },
     {
@@ -1232,6 +1649,16 @@
       ]
     },
     {
+      "en": "invalid request",
+      "zh": "无效请求",
+      "phon": "ɪnˈvælɪd rɪˈkwest",
+      "category": "error",
+      "example": "Error: invalid request - missing required field",
+      "tags": [
+        "error"
+      ]
+    },
+    {
       "en": "iterate",
       "zh": "迭代",
       "phon": "ˈɪtəreɪt",
@@ -1252,6 +1679,27 @@
       ]
     },
     {
+      "en": "JSON mode",
+      "zh": "JSON输出模式",
+      "phon": "dʒeɪsən məʊd",
+      "category": "ai",
+      "example": "enable JSON mode for reliable parsing",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "JSON schema",
+      "zh": "JSON结构定义",
+      "phon": "dʒeɪsən ˈskiːmə",
+      "category": "dev",
+      "example": "define JSON schema for structured output",
+      "tags": [
+        "dev",
+        "ai"
+      ]
+    },
+    {
       "en": "kill",
       "zh": "杀死进程",
       "phon": "kɪl",
@@ -1262,6 +1710,28 @@
       ]
     },
     {
+      "en": "langchain",
+      "zh": "LangChain开发框架",
+      "phon": "læŋtʃeɪn",
+      "category": "cli",
+      "example": "pip install langchain for LLM app development",
+      "tags": [
+        "cli",
+        "ai"
+      ]
+    },
+    {
+      "en": "latency",
+      "zh": "延迟",
+      "phon": "ˈlætənsi",
+      "category": "log",
+      "example": "log: LLM inference latency=2.3s",
+      "tags": [
+        "log",
+        "ai"
+      ]
+    },
+    {
       "en": "leak",
       "zh": "泄漏",
       "phon": "liːk",
@@ -1269,6 +1739,16 @@
       "example": "Memory leak detected",
       "tags": [
         "error"
+      ]
+    },
+    {
+      "en": "learning rate",
+      "zh": "学习率",
+      "phon": "ˈlɜːnɪŋ reɪt",
+      "category": "ai",
+      "example": "set learning rate to 1e-4 for Adam optimizer",
+      "tags": [
+        "ai"
       ]
     },
     {
@@ -1312,6 +1792,16 @@
       ]
     },
     {
+      "en": "LLM",
+      "zh": "大语言模型",
+      "phon": "el-em-el",
+      "category": "ai",
+      "example": "GPT-4 and Claude are popular LLMs",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
       "en": "lock",
       "zh": "锁",
       "phon": "lɒk",
@@ -1342,6 +1832,16 @@
       ]
     },
     {
+      "en": "loss",
+      "zh": "损失函数值",
+      "phon": "lɒs",
+      "category": "ai",
+      "example": "monitor loss convergence during training",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
       "en": "malformed",
       "zh": "格式错误",
       "phon": "mælˈfɔːmd",
@@ -1362,6 +1862,16 @@
       ]
     },
     {
+      "en": "max tokens",
+      "zh": "最大输出令牌数",
+      "phon": "mæks ˈtəʊkənz",
+      "category": "ai",
+      "example": "set max_tokens=500 to limit response length",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
       "en": "merge",
       "zh": "合并",
       "phon": "mɜːdʒ",
@@ -1369,6 +1879,17 @@
       "example": "merge feature branch",
       "tags": [
         "git"
+      ]
+    },
+    {
+      "en": "message",
+      "zh": "对话消息",
+      "phon": "ˈmesɪdʒ",
+      "category": "dev",
+      "example": "messages=[{'role':'user','content':'hi'}]",
+      "tags": [
+        "dev",
+        "ai"
       ]
     },
     {
@@ -1442,6 +1963,81 @@
       ]
     },
     {
+      "en": "model",
+      "zh": "模型名称",
+      "phon": "ˈmɒdəl",
+      "category": "config",
+      "example": "model=gpt-4o in OpenAI API call",
+      "tags": [
+        "config",
+        "ai"
+      ]
+    },
+    {
+      "en": "model drift",
+      "zh": "模型漂移",
+      "phon": "ˈmɒdəl drɪft",
+      "category": "devops",
+      "example": "monitor model drift in production over time",
+      "tags": [
+        "devops",
+        "ai"
+      ]
+    },
+    {
+      "en": "model registry",
+      "zh": "模型仓库",
+      "phon": "ˈmɒdəl ˈredʒɪstri",
+      "category": "devops",
+      "example": "upload fine-tuned model to model registry",
+      "tags": [
+        "devops",
+        "ai"
+      ]
+    },
+    {
+      "en": "model serving",
+      "zh": "模型服务化",
+      "phon": "ˈmɒdəl ˈsɜːvɪŋ",
+      "category": "devops",
+      "example": "use vLLM for high-throughput model serving",
+      "tags": [
+        "devops",
+        "ai"
+      ]
+    },
+    {
+      "en": "model unavailable",
+      "zh": "模型不可用",
+      "phon": "ˈmɒdəl ˌʌnəˈveɪləbəl",
+      "category": "error",
+      "example": "Error 503: model temporarily unavailable",
+      "tags": [
+        "error",
+        "ai"
+      ]
+    },
+    {
+      "en": "model weights",
+      "zh": "模型权重",
+      "phon": "ˈmɒdəl weɪts",
+      "category": "ai",
+      "example": "fine-tune model weights on custom corpus",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "moderation",
+      "zh": "内容审核",
+      "phon": "ˌmɒdəˈreɪʃən",
+      "category": "ai",
+      "example": "use OpenAI moderation API for content safety",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
       "en": "module",
       "zh": "模块",
       "phon": "ˈmɒdjuːl",
@@ -1479,6 +2075,16 @@
       "example": "mv file.txt /tmp/",
       "tags": [
         "cli"
+      ]
+    },
+    {
+      "en": "multimodal",
+      "zh": "多模态",
+      "phon": "ˌmʌltiˈməʊdəl",
+      "category": "ai",
+      "example": "GPT-4V is a multimodal vision language model",
+      "tags": [
+        "ai"
       ]
     },
     {
@@ -1582,6 +2188,17 @@
       ]
     },
     {
+      "en": "ollama",
+      "zh": "本地模型运行CLI",
+      "phon": "əˈlɑːmə",
+      "category": "cli",
+      "example": "ollama run llama3 for local inference",
+      "tags": [
+        "cli",
+        "ai"
+      ]
+    },
+    {
       "en": "OLTP",
       "zh": "在线事务处理",
       "phon": "əʊ-el-tiː-piː",
@@ -1599,6 +2216,28 @@
       "example": "engineer on-call rotates weekly",
       "tags": [
         "devops"
+      ]
+    },
+    {
+      "en": "openai",
+      "zh": "OpenAI CLI工具",
+      "phon": "ˈəʊpən eɪ aɪ",
+      "category": "cli",
+      "example": "pip install openai to use SDK",
+      "tags": [
+        "cli",
+        "ai"
+      ]
+    },
+    {
+      "en": "OpenAI SDK",
+      "zh": "OpenAI开发包",
+      "phon": "ˈəʊpən eɪ aɪ es-diː-keɪ",
+      "category": "dev",
+      "example": "use OpenAI SDK to call gpt-4 API",
+      "tags": [
+        "dev",
+        "ai"
       ]
     },
     {
@@ -1629,6 +2268,17 @@
       "example": "Kubernetes orchestration of containers",
       "tags": [
         "devops"
+      ]
+    },
+    {
+      "en": "organization",
+      "zh": "组织ID",
+      "phon": "ˌɔːɡənaɪˈzeɪʃən",
+      "category": "config",
+      "example": "set organization=org-xxx for OpenAI account",
+      "tags": [
+        "config",
+        "ai"
       ]
     },
     {
@@ -1702,6 +2352,26 @@
       ]
     },
     {
+      "en": "parse",
+      "zh": "解析",
+      "phon": "pɑːz",
+      "category": "dev",
+      "example": "parse JSON schema output from AI response",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "parse error",
+      "zh": "解析错误",
+      "phon": "pɑːz ˈerər",
+      "category": "error",
+      "example": "Error: failed to parse JSON from AI response",
+      "tags": [
+        "error"
+      ]
+    },
+    {
       "en": "partition",
       "zh": "分区",
       "phon": "pɑːtɪˈʃən",
@@ -1739,6 +2409,16 @@
       "example": "enable persistent connections in nginx",
       "tags": [
         "config"
+      ]
+    },
+    {
+      "en": "pip install",
+      "zh": "Python包安装",
+      "phon": "piː-aɪ-piː ɪnˈstɔːl",
+      "category": "cli",
+      "example": "pip install anthropic openai",
+      "tags": [
+        "cli"
       ]
     },
     {
@@ -1782,6 +2462,27 @@
       ]
     },
     {
+      "en": "pre-training",
+      "zh": "预训练",
+      "phon": "priː ˈtreɪnɪŋ",
+      "category": "ai",
+      "example": "LLM pre-training on large text corpus",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "presence penalty",
+      "zh": "存在惩罚",
+      "phon": "ˈprezəns ˈpenəlti",
+      "category": "dev",
+      "example": "presence_penalty=1.0 encourages topic diversity",
+      "tags": [
+        "dev",
+        "ai"
+      ]
+    },
+    {
       "en": "primary key",
       "zh": "主键",
       "phon": "ˈpraɪməri kiː",
@@ -1819,6 +2520,26 @@
       "example": "return new Promise()",
       "tags": [
         "dev"
+      ]
+    },
+    {
+      "en": "prompt",
+      "zh": "提示词/Prompt",
+      "phon": "prɒmpt",
+      "category": "ai",
+      "example": "write a clear prompt for the AI model",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "prompt engineering",
+      "zh": "提示词工程",
+      "phon": "prɒmpt ˌendʒɪˈnɪərɪŋ",
+      "category": "ai",
+      "example": "prompt engineering improves AI output quality",
+      "tags": [
+        "ai"
       ]
     },
     {
@@ -1872,6 +2593,16 @@
       ]
     },
     {
+      "en": "quantization",
+      "zh": "量化",
+      "phon": "ˌkwɒntɪˈzeɪʃən",
+      "category": "ai",
+      "example": "4-bit quantization reduces model size by 75%",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
       "en": "query",
       "zh": "查询",
       "phon": "ˈkwɪri",
@@ -1892,6 +2623,27 @@
       ]
     },
     {
+      "en": "quota exceeded",
+      "zh": "配额耗尽",
+      "phon": "ˈkwəʊtə ɪkˈsiːdɪd",
+      "category": "error",
+      "example": "Error: monthly API quota exceeded",
+      "tags": [
+        "error",
+        "ai"
+      ]
+    },
+    {
+      "en": "RAG",
+      "zh": "检索增强生成",
+      "phon": "ræɡ",
+      "category": "ai",
+      "example": "RAG combines retrieval with LLM generation",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
       "en": "rate",
       "zh": "频率",
       "phon": "reɪt",
@@ -1899,6 +2651,48 @@
       "example": "log rate: 1000 events per second",
       "tags": [
         "log"
+      ]
+    },
+    {
+      "en": "rate limit",
+      "zh": "速率限制",
+      "phon": "reɪt ˈlɪmɪt",
+      "category": "dev",
+      "example": "handle 429 rate limit error with backoff",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "rate limit exceeded",
+      "zh": "速率超限",
+      "phon": "reɪt ˈlɪmɪt ɪkˈsiːdɪd",
+      "category": "error",
+      "example": "Error 429: rate limit exceeded for API calls",
+      "tags": [
+        "error",
+        "ai"
+      ]
+    },
+    {
+      "en": "rate limited",
+      "zh": "触发限速",
+      "phon": "reɪt ˈlɪmɪtɪd",
+      "category": "log",
+      "example": "log: 429 rate limited, retrying in 60s",
+      "tags": [
+        "log",
+        "ai"
+      ]
+    },
+    {
+      "en": "reasoning model",
+      "zh": "推理模型",
+      "phon": "ˈriːzənɪŋ ˈmɒdəl",
+      "category": "ai",
+      "example": "o1 is OpenAI's reasoning model",
+      "tags": [
+        "ai"
       ]
     },
     {
@@ -1919,6 +2713,17 @@
       "example": "use recursion instead of loop",
       "tags": [
         "dev"
+      ]
+    },
+    {
+      "en": "red teaming",
+      "zh": "对抗测试",
+      "phon": "red ˈtiːmɪŋ",
+      "category": "devops",
+      "example": "conduct red teaming to find AI safety issues",
+      "tags": [
+        "devops",
+        "ai"
       ]
     },
     {
@@ -2052,6 +2857,17 @@
       ]
     },
     {
+      "en": "response",
+      "zh": "AI响应",
+      "phon": "rɪˈspɒns",
+      "category": "dev",
+      "example": "response.choices[0].message.content",
+      "tags": [
+        "dev",
+        "ai"
+      ]
+    },
+    {
       "en": "restart",
       "zh": "重启",
       "phon": "riːˈstɑːt",
@@ -2089,6 +2905,27 @@
       "example": "retry connection after 5 seconds",
       "tags": [
         "config"
+      ]
+    },
+    {
+      "en": "RLHF",
+      "zh": "人类反馈强化学习",
+      "phon": "ɑː-el-eɪtʃ-ef",
+      "category": "ai",
+      "example": "RLHF uses human feedback for model alignment",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "role",
+      "zh": "消息角色",
+      "phon": "rəʊl",
+      "category": "dev",
+      "example": "message roles: system, user, assistant",
+      "tags": [
+        "dev",
+        "ai"
       ]
     },
     {
@@ -2162,6 +2999,16 @@
       ]
     },
     {
+      "en": "safety filter",
+      "zh": "安全过滤器",
+      "phon": "ˈseɪfti ˈfɪltər",
+      "category": "ai",
+      "example": "safety filter blocks harmful content",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
       "en": "scale",
       "zh": "扩缩容",
       "phon": "skeɪl",
@@ -2229,6 +3076,17 @@
       "example": "sed -i 's/old/new/g' file.txt",
       "tags": [
         "cli"
+      ]
+    },
+    {
+      "en": "seed",
+      "zh": "随机种子",
+      "phon": "siːd",
+      "category": "dev",
+      "example": "set seed=42 for reproducible results",
+      "tags": [
+        "dev",
+        "ai"
       ]
     },
     {
@@ -2302,6 +3160,17 @@
       ]
     },
     {
+      "en": "shadow mode",
+      "zh": "影子模式",
+      "phon": "ˈʃædəʊ məʊd",
+      "category": "devops",
+      "example": "run new model in shadow mode for evaluation",
+      "tags": [
+        "devops",
+        "ai"
+      ]
+    },
+    {
       "en": "shard",
       "zh": "分片",
       "phon": "ʃɑːd",
@@ -2349,6 +3218,16 @@
       "example": "99.9% uptime SLO for the API",
       "tags": [
         "devops"
+      ]
+    },
+    {
+      "en": "speech-to-text",
+      "zh": "语音转文字",
+      "phon": "spiːtʃ tuː tekst",
+      "category": "ai",
+      "example": "transcribe audio with speech-to-text",
+      "tags": [
+        "ai"
       ]
     },
     {
@@ -2452,6 +3331,48 @@
       ]
     },
     {
+      "en": "stop sequence",
+      "zh": "停止序列",
+      "phon": "stɒp ˈsiːkwəns",
+      "category": "dev",
+      "example": "set stop=['END'] to stop generation",
+      "tags": [
+        "dev",
+        "ai"
+      ]
+    },
+    {
+      "en": "stream",
+      "zh": "流式响应",
+      "phon": "striːm",
+      "category": "dev",
+      "example": "stream=True for chunked AI response",
+      "tags": [
+        "dev",
+        "ai"
+      ]
+    },
+    {
+      "en": "streaming",
+      "zh": "流式输出",
+      "phon": "ˈstriːmɪŋ",
+      "category": "ai",
+      "example": "enable streaming for real-time AI response",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "structured output",
+      "zh": "结构化输出",
+      "phon": "ˈstrʌktʃəd ˈaʊtpʊt",
+      "category": "ai",
+      "example": "use structured output for JSON response schema",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
       "en": "submodule",
       "zh": "子模块",
       "phon": "ˈsʌbmədjuːl",
@@ -2512,6 +3433,27 @@
       ]
     },
     {
+      "en": "system message",
+      "zh": "系统角色消息",
+      "phon": "ˈsɪstəm ˈmesɪdʒ",
+      "category": "dev",
+      "example": "set system message to define AI persona",
+      "tags": [
+        "dev",
+        "ai"
+      ]
+    },
+    {
+      "en": "system prompt",
+      "zh": "系统提示词",
+      "phon": "ˈsɪstəm prɒmpt",
+      "category": "ai",
+      "example": "set system prompt to define AI assistant role",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
       "en": "tag",
       "zh": "标签",
       "phon": "tæɡ",
@@ -2539,6 +3481,16 @@
       "example": "tar -cvf archive.tar ./dir",
       "tags": [
         "cli"
+      ]
+    },
+    {
+      "en": "temperature",
+      "zh": "温度参数",
+      "phon": "ˈtemprətʃər",
+      "category": "ai",
+      "example": "set temperature=0.7 for creative responses",
+      "tags": [
+        "ai"
       ]
     },
     {
@@ -2572,6 +3524,16 @@
       ]
     },
     {
+      "en": "text-to-speech",
+      "zh": "文字转语音",
+      "phon": "tekst tuː spiːtʃ",
+      "category": "ai",
+      "example": "use text-to-speech API for voice output",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
       "en": "threshold",
       "zh": "阈值",
       "phon": "ˈθreʃhəʊld",
@@ -2579,6 +3541,17 @@
       "example": "set memory threshold to 80%",
       "tags": [
         "config"
+      ]
+    },
+    {
+      "en": "throughput",
+      "zh": "吞吐量",
+      "phon": "ˈθrʌfpaʊt",
+      "category": "log",
+      "example": "log: throughput=50 tokens/sec",
+      "tags": [
+        "log",
+        "ai"
       ]
     },
     {
@@ -2622,6 +3595,27 @@
       ]
     },
     {
+      "en": "token usage",
+      "zh": "Token消耗",
+      "phon": "ˈtəʊkən ˈjuːzɪdʒ",
+      "category": "log",
+      "example": "log: prompt_tokens=120 completion_tokens=80",
+      "tags": [
+        "log",
+        "ai"
+      ]
+    },
+    {
+      "en": "tool use",
+      "zh": "工具调用",
+      "phon": "tuːl juːz",
+      "category": "ai",
+      "example": "tool use enables AI to search the web",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
       "en": "top",
       "zh": "系统监控",
       "phon": "tɒp",
@@ -2632,6 +3626,16 @@
       ]
     },
     {
+      "en": "top-p",
+      "zh": "核采样参数",
+      "phon": "tɒp piː",
+      "category": "ai",
+      "example": "top_p=0.9 for nucleus sampling",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
       "en": "trace",
       "zh": "追踪",
       "phon": "treɪs",
@@ -2639,6 +3643,16 @@
       "example": "[TRACE] Entering function calculate()",
       "tags": [
         "log"
+      ]
+    },
+    {
+      "en": "training corpus",
+      "zh": "训练语料",
+      "phon": "ˈtreɪnɪŋ ˈkɔːpəs",
+      "category": "ai",
+      "example": "curate high-quality training corpus",
+      "tags": [
+        "ai"
       ]
     },
     {
@@ -2659,6 +3673,17 @@
       "example": "TypeScript transpiles to JavaScript",
       "tags": [
         "dev"
+      ]
+    },
+    {
+      "en": "truncated",
+      "zh": "截断",
+      "phon": "trʌŋˈkeɪtɪd",
+      "category": "log",
+      "example": "log: response truncated due to max_tokens limit",
+      "tags": [
+        "log",
+        "ai"
       ]
     },
     {
@@ -2722,6 +3747,38 @@
       ]
     },
     {
+      "en": "usage",
+      "zh": "用量统计",
+      "phon": "ˈjuːzɪdʒ",
+      "category": "dev",
+      "example": "print(response.usage.total_tokens)",
+      "tags": [
+        "dev",
+        "ai"
+      ]
+    },
+    {
+      "en": "user message",
+      "zh": "用户消息",
+      "phon": "ˈjuːzər ˈmesɪdʒ",
+      "category": "dev",
+      "example": "append user message to conversation history",
+      "tags": [
+        "dev",
+        "ai"
+      ]
+    },
+    {
+      "en": "uv",
+      "zh": "Python包管理器",
+      "phon": "yuː-viː",
+      "category": "cli",
+      "example": "uv pip install langchain for fast installs",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
       "en": "vacuum",
       "zh": "垃圾回收",
       "phon": "ˈvækjuːm",
@@ -2739,6 +3796,26 @@
       "example": "declare a variable",
       "tags": [
         "dev"
+      ]
+    },
+    {
+      "en": "vector database",
+      "zh": "向量数据库",
+      "phon": "ˈvektər ˈdeɪtəbeɪs",
+      "category": "ai",
+      "example": "Pinecone is a managed vector database",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "venv",
+      "zh": "Python虚拟环境",
+      "phon": "viː-enyv",
+      "category": "cli",
+      "example": "python -m venv .venv && source .venv/bin/activate",
+      "tags": [
+        "cli"
       ]
     },
     {
@@ -2762,6 +3839,16 @@
       ]
     },
     {
+      "en": "vision",
+      "zh": "视觉识别",
+      "phon": "ˈvɪʒən",
+      "category": "ai",
+      "example": "upload image for AI vision analysis",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
       "en": "volume",
       "zh": "存储卷",
       "phon": "ˈvɒljuːm",
@@ -2772,6 +3859,16 @@
       ]
     },
     {
+      "en": "vRAM",
+      "zh": "显存",
+      "phon": "viː-ræm",
+      "category": "ai",
+      "example": "LLaMA-70B needs ~140GB vRAM to run",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
       "en": "warning",
       "zh": "警告",
       "phon": "ˈwɔːnɪŋ",
@@ -2779,6 +3876,16 @@
       "example": "[WARN] Memory usage above 80%",
       "tags": [
         "log"
+      ]
+    },
+    {
+      "en": "webhook",
+      "zh": "网络回调",
+      "phon": "ˈwebhʊk",
+      "category": "dev",
+      "example": "set webhook URL for async AI task completion",
+      "tags": [
+        "dev"
       ]
     },
     {
@@ -2819,6 +3926,16 @@
       "example": "find . -name '*.log' | xargs rm",
       "tags": [
         "cli"
+      ]
+    },
+    {
+      "en": "zero-shot",
+      "zh": "零样本学习",
+      "phon": "ˈzɪərəʊ ʃɒt",
+      "category": "ai",
+      "example": "zero-shot classification without training data",
+      "tags": [
+        "ai"
       ]
     },
     {
