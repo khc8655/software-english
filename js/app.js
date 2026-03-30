@@ -1,14 +1,14 @@
 /**
  * App - Main application logic
- * Learn first, then practice — SM-2 Spaced Repetition
+ * Learn first → Practice → SM-2 Spaced Repetition
  */
 
 let WORDS = [];
 let WORDS_VERSION = '';
-let currentCategory = 'learn';   // 'learn' | 'practice' | 'browse'
 let studyQueue = [];
-let learnIndex = 0;
+let learnIndex = 0;    // increments by 2 for 2-card layout
 let sessionStats = { correct: 0, wrong: 0 };
+let currentView = 'idle'; // 'idle' | 'learn' | 'learn-complete' | 'practice' | 'practice-complete'
 
 // ========================
 // INIT
@@ -26,9 +26,9 @@ async function init() {
     showHome();
     updateStats();
     loadTheme();
+    updateBottomBar('idle');
 }
 
-// Build today's study queue: errors first, then due words, then new words (capped)
 function buildStudyQueue() {
     const data = Storage._getReviewData();
     const now = Date.now();
@@ -67,10 +67,44 @@ function shuffleArray(arr) {
 }
 
 // ========================
-// HOME
+// BOTTOM BAR
+// ========================
+function updateBottomBar(view, extra) {
+    const bar = document.getElementById('bottomBar');
+    const mainBtn = document.getElementById('bottomMainBtn');
+    if (!bar || !mainBtn) return;
+
+    if (view === 'idle') {
+        mainBtn.textContent = '开始学习';
+        mainBtn.className = 'btn btn-primary';
+        mainBtn.style.display = '';
+        mainBtn.onclick = startLearnMode;
+    } else if (view === 'learn') {
+        mainBtn.textContent = '开始练习 →';
+        mainBtn.className = 'btn btn-primary';
+        mainBtn.style.display = '';
+        mainBtn.onclick = startPracticeMode;
+    } else if (view === 'learn-complete') {
+        mainBtn.textContent = '开始练习';
+        mainBtn.className = 'btn btn-primary';
+        mainBtn.style.display = '';
+        mainBtn.onclick = startPracticeMode;
+    } else if (view === 'practice') {
+        // In practice, hide main button, just show 错词本
+        mainBtn.style.display = 'none';
+    } else if (view === 'practice-complete') {
+        mainBtn.textContent = '再练一轮';
+        mainBtn.className = 'btn btn-primary';
+        mainBtn.style.display = '';
+        mainBtn.onclick = () => { buildStudyQueue(); startPracticeMode(); };
+    }
+}
+
+// ========================
+// HOME (stats overview)
 // ========================
 function showHome() {
-    currentCategory = 'learn';
+    currentView = 'idle';
     const stats = Storage.getStats(WORDS);
 
     document.getElementById('totalCount').textContent = stats.totalWords;
@@ -109,84 +143,89 @@ function showHome() {
 
         ${hasReview || stats.newWordToday < 10 ? `
         <div class="action-section">
-            <div class="action-title">${hasReview ? `今日复习 (${studyQueue.length}词)` : '今日新词'}</div>
-            ${stats.errorCount > 0 ? `<div class="action-hint error-hint">🔴 含 ${stats.errorCount} 个错词</div>` : ''}
-            <div style="color:var(--text-secondary);font-size:12px;margin-bottom:10px">先浏览学习，再练习测试</div>
-            <button class="btn btn-primary action-btn" onclick="startLearnMode()">
-                先学习 ${studyQueue.length} 个词
-            </button>
+            <div class="action-title">${hasReview ? `今日复习 ${studyQueue.length} 词` : '今日新词'}</div>
+            ${stats.errorCount > 0 ? `<div class="action-hint error-hint">含 ${stats.errorCount} 个错词</div>` : ''}
+            <div class="action-hint" style="color:var(--text-secondary)">先浏览学习，再练习测试</div>
         </div>
         ` : `
         <div class="action-section">
             <div class="action-title">今日任务已完成</div>
-            <div class="action-hint">明天再来复习</div>
-            <button class="btn btn-secondary action-btn" onclick="showBrowse()">自由浏览词库</button>
+            <div class="action-hint">明天再来，或自由浏览词库</div>
         </div>
         `}
 
-        <div class="section-title" style="margin-top:20px"><span>快速浏览</span></div>
+        <div class="section-title" style="margin-top:16px"><span>词库分类</span></div>
         <div class="category-tabs" id="categoryTabs"></div>
         <div class="card-grid" id="browseWordList"></div>
     `;
 
     renderTabs();
     renderBrowseWords();
+    updateBottomBar('idle');
 }
 
 // ========================
-// LEARN MODE (先学习)
+// LEARN MODE - 2 cards at a time
 // ========================
 function startLearnMode() {
     learnIndex = 0;
-    currentCategory = 'learn';
+    currentView = 'learn';
     sessionStats = { correct: 0, wrong: 0 };
-    showLearnCard();
+    showLearnCards();
 }
 
-function showLearnCard() {
-    if (learnIndex >= studyQueue.length) {
-        // Finished learning all words — now show practice button
+function showLearnCards() {
+    const list = document.getElementById('wordList');
+
+    // Get remaining cards (2 at a time)
+    const left = studyQueue.length - learnIndex;
+    if (left <= 0) {
         showLearnComplete();
         return;
     }
 
-    const word = studyQueue[learnIndex];
-    const isError = Storage.getErrorBook().includes(word.en);
-    const list = document.getElementById('wordList');
+    const word1 = studyQueue[learnIndex];
+    const word2 = left >= 2 ? studyQueue[learnIndex + 1] : null;
+
+    const renderCard = (w, idx) => {
+        if (!w) return '<div></div>';
+        const isError = Storage.getErrorBook().includes(w.en);
+        return `
+        <div class="learn-card">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">
+                <div class="learn-word">${w.en}</div>
+                ${isError ? '<span style="font-size:10px;color:var(--danger)">错</span>' : ''}
+            </div>
+            ${w.phon ? `<div class="learn-phon">${w.phon}</div>` : ''}
+            <div class="learn-zh">${w.zh}</div>
+            ${w.example ? `<div class="learn-example">${w.example}</div>` : ''}
+            <div class="learn-actions">
+                <button class="btn btn-primary learn-speak-btn" onclick="speak('${w.en.replace(/'/g, "\\'")}')">🔊 听</button>
+                <button class="icon-btn bank-btn ${Storage.isInBank(w.en) ? 'active' : ''}" onclick="toggleBankFromLearn('${w.en.replace(/'/g, "\\'")}')">${Storage.isInBank(w.en) ? '★' : '☆'}</button>
+            </div>
+        </div>`;
+    };
 
     list.innerHTML = `
         <div class="learn-header">
-            <span>学习 ${learnIndex + 1} / ${studyQueue.length}</span>
+            <span>学习 ${learnIndex + 1} - ${Math.min(learnIndex + 2, studyQueue.length)} / ${studyQueue.length}</span>
             <div class="progress-bar" style="flex:1;margin:0 12px">
                 <div class="progress-fill" style="width:${(learnIndex / studyQueue.length) * 100}%"></div>
             </div>
-            ${isError ? '<span class="error-badge">🔴 错词</span>' : ''}
         </div>
-
-        <div class="learn-card">
-            <div class="learn-word">${word.en}</div>
-            ${word.phon ? `<div class="learn-phon">${word.phon}</div>` : ''}
-            <div class="learn-zh">${word.zh}</div>
-            ${word.example ? `<div class="learn-example">${word.example}</div>` : ''}
-
-            <div class="learn-actions">
-                <button class="btn btn-primary learn-speak-btn" onclick="speak('${word.en.replace(/'/g, "\\'")}')">
-                    🔊 听发音
-                </button>
-                <button class="icon-btn bank-btn ${Storage.isInBank(word.en) ? 'active' : ''}" onclick="toggleBankFromLearn('${word.en.replace(/'/g, "\\'")}')">
-                    ${Storage.isInBank(word.en) ? '★ 已加入' : '☆ 加入生词本'}
-                </button>
-            </div>
+        <div class="learn-grid">
+            ${renderCard(word1, learnIndex)}
+            ${renderCard(word2, learnIndex + 1)}
         </div>
-
         <div style="display:flex;gap:8px;margin-top:12px">
-            <button class="btn btn-secondary" style="flex:1" onclick="showLearnComplete()">跳过，进入练习</button>
-            <button class="btn btn-primary" style="flex:1" onclick="nextLearnCard()">记住了 →</button>
+            <button class="btn btn-secondary" style="flex:1" onclick="showLearnComplete()">跳过 → 练习</button>
+            <button class="btn btn-primary" style="flex:1" onclick="nextLearnCards()">记住了 ${left >= 2 ? '→ 2张' : '→'}</button>
         </div>
     `;
 
-    // Auto play
-    setTimeout(() => speak(word.en), 300);
+    updateBottomBar('learn');
+    // Auto play first word
+    setTimeout(() => speak(word1.en), 300);
 }
 
 window.toggleBankFromLearn = function(wordEn) {
@@ -195,43 +234,36 @@ window.toggleBankFromLearn = function(wordEn) {
     } else {
         Storage.addToBank(wordEn);
     }
-    const btn = document.querySelector('.bank-btn');
-    if (btn) {
-        btn.innerHTML = Storage.isInBank(wordEn) ? '★ 已加入' : '☆ 加入生词本';
-        btn.classList.toggle('active', Storage.isInBank(wordEn));
-    }
+    // Re-render current cards to update star icons
+    showLearnCards();
 };
 
-window.nextLearnCard = function() {
-    learnIndex++;
-    showLearnCard();
+window.nextLearnCards = function() {
+    learnIndex += 2;
+    showLearnCards();
 };
 
 function showLearnComplete() {
+    currentView = 'learn-complete';
     const list = document.getElementById('wordList');
     list.innerHTML = `
         <div class="learn-complete">
             <div style="font-size:48px;margin-bottom:8px">📖</div>
             <div class="complete-title">学习完毕</div>
-            <div class="complete-sub">已浏览 ${Math.min(learnIndex + 1, studyQueue.length)} 个词汇</div>
-            <div class="complete-hint">现在进入拼写练习，检验学习效果</div>
-            <button class="btn btn-primary" style="margin-top:24px;width:100%" onclick="startPracticeMode()">
-                开始练习 →
-            </button>
-            <button class="btn btn-secondary" style="margin-top:8px;width:100%" onclick="showHome();updateStats()">
-                返回主页
-            </button>
+            <div class="complete-sub">已浏览 ${Math.min(learnIndex + 2, studyQueue.length)} 个词汇</div>
+            <div class="complete-hint">现在进入拼写练习</div>
         </div>
     `;
+    updateBottomBar('learn-complete');
 }
 
 // ========================
-// PRACTICE MODE (练习测试)
+// PRACTICE MODE
 // ========================
 function startPracticeMode() {
     learnIndex = 0;
     sessionStats = { correct: 0, wrong: 0 };
-    currentCategory = 'practice';
+    currentView = 'practice';
     showPracticeCard();
 }
 
@@ -266,19 +298,15 @@ function showPracticeCard() {
                 placeholder="输入英文单词"
                 autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
             <div class="study-hint">按回车确认</div>
-            <div style="display:flex;justify-content:center;gap:8px;margin-top:8px">
-                <button class="icon-btn speak-btn" onclick="speak('${word.en.replace(/'/g, "\\'")}')">🔊 发音</button>
-            </div>
+            <button class="icon-btn speak-btn" onclick="speak('${word.en.replace(/'/g, "\\'")}')" style="margin-top:8px">🔊 发音</button>
         </div>
-
-        <button class="btn btn-secondary" style="margin-top:10px;width:100%" onclick="skipPractice()">跳过</button>
     `;
 
+    updateBottomBar('practice');
     setTimeout(() => {
         const input = document.getElementById('studyInput');
-        if (input) { input.focus(); input.value = ''; }
+        if (input) { input.value = ''; input.focus(); }
     }, 50);
-
     setTimeout(() => speak(word.en), 300);
 }
 
@@ -293,9 +321,7 @@ window.checkPracticeAnswer = function() {
         sessionStats.correct++;
         Storage.markCorrect(word.en);
         const r = Storage.getReview(word.en);
-        if (r && r.reps === 1) {
-            Storage.incrementNewWordCount();
-        }
+        if (r && r.reps === 1) Storage.incrementNewWordCount();
         showPracticeResult(true, word);
     } else {
         sessionStats.wrong++;
@@ -314,9 +340,7 @@ function showPracticeResult(isCorrect, word, correctAnswer, userAnswer) {
             ${!isCorrect ? `<div class="result-wrong-msg">你的: ${userAnswer}</div>
                             <div class="result-correct-msg">正确: ${correctAnswer}</div>` : ''}
             ${word.example ? `<div class="result-example">${word.example}</div>` : ''}
-            <div style="display:flex;gap:8px;margin-top:20px">
-                <button class="icon-btn speak-btn" onclick="speak('${word.en.replace(/'/g, "\\'")}')" style="flex:1;padding:10px">🔊 再听</button>
-            </div>
+            <button class="icon-btn speak-btn" onclick="speak('${word.en.replace(/'/g, "\\'")}')" style="margin-top:14px">🔊 再听</button>
             <button class="btn btn-primary" style="margin-top:12px;width:100%" onclick="nextPracticeCard()">下一个</button>
         </div>
     `;
@@ -327,12 +351,8 @@ window.nextPracticeCard = function() {
     showPracticeCard();
 };
 
-window.skipPractice = function() {
-    learnIndex++;
-    showPracticeCard();
-};
-
 function showPracticeComplete() {
+    currentView = 'practice-complete';
     const total = sessionStats.correct + sessionStats.wrong;
     const pct = total > 0 ? Math.round(sessionStats.correct / total * 100) : 0;
     const list = document.getElementById('wordList');
@@ -340,6 +360,7 @@ function showPracticeComplete() {
     if (total === 0) {
         showHome();
         updateStats();
+        updateBottomBar('idle');
         return;
     }
 
@@ -350,28 +371,20 @@ function showPracticeComplete() {
             ${pct >= 90 ? '<div class="complete-msg" style="color:var(--success)">太棒了！</div>' :
               pct >= 70 ? '<div class="complete-msg" style="color:var(--primary)">很不错！</div>' :
               '<div class="complete-msg" style="color:var(--warning)">继续加油！</div>'}
-            <div style="display:flex;flex-direction:column;gap:10px;margin-top:24px">
-                <button class="btn btn-primary" onclick="startPracticeMode()">再练一轮</button>
-                <button class="btn btn-secondary" onclick="showHome();updateStats()">返回主页</button>
-            </div>
         </div>
     `;
 
     updateStats();
     buildStudyQueue();
+    updateBottomBar('practice-complete');
 }
 
 // ========================
-// BROWSE MODE (自由浏览)
+// BROWSE (from tabs)
 // ========================
-function showBrowse() {
-    currentCategory = 'browse';
-    renderBrowseWords();
-}
-
 function renderTabs() {
     const categories = [
-        { id: 'learn', name: '今日' },
+        { id: 'all', name: '全部' },
         { id: 'wordbank', name: '生词本' },
         { id: 'errors', name: '错词' },
         { id: 'config', name: '配置' },
@@ -386,12 +399,14 @@ function renderTabs() {
     const tabs = document.getElementById('categoryTabs');
     if (!tabs) return;
     tabs.innerHTML = categories.map(c =>
-        `<div class="category-tab ${c.id === currentCategory ? 'active' : ''}" onclick="selectCategory('${c.id}')">${c.name}</div>`
+        `<div class="category-tab ${c.id === currentBrowseCategory ? 'active' : ''}" onclick="selectBrowseCategory('${c.id}')">${c.name}</div>`
     ).join('');
 }
 
-function selectCategory(cat) {
-    currentCategory = cat;
+let currentBrowseCategory = 'all';
+
+function selectBrowseCategory(cat) {
+    currentBrowseCategory = cat;
     renderTabs();
     renderBrowseWords();
 }
@@ -412,14 +427,14 @@ function renderBrowseWords() {
     if (!list) return;
 
     let words = [];
-    if (currentCategory === 'learn') {
-        words = [...studyQueue];
-    } else if (currentCategory === 'wordbank') {
+    if (currentBrowseCategory === 'all') {
+        words = WORDS;
+    } else if (currentBrowseCategory === 'wordbank') {
         words = WORDS.filter(w => Storage.isInBank(w.en));
-    } else if (currentCategory === 'errors') {
+    } else if (currentBrowseCategory === 'errors') {
         words = Storage.getErrorBookWords(WORDS);
     } else {
-        words = WORDS.filter(w => w.category === currentCategory);
+        words = WORDS.filter(w => w.category === currentBrowseCategory);
     }
 
     if (words.length === 0) {
@@ -466,8 +481,6 @@ function speak(text) {
             utterance.lang = 'en-US';
             utterance.rate = 0.9;
             window.speechSynthesis.speak(utterance);
-        } else {
-            showToast('发音不可用');
         }
     });
 }
@@ -521,6 +534,55 @@ function loadTheme() {
 }
 
 // ========================
+// ERROR BOOK
+// ========================
+function showErrorBook() {
+    const modal = document.getElementById('errorModal');
+    const body = document.getElementById('errorBody');
+    const errors = Storage.getErrorBookWords(WORDS);
+
+    if (errors.length === 0) {
+        body.innerHTML = '<div class="empty-state">错词本为空</div>';
+    } else {
+        body.innerHTML = `
+            <div style="margin-bottom:12px;color:var(--text-secondary);font-size:13px">共 ${errors.length} 个错词</div>
+            <div class="card-grid">
+                ${errors.map(w => `
+                    <div class="word-card in-error">
+                        <div class="word-main">
+                            <div class="word-en"><span>${w.en}</span>${w.phon ? `<span class="word-phon">${w.phon}</span>` : ''}</div>
+                            <div class="word-zh">${w.zh}</div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="icon-btn speak-btn" onclick="speak('${w.en.replace(/'/g, "\\'")}')">🔊</button>
+                            <button class="icon-btn bank-btn ${Storage.isInBank(w.en) ? 'active' : ''}" onclick="toggleBank('${w.en.replace(/'/g, "\\'")}', event)">${Storage.isInBank(w.en) ? '★' : '☆'}</button>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+            <button class="btn btn-primary" style="margin-top:16px;width:100%" onclick="closeErrorBook();buildStudyQueue();startPracticeMode()">用练习复习</button>
+        `;
+    }
+
+    modal.classList.add('show');
+}
+
+function closeErrorBook() {
+    document.getElementById('errorModal').classList.remove('show');
+    renderBrowseWords();
+}
+
+// ========================
+// KEYBOARD
+// ========================
+document.addEventListener('keydown', (e) => {
+    const input = document.getElementById('studyInput');
+    if (input && document.activeElement === input && e.key === 'Enter') {
+        checkPracticeAnswer();
+    }
+});
+
+// ========================
 // LOAD WORDS
 // ========================
 async function loadWords() {
@@ -535,16 +597,6 @@ async function loadWords() {
         return false;
     }
 }
-
-// ========================
-// KEYBOARD
-// ========================
-document.addEventListener('keydown', (e) => {
-    const input = document.getElementById('studyInput');
-    if (input && document.activeElement === input && e.key === 'Enter') {
-        checkPracticeAnswer();
-    }
-});
 
 // ========================
 // START

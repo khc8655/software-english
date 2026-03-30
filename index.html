@@ -80,31 +80,34 @@
         /* Study mode */
         .study-header { margin-bottom: 16px; }
 
-        /* Learn mode */
+        /* Learn mode - 2 column cards */
         .learn-header {
             display: flex; align-items: center;
-            font-size: 13px; color: var(--text-secondary); margin-bottom: 14px;
+            font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;
+        }
+        .learn-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
         }
         .learn-card {
-            background: var(--card); border-radius: 16px; padding: 32px 24px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center;
+            background: var(--card); border-radius: 14px; padding: 16px 14px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
         }
         .learn-word {
-            font-size: 32px; font-weight: 700; margin-bottom: 6px;
+            font-size: 20px; font-weight: 700; margin-bottom: 3px;
         }
-        .learn-phon { font-size: 14px; color: var(--text-secondary); margin-bottom: 10px; }
-        .learn-zh { font-size: 18px; color: var(--text); margin-bottom: 12px; }
+        .learn-phon { font-size: 11px; color: var(--text-secondary); margin-bottom: 6px; }
+        .learn-zh { font-size: 14px; color: var(--text-secondary); margin-bottom: 6px; }
         .learn-example {
-            font-size: 13px; color: var(--primary);
+            font-size: 11px; color: var(--primary);
             background: rgba(0,122,255,0.08);
-            padding: 8px 14px; border-radius: 8px;
-            margin-top: 8px; display: inline-block;
+            padding: 5px 8px; border-radius: 5px;
+            display: inline-block;
         }
         .learn-actions {
-            display: flex; gap: 10px; justify-content: center;
-            align-items: center; margin-top: 20px; flex-wrap: wrap;
+            display: flex; gap: 6px; justify-content: flex-start;
+            align-items: center; margin-top: 10px; flex-wrap: wrap;
         }
-        .learn-speak-btn { padding: 12px 24px; font-size: 15px; }
+        .learn-speak-btn { padding: 6px 12px; font-size: 12px; }
 
         .learn-complete {
             background: var(--card); border-radius: 16px; padding: 40px 24px;
@@ -303,10 +306,9 @@
 
     <div id="wordList"></div>
 
-    <div class="bottom-bar">
-        <button class="btn btn-secondary" onclick="showHome()">主页</button>
+    <div class="bottom-bar" id="bottomBar">
         <button class="btn btn-warning" onclick="showErrorBook()">错词本</button>
-        <button class="btn btn-primary" onclick="startLearnMode()">学习</button>
+        <button class="btn btn-primary" id="bottomMainBtn" onclick="startLearnMode()">开始学习</button>
     </div>
 
     <!-- Error Book Modal -->
