@@ -80,10 +80,7 @@ function updateBottomBar(view) {
         mainBtn.style.display = '';
         mainBtn.onclick = startLearnMode;
     } else if (view === 'learn') {
-        mainBtn.textContent = '开始练习 →';
-        mainBtn.className = 'btn btn-primary';
-        mainBtn.style.display = '';
-        mainBtn.onclick = startPracticeMode;
+        mainBtn.style.display = 'none';
     } else if (view === 'learn-complete') {
         mainBtn.textContent = '开始练习';
         mainBtn.className = 'btn btn-primary';
@@ -366,8 +363,16 @@ function startLearnMode() {
         buildStudyQueue();
     }
     learnIndex = 0;
-    currentView = 'learn';
     sessionStats = { correct: 0, wrong: 0 };
+
+    // 如果队列中没有新词（只有复习词），直接进入练习
+    const hasNewWords = studyQueue.some(w => !Storage.getReview(w.en) && !Storage.getErrorBook().includes(w.en));
+    if (!hasNewWords) {
+        startPracticeMode();
+        return;
+    }
+
+    currentView = 'learn';
     showLearnCards();
 }
 
@@ -448,10 +453,10 @@ function showLearnComplete() {
             <div style="font-size:48px;margin-bottom:8px">📖</div>
             <div class="complete-title">学习完毕</div>
             <div class="complete-sub">已浏览 ${Math.min(learnIndex + 2, studyQueue.length)} 个词汇</div>
-            <div class="complete-hint">现在进入拼写练习</div>
+            <button class="btn btn-primary" style="margin-top:20px;width:100%;padding:14px;font-size:16px" onclick="startPracticeMode()">开始拼写练习 →</button>
         </div>
     `;
-    updateBottomBar('learn-complete');
+    updateBottomBar('practice');
 }
 
 // ========================
