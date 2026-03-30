@@ -79,6 +79,42 @@
 
         /* Study mode */
         .study-header { margin-bottom: 16px; }
+
+        /* Learn mode */
+        .learn-header {
+            display: flex; align-items: center;
+            font-size: 13px; color: var(--text-secondary); margin-bottom: 14px;
+        }
+        .learn-card {
+            background: var(--card); border-radius: 16px; padding: 32px 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center;
+        }
+        .learn-word {
+            font-size: 32px; font-weight: 700; margin-bottom: 6px;
+        }
+        .learn-phon { font-size: 14px; color: var(--text-secondary); margin-bottom: 10px; }
+        .learn-zh { font-size: 18px; color: var(--text); margin-bottom: 12px; }
+        .learn-example {
+            font-size: 13px; color: var(--primary);
+            background: rgba(0,122,255,0.08);
+            padding: 8px 14px; border-radius: 8px;
+            margin-top: 8px; display: inline-block;
+        }
+        .learn-actions {
+            display: flex; gap: 10px; justify-content: center;
+            align-items: center; margin-top: 20px; flex-wrap: wrap;
+        }
+        .learn-speak-btn { padding: 12px 24px; font-size: 15px; }
+
+        .learn-complete {
+            background: var(--card); border-radius: 16px; padding: 40px 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center;
+        }
+        .complete-title { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+        .complete-sub { font-size: 14px; color: var(--text-secondary); }
+        .complete-hint { font-size: 13px; color: var(--text-secondary); margin-top: 10px; }
+
+        .study-header { margin-bottom: 16px; }
         .study-progress {
             display: flex; align-items: center;
             font-size: 13px; color: var(--text-secondary);
@@ -268,9 +304,9 @@
     <div id="wordList"></div>
 
     <div class="bottom-bar">
-        <button class="btn btn-secondary" onclick="renderHome();updateStats()">主页</button>
+        <button class="btn btn-secondary" onclick="showHome()">主页</button>
         <button class="btn btn-warning" onclick="showErrorBook()">错词本</button>
-        <button class="btn btn-primary" onclick="startStudy()">学习</button>
+        <button class="btn btn-primary" onclick="startLearnMode()">学习</button>
     </div>
 
     <!-- Error Book Modal -->
