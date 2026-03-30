@@ -531,7 +531,6 @@ function showPracticeCard() {
         </div>
         <div class="study-card">
             <div class="study-prompt">${word.zh}</div>
-            ${word.example ? `<div class="study-example">${word.example}</div>` : ''}
             <input class="study-input" type="text" id="studyInput"
                 placeholder="输入英文单词"
                 autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
@@ -578,7 +577,6 @@ function showPracticeResult(isCorrect, word, correctAnswer, userAnswer) {
             <div class="result-phon">${word.phon || ''} ${word.zh}</div>
             ${!isCorrect ? `<div class="result-wrong-msg">你的: ${userAnswer}</div>
                             <div class="result-correct-msg">正确: ${correctAnswer}</div>` : ''}
-            ${word.example ? `<div class="result-example">${word.example}</div>` : ''}
             <button class="icon-btn speak-btn" onclick="speak('${word.en.replace(/'/g, "\\'")}')" style="width:40px;height:40px;margin:10px auto 0">🔊</button>
             <button class="btn btn-primary" style="margin-top:12px;width:100%;padding:12px" onclick="nextPracticeCard()">下一个</button>
         </div>
