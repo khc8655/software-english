@@ -1,121 +1,2835 @@
 {
-  "version": "2026-03-29-v2",
-  "categories": ["config", "log", "error", "cli", "devops", "dev", "db", "git"],
+  "version": "2026-03-30-v2",
+  "categories": [
+    "config",
+    "log",
+    "error",
+    "cli",
+    "devops",
+    "dev",
+    "db",
+    "git"
+  ],
   "words": [
-    {"en": "configure", "zh": "配置", "phon": "kənˈfɪɡər", "category": "config", "example": "sudo ./configure --prefix=/usr/local", "tags": ["config"]},
-    {"en": "enable", "zh": "启用/允许", "phon": "ɪˈneɪbəl", "category": "config", "example": "enable ssl_verify_peer=1 in php.ini", "tags": ["config"]},
-    {"en": "disable", "zh": "禁用", "phon": "dɪsˈeɪbəl", "category": "config", "example": "disable the firewall temporarily", "tags": ["config"]},
-    {"en": "set", "zh": "设置", "phon": "set", "category": "config", "example": "set JAVA_HOME=/usr/lib/jvm/java", "tags": ["config"]},
-    {"en": "option", "zh": "选项", "phon": "ˈɒpʃən", "category": "config", "example": "--with-openssl is an optional configure option", "tags": ["config"]},
-    {"en": "parameter", "zh": "参数", "phon": "pəˈræmɪtər", "category": "config", "example": "timeout is a critical parameter", "tags": ["config"]},
-    {"en": "default", "zh": "默认值", "phon": "dɪˈfɔːlt", "category": "config", "example": "The default port is 8080", "tags": ["config"]},
-    {"en": "override", "zh": "覆盖/重写", "phon": "ˌəʊvəˈraɪd", "category": "config", "example": "Environment variables override config files", "tags": ["config"]},
-    {"en": "inherit", "zh": "继承", "phon": "ɪnˈherɪt", "category": "config", "example": "Child theme inherits parent styles", "tags": ["config"]},
-    {"en": "fallback", "zh": "回退/备用", "phon": "ˈfɔːlbæk", "category": "config", "example": "Use 8.8.8.8 as DNS fallback", "tags": ["config"]},
-    {"en": "retry", "zh": "重试", "phon": "riːˈtraɪ", "category": "config", "example": "retry connection after 5 seconds", "tags": ["config"]},
-    {"en": "timeout", "zh": "超时", "phon": "ˈtaɪmaʊt", "category": "config", "example": "set timeout=30 in ssh_config", "tags": ["config"]},
-    {"en": "cache", "zh": "缓存", "phon": "kæʃ", "category": "config", "example": "clear the browser cache", "tags": ["config"]},
-    {"en": "persistent", "zh": "持久化", "phon": "pəˈsɪstənt", "category": "config", "example": "enable persistent connections in nginx", "tags": ["config"]},
-    {"en": "verbose", "zh": "详细输出", "phon": "vɜːˈbəʊs", "category": "config", "example": "run make verbose=1 for detailed logs", "tags": ["config"]},
-    {"en": "info", "zh": "信息日志", "phon": "ˈɪnfəʊ", "category": "log", "example": "[INFO] Server started on port 3000", "tags": ["log"]},
-    {"en": "debug", "zh": "调试信息", "phon": "diːˈbʌɡ", "category": "log", "example": "[DEBUG] Variable x = 42", "tags": ["log"]},
-    {"en": "warning", "zh": "警告", "phon": "ˈwɔːnɪŋ", "category": "log", "example": "[WARN] Memory usage above 80%", "tags": ["log"]},
-    {"en": "error", "zh": "错误", "phon": "ˈerər", "category": "log", "example": "[ERROR] Connection refused", "tags": ["log"]},
-    {"en": "fatal", "zh": "致命错误", "phon": "ˈfeɪtəl", "category": "log", "example": "[FATAL] Out of memory, exiting", "tags": ["log"]},
-    {"en": "trace", "zh": "追踪", "phon": "treɪs", "category": "log", "example": "[TRACE] Entering function calculate()", "tags": ["log"]},
-    {"en": "log", "zh": "日志", "phon": "lɒɡ", "category": "log", "example": "Check the access log for details", "tags": ["log"]},
-    {"en": "entry", "zh": "日志条目", "phon": "ˈentri", "category": "log", "example": "Parse each log entry with regex", "tags": ["log"]},
-    {"en": "level", "zh": "级别", "phon": "ˈlevəl", "category": "log", "example": "Set log level to DEBUG", "tags": ["log"]},
-    {"en": "timestamp", "zh": "时间戳", "phon": "ˈtaɪmstæmp", "category": "log", "example": "2026-03-29T10:30:00Z", "tags": ["log"]},
-    {"en": "stack trace", "zh": "堆栈跟踪", "phon": "stæk treɪs", "category": "log", "example": "See full stack trace in error.log", "tags": ["log"]},
-    {"en": "dump", "zh": "转储", "phon": "dʌmp", "category": "log", "example": "core dump generated", "tags": ["log"]},
-    {"en": "tail", "zh": "查看尾部", "phon": "teɪl", "category": "log", "example": "tail -f /var/log/syslog", "tags": ["log"]},
-    {"en": "rotate", "zh": "轮转", "phon": "rəʊˈteɪt", "category": "log", "example": "Logs rotate daily", "tags": ["log"]},
-    {"en": "flush", "zh": "刷新", "phon": "flʌʃ", "category": "log", "example": "flush log buffer to disk", "tags": ["log"]},
-    {"en": "failed", "zh": "失败", "phon": "feɪld", "category": "error", "example": "Build failed with exit code 1", "tags": ["error"]},
-    {"en": "success", "zh": "成功", "phon": "səkˈses", "category": "error", "example": "Deployment success", "tags": ["error"]},
-    {"en": "denied", "zh": "拒绝访问", "phon": "dɪˈnaɪd", "category": "error", "example": "Permission denied", "tags": ["error"]},
-    {"en": "not found", "zh": "未找到", "phon": "nɒt faʊnd", "category": "error", "example": "404 Not Found", "tags": ["error"]},
-    {"en": "invalid", "zh": "无效的", "phon": "ɪnˈvælɪd", "category": "error", "example": "Invalid argument supplied", "tags": ["error"]},
-    {"en": "undefined", "zh": "未定义", "phon": "ˌʌndɪˈfaɪnd", "category": "error", "example": "ReferenceError: x is undefined", "tags": ["error"]},
-    {"en": "null", "zh": "空值", "phon": "nʌl", "category": "error", "example": "NullPointerException", "tags": ["error"]},
-    {"en": "exception", "zh": "异常", "phon": "ɪkˈsepʃən", "category": "error", "example": "Unhandled exception in main", "tags": ["error"]},
-    {"en": "abort", "zh": "中止", "phon": "əˈbɔːt", "category": "error", "example": "Transaction aborted", "tags": ["error"]},
-    {"en": "crash", "zh": "崩溃", "phon": "kræʃ", "category": "error", "example": "Application crashed unexpectedly", "tags": ["error"]},
-    {"en": "hang", "zh": "卡住", "phon": "hæŋ", "category": "error", "example": "Process hang detected", "tags": ["error"]},
-    {"en": "leak", "zh": "泄漏", "phon": "liːk", "category": "error", "example": "Memory leak detected", "tags": ["error"]},
-    {"en": "corrupt", "zh": "损坏", "phon": "kəˈrʌpt", "category": "error", "example": "Corrupt disk image", "tags": ["error"]},
-    {"en": "mismatch", "zh": "不匹配", "phon": "ˈmɪsmætʃ", "category": "error", "example": "Checksum mismatch", "tags": ["error"]},
-    {"en": "conflict", "zh": "冲突", "phon": "ˈkɒnflɪkt", "category": "error", "example": "Port conflict detected", "tags": ["error"]},
-    {"en": "timeout", "zh": "超时", "phon": "ˈtaɪmaʊt", "category": "error", "example": "Connection timeout after 30s", "tags": ["error"]},
-    {"en": "install", "zh": "安装", "phon": "ɪnˈstɔːl", "category": "cli", "example": "npm install express", "tags": ["cli"]},
-    {"en": "uninstall", "zh": "卸载", "phon": "ˌʌnɪnˈstɔːl", "category": "cli", "example": "pip uninstall requests", "tags": ["cli"]},
-    {"en": "initialize", "zh": "初始化", "phon": "ɪˈnɪʃəlaɪz", "category": "cli", "example": "git init", "tags": ["cli"]},
-    {"en": "execute", "zh": "执行", "phon": "ˈeksɪkjuːt", "category": "cli", "example": "execute the script", "tags": ["cli"]},
-    {"en": "terminate", "zh": "终止", "phon": "ˈtɜːmɪneɪt", "category": "cli", "example": "Terminate the process", "tags": ["cli"]},
-    {"en": "kill", "zh": "杀死进程", "phon": "kɪl", "category": "cli", "example": "kill -9 1234", "tags": ["cli"]},
-    {"en": "restart", "zh": "重启", "phon": "riːˈstɑːt", "category": "cli", "example": "systemctl restart nginx", "tags": ["cli"]},
-    {"en": "reload", "zh": "重新加载", "phon": "riːˈləʊd", "category": "cli", "example": "reload nginx configuration", "tags": ["cli"]},
-    {"en": "start", "zh": "启动", "phon": "stɑːt", "category": "cli", "example": "start the service", "tags": ["cli"]},
-    {"en": "stop", "zh": "停止", "phon": "stɒp", "category": "cli", "example": "stop the background job", "tags": ["cli"]},
-    {"en": "status", "zh": "状态", "phon": "ˈsteɪtəs", "category": "cli", "example": "docker ps status", "tags": ["cli"]},
-    {"en": "list", "zh": "列出", "phon": "lɪst", "category": "cli", "example": "ls -la", "tags": ["cli"]},
-    {"en": "remove", "zh": "删除", "phon": "rɪˈmuːv", "category": "cli", "example": "rm -rf node_modules", "tags": ["cli"]},
-    {"en": "copy", "zh": "复制", "phon": "ˈkɒpi", "category": "cli", "example": "cp source dest", "tags": ["cli"]},
-    {"en": "move", "zh": "移动", "phon": "muːv", "category": "cli", "example": "mv file.txt /tmp/", "tags": ["cli"]},
-    {"en": "extract", "zh": "解压", "phon": "ɪkˈstrækt", "category": "cli", "example": "tar -xzf archive.tar.gz", "tags": ["cli"]},
-    {"en": "compress", "zh": "压缩", "phon": "kəmˈpres", "category": "cli", "example": "zip -r backup.zip data/", "tags": ["cli"]},
-    {"en": "sync", "zh": "同步", "phon": "sɪŋk", "category": "cli", "example": "rsync -avz source/ dest/", "tags": ["cli"]},
-    {"en": "backup", "zh": "备份", "phon": "ˈbækʌp", "category": "cli", "example": "backup database to S3", "tags": ["cli"]},
-    {"en": "restore", "zh": "恢复", "phon": "rɪˈstɔːr", "category": "cli", "example": "restore from backup", "tags": ["cli"]},
-    {"en": "deploy", "zh": "部署", "phon": "dɪˈplɔɪ", "category": "devops", "example": "deploy to production", "tags": ["devops"]},
-    {"en": "rollback", "zh": "回滚", "phon": "ˈrəʊlbæk", "category": "devops", "example": "rollback to previous version", "tags": ["devops"]},
-    {"en": "monitor", "zh": "监控", "phon": "ˈmɒnɪtər", "category": "devops", "example": "monitor server metrics", "tags": ["devops"]},
-    {"en": "scale", "zh": "扩缩容", "phon": "skeɪl", "category": "devops", "example": "scale up to 10 replicas", "tags": ["devops"]},
-    {"en": "container", "zh": "容器", "phon": "kənˈteɪnər", "category": "devops", "example": "run in Docker container", "tags": ["devops"]},
-    {"en": "pod", "zh": "Pod", "phon": "pɒd", "category": "devops", "example": "kubectl get pods", "tags": ["devops"]},
-    {"en": "cluster", "zh": "集群", "phon": "ˈkʌstər", "category": "devops", "example": "kubernetes cluster", "tags": ["devops"]},
-    {"en": "node", "zh": "节点", "phon": "nəʊd", "category": "devops", "example": "worker node is ready", "tags": ["devops"]},
-    {"en": "replica", "zh": "副本", "phon": "ˈreplɪkə", "category": "devops", "example": "set replicas=3", "tags": ["devops"]},
-    {"en": "health check", "zh": "健康检查", "phon": "helθ tʃek", "category": "devops", "example": "liveness health check", "tags": ["devops"]},
-    {"en": "build", "zh": "构建", "phon": "bɪld", "category": "devops", "example": "build the Docker image", "tags": ["devops"]},
-    {"en": "release", "zh": "发布", "phon": "rɪˈliːs", "category": "devops", "example": "new release v2.0", "tags": ["devops"]},
-    {"en": "namespace", "zh": "命名空间", "phon": "ˈneɪmspeɪs", "category": "devops", "example": "default namespace", "tags": ["devops"]},
-    {"en": "ingress", "zh": "入口", "phon": "ˈɪnɡres", "category": "devops", "example": "configure ingress rules", "tags": ["devops"]},
-    {"en": "function", "zh": "函数", "phon": "ˈfʌŋkʃən", "category": "dev", "example": "define a function", "tags": ["dev"]},
-    {"en": "variable", "zh": "变量", "phon": "ˈveəriəbəl", "category": "dev", "example": "declare a variable", "tags": ["dev"]},
-    {"en": "class", "zh": "类", "phon": "klɑːs", "category": "dev", "example": "create a new class", "tags": ["dev"]},
-    {"en": "method", "zh": "方法", "phon": "ˈmeθəd", "category": "dev", "example": "call the method", "tags": ["dev"]},
-    {"en": "interface", "zh": "接口", "phon": "ˈɪntəfeɪs", "category": "dev", "example": "define an interface", "tags": ["dev"]},
-    {"en": "module", "zh": "模块", "phon": "ˈmɒdjuːl", "category": "dev", "example": "import a module", "tags": ["dev"]},
-    {"en": "package", "zh": "包", "phon": "ˈpækɪdʒ", "category": "dev", "example": "npm package", "tags": ["dev"]},
-    {"en": "import", "zh": "导入", "phon": "ɪmˈpɔːt", "category": "dev", "example": "import React from 'react'", "tags": ["dev"]},
-    {"en": "export", "zh": "导出", "phon": "ɪkˈspɔːt", "category": "dev", "example": "export default App", "tags": ["dev"]},
-    {"en": "async", "zh": "异步", "phon": "ˈeɪsɪŋk", "category": "dev", "example": "async function fetchData()", "tags": ["dev"]},
-    {"en": "await", "zh": "等待", "phon": "əˈweɪt", "category": "dev", "example": "await fetch(url)", "tags": ["dev"]},
-    {"en": "promise", "zh": "承诺/Promise", "phon": "ˈprɒmɪs", "category": "dev", "example": "return new Promise()", "tags": ["dev"]},
-    {"en": "callback", "zh": "回调", "phon": "ˈkɔːlbæk", "category": "dev", "example": "pass callback function", "tags": ["dev"]},
-    {"en": "compile", "zh": "编译", "phon": "kəmˈpaɪl", "category": "dev", "example": "compile TypeScript to JS", "tags": ["dev"]},
-    {"en": "runtime", "zh": "运行时", "phon": "ˈrʌntaɪm", "category": "dev", "example": "runtime error", "tags": ["dev"]},
-    {"en": "query", "zh": "查询", "phon": "ˈkwɪri", "category": "db", "example": "execute SQL query", "tags": ["db"]},
-    {"en": "insert", "zh": "插入", "phon": "ɪnˈsɜːt", "category": "db", "example": "INSERT INTO users VALUES()", "tags": ["db"]},
-    {"en": "update", "zh": "更新", "phon": "ʌpˈdeɪt", "category": "db", "example": "UPDATE table SET column=value", "tags": ["db"]},
-    {"en": "delete", "zh": "删除", "phon": "dɪˈliːt", "category": "db", "example": "DELETE FROM table WHERE id=1", "tags": ["db"]},
-    {"en": "index", "zh": "索引", "phon": "ˈɪndeks", "category": "db", "example": "create index on column", "tags": ["db"]},
-    {"en": "schema", "zh": "模式/结构", "phon": "ˈskiːmə", "category": "db", "example": "database schema design", "tags": ["db"]},
-    {"en": "migration", "zh": "迁移", "phon": "maɪˈɡreɪʃən", "category": "db", "example": "run database migration", "tags": ["db"]},
-    {"en": "primary key", "zh": "主键", "phon": "ˈpraɪməri kiː", "category": "db", "example": "PRIMARY KEY (id)", "tags": ["db"]},
-    {"en": "foreign key", "zh": "外键", "phon": "ˈfɒrən kiː", "category": "db", "example": "FOREIGN KEY (user_id)", "tags": ["db"]},
-    {"en": "transaction", "zh": "事务", "phon": "trænˈzækʃən", "category": "db", "example": "BEGIN TRANSACTION", "tags": ["db"]},
-    {"en": "commit", "zh": "提交", "phon": "kəˈmɪt", "category": "git", "example": "git commit -m 'fix bug'", "tags": ["git"]},
-    {"en": "push", "zh": "推送", "phon": "pʊʃ", "category": "git", "example": "git push origin main", "tags": ["git"]},
-    {"en": "pull", "zh": "拉取", "phon": "pʊl", "category": "git", "example": "git pull from remote", "tags": ["git"]},
-    {"en": "merge", "zh": "合并", "phon": "mɜːdʒ", "category": "git", "example": "merge feature branch", "tags": ["git"]},
-    {"en": "branch", "zh": "分支", "phon": "brɑːntʃ", "category": "git", "example": "create a new branch", "tags": ["git"]},
-    {"en": "checkout", "zh": "检出/切换", "phon": "ˈtʃekaʊt", "category": "git", "example": "git checkout -b feature", "tags": ["git"]},
-    {"en": "rebase", "zh": "变基", "phon": "riːˈbeɪs", "category": "git", "example": "rebase onto main", "tags": ["git"]},
-    {"en": "stash", "zh": "暂存", "phon": "stæʃ", "category": "git", "example": "git stash pop", "tags": ["git"]},
-    {"en": "cherry-pick", "zh": "摘取提交", "phon": "ˈtʃeripɪk", "category": "git", "example": "cherry-pick commit hash", "tags": ["git"]},
-    {"en": "fetch", "zh": "获取", "phon": "fetʃ", "category": "git", "example": "git fetch origin", "tags": ["git"]}
+    {
+      "en": "abort",
+      "zh": "中止",
+      "phon": "əˈbɔːt",
+      "category": "error",
+      "example": "Transaction aborted",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "ACID",
+      "zh": "事务特性",
+      "phon": "ˈæsɪd",
+      "category": "db",
+      "example": "transaction guarantees ACID properties",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "aggregate",
+      "zh": "聚合",
+      "phon": "ˈæɡrɪɡət",
+      "category": "log",
+      "example": "aggregate logs by error type and count",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "alerting",
+      "zh": "告警",
+      "phon": "əˈlɜːtɪŋ",
+      "category": "devops",
+      "example": "configure alerting rules in Prometheus",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "alias",
+      "zh": "别名",
+      "phon": "ˈeɪliəs",
+      "category": "config",
+      "example": "alias ll='ls -la' in .bashrc",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "ansible",
+      "zh": "自动化配置工具",
+      "phon": "ˈænsɪbəl",
+      "category": "devops",
+      "example": "ansible-playbook site.yml to provision servers",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "archive",
+      "zh": "归档文件",
+      "phon": "ˈɑːkɪveɪ",
+      "category": "git",
+      "example": "git archive -o files.tar HEAD",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "archived",
+      "zh": "归档日志",
+      "phon": "ˈɑːkvaɪvd",
+      "category": "log",
+      "example": "archived logs are compressed and stored",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "artifact",
+      "zh": "构建产物",
+      "phon": "ˈɑːtɪfækt",
+      "category": "devops",
+      "example": "CI artifact: docker image uploaded to registry",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "async",
+      "zh": "异步",
+      "phon": "ˈeɪsɪŋk",
+      "category": "dev",
+      "example": "async function fetchData()",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "authentication",
+      "zh": "身份验证",
+      "phon": "ɔːˌθentɪˈkeɪʃən",
+      "category": "dev",
+      "example": "implement JWT authentication",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "authorization",
+      "zh": "权限授权",
+      "phon": "ˌɔːθəraɪˈzeɪʃən",
+      "category": "dev",
+      "example": "check authorization before access",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "await",
+      "zh": "等待",
+      "phon": "əˈweɪt",
+      "category": "dev",
+      "example": "await fetch(url)",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "awk",
+      "zh": "文本处理",
+      "phon": "ɔːk",
+      "category": "cli",
+      "example": "awk -F: '{print $1}' /etc/passwd",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "backup",
+      "zh": "备份",
+      "phon": "ˈbækʌp",
+      "category": "cli",
+      "example": "backup database to S3",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "benchmark",
+      "zh": "性能基准测试",
+      "phon": "ˈbentʃmɑːk",
+      "category": "dev",
+      "example": "benchmark query performance with EXPLAIN ANALYZE",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "bisect",
+      "zh": "二分查找定位",
+      "phon": "baɪˈsekt",
+      "category": "git",
+      "example": "git bisect to find the buggy commit",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "blame",
+      "zh": "追溯 blame",
+      "phon": "bleɪm",
+      "category": "git",
+      "example": "git blame file.txt to see who changed lines",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "blue-green deployment",
+      "zh": "蓝绿部署",
+      "phon": "bluː-ɡriːn",
+      "category": "devops",
+      "example": "blue-green deployment reduces downtime",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "branch",
+      "zh": "分支",
+      "phon": "brɑːntʃ",
+      "category": "git",
+      "example": "create a new branch",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "buffered",
+      "zh": "缓冲日志",
+      "phon": "ˈbʌfəd",
+      "category": "log",
+      "example": "buffered writes reduce log I/O overhead",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "build",
+      "zh": "构建",
+      "phon": "bɪld",
+      "category": "devops",
+      "example": "build the Docker image",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "cache",
+      "zh": "缓存",
+      "phon": "kæʃ",
+      "category": "config",
+      "example": "clear the browser cache",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "callback",
+      "zh": "回调",
+      "phon": "ˈkɔːlbæk",
+      "category": "dev",
+      "example": "pass callback function",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "canary",
+      "zh": "金丝雀发布",
+      "phon": "kəˈneəri",
+      "category": "devops",
+      "example": "canary release: 5% traffic to new version",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "cascade",
+      "zh": "级联",
+      "phon": "kæˈskeɪd",
+      "category": "db",
+      "example": "ON DELETE CASCADE for foreign key",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "charset",
+      "zh": "字符集",
+      "phon": "ˈtʃɑːsət",
+      "category": "config",
+      "example": "mysql charset is utf8mb4",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "checkout",
+      "zh": "检出/切换",
+      "phon": "ˈtʃekaʊt",
+      "category": "git",
+      "example": "git checkout -b feature",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "checkpoint",
+      "zh": "检查点",
+      "phon": "ˈtʃekpɔɪnt",
+      "category": "db",
+      "example": "checkpoint writes dirty pages to disk",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "cherry-pick",
+      "zh": "摘取提交",
+      "phon": "ˈtʃeripɪk",
+      "category": "git",
+      "example": "cherry-pick commit hash",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "chmod",
+      "zh": "修改权限",
+      "phon": "tʃmɒd",
+      "category": "cli",
+      "example": "chmod +x script.sh to make executable",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "chown",
+      "zh": "修改所有者",
+      "phon": "tʃaʊn",
+      "category": "cli",
+      "example": "chown -R www-data:www-data /var/www",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "circuit breaker",
+      "zh": "断路器",
+      "phon": "ˈsɜːkɪt ˈbreɪkər",
+      "category": "error",
+      "example": "circuit breaker open after 5 failures",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "class",
+      "zh": "类",
+      "phon": "klɑːs",
+      "category": "dev",
+      "example": "create a new class",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "clone",
+      "zh": "克隆仓库",
+      "phon": "kləʊn",
+      "category": "git",
+      "example": "git clone https://github.com/user/repo.git",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "cluster",
+      "zh": "集群",
+      "phon": "ˈkʌstər",
+      "category": "devops",
+      "example": "kubernetes cluster",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "commit",
+      "zh": "提交",
+      "phon": "kəˈmɪt",
+      "category": "git",
+      "example": "git commit -m 'fix bug'",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "compile",
+      "zh": "编译",
+      "phon": "kəmˈpaɪl",
+      "category": "dev",
+      "example": "compile TypeScript to JS",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "compress",
+      "zh": "压缩",
+      "phon": "kəmˈpres",
+      "category": "cli",
+      "example": "zip -r backup.zip data/",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "compression",
+      "zh": "压缩",
+      "phon": "kəmˈpreʃən",
+      "category": "config",
+      "example": "enable gzip compression in nginx.conf",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "configmap",
+      "zh": "配置映射",
+      "phon": "kənˈfiɡmæp",
+      "category": "devops",
+      "example": "mount configmap as environment variables",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "configure",
+      "zh": "配置",
+      "phon": "kənˈfɪɡər",
+      "category": "config",
+      "example": "sudo ./configure --prefix=/usr/local",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "conflict",
+      "zh": "冲突",
+      "phon": "ˈkɒnflɪkt",
+      "category": "error",
+      "example": "Port conflict detected",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "connection pool",
+      "zh": "连接池",
+      "phon": "kəˈnekʃən puːl",
+      "category": "db",
+      "example": "configure HikariCP connection pool size",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "constraint",
+      "zh": "约束",
+      "phon": "kənˈstreɪnt",
+      "category": "db",
+      "example": "UNIQUE constraint on email column",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "container",
+      "zh": "容器",
+      "phon": "kənˈteɪnər",
+      "category": "devops",
+      "example": "run in Docker container",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "containerize",
+      "zh": "容器化",
+      "phon": "kənˈteɪnəraɪz",
+      "category": "devops",
+      "example": "containerize legacy app with Docker",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "copy",
+      "zh": "复制",
+      "phon": "ˈkɒpi",
+      "category": "cli",
+      "example": "cp source dest",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "corrupt",
+      "zh": "损坏",
+      "phon": "kəˈrʌpt",
+      "category": "error",
+      "example": "Corrupt disk image",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "crash",
+      "zh": "崩溃",
+      "phon": "kræʃ",
+      "category": "error",
+      "example": "Application crashed unexpectedly",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "CRUD",
+      "zh": "增删改查",
+      "phon": "siː-ɑːr-yuː-diː",
+      "category": "dev",
+      "example": "implement CRUD operations for resource",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "curl",
+      "zh": "HTTP请求",
+      "phon": "kɜːl",
+      "category": "cli",
+      "example": "curl -X POST https://api.example.com",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "cursor",
+      "zh": "游标",
+      "phon": "ˈkɜːsər",
+      "category": "db",
+      "example": "use cursor to iterate large result set",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "daemonset",
+      "zh": "守护进程集",
+      "phon": "ˈdiːmənset",
+      "category": "devops",
+      "example": "daemonset ensures pod runs on every node",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "deadlock",
+      "zh": "死锁",
+      "phon": "ˈdedlɒk",
+      "category": "error",
+      "example": "database deadlock detected, transaction rolled back",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "debug",
+      "zh": "调试信息",
+      "phon": "diːˈbʌɡ",
+      "category": "log",
+      "example": "[DEBUG] Variable x = 42",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "decryption",
+      "zh": "解密",
+      "phon": "diːˈkrɪpʃən",
+      "category": "dev",
+      "example": "decrypt ciphertext with AES key",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "default",
+      "zh": "默认值",
+      "phon": "dɪˈfɔːlt",
+      "category": "config",
+      "example": "The default port is 8080",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "degraded",
+      "zh": "降级运行",
+      "phon": "dɪˈɡreɪdɪd",
+      "category": "error",
+      "example": "service degraded due to high load",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "delete",
+      "zh": "删除",
+      "phon": "dɪˈliːt",
+      "category": "db",
+      "example": "DELETE FROM table WHERE id=1",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "denied",
+      "zh": "拒绝访问",
+      "phon": "dɪˈnaɪd",
+      "category": "error",
+      "example": "Permission denied",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "dependency",
+      "zh": "依赖",
+      "phon": "dɪˈpendənsi",
+      "category": "dev",
+      "example": "manage npm dependencies in package.json",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "deploy",
+      "zh": "部署",
+      "phon": "dɪˈplɔɪ",
+      "category": "devops",
+      "example": "deploy to production",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "deserialize",
+      "zh": "反序列化",
+      "phon": "diːˈsɪəriəlaɪz",
+      "category": "dev",
+      "example": "deserialize JSON response to model",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "df",
+      "zh": "磁盘空间",
+      "phon": "diː-ef",
+      "category": "cli",
+      "example": "df -h shows disk space usage",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "diff",
+      "zh": "差异对比",
+      "phon": "dɪf",
+      "category": "git",
+      "example": "git diff HEAD~1 file.txt",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "directive",
+      "zh": "指令",
+      "phon": "dɪˈrektɪv",
+      "category": "config",
+      "example": "the rewrite directive in nginx.conf",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "disable",
+      "zh": "禁用",
+      "phon": "dɪsˈeɪbəl",
+      "category": "config",
+      "example": "disable the firewall temporarily",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "du",
+      "zh": "目录大小",
+      "phon": "diː-yuː",
+      "category": "cli",
+      "example": "du -sh * shows size of each item",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "dump",
+      "zh": "转储",
+      "phon": "dʌmp",
+      "category": "log",
+      "example": "core dump generated",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "enable",
+      "zh": "启用/允许",
+      "phon": "ɪˈneɪbəl",
+      "category": "config",
+      "example": "enable ssl_verify_peer=1 in php.ini",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "encoding",
+      "zh": "编码",
+      "phon": "ɪnˈkəʊdɪŋ",
+      "category": "config",
+      "example": "set encoding=utf-8 in the connection string",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "encryption",
+      "zh": "加密",
+      "phon": "ɪnˈkrɪpʃən",
+      "category": "dev",
+      "example": "enable TLS encryption in transit",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "endpoint",
+      "zh": "API端点",
+      "phon": "ˈendpɔɪnt",
+      "category": "dev",
+      "example": "POST /api/v1/users endpoint",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "entry",
+      "zh": "日志条目",
+      "phon": "ˈentri",
+      "category": "log",
+      "example": "Parse each log entry with regex",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "env",
+      "zh": "环境变量",
+      "phon": "env",
+      "category": "config",
+      "example": "set NODE_ENV=production in your env",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "error",
+      "zh": "错误",
+      "phon": "ˈerər",
+      "category": "log",
+      "example": "[ERROR] Connection refused",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "exception",
+      "zh": "异常",
+      "phon": "ɪkˈsepʃən",
+      "category": "error",
+      "example": "Unhandled exception in main",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "execute",
+      "zh": "执行",
+      "phon": "ˈeksɪkjuːt",
+      "category": "cli",
+      "example": "execute the script",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "exhausted",
+      "zh": "资源耗尽",
+      "phon": "ɪɡˈzɔːstɪd",
+      "category": "error",
+      "example": "connection pool exhausted",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "export",
+      "zh": "导出",
+      "phon": "ɪkˈspɔːt",
+      "category": "dev",
+      "example": "export default App",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "extract",
+      "zh": "解压",
+      "phon": "ɪkˈstrækt",
+      "category": "cli",
+      "example": "tar -xzf archive.tar.gz",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "facility",
+      "zh": "日志设施",
+      "phon": "fəˈsɪlɪti",
+      "category": "log",
+      "example": "syslog facility local0 in rsyslog.conf",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "failed",
+      "zh": "失败",
+      "phon": "feɪld",
+      "category": "error",
+      "example": "Build failed with exit code 1",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "fallback",
+      "zh": "回退/备用",
+      "phon": "ˈfɔːlbæk",
+      "category": "config",
+      "example": "Use 8.8.8.8 as DNS fallback",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "fatal",
+      "zh": "致命错误",
+      "phon": "ˈfeɪtəl",
+      "category": "log",
+      "example": "[FATAL] Out of memory, exiting",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "feature flag",
+      "zh": "功能开关",
+      "phon": "ˈfiːtʃər flæɡ",
+      "category": "devops",
+      "example": "enable feature flag to control rollout",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "fetch",
+      "zh": "获取",
+      "phon": "fetʃ",
+      "category": "git",
+      "example": "git fetch origin",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "fixture",
+      "zh": "测试fixture",
+      "phon": "ˈfɪkstʃər",
+      "category": "dev",
+      "example": "load test fixtures in pytest",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "flag",
+      "zh": "标志/开关",
+      "phon": "flæɡ",
+      "category": "config",
+      "example": "enable the --verbose flag in the config",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "flush",
+      "zh": "刷新",
+      "phon": "flʌʃ",
+      "category": "log",
+      "example": "flush log buffer to disk",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "foreign key",
+      "zh": "外键",
+      "phon": "ˈfɒrən kiː",
+      "category": "db",
+      "example": "FOREIGN KEY (user_id)",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "fork",
+      "zh": "派生仓库",
+      "phon": "fɔːk",
+      "category": "git",
+      "example": "fork repo on GitHub to your account",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "framework",
+      "zh": "框架",
+      "phon": "ˈfreɪmwɜːk",
+      "category": "dev",
+      "example": "Spring is a popular Java framework",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "frozen",
+      "zh": "进程冻结",
+      "phon": "ˈfrəʊzən",
+      "category": "error",
+      "example": "application frozen on deadlock",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "full-text search",
+      "zh": "全文搜索",
+      "phon": "fʊl tekst sɜːtʃ",
+      "category": "db",
+      "example": "enable full-text search on article content",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "function",
+      "zh": "函数",
+      "phon": "ˈfʌŋkʃən",
+      "category": "dev",
+      "example": "define a function",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "gitignore",
+      "zh": "忽略文件配置",
+      "phon": "ɡɪtɪɡˈnɔːr",
+      "category": "git",
+      "example": "add node_modules to .gitignore",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "grafana",
+      "zh": "可视化监控面板",
+      "phon": "ˈɡrɑːfənə",
+      "category": "devops",
+      "example": "import dashboard in Grafana for server metrics",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "grep",
+      "zh": "文本搜索",
+      "phon": "ɡrep",
+      "category": "cli",
+      "example": "grep -r 'error' /var/log",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "hang",
+      "zh": "卡住",
+      "phon": "hæŋ",
+      "category": "error",
+      "example": "Process hang detected",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "hashing",
+      "zh": "哈希计算",
+      "phon": "ˈhæʃɪŋ",
+      "category": "dev",
+      "example": "password hashing with bcrypt",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "health check",
+      "zh": "健康检查",
+      "phon": "helθ tʃek",
+      "category": "devops",
+      "example": "liveness health check",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "helm",
+      "zh": "K8s包管理器",
+      "phon": "helm",
+      "category": "devops",
+      "example": "helm install mychart in Kubernetes cluster",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "hook",
+      "zh": "钩子",
+      "phon": "hʊk",
+      "category": "dev",
+      "example": "useEffect hook in React",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "IaC",
+      "zh": "基础设施即代码",
+      "phon": "aɪ-eɪ-siː",
+      "category": "devops",
+      "example": "Terraform is a popular IaC tool",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "image",
+      "zh": "镜像",
+      "phon": "ˈɪmɪdʒ",
+      "category": "devops",
+      "example": "pull nginx image from Docker Hub",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "import",
+      "zh": "导入",
+      "phon": "ɪmˈpɔːt",
+      "category": "dev",
+      "example": "import React from 'react'",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "import error",
+      "zh": "导入错误",
+      "phon": "ˈɪmpɔːt ˈerər",
+      "category": "error",
+      "example": "ImportError: No module named 'requests'",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "incident",
+      "zh": "故障/事件",
+      "phon": "ˈɪnsɪdənt",
+      "category": "devops",
+      "example": "declare incident when SLA is breached",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "index",
+      "zh": "索引",
+      "phon": "ˈɪndeks",
+      "category": "db",
+      "example": "create index on column",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "info",
+      "zh": "信息日志",
+      "phon": "ˈɪnfəʊ",
+      "category": "log",
+      "example": "[INFO] Server started on port 3000",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "ingest",
+      "zh": "日志摄取",
+      "phon": "ɪnˈdʒest",
+      "category": "log",
+      "example": "log ingestion pipeline with Filebeat",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "ingress",
+      "zh": "入口",
+      "phon": "ˈɪnɡres",
+      "category": "devops",
+      "example": "configure ingress rules",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "inherit",
+      "zh": "继承",
+      "phon": "ɪnˈherɪt",
+      "category": "config",
+      "example": "Child theme inherits parent styles",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "initialize",
+      "zh": "初始化",
+      "phon": "ɪˈnɪʃəlaɪz",
+      "category": "cli",
+      "example": "git init",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "insert",
+      "zh": "插入",
+      "phon": "ɪnˈsɜːt",
+      "category": "db",
+      "example": "INSERT INTO users VALUES()",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "install",
+      "zh": "安装",
+      "phon": "ɪnˈstɔːl",
+      "category": "cli",
+      "example": "npm install express",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "interface",
+      "zh": "接口",
+      "phon": "ˈɪntəfeɪs",
+      "category": "dev",
+      "example": "define an interface",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "interrupted",
+      "zh": "中断",
+      "phon": "ˌɪntəˈrʌptɪd",
+      "category": "error",
+      "example": "operation interrupted by user",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "interval",
+      "zh": "间隔",
+      "phon": "ˈɪntəvəl",
+      "category": "log",
+      "example": "health check log interval set to 30s",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "invalid",
+      "zh": "无效的",
+      "phon": "ɪnˈvælɪd",
+      "category": "error",
+      "example": "Invalid argument supplied",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "iterate",
+      "zh": "迭代",
+      "phon": "ˈɪtəreɪt",
+      "category": "dev",
+      "example": "iterate over array with forEach",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "join",
+      "zh": "连接",
+      "phon": "dʒɔɪn",
+      "category": "db",
+      "example": "LEFT JOIN orders ON users.id = orders.user_id",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "kill",
+      "zh": "杀死进程",
+      "phon": "kɪl",
+      "category": "cli",
+      "example": "kill -9 1234",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "leak",
+      "zh": "泄漏",
+      "phon": "liːk",
+      "category": "error",
+      "example": "Memory leak detected",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "level",
+      "zh": "级别",
+      "phon": "ˈlevəl",
+      "category": "log",
+      "example": "Set log level to DEBUG",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "limit",
+      "zh": "限制",
+      "phon": "ˈlɪmɪt",
+      "category": "config",
+      "example": "ulimit -n 65535 to set file descriptor limit",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "lint",
+      "zh": "代码检查",
+      "phon": "lɪnt",
+      "category": "dev",
+      "example": "run ESLint to check code quality",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "list",
+      "zh": "列出",
+      "phon": "lɪst",
+      "category": "cli",
+      "example": "ls -la",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "lock",
+      "zh": "锁",
+      "phon": "lɒk",
+      "category": "db",
+      "example": "row-level lock prevents concurrent update",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "log",
+      "zh": "日志",
+      "phon": "lɒɡ",
+      "category": "log",
+      "example": "Check the access log for details",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "loop",
+      "zh": "死循环",
+      "phon": "luːp",
+      "category": "error",
+      "example": "infinite loop detected in script",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "malformed",
+      "zh": "格式错误",
+      "phon": "mælˈfɔːmd",
+      "category": "error",
+      "example": "malformed JSON in config file",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "man",
+      "zh": "查看手册",
+      "phon": "mæn",
+      "category": "cli",
+      "example": "man grep shows manual for grep",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "merge",
+      "zh": "合并",
+      "phon": "mɜːdʒ",
+      "category": "git",
+      "example": "merge feature branch",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "method",
+      "zh": "方法",
+      "phon": "ˈmeθəd",
+      "category": "dev",
+      "example": "call the method",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "middleware",
+      "zh": "中间件",
+      "phon": "ˈmɪdlweər",
+      "category": "dev",
+      "example": "add logging middleware to Express",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "migrate",
+      "zh": "数据迁移",
+      "phon": "maɪˈɡreɪt",
+      "category": "db",
+      "example": "migrate data from MySQL to PostgreSQL",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "migration",
+      "zh": "迁移",
+      "phon": "maɪˈɡreɪʃən",
+      "category": "db",
+      "example": "run database migration",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "mismatch",
+      "zh": "不匹配",
+      "phon": "ˈmɪsmætʃ",
+      "category": "error",
+      "example": "Checksum mismatch",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "mock",
+      "zh": "模拟对象",
+      "phon": "mɒk",
+      "category": "dev",
+      "example": "use mock in unit testing",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "mode",
+      "zh": "模式",
+      "phon": "məʊd",
+      "category": "config",
+      "example": "run nginx in daemon mode",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "module",
+      "zh": "模块",
+      "phon": "ˈmɒdjuːl",
+      "category": "dev",
+      "example": "import a module",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "monitor",
+      "zh": "监控",
+      "phon": "ˈmɒnɪtər",
+      "category": "devops",
+      "example": "monitor server metrics",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "mount",
+      "zh": "挂载",
+      "phon": "maʊnt",
+      "category": "cli",
+      "example": "mount /dev/sdb1 /mnt/usb",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "move",
+      "zh": "移动",
+      "phon": "muːv",
+      "category": "cli",
+      "example": "mv file.txt /tmp/",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "MVCC",
+      "zh": "多版本并发控制",
+      "phon": "em-viː-siː-siː",
+      "category": "db",
+      "example": "PostgreSQL uses MVCC for concurrency",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "namespace",
+      "zh": "命名空间",
+      "phon": "ˈneɪmspeɪs",
+      "category": "devops",
+      "example": "default namespace",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "nice",
+      "zh": "调整进程优先级",
+      "phon": "naɪs",
+      "category": "cli",
+      "example": "nice -n 10 long-running-script.sh",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "node",
+      "zh": "节点",
+      "phon": "nəʊd",
+      "category": "devops",
+      "example": "worker node is ready",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "nohup",
+      "zh": "后台运行",
+      "phon": "nəʊ-hʌp",
+      "category": "cli",
+      "example": "nohup ./script.sh &",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "normalize",
+      "zh": "规范化",
+      "phon": "ˈnɔːməlaɪz",
+      "category": "db",
+      "example": "normalize database to 3NF",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "not found",
+      "zh": "未找到",
+      "phon": "nɒt faʊnd",
+      "category": "error",
+      "example": "404 Not Found",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "null",
+      "zh": "空值",
+      "phon": "nʌl",
+      "category": "error",
+      "example": "NullPointerException",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "observability",
+      "zh": "可观测性",
+      "phon": "ˌɒbzəvəˈbɪlɪti",
+      "category": "devops",
+      "example": "three pillars: metrics, logs, traces",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "OLAP",
+      "zh": "在线分析处理",
+      "phon": "əʊ-el-eɪ-piː",
+      "category": "db",
+      "example": "ClickHouse for OLAP analytical queries",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "OLTP",
+      "zh": "在线事务处理",
+      "phon": "əʊ-el-tiː-piː",
+      "category": "db",
+      "example": "MySQL optimized for OLTP workloads",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "on-call",
+      "zh": "值班",
+      "phon": "ɒn-kɔːl",
+      "category": "devops",
+      "example": "engineer on-call rotates weekly",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "operator",
+      "zh": "运维 operator",
+      "phon": "ˈɒpəreɪtər",
+      "category": "devops",
+      "example": "use etcd operator to manage etcd cluster",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "option",
+      "zh": "选项",
+      "phon": "ˈɒpʃən",
+      "category": "config",
+      "example": "--with-openssl is an optional configure option",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "orchestration",
+      "zh": "编排",
+      "phon": "ˌɔːkɪˈstreɪʃən",
+      "category": "devops",
+      "example": "Kubernetes orchestration of containers",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "origin",
+      "zh": "默认远程名",
+      "phon": "ˈɒrɪdʒɪn",
+      "category": "git",
+      "example": "git push origin main",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "ORM",
+      "zh": "对象关系映射",
+      "phon": "əʊ-ɑːr-em",
+      "category": "dev",
+      "example": "use Prisma ORM with PostgreSQL",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "orphaned",
+      "zh": "孤立资源",
+      "phon": "ˈɔːfənd",
+      "category": "error",
+      "example": "orphaned process still holding locks",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "out of memory",
+      "zh": "内存不足",
+      "phon": "aʊt əv ˈmeməri",
+      "category": "error",
+      "example": "out of memory: killed process python",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "override",
+      "zh": "覆盖/重写",
+      "phon": "ˌəʊvəˈraɪd",
+      "category": "config",
+      "example": "Environment variables override config files",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "package",
+      "zh": "包",
+      "phon": "ˈpækɪdʒ",
+      "category": "dev",
+      "example": "npm package",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "parameter",
+      "zh": "参数",
+      "phon": "pəˈræmɪtər",
+      "category": "config",
+      "example": "timeout is a critical parameter",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "partition",
+      "zh": "分区",
+      "phon": "pɑːtɪˈʃən",
+      "category": "db",
+      "example": "partition table by date range",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "path",
+      "zh": "路径",
+      "phon": "pæθ",
+      "category": "config",
+      "example": "add /usr/local/bin to your PATH",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "pattern",
+      "zh": "匹配模式",
+      "phon": "ˈpætən",
+      "category": "log",
+      "example": "grep with regex pattern to filter logs",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "persistent",
+      "zh": "持久化",
+      "phon": "pəˈsɪstənt",
+      "category": "config",
+      "example": "enable persistent connections in nginx",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "pipe",
+      "zh": "管道",
+      "phon": "paɪp",
+      "category": "cli",
+      "example": "cat file.txt | grep error | wc -l",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "pipeline",
+      "zh": "流水线/CI流水线",
+      "phon": "ˈpaɪplaɪn",
+      "category": "devops",
+      "example": "Jenkins pipeline with stages: build, test, deploy",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "pod",
+      "zh": "Pod",
+      "phon": "pɒd",
+      "category": "devops",
+      "example": "kubectl get pods",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "polyfill",
+      "zh": "兼容性填充",
+      "phon": "ˈpɒlɪfɪl",
+      "category": "dev",
+      "example": "add polyfill for older browser support",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "primary key",
+      "zh": "主键",
+      "phon": "ˈpraɪməri kiː",
+      "category": "db",
+      "example": "PRIMARY KEY (id)",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "profile",
+      "zh": "配置文件/概要",
+      "phon": "ˈprəʊfaɪl",
+      "category": "config",
+      "example": "edit your ~/.bash_profile",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "prometheus",
+      "zh": "监控系统",
+      "phon": "prəˈmiːθjuːs",
+      "category": "devops",
+      "example": "Prometheus scrapes metrics from node_exporter",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "promise",
+      "zh": "承诺/Promise",
+      "phon": "ˈprɒmɪs",
+      "category": "dev",
+      "example": "return new Promise()",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "ps",
+      "zh": "进程状态",
+      "phon": "piː-es",
+      "category": "cli",
+      "example": "ps aux | grep nginx",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "pull",
+      "zh": "拉取",
+      "phon": "pʊl",
+      "category": "git",
+      "example": "git pull from remote",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "pull request",
+      "zh": "拉取请求",
+      "phon": "pʊl rɪˈkwest",
+      "category": "git",
+      "example": "open pull request on GitHub",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "purge",
+      "zh": "清除日志",
+      "phon": "pɜːdʒ",
+      "category": "log",
+      "example": "purge logs older than 7 days",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "push",
+      "zh": "推送",
+      "phon": "pʊʃ",
+      "category": "git",
+      "example": "git push origin main",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "query",
+      "zh": "查询",
+      "phon": "ˈkwɪri",
+      "category": "db",
+      "example": "execute SQL query",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "quota",
+      "zh": "配额/限额",
+      "phon": "ˈkwəʊtə",
+      "category": "config",
+      "example": "disk quota exceeded on the server",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "rate",
+      "zh": "频率",
+      "phon": "reɪt",
+      "category": "log",
+      "example": "log rate: 1000 events per second",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "rebase",
+      "zh": "变基",
+      "phon": "riːˈbeɪs",
+      "category": "git",
+      "example": "rebase onto main",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "recursion",
+      "zh": "递归",
+      "phon": "rɪˈkɜːʃən",
+      "category": "dev",
+      "example": "use recursion instead of loop",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "redirect",
+      "zh": "输出重定向",
+      "phon": "rɪːdɪˈrekt",
+      "category": "cli",
+      "example": "command > output.txt 2>&1",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "refactor",
+      "zh": "重构",
+      "phon": "riːˈfæktər",
+      "category": "dev",
+      "example": "refactor the authentication module",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "reflog",
+      "zh": "引用日志",
+      "phon": "ˈreflɒɡ",
+      "category": "git",
+      "example": "git reflog to find lost commits",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "refused",
+      "zh": "连接被拒绝",
+      "phon": "rɪˈfjuːzd",
+      "category": "error",
+      "example": "connection refused by remote host",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "registry",
+      "zh": "镜像仓库",
+      "phon": "ˈredʒɪstri",
+      "category": "devops",
+      "example": "push image to Docker Hub registry",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "release",
+      "zh": "发布",
+      "phon": "rɪˈliːs",
+      "category": "devops",
+      "example": "new release v2.0",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "reload",
+      "zh": "重新加载",
+      "phon": "riːˈləʊd",
+      "category": "cli",
+      "example": "reload nginx configuration",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "remote",
+      "zh": "远程仓库",
+      "phon": "rɪˈməʊt",
+      "category": "git",
+      "example": "add remote origin git@github.com:user/repo.git",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "remove",
+      "zh": "删除",
+      "phon": "rɪˈmuːv",
+      "category": "cli",
+      "example": "rm -rf node_modules",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "replica",
+      "zh": "副本",
+      "phon": "ˈreplɪkə",
+      "category": "devops",
+      "example": "set replicas=3",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "replica set",
+      "zh": "副本集",
+      "phon": "ˈreplɪkə set",
+      "category": "db",
+      "example": "MongoDB replica set with 3 members",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "replication",
+      "zh": "主从复制",
+      "phon": "ˌreplɪˈkeɪʃən",
+      "category": "db",
+      "example": "async replication to read replica",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "reset",
+      "zh": "重置HEAD",
+      "phon": "rɪːˈset",
+      "category": "git",
+      "example": "git reset --hard HEAD~1 to undo commit",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "restart",
+      "zh": "重启",
+      "phon": "riːˈstɑːt",
+      "category": "cli",
+      "example": "systemctl restart nginx",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "restore",
+      "zh": "恢复",
+      "phon": "rɪˈstɔːr",
+      "category": "cli",
+      "example": "restore from backup",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "retention",
+      "zh": "保留策略",
+      "phon": "rɪˈtenʃən",
+      "category": "log",
+      "example": "log retention period is 30 days",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "retry",
+      "zh": "重试",
+      "phon": "riːˈtraɪ",
+      "category": "config",
+      "example": "retry connection after 5 seconds",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "rollback",
+      "zh": "回滚",
+      "phon": "ˈrəʊlbæk",
+      "category": "devops",
+      "example": "rollback to previous version",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "rolling",
+      "zh": "滚动日志",
+      "phon": "ˈrəʊlɪŋ",
+      "category": "log",
+      "example": "log rolling policy: daily or size-based",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "rotate",
+      "zh": "轮转",
+      "phon": "rəʊˈteɪt",
+      "category": "log",
+      "example": "Logs rotate daily",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "route",
+      "zh": "路由",
+      "phon": "ruːt",
+      "category": "dev",
+      "example": "define GET /users route in Express",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "rsync",
+      "zh": "远程同步",
+      "phon": "ˈɑːsɪŋk",
+      "category": "cli",
+      "example": "rsync -avz source/ dest/",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "runbook",
+      "zh": "运维手册",
+      "phon": "ˈrʌnbʊk",
+      "category": "devops",
+      "example": "follow runbook steps to restart the service",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "runtime",
+      "zh": "运行时",
+      "phon": "ˈrʌntaɪm",
+      "category": "dev",
+      "example": "runtime error",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "scale",
+      "zh": "扩缩容",
+      "phon": "skeɪl",
+      "category": "devops",
+      "example": "scale up to 10 replicas",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "schema",
+      "zh": "模式/结构",
+      "phon": "ˈskiːmə",
+      "category": "db",
+      "example": "database schema design",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "scope",
+      "zh": "作用域",
+      "phon": "skəʊp",
+      "category": "config",
+      "example": "variable scope in config is global",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "scp",
+      "zh": "安全复制",
+      "phon": "es-siː-piː",
+      "category": "cli",
+      "example": "scp file.txt user@host:/path/",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "SDK",
+      "zh": "软件开发包",
+      "phon": "es-diː-keɪ",
+      "category": "dev",
+      "example": "install AWS SDK for Python",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "secret",
+      "zh": "密钥配置",
+      "phon": "ˈsiːkrɪt",
+      "category": "devops",
+      "example": "store database password as a K8s secret",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "sed",
+      "zh": "流编辑器",
+      "phon": "sed",
+      "category": "cli",
+      "example": "sed -i 's/old/new/g' file.txt",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "segfault",
+      "zh": "段错误",
+      "phon": "ˈseɡfɔːlt",
+      "category": "error",
+      "example": "segmentation fault (segfault) in C program",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "select",
+      "zh": "查询",
+      "phon": "sɪˈlekt",
+      "category": "db",
+      "example": "SELECT * FROM users WHERE id = 1",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "serialize",
+      "zh": "序列化",
+      "phon": "ˈsɪəriəlaɪz",
+      "category": "dev",
+      "example": "serialize object to JSON string",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "service mesh",
+      "zh": "服务网格",
+      "phon": "ˈsɜːvɪs meʃ",
+      "category": "devops",
+      "example": "Istio provides service mesh for microservices",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "session",
+      "zh": "会话",
+      "phon": "ˈseʃən",
+      "category": "dev",
+      "example": "session stored in Redis with 30min TTL",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "set",
+      "zh": "设置",
+      "phon": "set",
+      "category": "config",
+      "example": "set JAVA_HOME=/usr/lib/jvm/java",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "severity",
+      "zh": "严重程度",
+      "phon": "sɪˈverɪti",
+      "category": "log",
+      "example": "log severity levels: DEBUG INFO WARN ERROR FATAL",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "shard",
+      "zh": "分片",
+      "phon": "ʃɑːd",
+      "category": "db",
+      "example": "shard MongoDB collection by user_id",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "sidecar",
+      "zh": "边车模式",
+      "phon": "ˈsaɪdcɑːr",
+      "category": "devops",
+      "example": "inject sidecar proxy for observability",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "sink",
+      "zh": "日志输出目标",
+      "phon": "sɪŋk",
+      "category": "log",
+      "example": "configure log sink to Elasticsearch",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "SLA",
+      "zh": "服务等级协议",
+      "phon": "es-el-eɪ",
+      "category": "devops",
+      "example": "SLA guarantees 99.95% availability",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "SLO",
+      "zh": "服务等级目标",
+      "phon": "es-el-əʊ",
+      "category": "devops",
+      "example": "99.9% uptime SLO for the API",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "squash",
+      "zh": "压缩提交",
+      "phon": "skwɒʃ",
+      "category": "git",
+      "example": "squash multiple commits with interactive rebase",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "ssh",
+      "zh": "远程连接",
+      "phon": "es-es-eɪtʃ",
+      "category": "cli",
+      "example": "ssh user@hostname -p 2222",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "stack overflow",
+      "zh": "栈溢出",
+      "phon": "stæk ˌəʊvəˈfləʊ",
+      "category": "error",
+      "example": "stack overflow in recursive function call",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "stack trace",
+      "zh": "堆栈跟踪",
+      "phon": "stæk treɪs",
+      "category": "log",
+      "example": "See full stack trace in error.log",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "stale",
+      "zh": "过期数据",
+      "phon": "steɪl",
+      "category": "error",
+      "example": "stale cache entry caused wrong response",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "start",
+      "zh": "启动",
+      "phon": "stɑːt",
+      "category": "cli",
+      "example": "start the service",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "stash",
+      "zh": "暂存",
+      "phon": "stæʃ",
+      "category": "git",
+      "example": "git stash pop",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "statefulset",
+      "zh": "有状态副本集",
+      "phon": "ˈsteɪtfəl set",
+      "category": "devops",
+      "example": "statefulset for database deployment in K8s",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "status",
+      "zh": "状态",
+      "phon": "ˈsteɪtəs",
+      "category": "cli",
+      "example": "docker ps status",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "stop",
+      "zh": "停止",
+      "phon": "stɒp",
+      "category": "cli",
+      "example": "stop the background job",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "submodule",
+      "zh": "子模块",
+      "phon": "ˈsʌbmədjuːl",
+      "category": "git",
+      "example": "add submodule for shared library repo",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "success",
+      "zh": "成功",
+      "phon": "səkˈses",
+      "category": "error",
+      "example": "Deployment success",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "symlink",
+      "zh": "符号链接",
+      "phon": "ˈsɪmlɪŋk",
+      "category": "cli",
+      "example": "ln -s /path/to/file symlink",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "sync",
+      "zh": "同步",
+      "phon": "sɪŋk",
+      "category": "cli",
+      "example": "rsync -avz source/ dest/",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "syntax error",
+      "zh": "语法错误",
+      "phon": "ˈsɪntæks ˈerər",
+      "category": "error",
+      "example": "syntax error near unexpected token",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "syslog",
+      "zh": "系统日志协议",
+      "phon": "ˈsɪslɒɡ",
+      "category": "log",
+      "example": "forward syslog to central server",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "tag",
+      "zh": "标签",
+      "phon": "tæɡ",
+      "category": "git",
+      "example": "git tag -a v1.0.0 -m 'release 1.0'",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "tail",
+      "zh": "查看尾部",
+      "phon": "teɪl",
+      "category": "log",
+      "example": "tail -f /var/log/syslog",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "tar",
+      "zh": "打包归档",
+      "phon": "tɑːr",
+      "category": "cli",
+      "example": "tar -cvf archive.tar ./dir",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "template",
+      "zh": "模板",
+      "phon": "ˈtemplət",
+      "category": "config",
+      "example": "nginx config template for virtual hosts",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "terminate",
+      "zh": "终止",
+      "phon": "ˈtɜːmɪneɪt",
+      "category": "cli",
+      "example": "Terminate the process",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "terraform",
+      "zh": "基础设施代码化",
+      "phon": "ˈterəfɔːm",
+      "category": "devops",
+      "example": "terraform apply to provision AWS resources",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "threshold",
+      "zh": "阈值",
+      "phon": "ˈθreʃhəʊld",
+      "category": "config",
+      "example": "set memory threshold to 80%",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "timeout",
+      "zh": "超时",
+      "phon": "ˈtaɪmaʊt",
+      "category": "config",
+      "example": "set timeout=30 in ssh_config",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "timeout",
+      "zh": "超时",
+      "phon": "ˈtaɪmaʊt",
+      "category": "error",
+      "example": "Connection timeout after 30s",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "timestamp",
+      "zh": "时间戳",
+      "phon": "ˈtaɪmstæmp",
+      "category": "log",
+      "example": "2026-03-29T10:30:00Z",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "token",
+      "zh": "令牌",
+      "phon": "ˈtəʊkən",
+      "category": "dev",
+      "example": "bearer token for API authentication",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "top",
+      "zh": "系统监控",
+      "phon": "tɒp",
+      "category": "cli",
+      "example": "top -c shows all running processes",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "trace",
+      "zh": "追踪",
+      "phon": "treɪs",
+      "category": "log",
+      "example": "[TRACE] Entering function calculate()",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "transaction",
+      "zh": "事务",
+      "phon": "trænˈzækʃən",
+      "category": "db",
+      "example": "BEGIN TRANSACTION",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "transpile",
+      "zh": "转译",
+      "phon": "trænsˈpaɪl",
+      "category": "dev",
+      "example": "TypeScript transpiles to JavaScript",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "type error",
+      "zh": "类型错误",
+      "phon": "taɪp ˈerər",
+      "category": "error",
+      "example": "TypeError: cannot read property of undefined",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "undefined",
+      "zh": "未定义",
+      "phon": "ˌʌndɪˈfaɪnd",
+      "category": "error",
+      "example": "ReferenceError: x is undefined",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "uninstall",
+      "zh": "卸载",
+      "phon": "ˌʌnɪnˈstɔːl",
+      "category": "cli",
+      "example": "pip uninstall requests",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "unreachable",
+      "zh": "无法到达",
+      "phon": "ˌʌnrɪˈtʃːəbəl",
+      "category": "error",
+      "example": "host unreachable via network",
+      "tags": [
+        "error"
+      ]
+    },
+    {
+      "en": "update",
+      "zh": "更新",
+      "phon": "ʌpˈdeɪt",
+      "category": "db",
+      "example": "UPDATE table SET column=value",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "upstream",
+      "zh": "上游仓库",
+      "phon": "ˈʌpstriːm",
+      "category": "git",
+      "example": "git fetch upstream to sync fork",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "vacuum",
+      "zh": "垃圾回收",
+      "phon": "ˈvækjuːm",
+      "category": "db",
+      "example": "VACUUM reclaims dead tuple space",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "variable",
+      "zh": "变量",
+      "phon": "ˈveəriəbəl",
+      "category": "dev",
+      "example": "declare a variable",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "verbose",
+      "zh": "详细输出",
+      "phon": "vɜːˈbəʊs",
+      "category": "config",
+      "example": "run make verbose=1 for detailed logs",
+      "tags": [
+        "config"
+      ]
+    },
+    {
+      "en": "view",
+      "zh": "视图",
+      "phon": "vjuː",
+      "category": "db",
+      "example": "create view as SELECT with aggregated data",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "volume",
+      "zh": "存储卷",
+      "phon": "ˈvɒljuːm",
+      "category": "devops",
+      "example": "mount host volume into container",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "warning",
+      "zh": "警告",
+      "phon": "ˈwɔːnɪŋ",
+      "category": "log",
+      "example": "[WARN] Memory usage above 80%",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "wget",
+      "zh": "文件下载",
+      "phon": "ˈweɡet",
+      "category": "cli",
+      "example": "wget https://example.com/file.zip",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "which",
+      "zh": "查找命令位置",
+      "phon": "wɪtʃ",
+      "category": "cli",
+      "example": "which python returns /usr/bin/python",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "worktree",
+      "zh": "工作树",
+      "phon": "ˈwɜːktriː",
+      "category": "git",
+      "example": "git worktree add ../feature feature-branch",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "xargs",
+      "zh": "参数构建器",
+      "phon": "ˈeksɑːɡz",
+      "category": "cli",
+      "example": "find . -name '*.log' | xargs rm",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "zombie",
+      "zh": "僵尸进程",
+      "phon": "ˈzɒmbɪ",
+      "category": "error",
+      "example": "zombie process with defunct status",
+      "tags": [
+        "error"
+      ]
+    }
   ]
 }
