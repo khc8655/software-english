@@ -46,134 +46,92 @@
         .theme-btn[data-theme="orange"] { background: #FF9500; color: white; }
         .theme-btn.active { transform: scale(1.15); box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
 
-        /* Stats row */
-        .stats {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px;
+        /* Hero section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #5AC8FA 100%);
+            border-radius: 18px;
+            padding: 20px;
+            color: white;
+            margin-bottom: 14px;
+            position: relative;
+            overflow: hidden;
         }
-        .stat-card {
-            background: var(--card); border-radius: 12px; padding: 10px 6px;
-            text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        .hero::after {
+            content: '';
+            position: absolute;
+            right: -20px; top: -20px;
+            width: 120px; height: 120px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
         }
-        .stat-value { font-size: 18px; font-weight: 700; color: var(--primary); }
-        .stat-label { font-size: 10px; color: var(--text-secondary); margin-top: 1px; }
+        .hero-greeting {
+            font-size: 13px; opacity: 0.85; margin-bottom: 2px;
+        }
+        .hero-date {
+            font-size: 12px; opacity: 0.7; margin-bottom: 12px;
+        }
+        .hero-stats {
+            display: flex; gap: 20px;
+        }
+        .hero-stat {}
+        .hero-stat-num {
+            font-size: 24px; font-weight: 700; line-height: 1;
+        }
+        .hero-stat-lbl {
+            font-size: 11px; opacity: 0.75; margin-top: 1px;
+        }
+        .hero-progress {
+            margin-top: 12px;
+        }
+        .hero-progress-bar {
+            height: 6px; background: rgba(255,255,255,0.25);
+            border-radius: 3px; overflow: hidden;
+        }
+        .hero-progress-fill {
+            height: 100%; background: white; border-radius: 3px;
+            transition: width 0.5s;
+        }
+        .hero-progress-text {
+            font-size: 11px; opacity: 0.75; margin-top: 4px;
+        }
 
-        /* Home */
-        .home-stats {
-            display: flex; align-items: center; justify-content: space-around;
-            background: var(--card); border-radius: 14px; padding: 16px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08); margin-bottom: 16px;
+        /* Quick actions */
+        .quick-actions {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px;
         }
-        .home-stat-item { text-align: center; }
-        .home-stat-num { font-size: 24px; font-weight: 700; }
-        .home-stat-lbl { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
-        .home-stat-divider { width: 1px; height: 36px; background: #E5E5EA; }
-
-        .action-section {
-            background: var(--card); border-radius: 14px; padding: 20px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08); text-align: center; margin-bottom: 16px;
-        }
-        .action-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
-        .action-hint { font-size: 13px; color: var(--text-secondary); margin-bottom: 12px; }
-        .action-hint.error-hint { color: var(--danger); }
-        .action-btn { width: 100%; padding: 14px; font-size: 16px; }
-
-        /* Study mode */
-        .study-header { margin-bottom: 16px; }
-
-        /* Learn mode - 2 column cards */
-        .learn-header {
-            display: flex; align-items: center;
-            font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;
-        }
-        .learn-grid {
-            display: grid; grid-template-columns: 1fr; gap: 12px;
-        }
-        .learn-card {
-            background: var(--card); border-radius: 14px; padding: 16px 14px;
+        .quick-btn {
+            background: var(--card);
+            border-radius: 14px; padding: 14px;
             box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            display: flex; align-items: center; gap: 10px;
+            cursor: pointer; border: none; width: 100%;
+            text-align: left;
         }
-        .learn-word {
-            font-size: 20px; font-weight: 700; margin-bottom: 3px;
+        .quick-btn:active { opacity: 0.85; }
+        .quick-btn-icon {
+            width: 42px; height: 42px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; flex-shrink: 0;
         }
-        .learn-phon { font-size: 11px; color: var(--text-secondary); margin-bottom: 6px; }
-        .learn-zh { font-size: 14px; color: var(--text-secondary); margin-bottom: 6px; }
-        .learn-example {
-            font-size: 11px; color: var(--primary);
-            background: rgba(0,122,255,0.08);
-            padding: 5px 8px; border-radius: 5px;
-            display: inline-block;
+        .quick-btn-icon.warning { background: rgba(255,149,0,0.12); }
+        .quick-btn-icon.danger { background: rgba(255,59,48,0.12); }
+        .quick-btn-icon.primary { background: rgba(0,122,255,0.12); }
+        .quick-btn-text { flex: 1; }
+        .quick-btn-title { font-size: 14px; font-weight: 600; color: var(--text); }
+        .quick-btn-desc { font-size: 11px; color: var(--text-secondary); margin-top: 1px; }
+        .quick-btn-badge {
+            font-size: 11px; font-weight: 700;
+            padding: 2px 7px; border-radius: 10px;
         }
-        .learn-actions {
-            display: flex; gap: 6px; justify-content: flex-start;
-            align-items: center; margin-top: 10px; flex-wrap: wrap;
-        }
-        .learn-speak-btn { padding: 6px 12px; font-size: 12px; }
+        .quick-btn-badge.warning { background: rgba(255,149,0,0.15); color: var(--warning); }
+        .quick-btn-badge.danger { background: rgba(255,59,48,0.15); color: var(--danger); }
 
-        .learn-complete {
-            background: var(--card); border-radius: 16px; padding: 40px 24px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center;
+        /* Section titles */
+        .section-title {
+            font-size: 14px; font-weight: 600; margin-bottom: 8px; margin-top: 16px;
         }
-        .complete-title { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
-        .complete-sub { font-size: 14px; color: var(--text-secondary); }
-        .complete-hint { font-size: 13px; color: var(--text-secondary); margin-top: 10px; }
-
-        .study-header { margin-bottom: 16px; }
-        .study-progress {
-            display: flex; align-items: center;
-            font-size: 13px; color: var(--text-secondary);
-        }
-        .study-score { font-size: 13px; font-weight: 600; }
-        .error-badge {
-            display: inline-block; margin-top: 6px;
-            background: rgba(255,59,48,0.1); color: var(--danger);
-            font-size: 11px; padding: 3px 10px; border-radius: 10px;
-        }
-
-        .study-card {
-            background: var(--card); border-radius: 16px; padding: 24px 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center;
-        }
-        .study-prompt {
-            font-size: 22px; font-weight: 700; margin-bottom: 10px;
-        }
-        .study-example {
-            font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;
-        }
-        .study-input {
-            width: 100%; padding: 14px; border-radius: 10px;
-            border: 2px solid #E5E5EA; font-size: 20px; text-align: center;
-            outline: none; margin-bottom: 6px;
-        }
-        .study-input:focus { border-color: var(--primary); }
-        .study-hint { font-size: 12px; color: var(--text-secondary); margin-bottom: 14px; }
-        .study-speak-row { display: flex; gap: 8px; justify-content: center; margin-top: 10px; }
-        .study-speak { padding: 8px 16px; font-size: 14px; }
-
-        .study-result {
-            background: var(--card); border-radius: 16px; padding: 28px 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center;
-        }
-        .study-result.correct { border-top: 4px solid var(--success); }
-        .study-result.wrong { border-top: 4px solid var(--danger); }
-        .result-icon { font-size: 48px; margin-bottom: 8px; }
-        .result-word { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
-        .result-phon { font-size: 14px; color: var(--text-secondary); margin-bottom: 8px; }
-        .result-wrong-msg { font-size: 13px; color: var(--danger); margin-top: 6px; }
-        .result-correct-msg { font-size: 13px; color: var(--success); margin-top: 4px; }
-        .result-example { font-size: 13px; color: var(--primary); margin-top: 8px; }
-
-        .study-complete {
-            background: var(--card); border-radius: 16px; padding: 32px 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center;
-        }
-        .complete-score { font-size: 52px; font-weight: 700; color: var(--primary); }
-        .complete-pct { font-size: 16px; color: var(--text-secondary); margin-top: 6px; }
-        .complete-msg { font-size: 18px; font-weight: 600; margin-top: 8px; }
 
         /* Category tabs */
-        .section-title {
-            font-size: 14px; font-weight: 600; margin-bottom: 8px;
-        }
         .category-tabs {
             display: flex; gap: 6px; overflow-x: auto;
             padding-bottom: 10px; margin-bottom: 12px;
@@ -204,16 +162,13 @@
         }
         .word-phon { font-size: 11px; color: var(--text-secondary); font-weight: normal; }
         .mastered-badge { font-size: 11px; color: var(--success); font-weight: normal; margin-left: 2px; }
-        .error-dot { font-size: 10px; color: var(--danger); margin-left: 2px; }
         .word-zh { font-size: 13px; color: var(--text-secondary); }
         .word-example {
             font-size: 11px; color: var(--primary);
             background: rgba(0,122,255,0.08); padding: 4px 7px;
             border-radius: 4px; margin-top: 4px; display: inline-block;
         }
-        .word-review-info {
-            font-size: 10px; color: var(--text-secondary); margin-top: 2px;
-        }
+        .word-review-info { font-size: 10px; color: var(--text-secondary); margin-top: 2px; }
 
         .card-actions { display: flex; flex-direction: column; gap: 5px; align-items: center; }
         .icon-btn {
@@ -243,6 +198,7 @@
         .btn-primary { background: var(--primary); color: white; }
         .btn-secondary { background: #E5E5EA; color: var(--text); }
         .btn-warning { background: var(--warning); color: white; }
+        .btn-danger { background: var(--danger); color: white; }
 
         .progress-bar {
             height: 4px; background: #E5E5EA; border-radius: 2px; overflow: hidden;
@@ -256,7 +212,7 @@
         }
         .modal.show { display: flex; }
         .modal-content {
-            background: var(--card); width: 100%; max-height: 80vh;
+            background: var(--card); width: 100%; max-height: 85vh;
             border-radius: 18px 18px 0 0; padding: 20px; overflow-y: auto;
         }
         .modal-header {
@@ -268,12 +224,140 @@
             background: #E5E5EA; border: none; font-size: 16px; cursor: pointer;
         }
 
-        /* Progress circle */
-        .stat-card svg { display: block; margin: 0 auto; }
+        /* Word bank modal */
+        .bank-modal-header {
+            display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
+        }
+        .bank-modal-icon {
+            width: 44px; height: 44px; border-radius: 12px;
+            background: rgba(255,149,0,0.12); display: flex;
+            align-items: center; justify-content: center; font-size: 22px;
+        }
+        .bank-modal-title { font-size: 18px; font-weight: 700; }
+        .bank-modal-count { font-size: 12px; color: var(--text-secondary); margin-top: 1px; }
+        .bank-modal-stats {
+            display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;
+            background: var(--bg); border-radius: 12px; padding: 12px;
+            margin-bottom: 14px;
+        }
+        .bank-stat { text-align: center; }
+        .bank-stat-num { font-size: 20px; font-weight: 700; color: var(--primary); }
+        .bank-stat-lbl { font-size: 10px; color: var(--text-secondary); }
+
+        /* Error book modal */
+        .error-modal-header {
+            display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
+        }
+        .error-modal-icon {
+            width: 44px; height: 44px; border-radius: 12px;
+            background: rgba(255,59,48,0.12); display: flex;
+            align-items: center; justify-content: center; font-size: 22px;
+        }
+
+        /* Modal word cards (for word bank) */
+        .modal-card {
+            background: var(--card); border-radius: 14px;
+            padding: 14px; margin-bottom: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .modal-card-top {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            margin-bottom: 4px;
+        }
+        .modal-card-en { font-size: 17px; font-weight: 700; }
+        .modal-card-phon { font-size: 11px; color: var(--text-secondary); margin-top: 1px; }
+        .modal-card-zh { font-size: 13px; color: var(--text-secondary); margin-bottom: 4px; }
+        .modal-card-example {
+            font-size: 11px; color: var(--primary);
+            background: rgba(0,122,255,0.07); padding: 5px 9px;
+            border-radius: 6px; display: inline-block; margin-bottom: 6px;
+        }
+        .modal-card-actions {
+            display: flex; gap: 6px; align-items: center;
+            border-top: 1px solid rgba(0,0,0,0.05); padding-top: 8px; margin-top: 4px;
+        }
+        .modal-card-actions .icon-btn { width: 36px; height: 36px; }
+        .modal-card-remove {
+            margin-left: auto; font-size: 12px; color: var(--danger);
+            background: rgba(255,59,48,0.1); border: none;
+            padding: 5px 10px; border-radius: 6px; cursor: pointer;
+        }
+
+        /* Practice/learn cards */
+        .learn-header {
+            display: flex; align-items: center;
+            font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;
+        }
+        .learn-grid {
+            display: grid; grid-template-columns: 1fr; gap: 12px;
+        }
+        .learn-card {
+            background: var(--card); border-radius: 14px; padding: 18px 16px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        }
+        .learn-word { font-size: 22px; font-weight: 700; margin-bottom: 3px; }
+        .learn-phon { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
+        .learn-zh { font-size: 16px; color: var(--text-secondary); margin-bottom: 8px; }
+        .learn-example {
+            font-size: 12px; color: var(--primary);
+            background: rgba(0,122,255,0.08); padding: 6px 10px; border-radius: 6px;
+            display: inline-block; margin-bottom: 8px;
+        }
+        .learn-actions {
+            display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+        }
+
+        .study-card {
+            background: var(--card); border-radius: 16px; padding: 24px 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center;
+        }
+        .study-prompt { font-size: 24px; font-weight: 700; margin-bottom: 10px; }
+        .study-example { font-size: 13px; color: var(--text-secondary); margin-bottom: 16px; }
+        .study-input {
+            width: 100%; padding: 14px; border-radius: 10px;
+            border: 2px solid #E5E5EA; font-size: 20px; text-align: center;
+            outline: none; margin-bottom: 6px;
+        }
+        .study-input:focus { border-color: var(--primary); }
+        .study-speak { display: flex; gap: 8px; justify-content: center; margin-top: 10px; }
+
+        .study-result {
+            background: var(--card); border-radius: 16px; padding: 28px 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center;
+        }
+        .study-result.correct { border-top: 4px solid var(--success); }
+        .study-result.wrong { border-top: 4px solid var(--danger); }
+        .result-icon { font-size: 48px; margin-bottom: 8px; }
+        .result-word { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+        .result-phon { font-size: 14px; color: var(--text-secondary); margin-bottom: 8px; }
+        .result-wrong-msg { font-size: 13px; color: var(--danger); margin-top: 6px; }
+        .result-correct-msg { font-size: 13px; color: var(--success); margin-top: 4px; }
+        .result-example { font-size: 13px; color: var(--primary); margin-top: 8px; }
+
+        .learn-complete, .study-complete {
+            background: var(--card); border-radius: 16px; padding: 40px 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center;
+        }
+        .complete-title { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+        .complete-sub { font-size: 14px; color: var(--text-secondary); }
+        .complete-score { font-size: 52px; font-weight: 700; color: var(--primary); }
+        .complete-pct { font-size: 16px; color: var(--text-secondary); margin-top: 6px; }
+        .complete-msg { font-size: 18px; font-weight: 600; margin-top: 8px; }
+
+        .study-header { margin-bottom: 16px; }
+        .study-progress {
+            display: flex; align-items: center; font-size: 13px; color: var(--text-secondary);
+        }
+        .study-score { font-size: 13px; font-weight: 600; }
+        .error-badge {
+            display: inline-block; margin-top: 6px;
+            background: rgba(255,59,48,0.1); color: var(--danger);
+            font-size: 11px; padding: 3px 10px; border-radius: 10px;
+        }
 
         @media (min-width: 600px) {
             .card-grid { grid-template-columns: repeat(2, 1fr); }
-            .stats { max-width: 480px; margin: 0 auto 12px; }
         }
     </style>
 </head>
@@ -289,22 +373,7 @@
         </div>
     </div>
 
-    <div class="stats">
-        <div class="stat-card"><div class="stat-value" id="totalCount">-</div><div class="stat-label">总词汇</div></div>
-        <div class="stat-card"><div class="stat-value" id="learnedCount">-</div><div class="stat-label">已掌握</div></div>
-        <div class="stat-card"><div class="stat-value" id="bankCount">-</div><div class="stat-label">生词本</div></div>
-        <div class="stat-card">
-            <svg viewBox="0 0 36 36" style="width:34px;height:34px">
-                <circle cx="18" cy="18" r="15.9" fill="none" stroke="#E5E5EA" stroke-width="3"/>
-                <circle id="progressCircle" cx="18" cy="18" r="15.9" fill="none" stroke="var(--primary)" stroke-width="3"
-                    stroke-dasharray="100" stroke-dashoffset="100" stroke-linecap="round"
-                    transform="rotate(-90 18 18)"/>
-            </svg>
-            <div class="stat-label" id="progressText">0%</div>
-        </div>
-    </div>
-
-    <div id="wordList"></div>
+    <div id="app"></div>
 
     <div class="bottom-bar" id="bottomBar">
         <button class="btn btn-warning" onclick="showErrorBook()">错词本</button>
@@ -319,6 +388,17 @@
                 <button class="modal-close" onclick="closeErrorBook()">×</button>
             </div>
             <div id="errorBody"></div>
+        </div>
+    </div>
+
+    <!-- Word Bank Modal -->
+    <div class="modal" id="bankModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">生词本</span>
+                <button class="modal-close" onclick="closeBankBook()">×</button>
+            </div>
+            <div id="bankBody"></div>
         </div>
     </div>
 
