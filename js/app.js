@@ -10,6 +10,7 @@ let learnIndex = 0;
 let sessionStats = { correct: 0, wrong: 0 };
 let currentView = 'idle';
 let currentBrowseCategory = 'all';
+let learnedSessionQueue = []; // words browsed in current learn session
 
 // ========================
 // INIT
@@ -80,20 +81,34 @@ function updateBottomBar(view) {
         mainBtn.style.display = '';
         mainBtn.onclick = startLearnMode;
     } else if (view === 'learn') {
-        mainBtn.style.display = 'none';
+        mainBtn.textContent = '退出';
+        mainBtn.className = 'btn btn-secondary';
+        mainBtn.style.display = '';
+        mainBtn.onclick = exitToHome;
     } else if (view === 'learn-complete') {
         mainBtn.textContent = '开始练习';
         mainBtn.className = 'btn btn-primary';
         mainBtn.style.display = '';
         mainBtn.onclick = startPracticeMode;
     } else if (view === 'practice') {
-        mainBtn.style.display = 'none';
+        mainBtn.textContent = '退出';
+        mainBtn.className = 'btn btn-secondary';
+        mainBtn.style.display = '';
+        mainBtn.onclick = exitToHome;
     } else if (view === 'practice-complete') {
         mainBtn.textContent = '再练一轮';
         mainBtn.className = 'btn btn-primary';
         mainBtn.style.display = '';
-        mainBtn.onclick = () => { buildStudyQueue(); startPracticeMode(); };
+        mainBtn.onclick = () => { learnedSessionQueue = []; buildStudyQueue(); startPracticeMode(); };
     }
+}
+
+function exitToHome() {
+    learnedSessionQueue = [];
+    learnIndex = 0;
+    sessionStats = { correct: 0, wrong: 0 };
+    showHome();
+    updateBottomBar('idle');
 }
 
 // ========================
@@ -363,6 +378,7 @@ function startLearnMode() {
         buildStudyQueue();
     }
     learnIndex = 0;
+    learnedSessionQueue = [];
     sessionStats = { correct: 0, wrong: 0 };
 
     // 如果队列中没有新词（只有复习词），直接进入练习
@@ -441,22 +457,38 @@ function showLearnCards() {
 }
 
 window.nextLearnCards = function() {
+    // Track words just browsed in this learn step
+    const w1 = studyQueue[learnIndex];
+    const w2 = studyQueue[learnIndex + 1];
+    if (w1 && !learnedSessionQueue.find(q => q.en === w1.en)) {
+        learnedSessionQueue.push(w1);
+    }
+    if (w2 && !learnedSessionQueue.find(q => q.en === w2.en)) {
+        learnedSessionQueue.push(w2);
+    }
     learnIndex += 2;
     showLearnCards();
 };
 
 function showLearnComplete() {
+    // Track any remaining words not yet added
+    for (let i = learnIndex; i < studyQueue.length; i++) {
+        const w = studyQueue[i];
+        if (!learnedSessionQueue.find(q => q.en === w.en)) {
+            learnedSessionQueue.push(w);
+        }
+    }
     currentView = 'learn-complete';
     const app = document.getElementById('app');
     app.innerHTML = `
         <div class="learn-complete" style="margin-top:20px">
             <div style="font-size:48px;margin-bottom:8px">📖</div>
             <div class="complete-title">学习完毕</div>
-            <div class="complete-sub">已浏览 ${Math.min(learnIndex + 2, studyQueue.length)} 个词汇</div>
+            <div class="complete-sub">已浏览 ${learnedSessionQueue.length} 个词汇</div>
             <button class="btn btn-primary" style="margin-top:20px;width:100%;padding:14px;font-size:16px" onclick="startPracticeMode()">开始拼写练习 →</button>
         </div>
     `;
-    updateBottomBar('practice');
+    updateBottomBar('learn-complete');
 }
 
 // ========================
@@ -466,6 +498,11 @@ function startPracticeMode() {
     learnIndex = 0;
     sessionStats = { correct: 0, wrong: 0 };
     currentView = 'practice';
+    // If learned session queue has words, practice only those; otherwise practice full queue
+    if (learnedSessionQueue.length > 0) {
+        studyQueue = learnedSessionQueue.slice();
+        learnedSessionQueue = [];
+    }
     showPracticeCard();
 }
 
@@ -578,6 +615,7 @@ function showPracticeComplete() {
         </div>
     `;
 
+    learnedSessionQueue = [];
     buildStudyQueue();
     updateBottomBar('practice-complete');
 }
