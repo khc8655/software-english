@@ -4,17 +4,15 @@
  */
 const Storage = {
     PREFIX: 'se_',
-    
-    // Keys
+
     KEYS: {
         LEARNED: 'learned',
+        WORDBANK: 'wordbank',
         TODAY_WORDS: 'todayWords',
         TODAY_DATE: 'todayDate',
         THEME: 'theme',
         HISTORY: 'history',
         STREAK: 'streak',
-        LAST_STUDY: 'lastStudy',
-        TOTAL_REVIEWS: 'totalReviews',
         WORDS_VERSION: 'wordsVersion'
     },
 
@@ -34,7 +32,7 @@ const Storage = {
         localStorage.setItem(this.PREFIX + key, value);
     },
 
-    // Learning progress
+    // === Learned words ===
     getLearned() {
         return JSON.parse(this.get(this.KEYS.LEARNED) || '[]');
     },
@@ -43,6 +41,7 @@ const Storage = {
         this.set(this.KEYS.LEARNED, learned);
     },
 
+    // Called only when quiz/spell answered correctly
     markWordLearned(wordEn) {
         const learned = this.getLearned();
         if (!learned.includes(wordEn)) {
@@ -63,7 +62,39 @@ const Storage = {
         return learned;
     },
 
-    // Today's words
+    // === Word bank (生词本) ===
+    getWordBank() {
+        return JSON.parse(this.get(this.KEYS.WORDBANK) || '[]');
+    },
+
+    setWordBank(bank) {
+        this.set(this.KEYS.WORDBANK, bank);
+    },
+
+    addToBank(wordEn) {
+        const bank = this.getWordBank();
+        if (!bank.includes(wordEn)) {
+            bank.push(wordEn);
+            this.setWordBank(bank);
+        }
+        return bank;
+    },
+
+    removeFromBank(wordEn) {
+        const bank = this.getWordBank();
+        const idx = bank.indexOf(wordEn);
+        if (idx > -1) {
+            bank.splice(idx, 1);
+            this.setWordBank(bank);
+        }
+        return bank;
+    },
+
+    isInBank(wordEn) {
+        return this.getWordBank().includes(wordEn);
+    },
+
+    // === Today's words ===
     getTodayWords() {
         return JSON.parse(this.get(this.KEYS.TODAY_WORDS) || '[]');
     },
@@ -77,7 +108,7 @@ const Storage = {
         return this.getRaw(this.KEYS.TODAY_DATE) === new Date().toDateString();
     },
 
-    // Theme
+    // === Theme ===
     getTheme() {
         return this.getRaw(this.KEYS.THEME) || 'blue';
     },
@@ -86,7 +117,7 @@ const Storage = {
         this.setRaw(this.KEYS.THEME, theme);
     },
 
-    // History - stores learning events
+    // === History ===
     getHistory() {
         return JSON.parse(this.get(this.KEYS.HISTORY) || '{"learned":[],"reviewed":[]}');
     },
@@ -100,7 +131,6 @@ const Storage = {
             date: new Date().toISOString().split('T')[0]
         };
         history.learned.push(entry);
-        // Keep last 1000 entries
         if (history.learned.length > 1000) {
             history.learned = history.learned.slice(-1000);
         }
@@ -121,7 +151,7 @@ const Storage = {
         this.set(this.KEYS.HISTORY, history);
     },
 
-    // Streak tracking
+    // === Streak ===
     getStreak() {
         return JSON.parse(this.get(this.KEYS.STREAK) || '{"count":0,"lastDate":null}');
     },
@@ -132,14 +162,11 @@ const Storage = {
         const yesterday = new Date(Date.now() - 86400000).toDateString();
 
         if (streak.lastDate === today) {
-            // Already studied today
             return streak;
         } else if (streak.lastDate === yesterday) {
-            // Continuing streak
             streak.count++;
             streak.lastDate = today;
         } else {
-            // Streak broken or first time
             streak.count = 1;
             streak.lastDate = today;
         }
@@ -147,21 +174,23 @@ const Storage = {
         return streak;
     },
 
-    // Stats
+    // === Stats ===
     getStats() {
         const learned = this.getLearned();
         const streak = this.getStreak();
         const history = this.getHistory();
-        
+        const bank = this.getWordBank();
+
         return {
             totalLearned: learned.length,
             currentStreak: streak.count,
             totalReviews: history.reviewed.length,
-            lastStudy: streak.lastDate
+            lastStudy: streak.lastDate,
+            bankCount: bank.length
         };
     },
 
-    // Words version tracking
+    // === Words version ===
     getWordsVersion() {
         return this.getRaw(this.KEYS.WORDS_VERSION) || null;
     },
@@ -170,7 +199,7 @@ const Storage = {
         this.setRaw(this.KEYS.WORDS_VERSION, version);
     },
 
-    // Clear all data (for testing)
+    // === Clear all ===
     clearAll() {
         Object.values(this.KEYS).forEach(key => {
             localStorage.removeItem(this.PREFIX + key);
