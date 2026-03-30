@@ -27,6 +27,7 @@ async function init() {
     updateStats();
     loadTheme();
     updateBottomBar('idle');
+    Storage.recordActivity();
 }
 
 function buildStudyQueue() {
@@ -119,25 +120,22 @@ function showHome() {
     const hasReview = stats.dueCount + stats.errorCount > 0;
 
     list.innerHTML = `
-        <div class="home-stats">
-            <div class="home-stat-item">
-                <div class="home-stat-num" style="color:var(--success)">${stats.mastered}</div>
-                <div class="home-stat-lbl">已掌握</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+            <div style="background:var(--card);border-radius:14px;padding:16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,0.08)">
+                <div style="font-size:28px;font-weight:700;color:var(--primary)">${stats.learnDays}</div>
+                <div style="font-size:12px;color:var(--text-secondary);margin-top:2px">学习天数</div>
             </div>
-            <div class="home-stat-divider"></div>
-            <div class="home-stat-item">
-                <div class="home-stat-num" style="color:var(--danger)">${stats.errorCount}</div>
-                <div class="home-stat-lbl">错词</div>
+            <div style="background:var(--card);border-radius:14px;padding:16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,0.08)">
+                <div style="font-size:28px;font-weight:700;color:var(--success)">${stats.mastered}</div>
+                <div style="font-size:12px;color:var(--text-secondary);margin-top:2px">已掌握</div>
             </div>
-            <div class="home-stat-divider"></div>
-            <div class="home-stat-item">
-                <div class="home-stat-num">${stats.bankCount}</div>
-                <div class="home-stat-lbl">生词本</div>
+            <div style="background:var(--card);border-radius:14px;padding:16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,0.08)">
+                <div style="font-size:28px;font-weight:700;color:var(--danger)">${stats.errorCount}</div>
+                <div style="font-size:12px;color:var(--text-secondary);margin-top:2px">错词数</div>
             </div>
-            <div class="home-stat-divider"></div>
-            <div class="home-stat-item">
-                <div class="home-stat-num" style="color:var(--primary)">${hasReview ? stats.dueCount + stats.errorCount : '0'}</div>
-                <div class="home-stat-lbl">${hasReview ? '待复习' : '无待复习'}</div>
+            <div style="background:var(--card);border-radius:14px;padding:16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,0.08)">
+                <div style="font-size:28px;font-weight:700;color:var(--warning)">${stats.bankCount}</div>
+                <div style="font-size:12px;color:var(--text-secondary);margin-top:2px">生词本</div>
             </div>
         </div>
 
@@ -188,20 +186,20 @@ function showLearnCards() {
     const word2 = left >= 2 ? studyQueue[learnIndex + 1] : null;
 
     const renderCard = (w, idx) => {
-        if (!w) return '<div></div>';
+        if (!w) return '';
         const isError = Storage.getErrorBook().includes(w.en);
         return `
-        <div class="learn-card">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">
-                <div class="learn-word">${w.en}</div>
-                ${isError ? '<span style="font-size:10px;color:var(--danger)">错</span>' : ''}
+        <div class="learn-card" style="padding:20px 18px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+                <div class="learn-word" style="font-size:26px">${w.en}</div>
+                ${isError ? '<span style="font-size:11px;color:var(--danger);background:rgba(255,59,48,0.1);padding:2px 8px;border-radius:8px">错</span>' : ''}
             </div>
-            ${w.phon ? `<div class="learn-phon">${w.phon}</div>` : ''}
-            <div class="learn-zh">${w.zh}</div>
-            ${w.example ? `<div class="learn-example">${w.example}</div>` : ''}
-            <div class="learn-actions">
-                <button class="btn btn-primary learn-speak-btn" onclick="speak('${w.en.replace(/'/g, "\\'")}')">🔊 听</button>
-                <button class="icon-btn bank-btn ${Storage.isInBank(w.en) ? 'active' : ''}" onclick="toggleBankFromLearn('${w.en.replace(/'/g, "\\'")}')">${Storage.isInBank(w.en) ? '★' : '☆'}</button>
+            ${w.phon ? `<div class="learn-phon" style="font-size:13px;margin-bottom:4px">${w.phon}</div>` : ''}
+            <div class="learn-zh" style="font-size:18px;margin-bottom:8px">${w.zh}</div>
+            ${w.example ? `<div class="learn-example" style="font-size:13px;padding:8px 12px">${w.example}</div>` : ''}
+            <div class="learn-actions" style="margin-top:14px">
+                <button class="btn btn-primary learn-speak-btn" onclick="speak('${w.en.replace(/'/g, "\\'")}')" style="padding:10px 20px;font-size:15px">🔊 发音</button>
+                <button class="icon-btn bank-btn ${Storage.isInBank(w.en) ? 'active' : ''}" onclick="toggleBankFromLearn('${w.en.replace(/'/g, "\\'")}')" style="width:40px;height:40px;font-size:17px">${Storage.isInBank(w.en) ? '★' : '☆'}</button>
             </div>
         </div>`;
     };
@@ -219,13 +217,11 @@ function showLearnCards() {
         </div>
         <div style="display:flex;gap:8px;margin-top:12px">
             <button class="btn btn-secondary" style="flex:1" onclick="showLearnComplete()">跳过 → 练习</button>
-            <button class="btn btn-primary" style="flex:1" onclick="nextLearnCards()">记住了 ${left >= 2 ? '→ 2张' : '→'}</button>
+            <button class="btn btn-primary" style="flex:1" onclick="nextLearnCards()">记住了 →</button>
         </div>
     `;
 
     updateBottomBar('learn');
-    // Auto play first word
-    setTimeout(() => speak(word1.en), 300);
 }
 
 window.toggleBankFromLearn = function(wordEn) {
@@ -542,25 +538,50 @@ function showErrorBook() {
     const errors = Storage.getErrorBookWords(WORDS);
 
     if (errors.length === 0) {
-        body.innerHTML = '<div class="empty-state">错词本为空</div>';
-    } else {
         body.innerHTML = `
-            <div style="margin-bottom:12px;color:var(--text-secondary);font-size:13px">共 ${errors.length} 个错词</div>
-            <div class="card-grid">
-                ${errors.map(w => `
-                    <div class="word-card in-error">
-                        <div class="word-main">
-                            <div class="word-en"><span>${w.en}</span>${w.phon ? `<span class="word-phon">${w.phon}</span>` : ''}</div>
-                            <div class="word-zh">${w.zh}</div>
+            <div style="text-align:center;padding:40px 20px">
+                <div style="font-size:56px;margin-bottom:12px">🎉</div>
+                <div style="font-size:18px;font-weight:600;margin-bottom:6px">错词本很干净</div>
+                <div style="font-size:13px;color:var(--text-secondary)">继续保持，全部掌握指日可待</div>
+            </div>`;
+    } else {
+        const errorCards = errors.map(w => {
+            const review = Storage.getReview(w.en);
+            const reps = review ? review.reps : 0;
+            const interval = review ? review.interval : 0;
+            const inBank = Storage.isInBank(w.en);
+            return `
+                <div style="background:var(--card);border-radius:16px;padding:18px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,0.07);border-left:4px solid var(--danger)">
+                    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">
+                        <div>
+                            <div style="font-size:22px;font-weight:700;margin-bottom:2px">${w.en}</div>
+                            ${w.phon ? `<div style="font-size:12px;color:var(--text-secondary)">${w.phon}</div>` : ''}
                         </div>
-                        <div class="card-actions">
-                            <button class="icon-btn speak-btn" onclick="speak('${w.en.replace(/'/g, "\\'")}')">🔊</button>
-                            <button class="icon-btn bank-btn ${Storage.isInBank(w.en) ? 'active' : ''}" onclick="toggleBank('${w.en.replace(/'/g, "\\'")}', event)">${Storage.isInBank(w.en) ? '★' : '☆'}</button>
+                        <div style="display:flex;gap:6px;align-items:center">
+                            ${inBank ? '<span style="font-size:11px;color:var(--warning)">★</span>' : ''}
+                            <button class="icon-btn speak-btn" onclick="speak('${w.en.replace(/'/g, "\\'")}')" style="width:36px;height:36px">🔊</button>
+                            <button class="icon-btn bank-btn ${inBank ? 'active' : ''}" onclick="toggleBank('${w.en.replace(/'/g, "\\'")}', event)" style="width:36px;height:36px">${inBank ? '★' : '☆'}</button>
                         </div>
                     </div>
-                `).join('')}
+                    <div style="font-size:15px;color:var(--text-secondary);margin-bottom:6px">${w.zh}</div>
+                    ${w.example ? `<div style="font-size:12px;color:var(--primary);background:rgba(0,122,255,0.07);padding:6px 10px;border-radius:8px;margin-bottom:6px">${w.example}</div>` : ''}
+                    <div style="font-size:11px;color:var(--text-secondary)">复习 ${reps} 次 · 间隔 ${interval} 天</div>
+                </div>`;
+        }).join('');
+
+        body.innerHTML = `
+            <div style="background:linear-gradient(135deg,rgba(255,59,48,0.08),rgba(255,59,48,0.03));border-radius:14px;padding:14px 16px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center">
+                <div>
+                    <div style="font-size:15px;font-weight:600;color:var(--danger)">错词本</div>
+                    <div style="font-size:12px;color:var(--text-secondary);margin-top:1px">这些词还需继续练习</div>
+                </div>
+                <div style="text-align:center">
+                    <div style="font-size:28px;font-weight:700;color:var(--danger)">${errors.length}</div>
+                    <div style="font-size:11px;color:var(--text-secondary)">个错词</div>
+                </div>
             </div>
-            <button class="btn btn-primary" style="margin-top:16px;width:100%" onclick="closeErrorBook();buildStudyQueue();startPracticeMode()">用练习复习</button>
+            ${errorCards}
+            <button class="btn btn-primary" style="margin-top:8px;width:100%;padding:14px;font-size:16px" onclick="closeErrorBook();buildStudyQueue();startPracticeMode()">用练习复习</button>
         `;
     }
 

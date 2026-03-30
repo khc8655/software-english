@@ -19,7 +19,10 @@ const Storage = {
         TODAY_WORDS: 'todayWords',
         TODAY_DATE: 'todayDate',
         THEME: 'theme',
-        WORDS_VERSION: 'wordsVersion'
+        WORDS_VERSION: 'wordsVersion',
+        // Learning streak
+        STREAK_DATES: 'streakDates',
+        LAST_ACTIVE: 'lastActive'
     },
 
     get(key) {
@@ -295,6 +298,33 @@ const Storage = {
         this.setRaw(this.KEYS.THEME, theme);
     },
 
+    // ===== Learning Streak =====
+    _getStreakDates() {
+        return JSON.parse(this.get(this.KEYS.STREAK_DATES) || '[]');
+    },
+
+    _setStreakDates(dates) {
+        this.set(this.KEYS.STREAK_DATES, dates);
+    },
+
+    recordActivity() {
+        const today = new Date().toDateString();
+        const dates = this._getStreakDates();
+        if (!dates.includes(today)) {
+            dates.push(today);
+            this._setStreakDates(dates);
+        }
+        this.setRaw(this.KEYS.LAST_ACTIVE, today);
+    },
+
+    getLearnDays() {
+        return this._getStreakDates().length;
+    },
+
+    getTotalErrorCount() {
+        return this._getErrorBook().length;
+    },
+
     // ===== Stats =====
     getStats(allWords) {
         const data = this._getReviewData();
@@ -312,7 +342,8 @@ const Storage = {
             bankCount: bank.length,
             errorCount: errorBook.length,
             dueCount: dueWords,
-            newWordToday: this.getNewWordCountToday()
+            newWordToday: this.getNewWordCountToday(),
+            learnDays: this.getLearnDays()
         };
     },
 
