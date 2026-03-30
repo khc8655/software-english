@@ -165,28 +165,24 @@ function loadTheme() {
 
 // Text-to-speech
 function speak(text) {
-    // Try Web Speech API first
-    if (window.speechSynthesis && window.speechSynthesis.getVoices().length > 0) {
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'en-US';
-        utterance.rate = 0.9;
-        
-        const voices = window.speechSynthesis.getVoices();
-        const enVoice = voices.find(v => v.lang.includes('en') && v.lang.includes('US')) 
-                     || voices.find(v => v.lang.includes('en'));
-        if (enVoice) utterance.voice = enVoice;
-        
-        window.speechSynthesis.speak(utterance);
-        return;
-    }
-    
-    // Fallback: Use Google Translate TTS via audio
-    const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=en&client=tw-ob`;
+    // Primary: Youdao TTS (free, works on mobile)
+    const audioUrl = `https://dict.youdao.com/dictvoice?type=1&word=${encodeURIComponent(text)}`;
     const audio = new Audio(audioUrl);
     audio.play().catch(() => {
-        // If all fails, show tooltip
-        showToast('发音不可用，请使用系统浏览器');
+        // Fallback: try Web Speech API
+        if (window.speechSynthesis) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.9;
+            const voices = window.speechSynthesis.getVoices();
+            const enVoice = voices.find(v => v.lang.includes('en') && v.lang.includes('US'))
+                         || voices.find(v => v.lang.includes('en'));
+            if (enVoice) utterance.voice = enVoice;
+            window.speechSynthesis.speak(utterance);
+        } else {
+            showToast('发音不可用');
+        }
     });
 }
 
