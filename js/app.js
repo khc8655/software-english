@@ -46,14 +46,17 @@ function buildStudyQueue() {
     const dues = reviewPool.filter(w => !Storage.getErrorBook().includes(w.en));
     studyQueue = shuffleArray([...errors, ...shuffleArray([...dues])]);
 
-    const newToday = Storage.getNewWordCountToday();
-    const newWordsAllowed = Math.max(0, 10 - newToday);
-    if (newWordsAllowed > 0) {
-        const newPool = WORDS.filter(w => {
-            if (!data[w.en] && !studyQueue.find(q => q.en === w.en)) return true;
-            return false;
-        });
-        studyQueue.push(...shuffleArray([...newPool]).slice(0, newWordsAllowed));
+    // Only add new words when error book is empty — focus on errors first
+    if (Storage.getErrorBook().length === 0) {
+        const newToday = Storage.getNewWordCountToday();
+        const newWordsAllowed = Math.max(0, 10 - newToday);
+        if (newWordsAllowed > 0) {
+            const newPool = WORDS.filter(w => {
+                if (!data[w.en] && !studyQueue.find(q => q.en === w.en)) return true;
+                return false;
+            });
+            studyQueue.push(...shuffleArray([...newPool]).slice(0, newWordsAllowed));
+        }
     }
 
     learnIndex = 0;
