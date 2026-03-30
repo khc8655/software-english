@@ -235,6 +235,26 @@ function showLearnCards() {
     updateBottomBar('learn');
 }
 
+window.toggleBankClickError = function(en) {
+    if (Storage.isInBank(en)) {
+        Storage.removeFromBank(en);
+    } else {
+        Storage.addToBank(en);
+    }
+    showErrorBook();
+    updateStats();
+};
+
+window.toggleBankClick = function(en) {
+    if (Storage.isInBank(en)) {
+        Storage.removeFromBank(en);
+    } else {
+        Storage.addToBank(en);
+    }
+    renderBrowseWords();
+    updateStats();
+};
+
 window.toggleBankFromLearn = function(wordEn) {
     if (Storage.isInBank(wordEn)) {
         Storage.removeFromBank(wordEn);
@@ -468,7 +488,7 @@ function renderBrowseWords() {
             </div>
             <div class="card-actions">
                 <button class="icon-btn speak-btn" onclick="speak('${w.en.replace(/'/g, "\\'")}')">🔊</button>
-                <button class="icon-btn bank-btn ${inBank ? 'active' : ''}" onclick="(function(en){Storage.isInBank(en)?Storage.removeFromBank(en):Storage.addToBank(en);renderBrowseWords();updateStats();})('${w.en.replace(/'/g, "\\'")}')">${inBank ? '★' : '☆'}</button>
+                <button class="icon-btn bank-btn ${inBank ? 'active' : ''}" onclick="toggleBankClick('${w.en.replace(/'/g, "\\'")}')">${inBank ? '★' : '☆'}</button>
             </div>
         </div>
     `}).join('');
@@ -569,7 +589,7 @@ function showErrorBook() {
                         <div style="display:flex;gap:6px;align-items:center">
                             ${inBank ? '<span style="font-size:11px;color:var(--warning)">★</span>' : ''}
                             <button class="icon-btn speak-btn" onclick="speak('${w.en.replace(/'/g, "\\'")}')" style="width:36px;height:36px">🔊</button>
-                            <button class="icon-btn bank-btn ${inBank ? 'active' : ''}" onclick="(function(en){Storage.isInBank(en)?Storage.removeFromBank(en):Storage.addToBank(en);showErrorBook();updateStats();})('${w.en.replace(/'/g, "\\'")}')" style="width:36px;height:36px">${inBank ? '★' : '☆'}</button>
+                            <button class="icon-btn bank-btn ${inBank ? 'active' : ''}" onclick="toggleBankClickError('${w.en.replace(/'/g, "\\'")}')" style="width:36px;height:36px">${inBank ? '★' : '☆'}</button>
                         </div>
                     </div>
                     <div style="font-size:15px;color:var(--text-secondary);margin-bottom:6px">${w.zh}</div>
