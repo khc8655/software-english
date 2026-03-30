@@ -343,7 +343,8 @@ const Storage = {
             errorCount: errorBook.length,
             dueCount: dueWords,
             newWordToday: this.getNewWordCountToday(),
-            learnDays: this.getLearnDays()
+            learnDays: this.getLearnDays(),
+            totalReviews: Object.values(data).reduce((sum, r) => sum + (r.reps || 0), 0)
         };
     },
 

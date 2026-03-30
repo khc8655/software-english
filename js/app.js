@@ -109,7 +109,7 @@ function showHome() {
     const stats = Storage.getStats(WORDS);
 
     document.getElementById('totalCount').textContent = stats.totalWords;
-    document.getElementById('learnedCount').textContent = stats.mastered;
+    document.getElementById('learnedCount').textContent = stats.totalReviews;
     document.getElementById('bankCount').textContent = stats.bankCount;
     const pct = stats.totalWords > 0 ? Math.round(stats.mastered / stats.totalWords * 100) : 0;
     document.getElementById('progressText').textContent = pct + '%';
@@ -126,8 +126,8 @@ function showHome() {
                 <div style="font-size:12px;color:var(--text-secondary);margin-top:2px">学习天数</div>
             </div>
             <div style="background:var(--card);border-radius:14px;padding:16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,0.08)">
-                <div style="font-size:28px;font-weight:700;color:var(--success)">${stats.mastered}</div>
-                <div style="font-size:12px;color:var(--text-secondary);margin-top:2px">已掌握</div>
+                <div style="font-size:28px;font-weight:700;color:var(--success)">${stats.totalReviews}</div>
+                <div style="font-size:12px;color:var(--text-secondary);margin-top:2px">复习次数</div>
             </div>
             <div style="background:var(--card);border-radius:14px;padding:16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,0.08)">
                 <div style="font-size:28px;font-weight:700;color:var(--danger)">${stats.errorCount}</div>
@@ -185,24 +185,35 @@ function showLearnCards() {
     const word1 = studyQueue[learnIndex];
     const word2 = left >= 2 ? studyQueue[learnIndex + 1] : null;
 
-    const renderCard = (w, idx) => {
-        if (!w) return '';
-        const isError = Storage.getErrorBook().includes(w.en);
-        return `
+    const card1 = word1 ? `
         <div class="learn-card" style="padding:20px 18px">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
-                <div class="learn-word" style="font-size:26px">${w.en}</div>
-                ${isError ? '<span style="font-size:11px;color:var(--danger);background:rgba(255,59,48,0.1);padding:2px 8px;border-radius:8px">错</span>' : ''}
+                <div class="learn-word" style="font-size:26px">${word1.en}</div>
+                ${Storage.getErrorBook().includes(word1.en) ? '<span style="font-size:11px;color:var(--danger);background:rgba(255,59,48,0.1);padding:2px 8px;border-radius:8px">错</span>' : ''}
             </div>
-            ${w.phon ? `<div class="learn-phon" style="font-size:13px;margin-bottom:4px">${w.phon}</div>` : ''}
-            <div class="learn-zh" style="font-size:18px;margin-bottom:8px">${w.zh}</div>
-            ${w.example ? `<div class="learn-example" style="font-size:13px;padding:8px 12px">${w.example}</div>` : ''}
+            ${word1.phon ? `<div class="learn-phon" style="font-size:13px;margin-bottom:4px">${word1.phon}</div>` : ''}
+            <div class="learn-zh" style="font-size:18px;margin-bottom:8px">${word1.zh}</div>
+            ${word1.example ? `<div class="learn-example" style="font-size:13px;padding:8px 12px">${word1.example}</div>` : ''}
             <div class="learn-actions" style="margin-top:14px">
-                <button class="btn btn-primary learn-speak-btn" onclick="speak('${w.en.replace(/'/g, "\\'")}')" style="padding:10px 20px;font-size:15px">🔊 发音</button>
-                <button class="icon-btn bank-btn ${Storage.isInBank(w.en) ? 'active' : ''}" onclick="toggleBankFromLearn('${w.en.replace(/'/g, "\\'")}')" style="width:40px;height:40px;font-size:17px">${Storage.isInBank(w.en) ? '★' : '☆'}</button>
+                <button class="btn btn-primary" onclick="speak('${word1.en.replace(/'/g, "\\'")}')" style="padding:10px 20px;font-size:15px">🔊 发音</button>
+                <button class="icon-btn bank-btn" id="bank1" onclick="toggleBankFromLearn('${word1.en.replace(/'/g, "\\'")}')" style="width:40px;height:40px;font-size:17px">${Storage.isInBank(word1.en) ? '★' : '☆'}</button>
             </div>
-        </div>`;
-    };
+        </div>` : '';
+
+    const card2 = word2 ? `
+        <div class="learn-card" style="padding:20px 18px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+                <div class="learn-word" style="font-size:26px">${word2.en}</div>
+                ${Storage.getErrorBook().includes(word2.en) ? '<span style="font-size:11px;color:var(--danger);background:rgba(255,59,48,0.1);padding:2px 8px;border-radius:8px">错</span>' : ''}
+            </div>
+            ${word2.phon ? `<div class="learn-phon" style="font-size:13px;margin-bottom:4px">${word2.phon}</div>` : ''}
+            <div class="learn-zh" style="font-size:18px;margin-bottom:8px">${word2.zh}</div>
+            ${word2.example ? `<div class="learn-example" style="font-size:13px;padding:8px 12px">${word2.example}</div>` : ''}
+            <div class="learn-actions" style="margin-top:14px">
+                <button class="btn btn-primary" onclick="speak('${word2.en.replace(/'/g, "\\'")}')" style="padding:10px 20px;font-size:15px">🔊 发音</button>
+                <button class="icon-btn bank-btn" id="bank2" onclick="toggleBankFromLearn('${word2.en.replace(/'/g, "\\'")}')" style="width:40px;height:40px;font-size:17px">${Storage.isInBank(word2.en) ? '★' : '☆'}</button>
+            </div>
+        </div>` : '';
 
     list.innerHTML = `
         <div class="learn-header">
@@ -212,8 +223,8 @@ function showLearnCards() {
             </div>
         </div>
         <div class="learn-grid">
-            ${renderCard(word1, learnIndex)}
-            ${renderCard(word2, learnIndex + 1)}
+            ${card1}
+            ${card2}
         </div>
         <div style="display:flex;gap:8px;margin-top:12px">
             <button class="btn btn-secondary" style="flex:1" onclick="showLearnComplete()">跳过 → 练习</button>
@@ -293,7 +304,7 @@ function showPracticeCard() {
             <input class="study-input" type="text" id="studyInput"
                 placeholder="输入英文单词"
                 autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
-            <div class="study-hint">按回车确认</div>
+            <button class="btn btn-primary" onclick="checkPracticeAnswer()" style="width:100%;margin-top:10px;padding:12px;font-size:16px">确认</button>
             <button class="icon-btn speak-btn" onclick="speak('${word.en.replace(/'/g, "\\'")}')" style="margin-top:8px">🔊 发音</button>
         </div>
     `;
@@ -303,7 +314,6 @@ function showPracticeCard() {
         const input = document.getElementById('studyInput');
         if (input) { input.value = ''; input.focus(); }
     }, 50);
-    setTimeout(() => speak(word.en), 300);
 }
 
 window.checkPracticeAnswer = function() {
@@ -458,7 +468,7 @@ function renderBrowseWords() {
             </div>
             <div class="card-actions">
                 <button class="icon-btn speak-btn" onclick="speak('${w.en.replace(/'/g, "\\'")}')">🔊</button>
-                <button class="icon-btn bank-btn ${inBank ? 'active' : ''}" onclick="toggleBank('${w.en.replace(/'/g, "\\'")}', event)">${inBank ? '★' : '☆'}</button>
+                <button class="icon-btn bank-btn ${inBank ? 'active' : ''}" onclick="(function(en){Storage.isInBank(en)?Storage.removeFromBank(en):Storage.addToBank(en);renderBrowseWords();updateStats();})('${w.en.replace(/'/g, "\\'")}')">${inBank ? '★' : '☆'}</button>
             </div>
         </div>
     `}).join('');
@@ -506,9 +516,8 @@ function updateStats() {
 
     const el = (id, val) => { const e = document.getElementById(id); if (e) e.textContent = val; };
     el('totalCount', stats.totalWords);
-    el('learnedCount', stats.mastered);
+    el('learnedCount', stats.totalReviews);
     el('bankCount', stats.bankCount);
-    el('streakCount', stats.newWordToday + '/' + 10);
     el('progressText', pct + '%');
     const c = document.getElementById('progressCircle');
     if (c) c.style.strokeDashoffset = 100 * (1 - pct / 100);
@@ -560,7 +569,7 @@ function showErrorBook() {
                         <div style="display:flex;gap:6px;align-items:center">
                             ${inBank ? '<span style="font-size:11px;color:var(--warning)">★</span>' : ''}
                             <button class="icon-btn speak-btn" onclick="speak('${w.en.replace(/'/g, "\\'")}')" style="width:36px;height:36px">🔊</button>
-                            <button class="icon-btn bank-btn ${inBank ? 'active' : ''}" onclick="toggleBank('${w.en.replace(/'/g, "\\'")}', event)" style="width:36px;height:36px">${inBank ? '★' : '☆'}</button>
+                            <button class="icon-btn bank-btn ${inBank ? 'active' : ''}" onclick="(function(en){Storage.isInBank(en)?Storage.removeFromBank(en):Storage.addToBank(en);showErrorBook();updateStats();})('${w.en.replace(/'/g, "\\'")}')" style="width:36px;height:36px">${inBank ? '★' : '☆'}</button>
                         </div>
                     </div>
                     <div style="font-size:15px;color:var(--text-secondary);margin-bottom:6px">${w.zh}</div>
