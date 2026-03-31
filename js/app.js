@@ -474,7 +474,7 @@ window.nextLearnCards = function() {
 };
 
 function showLearnComplete() {
-    // Track any remaining words not yet added
+    // Add any words that were shown but not yet marked "记住了"
     for (let i = learnIndex; i < studyQueue.length; i++) {
         const w = studyQueue[i];
         if (!learnedSessionQueue.find(q => q.en === w.en)) {
@@ -482,13 +482,16 @@ function showLearnComplete() {
         }
     }
     currentView = 'learn-complete';
+    const count = learnedSessionQueue.length;
     const app = document.getElementById('app');
     app.innerHTML = `
         <div class="learn-complete" style="margin-top:20px">
             <div style="font-size:48px;margin-bottom:8px">📖</div>
             <div class="complete-title">学习完毕</div>
-            <div class="complete-sub">已浏览 ${learnedSessionQueue.length} 个词汇</div>
+            <div class="complete-sub">本轮已标记 ${count} 个词汇</div>
+            <div style="font-size:12px;color:var(--text-secondary);margin-top:6px">拼写测试只测这 ${count} 个词</div>
             <button class="btn btn-primary" style="margin-top:20px;width:100%;padding:14px;font-size:16px" onclick="startPracticeMode()">开始拼写练习 →</button>
+            <button class="btn btn-secondary" style="margin-top:8px;width:100%;padding:12px" onclick="exitToHome()">返回首页</button>
         </div>
     `;
     updateBottomBar('learn-complete');
@@ -501,11 +504,18 @@ function startPracticeMode() {
     learnIndex = 0;
     sessionStats = { correct: 0, wrong: 0 };
     currentView = 'practice';
-    // If learned session queue has words, practice only those; otherwise practice full queue
+    // Always practice only words marked as "记住了" in this learn session
+    // Fallback to learn queue only if nothing was explicitly marked
     if (learnedSessionQueue.length > 0) {
         studyQueue = learnedSessionQueue.slice();
-        learnedSessionQueue = [];
+    } else {
+        // No words marked "记住了" — practice what was browsed in this session only
+        const remaining = studyQueue.slice(learnIndex);
+        if (remaining.length > 0) {
+            studyQueue = remaining;
+        }
     }
+    learnedSessionQueue = [];
     showPracticeCard();
 }
 
