@@ -1,5 +1,5 @@
 {
-  "version": "2026-03-30-v3",
+  "version": "2026-03-31-v1",
   "categories": [
     "config",
     "log",
@@ -3946,6 +3946,1294 @@
       "example": "zombie process with defunct status",
       "tags": [
         "error"
+      ]
+    },
+    {
+      "en": "agentic",
+      "zh": "智能体化",
+      "phon": "æˈdʒentɪk",
+      "category": "ai",
+      "example": "agentic AI can plan multi-step tasks autonomously",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "batch inference",
+      "zh": "批量推理",
+      "phon": "bætʃ ˈɪnfərəns",
+      "category": "ai",
+      "example": "batch inference for 10k prompts",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "cargo",
+      "zh": "Rust包管理器",
+      "phon": "ˈkɑːɡəʊ",
+      "category": "cli",
+      "example": "cargo build --release",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "chainlit",
+      "zh": "AI对话应用框架",
+      "phon": "tʃeɪn-lɪt",
+      "category": "dev",
+      "example": "build ChatGPT clone with Chainlit",
+      "tags": [
+        "dev",
+        "ai"
+      ]
+    },
+    {
+      "en": "chunking",
+      "zh": "分块",
+      "phon": "ˈtʃʌŋkɪŋ",
+      "category": "ai",
+      "example": "chunking long documents for RAG",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "clickhouse",
+      "zh": "OLAP数据库",
+      "phon": "klɪkhaʊs",
+      "category": "db",
+      "example": "ClickHouse handles billions of rows",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "dag",
+      "zh": "有向无环图",
+      "phon": "dæɡ",
+      "category": "devops",
+      "example": "Airflow dag defines workflow",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "dbt",
+      "zh": "数据转换工具",
+      "phon": "diː-biː-tiː",
+      "category": "db",
+      "example": "dbt transforms data in warehouse",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "declarative",
+      "zh": "声明式",
+      "phon": "dɪˈklærətɪv",
+      "category": "dev",
+      "example": "Kubernetes uses declarative config",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "deduplication",
+      "zh": "去重",
+      "phon": "diːˌdjuːplɪˈkeɪʃən",
+      "category": "log",
+      "example": "enable deduplication in syslog",
+      "tags": [
+        "log"
+      ]
+    },
+    {
+      "en": "diffusion model",
+      "zh": "扩散模型",
+      "phon": "dɪˈfjuːʒən ˈmɒdəl",
+      "category": "ai",
+      "example": "Stable Diffusion is a diffusion model",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "docker compose",
+      "zh": "容器编排",
+      "phon": "ˈdɒkər kəmˈpəʊz",
+      "category": "devops",
+      "example": "docker compose up -d",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "elasticsearch",
+      "zh": "搜索引擎",
+      "phon": "ˌeləs-tɪkˈsɜːtʃ",
+      "category": "devops",
+      "example": "store logs in Elasticsearch",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "endpoint routing",
+      "zh": "端点路由",
+      "phon": "ˈendpɔɪnt ˈraʊtɪŋ",
+      "category": "devops",
+      "example": "AI gateway handles routing",
+      "tags": [
+        "devops",
+        "ai"
+      ]
+    },
+    {
+      "en": "event driven",
+      "zh": "事件驱动",
+      "phon": "ɪˈvent ˈdrɪvən",
+      "category": "dev",
+      "example": "event driven architecture",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "fallback model",
+      "zh": "备用模型",
+      "phon": "ˈfɔːlbæk ˈmɒdəl",
+      "category": "ai",
+      "example": "use GPT-4 as fallback",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "fuzzy search",
+      "zh": "模糊搜索",
+      "phon": "ˈfʌzi sɜːtʃ",
+      "category": "dev",
+      "example": "fuzzy search finds typos",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "gcp",
+      "zh": "谷歌云平台",
+      "phon": "dʒiː-siː-piː",
+      "category": "devops",
+      "example": "deploy to GCP Cloud Run",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "gitops",
+      "zh": "Git运维",
+      "phon": "ˈɡɪtɒps",
+      "category": "devops",
+      "example": "gitops auto-deploys via ArgoCD",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "gradio",
+      "zh": "ML模型部署界面",
+      "phon": "ˈɡreɪdiəʊ",
+      "category": "dev",
+      "example": "demo AI model with Gradio",
+      "tags": [
+        "dev",
+        "ai"
+      ]
+    },
+    {
+      "en": "grayscale",
+      "zh": "灰度发布",
+      "phon": "ˈɡreɪskeɪl",
+      "category": "devops",
+      "example": "grayscale: 10% traffic to new version",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "guardrail",
+      "zh": "AI安全护栏",
+      "phon": "ˈɡɑːdreɪl",
+      "category": "ai",
+      "example": "add guardrails to prevent harmful outputs",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "hnsw",
+      "zh": "向量索引算法",
+      "phon": "eɪtʃ-en-es-ˈdʌbəljuː",
+      "category": "ai",
+      "example": "pgvector with hnsw index",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "hotfix",
+      "zh": "热修复",
+      "phon": "ˈhɒtfɪks",
+      "category": "devops",
+      "example": "push hotfix to production",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "hybrid search",
+      "zh": "混合搜索",
+      "phon": "ˈhaɪbrɪd sɜːtʃ",
+      "category": "ai",
+      "example": "hybrid search combines vector and keyword",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "idempotent",
+      "zh": "幂等性",
+      "phon": "ˌaɪdemˈpəʊtənt",
+      "category": "dev",
+      "example": "PUT is idempotent, POST is not",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "image generation",
+      "zh": "图像生成",
+      "phon": "ˈɪmɪdʒ ˌdʒenəˈreɪʃən",
+      "category": "ai",
+      "example": "DALL-E 3 for image generation",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "immutable",
+      "zh": "不可变",
+      "phon": "ɪˈmjuːtəbəl",
+      "category": "devops",
+      "example": "immutable infrastructure",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "inference cost",
+      "zh": "推理成本",
+      "phon": "ˈɪnfərəns kɒst",
+      "category": "ai",
+      "example": "reduce inference cost with quantization",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "influxdb",
+      "zh": "时序数据库",
+      "phon": "ˈɪnflʌks-diː-biː",
+      "category": "devops",
+      "example": "store metrics in InfluxDB",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "init container",
+      "zh": "初始化容器",
+      "phon": "ɪˈnaɪt kənˈteɪnər",
+      "category": "devops",
+      "example": "init container sets up database",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "k6",
+      "zh": "负载测试工具",
+      "phon": "keɪ-sɪks",
+      "category": "devops",
+      "example": "k6 run load-test.js",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "key vault",
+      "zh": "密钥保管库",
+      "phon": "kiː vɔːlt",
+      "category": "devops",
+      "example": "Azure Key Vault stores secrets",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "langgraph",
+      "zh": "LangGraph工作流框架",
+      "phon": "læŋɡræf",
+      "category": "ai",
+      "example": "build multi-agent workflow with LangGraph",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "liveness probe",
+      "zh": "存活探针",
+      "phon": "ˈlaɪvnəs prəʊb",
+      "category": "devops",
+      "example": "liveness probe checks if container needs restart",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "load balancer",
+      "zh": "负载均衡器",
+      "phon": "ləʊd ˈbælənsər",
+      "category": "devops",
+      "example": "nginx as load balancer",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "lora",
+      "zh": "低秩适配器",
+      "phon": "ˈlɔːrə",
+      "category": "ai",
+      "example": "fine-tune LLM with LoRA",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "managed service",
+      "zh": "托管服务",
+      "phon": "ˈmænɪdʒd ˈsɜːvɪs",
+      "category": "devops",
+      "example": "use managed service like RDS",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "mem0",
+      "zh": "AI记忆层",
+      "phon": "mem-zirəʊ",
+      "category": "ai",
+      "example": "Mem0 provides persistent memory for AI agents",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "mirror",
+      "zh": "镜像同步",
+      "phon": "ˈmɪrər",
+      "category": "devops",
+      "example": "mirror Docker Hub images",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "mlops",
+      "zh": "机器学习运维",
+      "phon": "em-el-ɒps",
+      "category": "devops",
+      "example": "MLOps automates model training and deployment",
+      "tags": [
+        "devops",
+        "ai"
+      ]
+    },
+    {
+      "en": "model hub",
+      "zh": "模型仓库",
+      "phon": "ˈmɒdəl hʌb",
+      "category": "ai",
+      "example": "download llama3 from Hugging Face model hub",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "multi-agent",
+      "zh": "多智能体",
+      "phon": "ˈmʌlti ˈeɪdʒənt",
+      "category": "ai",
+      "example": "multi-agent: planner researcher executor",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "mutual tls",
+      "zh": "双向TLS认证",
+      "phon": "ˈmjuːtʃuəl tiː-el-es",
+      "category": "devops",
+      "example": "enable mTLS between services",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "nginx",
+      "zh": "HTTP服务器/反向代理",
+      "phon": "en-dʒɪn-eks",
+      "category": "devops",
+      "example": "nginx reverse proxy",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "node pool",
+      "zh": "节点池",
+      "phon": "nəʊd puːl",
+      "category": "devops",
+      "example": "scale node pool during peak",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "non-blocking",
+      "zh": "非阻塞",
+      "phon": "nɒn ˈblɒkɪŋ",
+      "category": "dev",
+      "example": "non-blocking IO for high concurrency",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "opentelemetry",
+      "zh": "可观测性协议",
+      "phon": "ˈəʊpən-telɪˈmetri",
+      "category": "devops",
+      "example": "OpenTelemetry for distributed tracing",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "output parser",
+      "zh": "输出解析器",
+      "phon": "ˈaʊtpʊt ˈpɑːsər",
+      "category": "ai",
+      "example": "use output parser for structured AI output",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "overfitting",
+      "zh": "过拟合",
+      "phon": "ˌəʊvəˈfɪtɪŋ",
+      "category": "ai",
+      "example": "overfitting: model memorizes training data",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "pgvector",
+      "zh": "向量索引扩展",
+      "phon": "piː-dʒiː-ˈvektər",
+      "category": "db",
+      "example": "pgvector enables similarity search in PostgreSQL",
+      "tags": [
+        "db",
+        "ai"
+      ]
+    },
+    {
+      "en": "playwright",
+      "zh": "浏览器自动化",
+      "phon": "ˈpleɪraɪt",
+      "category": "dev",
+      "example": "playwright codegen generates test scripts",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "poison pill",
+      "zh": "毒丸信号",
+      "phon": "ˈpɔɪzən pɪl",
+      "category": "devops",
+      "example": "send poison pill to shutdown worker gracefully",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "postgresql",
+      "zh": "PostgreSQL数据库",
+      "phon": "pəʊstɡres-kyuː-el",
+      "category": "db",
+      "example": "PostgreSQL with pgvector",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "prepared statement",
+      "zh": "预编译语句",
+      "phon": "prɪˈpeəd ˈsteɪtmənt",
+      "category": "db",
+      "example": "use prepared statement to prevent SQL injection",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "priority queue",
+      "zh": "优先级队列",
+      "phon": "praɪˈɒrɪti kjuː",
+      "category": "dev",
+      "example": "priority queue processes urgent tasks first",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "prompt cache",
+      "zh": "提示词缓存",
+      "phon": "prɒmpt kæʃ",
+      "category": "ai",
+      "example": "use prompt cache to reduce API cost",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "prompt injection",
+      "zh": "提示词注入",
+      "phon": "prɒmpt ɪnˈdʒekʃən",
+      "category": "ai",
+      "example": "prompt injection hijacks AI behavior",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "prompt layer",
+      "zh": "提示词管理层",
+      "phon": "prɒmpt ˈleɪər",
+      "category": "ai",
+      "example": "use prompt layer to version AI prompts",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "provider",
+      "zh": "模型提供者",
+      "phon": "prəˈvaɪdər",
+      "category": "ai",
+      "example": "Anthropic and OpenAI are LLM providers",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "provision",
+      "zh": "资源分配",
+      "phon": "prəˈvɪʒən",
+      "category": "devops",
+      "example": "terraform provision EC2 on AWS",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "proxy",
+      "zh": "代理",
+      "phon": "ˈprɒksi",
+      "category": "devops",
+      "example": "http proxy forwards requests",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "pydantic",
+      "zh": "Python数据验证",
+      "phon": "paɪˈdæntɪk",
+      "category": "dev",
+      "example": "pydantic BaseModel for API validation",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "pytorch",
+      "zh": "PyTorch框架",
+      "phon": "paɪˈtɔːtʃ",
+      "category": "ai",
+      "example": "train neural network with PyTorch",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "queue",
+      "zh": "消息队列",
+      "phon": "kjuː",
+      "category": "dev",
+      "example": "put job in queue for async processing",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "rabbitmq",
+      "zh": "消息队列中间件",
+      "phon": "ˈræbɪt em-kyuː",
+      "category": "devops",
+      "example": "RabbitMQ between producers and consumers",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "raft",
+      "zh": "共识算法",
+      "phon": "rɑːft",
+      "category": "db",
+      "example": "etcd uses Raft for leader election",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "re-ranker",
+      "zh": "重排序模型",
+      "phon": "riː-ˈræŋkər",
+      "category": "ai",
+      "example": "cross-encoder re-ranker improves RAG quality",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "read replica",
+      "zh": "只读副本",
+      "phon": "riːd ˈreplɪkə",
+      "category": "db",
+      "example": "route SELECT to read replica",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "readiness probe",
+      "zh": "就绪探针",
+      "phon": "ˌredɪnəs prəʊb",
+      "category": "devops",
+      "example": "readiness probe ensures pod is ready",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "reasoning effort",
+      "zh": "推理强度",
+      "phon": "ˈriːzənɪŋ ˈefət",
+      "category": "ai",
+      "example": "set reasoning_effort=high for complex problems",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "redis",
+      "zh": "内存数据库/缓存",
+      "phon": "ˈredɪs",
+      "category": "devops",
+      "example": "Redis caches session with TTL",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "render",
+      "zh": "渲染平台",
+      "phon": "ˈrendər",
+      "category": "devops",
+      "example": "deploy to Render.com",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "replication lag",
+      "zh": "复制延迟",
+      "phon": "ˌreplɪˈkeɪʃən læɡ",
+      "category": "db",
+      "example": "replication lag caused stale data",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "reserved instance",
+      "zh": "预留实例",
+      "phon": "rɪˈzɜːvd ˈɪnstəns",
+      "category": "devops",
+      "example": "reserved instance saves 60% vs on-demand",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "resource limits",
+      "zh": "资源限制",
+      "phon": "ˈriːsɔːs ˈlɪmɪts",
+      "category": "devops",
+      "example": "set CPU and memory limits in K8s",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "response time",
+      "zh": "响应时间",
+      "phon": "rɪˈspɒns taɪm",
+      "category": "devops",
+      "example": "P99 response time under 200ms",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "restart policy",
+      "zh": "重启策略",
+      "phon": "riːˈstɑːt ˈpɒlɪsi",
+      "category": "devops",
+      "example": "restart policy: Always for web Never for batch",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "reverse proxy",
+      "zh": "反向代理",
+      "phon": "rɪˈvɜːs ˈprɒksi",
+      "category": "devops",
+      "example": "nginx reverse proxy hides backend IPs",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "rig",
+      "zh": "AI应用开发框架",
+      "phon": "rɪɡ",
+      "category": "dev",
+      "example": "rig builds AI agents in Rust",
+      "tags": [
+        "dev",
+        "ai"
+      ]
+    },
+    {
+      "en": "router",
+      "zh": "路由器",
+      "phon": "ˈruːtər",
+      "category": "devops",
+      "example": "AI gateway router selects best model",
+      "tags": [
+        "devops",
+        "ai"
+      ]
+    },
+    {
+      "en": "rubber duck",
+      "zh": "橡皮鸭调试法",
+      "phon": "ˈrʌbər dʌk",
+      "category": "dev",
+      "example": "rubber duck debugging",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "rules engine",
+      "zh": "规则引擎",
+      "phon": "ruːlz ˈendʒɪn",
+      "category": "dev",
+      "example": "use rules engine to enforce policies",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "rust",
+      "zh": "Rust编程语言",
+      "phon": "rʌst",
+      "category": "dev",
+      "example": "rewrite perf-critical code in Rust",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "s3",
+      "zh": "对象存储服务",
+      "phon": "es-θriː",
+      "category": "devops",
+      "example": "upload backup to S3 bucket",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "scheduler",
+      "zh": "任务调度器",
+      "phon": "ˈskedʒuːlər",
+      "category": "devops",
+      "example": "cron scheduler runs job daily",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "score",
+      "zh": "相似度分数",
+      "phon": "skɔːr",
+      "category": "ai",
+      "example": "retrieval score 0.85 means high relevance",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "self-hosted",
+      "zh": "自托管",
+      "phon": "self ˈhəʊstɪd",
+      "category": "devops",
+      "example": "self-hosted GitLab on your own server",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "semantic cache",
+      "zh": "语义缓存",
+      "phon": "sɪˈmæntɪk kæʃ",
+      "category": "ai",
+      "example": "semantic cache for similar prompts",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "semantic search",
+      "zh": "语义搜索",
+      "phon": "sɪˈmæntɪk sɜːtʃ",
+      "category": "ai",
+      "example": "semantic search understands intent",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "sft",
+      "zh": "监督微调",
+      "phon": "es-ef-tiː",
+      "category": "ai",
+      "example": "SFT supervised fine-tuning",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "shard key",
+      "zh": "分片键",
+      "phon": "ʃɑːd kiː",
+      "category": "db",
+      "example": "choose user_id as shard key",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "sharding",
+      "zh": "数据库分片",
+      "phon": "ˈʃɑːdɪŋ",
+      "category": "db",
+      "example": "sharding splits table across databases",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "sliding window",
+      "zh": "滑动窗口",
+      "phon": "ˈslaɪdɪŋ ˈwɪndəʊ",
+      "category": "dev",
+      "example": "sliding window attention in Transformer",
+      "tags": [
+        "dev",
+        "ai"
+      ]
+    },
+    {
+      "en": "slot",
+      "zh": "时间槽",
+      "phon": "slɒt",
+      "category": "ai",
+      "example": "context slot: 200k tokens max",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "smol",
+      "zh": "小型模型",
+      "phon": "smɒl",
+      "category": "ai",
+      "example": "smol-LM: under 1B params runs on phone",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "socket",
+      "zh": "套接字",
+      "phon": "ˈsɒkɪt",
+      "category": "dev",
+      "example": "webSocket for real-time communication",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "soft delete",
+      "zh": "软删除",
+      "phon": "sɒft dɪˈliːt",
+      "category": "db",
+      "example": "soft delete: set deleted_at",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "spot instance",
+      "zh": "竞价实例",
+      "phon": "spɒt ˈɪnstəns",
+      "category": "devops",
+      "example": "spot instance 70% cheaper can be interrupted",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "sqlite",
+      "zh": "SQLite数据库",
+      "phon": "ˌes-kjuː-el-aɪt",
+      "category": "db",
+      "example": "sqlite3 app.db for local dev",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "sre",
+      "zh": "站点可靠性工程",
+      "phon": "es-ar-iː",
+      "category": "devops",
+      "example": "SRE combines software engineering with ops",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "stateful",
+      "zh": "有状态",
+      "phon": "ˈsteɪtfəl",
+      "category": "devops",
+      "example": "stateful app maintains session",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "step",
+      "zh": "推理步骤",
+      "phon": "step",
+      "category": "ai",
+      "example": "o1 uses 30+ reasoning steps",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "sticky session",
+      "zh": "会话保持",
+      "phon": "ˈstɪki ˈseʃən",
+      "category": "devops",
+      "example": "enable sticky session",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "storage class",
+      "zh": "存储类",
+      "phon": "ˈstɔːrɪdʒ klɑːs",
+      "category": "devops",
+      "example": "storage class: SSD vs HDD",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "stress test",
+      "zh": "压力测试",
+      "phon": "stres test",
+      "category": "devops",
+      "example": "run stress test to find breaking point",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "supabase",
+      "zh": "开源Firebase替代",
+      "phon": "ˈsuːpəbeɪs",
+      "category": "dev",
+      "example": "Supabase: Postgres Auth Realtime Storage",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "supervisor",
+      "zh": "进程管理器",
+      "phon": "ˌsuːpəˈvaɪzər",
+      "category": "devops",
+      "example": "supervisord manages worker processes",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "symbolic",
+      "zh": "符号化",
+      "phon": "sɪmˈbɒlɪk",
+      "category": "ai",
+      "example": "symbolic AI uses rules vs neural networks",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "tabular",
+      "zh": "表格数据",
+      "phon": "ˈtæbjʊlər",
+      "category": "ai",
+      "example": "use Claude for tabular data analysis",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "tdigest",
+      "zh": "百分位估算算法",
+      "phon": "tiː-dʒaɪˈest",
+      "category": "ai",
+      "example": "use tdigest for accurate percentiles",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "tensor",
+      "zh": "张量",
+      "phon": "ˈtensər",
+      "category": "ai",
+      "example": "tensor is n-dimensional array in PyTorch",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "test set",
+      "zh": "测试集",
+      "phon": "test set",
+      "category": "ai",
+      "example": "evaluate model on held-out test set",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "ticker",
+      "zh": "定时器",
+      "phon": "ˈtɪkər",
+      "category": "dev",
+      "example": "set ticker to refresh data",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "time-to-live",
+      "zh": "生存时间",
+      "phon": "taɪm tuː lɪv",
+      "category": "devops",
+      "example": "set TTL=3600 for cache to expire",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "tokenizer",
+      "zh": "分词器",
+      "phon": "təʊkənaɪzər",
+      "category": "ai",
+      "example": "tokenizer converts text into tokens",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "tolerance",
+      "zh": "容错",
+      "phon": "ˈtɒlərəns",
+      "category": "devops",
+      "example": "fault tolerance with replicas",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "tool call",
+      "zh": "工具调用",
+      "phon": "tuːl kɔːl",
+      "category": "ai",
+      "example": "AI uses tool call to search or run code",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "torch",
+      "zh": "PyTorch框架",
+      "phon": "tɔːtʃ",
+      "category": "ai",
+      "example": "import torch for tensor computation",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "transfer learning",
+      "zh": "迁移学习",
+      "phon": "trænsˈfɜː ˈlɜːnɪŋ",
+      "category": "ai",
+      "example": "transfer learning: fine-tune pretrained model",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "tuning",
+      "zh": "调优",
+      "phon": "ˈtjuːnɪŋ",
+      "category": "ai",
+      "example": "hyperparameter tuning for optimal performance",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "validation set",
+      "zh": "验证集",
+      "phon": "ˌvælɪˈdeɪʃən set",
+      "category": "ai",
+      "example": "tune hyperparameters on validation set",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "vector",
+      "zh": "向量",
+      "phon": "ˈvektər",
+      "category": "ai",
+      "example": "embedding converts text to vector",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "vercel",
+      "zh": "前端部署平台",
+      "phon": "ˈvɜːsəl",
+      "category": "devops",
+      "example": "deploy to Vercel with git push",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "virtualization",
+      "zh": "虚拟化",
+      "phon": "ˌvɜːtʃuəlaɪˈzeɪʃən",
+      "category": "devops",
+      "example": "virtualization enables multiple VMs",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "vllm",
+      "zh": "LLM推理引擎",
+      "phon": "viː-el-el-em",
+      "category": "ai",
+      "example": "vLLM for high-throughput LLM inference",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "workload",
+      "zh": "工作负载",
+      "phon": "ˈwɜːkləʊd",
+      "category": "devops",
+      "example": "distribute workload across replicas",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "workflow",
+      "zh": "工作流",
+      "phon": "ˈwɜːkfləʊ",
+      "category": "devops",
+      "example": "CI/CD workflow automates build and deploy",
+      "tags": [
+        "devops"
       ]
     }
   ]
