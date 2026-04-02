@@ -422,7 +422,7 @@ function lCard(word) {
     var starred = inBank(word.en);
     var star = starred ? '&#9733;' : '&#9734;';
     var starCls = starred ? ' active' : '';
-    return '<div class="flashcard" onclick="this.classList.toggle(\'revealed\')">' +
+    area.innerHTML = '<div class="flashcard" onclick="this.classList.toggle(\'revealed\')">' +
         '<div class="card-top">' +
             '<span class="card-cat">' + word.category + '</span>' +
             '<button class="card-star' + starCls + '" onclick="event.stopPropagation();toggleBank(\'' + safe + '\');this.classList.toggle(\'active\');this.innerHTML=this.classList.contains(\'active\')?\'&#9733;\':\'&#9734;\'">' + star + '</button>' +
@@ -545,6 +545,8 @@ function renderBrowse() {
 }
 
 function setCat(cat) { currentCat = cat; renderBrowse(); }
+
+var SK = { daily: 'se_daily', bank: 'se_wordbank', review: 'se_review', theme: 'se_theme' };
 
 function setTheme(theme) {
     document.body.setAttribute('data-theme', theme === 'blue' ? '' : theme);
