@@ -16,10 +16,10 @@
             --warning: #FF9500;
             --danger: #FF3B30;
         }
-        [data-theme="green"] { --primary: #34C759; --bg: #F0F9F0; --success: #007AFF; }
-        [data-theme="dark"] { --primary: #0A84FF; --bg: #1C1C1E; --card: #2C2C2E; --text: #FFFFFF; --text-secondary: #98989D; --success: #30D158; }
-        [data-theme="orange"] { --primary: #FF9500; --bg: #FFF8F0; --success: #34C759; --warning: #FF3B30; }
-        [data-theme="simple"] { --primary: #1C1C1E; --bg: #FAFAFA; --card: #FFFFFF; --text: #1C1C1E; --text-secondary: #999999; --success: #1C1C1E; --warning: #FF9500; --danger: #FF3B30; }
+        [data-theme="green"] { --primary: #34C759; --bg: #F0F9F0; }
+        [data-theme="dark"] { --primary: #0A84FF; --bg: #1C1C1E; --card: #2C2C2E; --text: #FFFFFF; --text-secondary: #98989D; }
+        [data-theme="orange"] { --primary: #FF9500; --bg: #FFF8F0; }
+        [data-theme="simple"] { --primary: #1C1C1E; --bg: #FAFAFA; --card: #FFFFFF; --text: #1C1C1E; --text-secondary: #999999; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -27,16 +27,12 @@
             color: var(--text);
             min-height: 100vh;
             padding: 16px;
-            padding-bottom: 90px;
-            user-select: none;
-            -webkit-user-select: none;
+            padding-bottom: 100px;
         }
 
-        /* Header */
-        .header { text-align: center; margin-bottom: 12px; }
-        .header h1 { font-size: 22px; font-weight: 700; margin-bottom: 2px; }
-        .header p { color: var(--text-secondary); font-size: 12px; }
-        .theme-switcher { display: flex; justify-content: center; gap: 8px; margin-top: 8px; }
+        .header { text-align: center; margin-bottom: 16px; }
+        .header h1 { font-size: 22px; font-weight: 700; }
+        .theme-switcher { display: flex; justify-content: center; gap: 6px; margin-top: 10px; }
         .theme-btn {
             width: 26px; height: 26px; border-radius: 50%;
             border: 2px solid transparent; cursor: pointer; font-size: 10px; font-weight: 600;
@@ -45,329 +41,109 @@
         .theme-btn[data-theme="green"] { background: #34C759; color: white; }
         .theme-btn[data-theme="dark"] { background: #2C2C2E; color: white; border-color: #555; }
         .theme-btn[data-theme="orange"] { background: #FF9500; color: white; }
+        .theme-btn[data-theme="simple"] { background: #999; color: white; }
         .theme-btn.active { transform: scale(1.15); box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
 
-        /* Hero section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, #5AC8FA 100%);
-            border-radius: 18px;
-            padding: 20px;
-            color: white;
-            margin-bottom: 14px;
-            position: relative;
-            overflow: hidden;
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+        .stat-card {
+            background: var(--card); border-radius: 14px; padding: 14px 10px;
+            text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
         }
-        .hero::after {
-            content: '';
-            position: absolute;
-            right: -20px; top: -20px;
-            width: 120px; height: 120px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-        }
-        .hero-greeting {
-            font-size: 13px; opacity: 0.85; margin-bottom: 2px;
-        }
-        .hero-date {
-            font-size: 12px; opacity: 0.7; margin-bottom: 12px;
-        }
-        .hero-stats {
-            display: flex; gap: 20px;
-        }
-        .hero-stat {}
-        .hero-stat-num {
-            font-size: 24px; font-weight: 700; line-height: 1;
-        }
-        .hero-stat-lbl {
-            font-size: 11px; opacity: 0.75; margin-top: 1px;
-        }
-        .hero-progress {
-            margin-top: 12px;
-        }
-        .hero-progress-bar {
-            height: 6px; background: rgba(255,255,255,0.25);
-            border-radius: 3px; overflow: hidden;
-        }
-        .hero-progress-fill {
-            height: 100%; background: white; border-radius: 3px;
-            transition: width 0.5s;
-        }
-        .hero-progress-text {
-            font-size: 11px; opacity: 0.75; margin-top: 4px;
-        }
+        .stat-card.due { border: 2px solid var(--primary); }
+        .stat-num { font-size: 28px; font-weight: 700; color: var(--primary); }
+        .stat-card.new .stat-num { color: var(--warning); }
+        .stat-card.mastered .stat-num { color: var(--success); }
+        .stat-label { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
 
-        /* Quick actions */
-        .quick-actions {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px;
-        }
-        .quick-btn {
-            background: var(--card);
-            border-radius: 14px; padding: 14px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-            display: flex; align-items: center; gap: 10px;
-            cursor: pointer; border: none; width: 100%;
-            text-align: left;
-        }
-        .quick-btn:active { opacity: 0.85; }
-        .quick-btn-icon {
-            width: 42px; height: 42px; border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 20px; flex-shrink: 0;
-        }
-        .quick-btn-icon.warning { background: rgba(255,149,0,0.12); }
-        .quick-btn-icon.danger { background: rgba(255,59,48,0.12); }
-        .quick-btn-icon.primary { background: rgba(0,122,255,0.12); }
-        .quick-btn-text { flex: 1; }
-        .quick-btn-title { font-size: 14px; font-weight: 600; color: var(--text); }
-        .quick-btn-desc { font-size: 11px; color: var(--text-secondary); margin-top: 1px; }
-        .quick-btn-badge {
-            font-size: 11px; font-weight: 700;
-            padding: 2px 7px; border-radius: 10px;
-        }
-        .quick-btn-badge.warning { background: rgba(255,149,0,0.15); color: var(--warning); }
-        .quick-btn-badge.danger { background: rgba(255,59,48,0.15); color: var(--danger); }
+        .progress-section { margin-bottom: 14px; }
+        .progress-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
+        .progress-bar { height: 6px; background: rgba(0,0,0,0.08); border-radius: 3px; overflow: hidden; }
+        [data-theme="dark"] .progress-bar { background: rgba(255,255,255,0.1); }
+        .progress-fill { height: 100%; background: var(--primary); border-radius: 3px; transition: width 0.5s; }
 
-        /* Section titles */
-        .section-title {
-            font-size: 14px; font-weight: 600; margin-bottom: 8px; margin-top: 16px;
-        }
+        .mode-tabs { display: flex; background: var(--card); border-radius: 14px; padding: 4px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+        .mode-tab { flex: 1; padding: 10px; border: none; border-radius: 11px; font-size: 14px; font-weight: 600; cursor: pointer; background: transparent; color: var(--text-secondary); }
+        .mode-tab.active { background: var(--primary); color: white; }
 
-        /* Category tabs */
-        .category-tabs {
-            display: flex; gap: 6px; overflow-x: auto;
-            padding-bottom: 10px; margin-bottom: 12px;
-            -webkit-overflow-scrolling: touch;
-        }
-        .category-tab {
-            flex-shrink: 0; padding: 5px 12px; border-radius: 14px;
-            background: var(--card); border: 1px solid #E5E5EA;
-            font-size: 12px; cursor: pointer; white-space: nowrap;
-        }
-        .category-tab.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .btn-primary { display: block; width: 100%; padding: 16px; background: var(--primary); color: white; border: none; border-radius: 14px; font-size: 17px; font-weight: 600; cursor: pointer; margin-bottom: 10px; }
+        .btn-primary:active { opacity: 0.85; }
+        .btn-secondary { display: block; width: 100%; padding: 12px; background: var(--card); color: var(--primary); border: 2px solid var(--primary); border-radius: 14px; font-size: 15px; font-weight: 600; cursor: pointer; margin-bottom: 10px; }
+        .btn-ghost { padding: 10px; background: transparent; color: var(--text-secondary); border: none; font-size: 13px; cursor: pointer; width: 100%; margin-top: 16px; }
 
-        /* Word cards */
-        .card-grid { display: grid; gap: 8px; }
-        .word-card {
-            background: var(--card); border-radius: 12px; padding: 12px 14px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            display: flex; align-items: center; gap: 10px;
+        .flashcard-area { margin-bottom: 14px; }
+        .flashcard {
+            background: var(--card); border-radius: 18px; padding: 28px 20px; text-align: center;
+            min-height: 180px; box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            cursor: pointer; transition: transform 0.15s; user-select: none;
         }
-        .word-card.in-bank { border-left: 3px solid var(--warning); }
-        .word-card.in-error { border-left: 3px solid var(--danger); }
+        .flashcard:active { transform: scale(0.98); }
+        .card-word { font-size: 28px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+        .card-word-row { display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .speak-btn { background: transparent; border: none; cursor: pointer; font-size: 20px; padding: 4px; border-radius: 8px; transition: opacity 0.15s; }
+        .speak-btn:active { opacity: 0.5; }
+        .card-zh { font-size: 20px; color: var(--text); margin-bottom: 4px; }
+        .card-phon { font-size: 14px; color: var(--text-secondary); margin-bottom: 8px; }
+        .card-example { font-size: 13px; color: var(--text-secondary); font-style: italic; }
+        .card-meta { position: absolute; top: 14px; right: 14px; font-size: 11px; background: var(--bg); color: var(--text-secondary); padding: 3px 8px; border-radius: 10px; }
+        .card-hint { font-size: 12px; color: var(--text-secondary); margin-top: 8px; }
+        .flashcard.revealed .card-front { display: none; }
+        .flashcard.revealed .card-back { display: block; }
+        .card-front { display: block; }
+        .card-back { display: none; }
+        .flashcard { position: relative; }
 
-        .word-main { flex: 1; min-width: 0; }
-        .word-en {
-            font-size: 16px; font-weight: 600; margin-bottom: 1px;
-            display: flex; align-items: baseline; gap: 5px; flex-wrap: wrap;
-            user-select: text; -webkit-user-select: text;
-        }
-        .word-phon { font-size: 11px; color: var(--text-secondary); font-weight: normal; }
-        .mastered-badge { font-size: 11px; color: var(--success); font-weight: normal; margin-left: 2px; }
-        .word-zh { font-size: 13px; color: var(--text-secondary); }
-        .word-example {
-            font-size: 11px; color: var(--primary);
-            background: rgba(0,122,255,0.08); padding: 4px 7px;
-            border-radius: 4px; margin-top: 4px; display: inline-block;
-        }
-        .word-review-info { font-size: 10px; color: var(--text-secondary); margin-top: 2px; }
+        .rating-area { display: none; margin-top: 14px; width: 100%; }
+        .rating-area.show { display: block; }
+        .rating-label { text-align: center; font-size: 13px; color: var(--text-secondary); margin-bottom: 10px; }
+        .rating-btns { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+        .rate-btn { padding: 12px 8px; border: none; border-radius: 12px; font-size: 14px; font-weight: 600; cursor: pointer; }
+        .rate-btn.wrong { background: #FFF0F0; color: var(--danger); }
+        .rate-btn.hard { background: #FFF8E0; color: var(--warning); }
+        .rate-btn.right { background: #F0FFF4; color: var(--success); }
+        .rate-btn:active { opacity: 0.8; }
 
-        .card-actions { display: flex; flex-direction: column; gap: 5px; align-items: center; }
-        .icon-btn {
-            width: 32px; height: 32px; border-radius: 8px;
-            border: none; cursor: pointer; font-size: 15px;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .speak-btn { background: rgba(0,122,255,0.1); color: var(--primary); }
-        .speak-btn:active { background: rgba(0,122,255,0.25); }
-        .bank-btn { background: #E5E5EA; color: var(--text-secondary); }
-        .bank-btn.active { background: rgba(255,149,0,0.15); color: var(--warning); }
-        .bank-btn:active { background: rgba(255,149,0,0.25); }
+        .complete-card { background: var(--card); border-radius: 18px; padding: 32px 20px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.08); margin-bottom: 14px; }
+        .complete-emoji { font-size: 48px; margin-bottom: 12px; }
+        .complete-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+        .complete-stats { font-size: 14px; color: var(--text-secondary); margin-bottom: 16px; }
+        .complete-detail { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
 
-        .empty-state { text-align: center; padding: 40px; color: var(--text-secondary); font-size: 13px; }
+        .word-list { }
+        .word-list-title { font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 8px; padding-left: 2px; }
+        .word-item { background: var(--card); border-radius: 12px; padding: 11px 14px; margin-bottom: 7px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .word-item-en { font-size: 15px; font-weight: 600; }
+        .word-item-zh { font-size: 13px; color: var(--text-secondary); margin-top: 2px; }
+        .word-next { font-size: 11px; color: var(--text-secondary); background: var(--bg); padding: 3px 8px; border-radius: 8px; }
+        .word-next.overdue { color: var(--danger); background: #FFF0F0; }
+        .word-next.soon { color: var(--warning); background: #FFF8E0; }
 
-        /* Bottom bar */
-        .bottom-bar {
-            position: fixed; bottom: 0; left: 0; right: 0;
-            background: var(--card); padding: 10px 16px;
-            display: flex; gap: 8px; box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
-        }
-        .btn {
-            flex: 1; padding: 12px; border-radius: 10px;
-            border: none; font-size: 14px; font-weight: 600; cursor: pointer;
-        }
-        .btn:active { opacity: 0.8; }
-        .btn-primary { background: var(--primary); color: white; }
-        .btn-secondary { background: #E5E5EA; color: var(--text); }
-        .btn-warning { background: var(--warning); color: white; }
-        .btn-danger { background: var(--danger); color: white; }
+        .cat-filter { display: flex; gap: 6px; overflow-x: auto; margin-bottom: 14px; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
+        .cat-filter::-webkit-scrollbar { display: none; }
+        .cat-btn { padding: 6px 14px; border-radius: 20px; border: none; font-size: 13px; font-weight: 500; cursor: pointer; white-space: nowrap; background: var(--card); color: var(--text); box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+        .cat-btn.active { background: var(--primary); color: white; }
 
-        .progress-bar {
-            height: 4px; background: #E5E5EA; border-radius: 2px; overflow: hidden;
-        }
-        .progress-fill { height: 100%; background: var(--primary); border-radius: 2px; transition: width 0.3s; }
+        .import-area { background: var(--card); border-radius: 18px; padding: 32px 24px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.08); margin-bottom: 14px; }
+        .import-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+        .import-text { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px; }
+        .import-area input[type="file"] { display: none; }
+        .import-btn { display: inline-block; padding: 14px 28px; background: var(--primary); color: white; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; }
+        #file-input { display: none; }
 
-        /* Modal */
-        .modal {
-            display: none; position: fixed; inset: 0;
-            background: rgba(0,0,0,0.45); justify-content: center; align-items: flex-end; z-index: 100;
-        }
-        .modal.show { display: flex; }
-        .modal-content {
-            background: var(--card); width: 100%; max-height: 85vh;
-            border-radius: 18px 18px 0 0; padding: 20px; overflow-y: auto;
-        }
-        .modal-header {
-            display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;
-        }
-        .modal-title { font-size: 18px; font-weight: 700; }
-        .modal-close {
-            width: 28px; height: 28px; border-radius: 50%;
-            background: #E5E5EA; border: none; font-size: 16px; cursor: pointer;
-        }
+        .streak-bar { background: var(--card); border-radius: 14px; padding: 14px; margin-bottom: 14px; display: flex; align-items: center; gap: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+        .streak-num { font-size: 32px; font-weight: 700; color: var(--primary); }
+        .streak-info { flex: 1; }
+        .streak-label { font-size: 13px; font-weight: 600; }
+        .streak-sub { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
 
-        /* Word bank modal */
-        .bank-modal-header {
-            display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
-        }
-        .bank-modal-icon {
-            width: 44px; height: 44px; border-radius: 12px;
-            background: rgba(255,149,0,0.12); display: flex;
-            align-items: center; justify-content: center; font-size: 22px;
-        }
-        .bank-modal-title { font-size: 18px; font-weight: 700; }
-        .bank-modal-count { font-size: 12px; color: var(--text-secondary); margin-top: 1px; }
-        .bank-modal-stats {
-            display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;
-            background: var(--bg); border-radius: 12px; padding: 12px;
-            margin-bottom: 14px;
-        }
-        .bank-stat { text-align: center; }
-        .bank-stat-num { font-size: 20px; font-weight: 700; color: var(--primary); }
-        .bank-stat-lbl { font-size: 10px; color: var(--text-secondary); }
-
-        /* Error book modal */
-        .error-modal-header {
-            display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
-        }
-        .error-modal-icon {
-            width: 44px; height: 44px; border-radius: 12px;
-            background: rgba(255,59,48,0.12); display: flex;
-            align-items: center; justify-content: center; font-size: 22px;
-        }
-
-        /* Modal word cards (for word bank) */
-        .modal-card {
-            background: var(--card); border-radius: 14px;
-            padding: 14px; margin-bottom: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-        .modal-card-top {
-            display: flex; justify-content: space-between; align-items: flex-start;
-            margin-bottom: 4px;
-        }
-        .modal-card-en { font-size: 17px; font-weight: 700; }
-        .modal-card-phon { font-size: 11px; color: var(--text-secondary); margin-top: 1px; }
-        .modal-card-zh { font-size: 13px; color: var(--text-secondary); margin-bottom: 4px; }
-        .modal-card-example {
-            font-size: 11px; color: var(--primary);
-            background: rgba(0,122,255,0.07); padding: 5px 9px;
-            border-radius: 6px; display: inline-block; margin-bottom: 6px;
-        }
-        .modal-card-actions {
-            display: flex; gap: 6px; align-items: center;
-            border-top: 1px solid rgba(0,0,0,0.05); padding-top: 8px; margin-top: 4px;
-        }
-        .modal-card-actions .icon-btn { width: 36px; height: 36px; }
-        .modal-card-remove {
-            margin-left: auto; font-size: 12px; color: var(--danger);
-            background: rgba(255,59,48,0.1); border: none;
-            padding: 5px 10px; border-radius: 6px; cursor: pointer;
-        }
-
-        /* Practice/learn cards */
-        .learn-header {
-            display: flex; align-items: center;
-            font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;
-        }
-        .learn-grid {
-            display: grid; grid-template-columns: 1fr; gap: 12px;
-        }
-        .learn-card {
-            background: var(--card); border-radius: 14px; padding: 18px 16px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-        }
-        .learn-word { font-size: 22px; font-weight: 700; margin-bottom: 3px; }
-        .learn-phon { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
-        .learn-zh { font-size: 16px; color: var(--text-secondary); margin-bottom: 8px; }
-        .learn-example {
-            font-size: 12px; color: var(--primary);
-            background: rgba(0,122,255,0.08); padding: 6px 10px; border-radius: 6px;
-            display: inline-block; margin-bottom: 8px;
-        }
-        .learn-actions {
-            display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
-        }
-
-        .study-card {
-            background: var(--card); border-radius: 16px; padding: 24px 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center;
-        }
-        .study-prompt { font-size: 24px; font-weight: 700; margin-bottom: 10px; }
-        .study-example { font-size: 13px; color: var(--text-secondary); margin-bottom: 16px; }
-        .study-input {
-            width: 100%; padding: 14px; border-radius: 10px;
-            border: 2px solid #E5E5EA; font-size: 20px; text-align: center;
-            outline: none; margin-bottom: 6px;
-        }
-        .study-input:focus { border-color: var(--primary); }
-        .study-speak { display: flex; gap: 8px; justify-content: center; margin-top: 10px; }
-
-        .study-result {
-            background: var(--card); border-radius: 16px; padding: 28px 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center;
-        }
-        .study-result.correct { border-top: 4px solid var(--success); }
-        .study-result.wrong { border-top: 4px solid var(--danger); }
-        .result-icon { font-size: 48px; margin-bottom: 8px; }
-        .result-word { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
-        .result-phon { font-size: 14px; color: var(--text-secondary); margin-bottom: 8px; }
-        .result-wrong-msg { font-size: 13px; color: var(--danger); margin-top: 6px; }
-        .result-correct-msg { font-size: 13px; color: var(--success); margin-top: 4px; }
-        .result-example { font-size: 13px; color: var(--primary); margin-top: 8px; }
-
-        .learn-complete, .study-complete {
-            background: var(--card); border-radius: 16px; padding: 40px 24px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center;
-        }
-        .complete-title { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
-        .complete-sub { font-size: 14px; color: var(--text-secondary); }
-        .complete-score { font-size: 52px; font-weight: 700; color: var(--primary); }
-        .complete-pct { font-size: 16px; color: var(--text-secondary); margin-top: 6px; }
-        .complete-msg { font-size: 18px; font-weight: 600; margin-top: 8px; }
-
-        .study-header { margin-bottom: 16px; }
-        .study-progress {
-            display: flex; align-items: center; font-size: 13px; color: var(--text-secondary);
-        }
-        .study-score { font-size: 13px; font-weight: 600; }
-        .error-badge {
-            display: inline-block; margin-top: 6px;
-            background: rgba(255,59,48,0.1); color: var(--danger);
-            font-size: 11px; padding: 3px 10px; border-radius: 10px;
-        }
-
-        @media (min-width: 600px) {
-            .card-grid { grid-template-columns: repeat(2, 1fr); }
-        }
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>Software English</h1>
-        <p>软件英语 · 间隔重复</p>
         <div class="theme-switcher">
-            <button class="theme-btn active" data-theme="blue" onclick="setTheme('blue')">蓝</button>
+            <button class="theme-btn" data-theme="blue" onclick="setTheme('blue')">蓝</button>
             <button class="theme-btn" data-theme="green" onclick="setTheme('green')">绿</button>
             <button class="theme-btn" data-theme="dark" onclick="setTheme('dark')">暗</button>
             <button class="theme-btn" data-theme="orange" onclick="setTheme('orange')">暖</button>
@@ -375,36 +151,461 @@
         </div>
     </div>
 
-    <div id="app"></div>
-
-    <div class="bottom-bar" id="bottomBar">
-        <button class="btn btn-warning" onclick="showErrorBook()">错词本</button>
-        <button class="btn btn-primary" id="bottomMainBtn" onclick="startLearnMode()">开始学习</button>
-    </div>
-
-    <!-- Error Book Modal -->
-    <div class="modal" id="errorModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <span class="modal-title">错词本</span>
-                <button class="modal-close" onclick="closeErrorBook()">×</button>
-            </div>
-            <div id="errorBody"></div>
+    <div class="streak-bar hidden" id="streak-bar">
+        <div class="streak-num" id="streak-num">0</div>
+        <div class="streak-info">
+            <div class="streak-label">天连续学习</div>
+            <div class="streak-sub" id="streak-sub">今天还没开始</div>
         </div>
     </div>
 
-    <!-- Word Bank Modal -->
-    <div class="modal" id="bankModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <span class="modal-title">生词本</span>
-                <button class="modal-close" onclick="closeBankBook()">×</button>
-            </div>
-            <div id="bankBody"></div>
+    <div class="stats-grid">
+        <div class="stat-card due">
+            <div class="stat-num" id="stat-due">0</div>
+            <div class="stat-label">待复习</div>
+        </div>
+        <div class="stat-card new">
+            <div class="stat-num" id="stat-new">0</div>
+            <div class="stat-label">可新学</div>
+        </div>
+        <div class="stat-card mastered">
+            <div class="stat-num" id="stat-mastered">0</div>
+            <div class="stat-label">已掌握</div>
         </div>
     </div>
 
-    <script src="js/storage.js"></script>
-    <script src="js/app.js"></script>
+    <div class="progress-section">
+        <div class="progress-label">
+            <span>今日进度</span>
+            <span id="progress-text">0/20</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+
+    <div class="mode-tabs">
+        <button class="mode-tab active" data-mode="review" onclick="setMode('review')">复习</button>
+        <button class="mode-tab" data-mode="learn" onclick="setMode('learn')">新词</button>
+        <button class="mode-tab" data-mode="browse" onclick="setMode('browse')">浏览</button>
+    </div>
+
+    <div id="mode-review">
+        <button class="btn-primary" id="btn-start-review" onclick="startReview()">开始复习 (<span id="review-count">0</span>词)</button>
+        <div id="review-area" class="flashcard-area hidden"></div>
+    </div>
+
+    <div id="mode-learn" class="hidden">
+        <button class="btn-primary" onclick="startLearn()">学习新词 (<span id="learn-count">0</span>词)</button>
+        <div id="learn-area" class="flashcard-area hidden"></div>
+    </div>
+
+    <div id="mode-browse" class="hidden">
+        <div class="cat-filter" id="cat-filter"></div>
+        <div class="word-list" id="word-list"></div>
+    </div>
+
+    <button class="btn-ghost" onclick="showClearModal()">重置学习进度</button>
+
+    <!-- Import modal -->
+    <div id="import-overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4); display:none; align-items:center; justify-content:center; z-index:100; padding:20px;">
+        <div style="background:var(--card); border-radius:20px; padding:28px 24px; width:100%; max-width:340px; text-align:center; box-shadow:0 8px 32px rgba(0,0,0,0.15);">
+            <div style="font-size:20px; font-weight:700; margin-bottom:8px;">导入词库</div>
+            <div style="font-size:14px; color:var(--text-secondary); line-height:1.7; margin-bottom:20px;">
+                选择 words.json 文件导入词库。<br>导入会合并现有词库。
+            </div>
+            <label class="import-btn" for="file-input">选择文件</label>
+            <input type="file" id="file-input" accept=".json">
+            <button class="btn-ghost" onclick="closeImport()" style="margin-top:12px">取消</button>
+        </div>
+    </div>
+
+    <!-- Clear modal -->
+    <div id="clear-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4); align-items:center; justify-content:center; z-index:100; padding:20px;">
+        <div style="background:var(--card); border-radius:20px; padding:24px; width:100%; max-width:340px; box-shadow:0 8px 32px rgba(0,0,0,0.15);">
+            <div style="font-size:18px; font-weight:700; margin-bottom:12px;">重置学习进度？</div>
+            <div style="font-size:14px; color:var(--text-secondary); line-height:1.6; margin-bottom:16px;">
+                这会清除所有复习记录和记忆曲线数据，词库本身不受影响。此操作不可撤销。
+            </div>
+            <div style="display:flex; gap:10px;">
+                <button style="flex:1; padding:12px; border:none; border-radius:12px; font-size:15px; font-weight:600; cursor:pointer; background:var(--bg); color:var(--text);" onclick="closeModal()">取消</button>
+                <button style="flex:1; padding:12px; border:none; border-radius:12px; font-size:15px; font-weight:600; cursor:pointer; background:var(--danger); color:white;" onclick="clearData()">确认重置</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+// ===== State =====
+const today = new Date().toISOString().slice(0, 10);
+const MAX_REVIEW = 20;
+const MAX_NEW = 5;
+let WORDS = [];
+let SRS = {};
+let currentMode = 'review';
+let currentCat = 'all';
+let reviewQueue = [], learnQueue = [];
+let reviewIdx = 0, learnIdx = 0;
+let reviewedToday = 0;
+
+// ===== TTS =====
+function speak(text) {
+    if (!text) return;
+    if (window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+        const utt = new SpeechSynthesisUtterance(text);
+        utt.lang = 'en-US';
+        utt.rate = 0.9;
+        window.speechSynthesis.speak(utt);
+    }
+}
+
+// ===== Init =====
+async function init() {
+    // Try to load words from localStorage first
+    const saved = localStorage.getItem('words_v2');
+    if (saved) {
+        try {
+            WORDS = JSON.parse(saved);
+        } catch(e) {
+            WORDS = [];
+        }
+    }
+    if (WORDS.length === 0) {
+        // Fetch from words.json on same server
+        try {
+            const res = await fetch('words.json');
+            const data = await res.json();
+            WORDS = Array.isArray(data) ? data : (data.words || []);
+            localStorage.setItem('words_v2', JSON.stringify(WORDS));
+        } catch(e) {
+            WORDS = [];
+        }
+    }
+    if (WORDS.length === 0) {
+        showImport();
+        return;
+    }
+    loadSRS();
+    refresh();
+}
+
+function showImport() {
+    document.getElementById('import-overlay').style.display = 'flex';
+}
+
+function closeImport() {
+    document.getElementById('import-overlay').style.display = 'none';
+}
+
+function handleFileImport(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+        try {
+            const data = JSON.parse(ev.target.result);
+            WORDS = Array.isArray(data) ? data : (data.words || []);
+            localStorage.setItem('words', JSON.stringify(WORDS));
+            closeImport();
+            initSRS();
+            refresh();
+        } catch(err) {
+            alert('文件格式错误: ' + err.message);
+        }
+    };
+    reader.readAsText(file);
+}
+
+document.getElementById('file-input').addEventListener('change', handleFileImport);
+
+// ===== SRS =====
+function initSRS() {
+    SRS = JSON.parse(localStorage.getItem('srs_v2') || '{}');
+    const srsMap = {};
+    for (const w of WORDS) {
+        srsMap[w.en] = SRS[w.en] || {
+            en: w.en, confidence: 0, interval: 0,
+            reviewCount: 0, lastReview: null,
+            nextReview: today, learned: false
+        };
+    }
+    SRS = srsMap;
+    saveSRS();
+}
+
+function saveSRS() {
+    localStorage.setItem('srs_v2', JSON.stringify(SRS));
+}
+
+function getStats() {
+    let due = 0, mastered = 0, learned = 0;
+    for (const d of Object.values(SRS)) {
+        if (!d.learned) { learned++; continue; }
+        if (d.nextReview <= today) due++;
+        if (d.confidence >= 4) mastered++;
+    }
+    return { due, mastered, learned, new: learned };
+}
+
+function refresh() {
+    const stats = getStats();
+    document.getElementById('stat-due').textContent = stats.due;
+    document.getElementById('stat-new').textContent = Math.min(stats.new, MAX_NEW);
+    document.getElementById('stat-mastered').textContent = stats.mastered;
+    document.getElementById('review-count').textContent = Math.min(stats.due, MAX_REVIEW);
+    document.getElementById('learn-count').textContent = Math.min(stats.new, MAX_NEW);
+    const reviewed = parseInt(localStorage.getItem('reviewed_t') || '0');
+    const isToday = localStorage.getItem('reviewed_date') === today;
+    const actual = isToday ? reviewed : 0;
+    const pct = Math.min((actual / MAX_REVIEW) * 100, 100);
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-text').textContent = `${actual}/${MAX_REVIEW}`;
+    updateStreak();
+}
+
+function updateStreak() {
+    const streak = parseInt(localStorage.getItem('streak') || '0');
+    const lastDate = localStorage.getItem('streak_date') || '';
+    const yesterday = new Date(); yesterday.setDate(yesterday.getDate() - 1);
+    const yStr = yesterday.toISOString().slice(0, 10);
+    let currentStreak = streak;
+    if (lastDate === today) {
+        currentStreak = streak;
+    } else if (lastDate === yStr) {
+        currentStreak = streak;
+    } else if (lastDate !== today) {
+        currentStreak = 0;
+    }
+    document.getElementById('streak-num').textContent = currentStreak;
+    const stats = getStats();
+    document.getElementById('streak-sub').textContent = stats.due > 0 ? `${stats.due}词待复习` : '今日已复习完';
+    document.getElementById('streak-bar').classList.toggle('hidden', currentStreak === 0);
+}
+
+// ===== Modes =====
+function setMode(mode) {
+    currentMode = mode;
+    document.querySelectorAll('.mode-tab').forEach(t => t.classList.toggle('active', t.dataset.mode === mode));
+    document.getElementById('mode-review').classList.toggle('hidden', mode !== 'review');
+    document.getElementById('mode-learn').classList.toggle('hidden', mode !== 'learn');
+    document.getElementById('mode-browse').classList.toggle('hidden', mode !== 'browse');
+    if (mode === 'browse') renderBrowse();
+    document.getElementById('review-area').classList.add('hidden');
+    document.getElementById('learn-area').classList.add('hidden');
+    document.getElementById('btn-start-review').classList.remove('hidden');
+}
+
+// ===== Review =====
+function startReview() {
+    const due = Object.values(SRS)
+        .filter(d => d.learned && d.nextReview <= today)
+        .sort((a, b) => a.confidence - b.confidence)
+        .slice(0, MAX_REVIEW);
+    if (due.length === 0) {
+        document.getElementById('review-area').innerHTML = completeCard('🎉', '今日复习完成', '暂时没有需要复习的词了', '学有余力？去学几个新词吧');
+        document.getElementById('review-area').classList.remove('hidden');
+        return;
+    }
+    reviewQueue = due.map(d => WORDS.find(w => w.en === d.en));
+    reviewIdx = 0;
+    document.getElementById('review-area').classList.remove('hidden');
+    document.getElementById('btn-start-review').classList.add('hidden');
+    showReviewCard();
+}
+
+function showReviewCard() {
+    const area = document.getElementById('review-area');
+    if (reviewIdx >= reviewQueue.length) {
+        const rev = parseInt(localStorage.getItem('reviewed_t') || '0');
+        const isToday = localStorage.getItem('reviewed_date') === today;
+        const newTotal = isToday ? rev + reviewQueue.length : reviewQueue.length;
+        localStorage.setItem('reviewed_t', newTotal);
+        localStorage.setItem('reviewed_date', today);
+        // Update streak
+        const lastDate = localStorage.getItem('streak_date') || '';
+        const yesterday = new Date(); yesterday.setDate(yesterday.getDate() - 1);
+        const yStr = yesterday.toISOString().slice(0, 10);
+        let streak = parseInt(localStorage.getItem('streak') || '0');
+        if (lastDate === today) { /* already updated */ }
+        else if (lastDate === yStr) { streak++; }
+        else { streak = 1; }
+        localStorage.setItem('streak', streak);
+        localStorage.setItem('streak_date', today);
+        area.innerHTML = completeCard('🎉', '本轮完成！', `复习了 ${reviewQueue.length} 个词`, `今日目标: ${Math.min(newTotal, MAX_REVIEW)}/${MAX_REVIEW}`);
+        refresh();
+        return;
+    }
+    const word = reviewQueue[reviewIdx];
+    area.innerHTML = flashcardHTML(word) + ratingHTML('review');
+}
+
+function rateReview(rating) {
+    const word = reviewQueue[reviewIdx];
+    const data = SRS[word.en];
+    const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1);
+    if (rating === 'wrong') {
+        data.confidence = 0; data.interval = 1;
+        data.nextReview = tomorrow.toISOString().slice(0, 10);
+    } else if (rating === 'hard') {
+        data.confidence = Math.min(5, data.confidence + 1);
+        data.interval = Math.max(1, Math.round(data.interval * 1.2));
+        const next = new Date(); next.setDate(next.getDate() + data.interval);
+        data.nextReview = next.toISOString().slice(0, 10);
+    } else {
+        data.confidence = Math.min(5, data.confidence + 1);
+        data.interval = data.interval === 0 ? 1 : data.interval < 3 ? Math.round(data.interval * 2) : Math.round(data.interval * (1 + data.confidence * 0.3));
+        const next = new Date(); next.setDate(next.getDate() + data.interval);
+        data.nextReview = next.toISOString().slice(0, 10);
+    }
+    data.reviewCount++;
+    data.lastReview = today;
+    SRS[word.en] = data;
+    saveSRS();
+    reviewIdx++;
+    showReviewCard();
+    refresh();
+}
+
+// ===== Learn =====
+function startLearn() {
+    const unlearned = Object.values(SRS)
+        .filter(d => !d.learned)
+        .slice(0, MAX_NEW)
+        .map(d => WORDS.find(w => w.en === d.en));
+    if (unlearned.length === 0) {
+        document.getElementById('learn-area').innerHTML = completeCard('📚', '词库学完了', '所有词都已开始复习', '明天复习时它们会出现');
+        document.getElementById('learn-area').classList.remove('hidden');
+        return;
+    }
+    learnQueue = unlearned;
+    learnIdx = 0;
+    document.getElementById('learn-area').classList.remove('hidden');
+    showLearnCard();
+}
+
+function showLearnCard() {
+    const area = document.getElementById('learn-area');
+    if (learnIdx >= learnQueue.length) {
+        area.innerHTML = completeCard('🎊', '新词学完！', `学习了 ${learnQueue.length} 个新词`, '明天复习时它们会出现');
+        refresh();
+        return;
+    }
+    const word = learnQueue[learnIdx];
+    area.innerHTML = flashcardHTML(word) + `
+        <div class="rating-area show" style="margin-top:14px">
+            <div class="rating-btns">
+                <button class="rate-btn wrong" onclick="rateLearn('wrong')">不认识</button>
+                <button class="rate-btn right" style="flex:2" onclick="rateLearn('right')">记住了</button>
+            </div>
+        </div>`;
+}
+
+function rateLearn(rating) {
+    const word = learnQueue[learnIdx];
+    const data = SRS[word.en];
+    data.learned = true;
+    if (rating === 'wrong') {
+        data.confidence = 0; data.interval = 0; data.nextReview = today;
+    } else {
+        data.confidence = 1; data.interval = 1;
+        const next = new Date(); next.setDate(next.getDate() + 1);
+        data.nextReview = next.toISOString().slice(0, 10);
+    }
+    SRS[word.en] = data;
+    saveSRS();
+    learnIdx++;
+    showLearnCard();
+}
+
+// ===== Browse =====
+function renderBrowse() {
+    const cats = ['all', ...new Set(WORDS.map(w => w.category))];
+    const filter = document.getElementById('cat-filter');
+    filter.innerHTML = cats.map(c => `<button class="cat-btn ${c === currentCat ? 'active' : ''}" onclick="setCat('${c}')">${c === 'all' ? '全部' : c}</button>`).join('');
+    const filtered = currentCat === 'all' ? WORDS : WORDS.filter(w => w.category === currentCat);
+    const list = document.getElementById('word-list');
+    list.innerHTML = `<div class="word-list-title">${currentCat === 'all' ? '全部' : currentCat} · ${filtered.length} 词</div>`;
+    list.innerHTML += filtered.slice(0, 50).map(w => {
+        const d = SRS[w.en] || {};
+        let nextText = '未学习', nextClass = '';
+        if (d.learned) {
+            if (d.nextReview <= today) { nextText = '待复习'; nextClass = 'overdue'; }
+            else if (d.nextReview <= new Date(Date.now() + 86400000).toISOString().slice(0, 10)) { nextText = '明日'; nextClass = 'soon'; }
+            else { nextText = d.nextReview; }
+        }
+        return `<div class="word-item">
+            <div><div class="word-item-en">${w.en}</div><div class="word-item-zh">${w.zh}</div></div>
+            <div class="word-next ${nextClass}">${nextText}</div>
+        </div>`;
+    }).join('');
+    if (filtered.length > 50) list.innerHTML += `<div style="text-align:center; color:var(--text-secondary); font-size:13px; padding:10px;">显示前50词，共${filtered.length}词</div>`;
+}
+
+function setCat(cat) { currentCat = cat; renderBrowse(); }
+
+// ===== Helpers =====
+function completeCard(emoji, title, stats, detail) {
+    return `<div class="complete-card"><div class="complete-emoji">${emoji}</div><div class="complete-title">${title}</div><div class="complete-stats">${stats}</div><div class="complete-detail">${detail}</div></div>`;
+}
+
+function flashcardHTML(word) {
+    const safeEn = word.en.replace(/'/g, "\\'");
+    return `<div class="flashcard" onclick="this.classList.toggle('revealed')">
+        <div class="card-meta">${word.category}</div>
+        <div class="card-front">
+            <div class="card-word-row">
+                <div class="card-word">${word.en}</div>
+                <button class="speak-btn" onclick="event.stopPropagation();speak('${safeEn}')" title="发音">🔊</button>
+            </div>
+            <div class="card-hint">点击显示答案</div>
+        </div>
+        <div class="card-back">
+            <div class="card-word-row">
+                <div class="card-zh">${word.zh}</div>
+                <button class="speak-btn" onclick="event.stopPropagation();speak('${safeEn}')" title="发音">🔊</button>
+            </div>
+            <div class="card-phon">${word.phon || ''}</div>
+            <div class="card-example">${word.example || ''}</div>
+        </div>
+    </div>`;
+}
+
+function ratingHTML(context) {
+    return `<div class="rating-area show" id="rating-area">
+        <div class="rating-label">记得怎么样？</div>
+        <div class="rating-btns">
+            <button class="rate-btn wrong" onclick="rateReview('wrong')">不认识</button>
+            <button class="rate-btn hard" onclick="rateReview('hard')">模糊</button>
+            <button class="rate-btn right" onclick="rateReview('right')">认识</button>
+        </div>
+    </div>`;
+}
+
+// ===== Theme =====
+function setTheme(theme) {
+    document.body.setAttribute('data-theme', theme === 'blue' ? '' : theme);
+    localStorage.setItem('theme', theme);
+    document.querySelectorAll('.theme-btn').forEach(b => b.classList.toggle('active', b.dataset.theme === theme));
+}
+
+// ===== Modal =====
+function showClearModal() { document.getElementById('clear-modal').style.display = 'flex'; }
+function closeModal() { document.getElementById('clear-modal').style.display = 'none'; }
+function clearData() {
+    localStorage.removeItem('srs_v2');
+    localStorage.removeItem('reviewed_t');
+    localStorage.removeItem('reviewed_date');
+    localStorage.removeItem('streak');
+    localStorage.removeItem('streak_date');
+    SRS = {};
+    WORDS.forEach(w => { SRS[w.en] = { en: w.en, confidence: 0, interval: 0, reviewCount: 0, lastReview: null, nextReview: today, learned: false }; });
+    closeModal();
+    refresh();
+}
+
+// ===== Load theme =====
+const savedTheme = localStorage.getItem('theme') || 'blue';
+setTheme(savedTheme);
+
+init();
+</script>
 </body>
 </html>
