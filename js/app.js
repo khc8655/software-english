@@ -714,6 +714,21 @@ function renderBrowseWords() {
 // TTS
 // ========================
 function speak(text) {
+    // Multi-word phrases (contains space): use Web Speech API directly
+    // Single words: try Youdao first, fall back to Web Speech API
+    const isMultiWord = text.includes(' ');
+    if (isMultiWord) {
+        // Use Web Speech API for multi-word phrases
+        if (window.speechSynthesis) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.9;
+            window.speechSynthesis.speak(utterance);
+        }
+        return;
+    }
+    // Single word: try Youdao first, then Web Speech API
     const audioUrl = `https://dict.youdao.com/dictvoice?type=1&word=${encodeURIComponent(text)}`;
     const audio = new Audio(audioUrl);
     audio.play().catch(() => {
