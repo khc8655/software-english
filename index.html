@@ -478,18 +478,17 @@ function showReviewCard() {
     var starred = inBank(word.en);
     var star = starred ? '&#9733;' : '&#9734;';
     var starCls = starred ? ' active' : '';
-
-" onclick="this.classList.toggle(\'revealed\')">' +
+    area.innerHTML = '<div class="flashcard" onclick="this.classList.toggle(\'revealed\')">' +
         '<div class="card-top">' +
             '<span class="card-cat">' + word.category + '</span>' +
-            '<button class="card-star' + starCls + '" onclick="event.stopPropagation();toggleBank(\'' + safe + '\');this.classList.toggle(\'active\');this.innerHTML=this.classList.contains(\'active\')?\'&#9733;\':\'&#9734;\'">' + star + '</button>' +
+            '<button class="card-star' + starCls + '" onclick="event.stopPropagation();toggleBank('' + safe + '');this.classList.toggle(\'active\');this.innerHTML=this.classList.contains(\'active\')?'&#9733;':'&#9734;'">' + star + '</button>' +
         '</div>' +
         '<div class="card-front">' +
-            '<div class="card-word-row"><div class="card-word">' + word.en + '</div><button class="speak-btn" onclick="event.stopPropagation();speak(\'' + safe + '\')">&#128266;</button></div>' +
+            '<div class="card-word-row"><div class="card-word">' + word.en + '</div><button class="speak-btn" onclick="event.stopPropagation();speak('' + safe + '')">&#128266;</button></div>' +
             '<div class="card-hint">点击显示答案</div>' +
         '</div>' +
         '<div class="card-back">' +
-            '<div class="card-word-row"><div class="card-zh">' + word.zh + '</div><button class="speak-btn" onclick="event.stopPropagation();speak(\'' + safe + '\')">&#128266;</button></div>' +
+            '<div class="card-word-row"><div class="card-zh">' + word.zh + '</div><button class="speak-btn" onclick="event.stopPropagation();speak('' + safe + '')">&#128266;</button></div>' +
             '<div class="card-phon">' + (word.phon || '') + '</div>' +
             (word.example ? '<div class="card-example">' + word.example + '</div>' : '') +
         '</div>' +
