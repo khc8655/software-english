@@ -246,23 +246,26 @@ let reviewIdx = 0, learnIdx = 0;
 let reviewedToday = 0;
 
 // ===== TTS =====
-// Web Speech API — works in mobile browsers and WebViews
+// 有道 TTS（主要，兼容手机 WebView）+ Web Speech API（备用）
 function speak(text) {
     if (!text) return;
-    if (!window.speechSynthesis) return;
-    window.speechSynthesis.cancel();
-    setTimeout(() => {
-        const utt = new SpeechSynthesisUtterance(text);
-        utt.lang = 'en-US';
-        utt.rate = 0.88;
-        const voices = window.speechSynthesis.getVoices();
-        const enVoice = voices.find(v => v.lang.startsWith('en')) || voices[0];
-        if (enVoice) utt.voice = enVoice;
-        window.speechSynthesis.speak(utt);
-    }, 10);
+    var audio = new Audio('https://dict.youdao.com/dictvoice?type=1&word=' + encodeURIComponent(text));
+    audio.play().catch(function() {
+        // WebView 放不了有道时，尝试 Web Speech API
+        if (window.speechSynthesis) {
+            window.speechSynthesis.cancel();
+            var utt = new SpeechSynthesisUtterance(text);
+            utt.lang = 'en-US';
+            utt.rate = 0.88;
+            var voices = window.speechSynthesis.getVoices();
+            var enVoice = voices.find(function(v) { return v.lang.startsWith('en'); }) || voices[0];
+            if (enVoice) utt.voice = enVoice;
+            window.speechSynthesis.speak(utt);
+        }
+    });
 }
 if (window.speechSynthesis) {
-    window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+    window.speechSynthesis.onvoiceschanged = function() { window.speechSynthesis.getVoices(); };
 }
 
 // ===== Init =====
