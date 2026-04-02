@@ -140,7 +140,7 @@ function renderHome() {
     var btnRev = document.getElementById('btn-review');
     if (pool.length > 0) {
         btnRev.style.display = 'block';
-        btnRev.textContent = '复 review (' + pool.length + '\u8bcd)';
+        btnRev.textContent = '开始复习';
     } else {
         btnRev.style.display = 'none';
     }
@@ -209,34 +209,47 @@ function showLearnCard() {
     var total = learnQueue.length;
     document.getElementById('lp-text').textContent = (learnIdx + 1) + ' / ' + total;
     document.getElementById('lp-fill').style.width = (learnIdx / total * 100) + '%';
-    area.innerHTML = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">' +
-        lCard(w1) + (w2 ? lCard(w2) : '<div></div>') + '</div>' +
+    area.innerHTML = '<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:12px">' +
+        lCard(w1, true) + (w2 ? lCard(w2, true) : '') + '</div>' +
         '<div class="rating-area show"><div class="rating-btns">' +
         '<button class="rate-btn wrong" onclick="rateLPair(false)">不认识</button>' +
         '<button class="rate-btn right" onclick="rateLPair(true)">记住了</button>' +
         '</div></div>';
 }
 
-function lCard(word) {
+function lCard(word, showBack) {
     var safe = word.en.replace(/'/g, "\\'");
+
     var starred = inBank(word.en);
     var star = starred ? '&#9733;' : '&#9734;';
     var starCls = starred ? ' active' : '';
-    return '<div class="flashcard" onclick="this.classList.toggle(\'revealed\')">' +
-        '<div class="card-top">' +
-            '<span class="card-cat">' + word.category + '</span>' +
-            '<button class="card-star' + starCls + '" onclick="event.stopPropagation();toggleBank(\'' + safe + '\');this.classList.toggle(\'active\');this.innerHTML=this.classList.contains(\'active\')?\'&#9733;\':\'&#9734;\'">' + star + '</button>' +
-        '</div>' +
-        '<div class="card-front">' +
-            '<div class="card-word-row"><div class="card-word">' + word.en + '</div><button class="speak-btn" onclick="event.stopPropagation();speak(\'' + safe + '\')">&#128266;</button></div>' +
-            '<div class="card-hint">点击查看</div>' +
-        '</div>' +
-        '<div class="card-back">' +
-            '<div class="card-word-row"><div class="card-zh">' + word.zh + '</div><button class="speak-btn" onclick="event.stopPropagation();speak(\'' + safe + '\')">&#128266;</button></div>' +
+    if (showBack) {
+        return '<div class="flashcard" style="text-align:left;padding:14px 16px">' +
+            '<div class="card-top">' +
+                '<span class="card-cat">' + word.category + '</span>' +
+                '<button class="card-star' + starCls + '" onclick="toggleBank(\x27 + safe + \x27);this.classList.toggle(\x27active\x27);this.innerHTML=this.classList.contains(\x27active\x27)?\x27&#9733;\x27:\x27&#9734;\x27"> ' + star + '</button>' +
+            '</div>' +
+            '<div class="card-word-row"><div class="card-word">' + word.en + '</div><button class="speak-btn" onclick="speak(\x27 + safe + \x27)">&#128266;</button></div>' +
+            '<div class="card-zh">' + word.zh + '</div>' +
             '<div class="card-phon">' + (word.phon || '') + '</div>' +
             (word.example ? '<div class="card-example">' + word.example + '</div>' : '') +
         '</div>' +
-    '</div>';
+    }
+    return '<div class="flashcard" onclick="this.classList.toggle(\x27revealed\x27)">' +
+        '<div class="card-top">' +
+            '<span class="card-cat">' + word.category + '</span>' +
+            '<button class="card-star' + starCls + '" onclick="event.stopPropagation();toggleBank(\x27 + safe + \x27);this.classList.toggle(\x27active\x27);this.innerHTML=this.classList.contains(\x27active\x27)?\x27&#9733;\x27:\x27&#9734;\x27"> ' + star + '</button>' +
+        '</div>' +
+        '<div class="card-front">' +
+            '<div class="card-word-row"><div class="card-word">' + word.en + '</div><button class="speak-btn" onclick="event.stopPropagation();speak(\x27 + safe + \x27)">&#128266;</button></div>' +
+            '<div class="card-hint">点击查看</div>' +
+        '</div>' +
+        '<div class="card-back">' +
+            '<div class="card-word-row"><div class="card-zh">' + word.zh + '</div><button class="speak-btn" onclick="event.stopPropagation();speak(\x27 + safe + \x27)">&#128266;</button></div>' +
+            '<div class="card-phon">' + (word.phon || '') + '</div>' +
+            (word.example ? '<div class="card-example">' + word.example + '</div>' : '') +
+        '</div>' +
+    '</div>' +
 }
 
 function rateLPair(correct) {
@@ -275,20 +288,21 @@ function showReviewCard() {
     }
     var word = reviewQueue[reviewIdx];
     var safe = word.en.replace(/'/g, "\\'");
+
     var starred = inBank(word.en);
     var star = starred ? '&#9733;' : '&#9734;';
     var starCls = starred ? ' active' : '';
-    area.innerHTML = '<div class="flashcard" onclick="this.classList.toggle(\'revealed\')">' +
-        '<div class="card-top">' +
-            '<span class="card-cat">' + word.category + '</span>' +
-            '<button class="card-star' + starCls + '" onclick="event.stopPropagation();toggleBank(\'' + safe + '\');this.classList.toggle(\'active\');this.innerHTML=this.classList.contains(\'active\')?\'&#9733;\':\'&#9734;\'">' + star + '</button>' +
-        '</div>' +
-        '<div class="card-front">' +
-            '<div class="card-word-row"><div class="card-word">' + word.en + '</div><button class="speak-btn" onclick="event.stopPropagation();speak(\'' + safe + '\')">&#128266;</button></div>' +
-            '<div class="card-hint">点击显示答案</div>' +
-        '</div>' +
-        '<div class="card-back">' +
-            '<div class="card-word-row"><div class="card-zh">' + word.zh + '</div><button class="speak-btn" onclick="event.stopPropagation();speak(\'' + safe + '\')">&#128266;</button></div>' +
+    var total = reviewQueue.length;
+    document.getElementById('rp-text').textContent = (reviewIdx + 1) + ' / ' + total;
+    document.getElementById('rp-fill').style.width = (reviewIdx / total * 100) + '%';
+    area.innerHTML = '<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:12px">' +
+        '<div class="flashcard" style="text-align:left;padding:14px 16px">' +
+            '<div class="card-top">' +
+                '<span class="card-cat">' + word.category + '</span>' +
+                '<button class="card-star' + starCls + '" onclick="toggleBank(\x27 + safe + \x27);this.classList.toggle(\x27active\x27);this.innerHTML=this.classList.contains(\x27active\x27)?\x27&#9733;\x27:\x27&#9734;\x27"> ' + star + '</button>' +
+            '</div>' +
+            '<div class="card-word-row"><div class="card-word">' + word.en + '</div><button class="speak-btn" onclick="speak(\x27 + safe + \x27)">&#128266;</button></div>' +
+            '<div class="card-zh">' + word.zh + '</div>' +
             '<div class="card-phon">' + (word.phon || '') + '</div>' +
             (word.example ? '<div class="card-example">' + word.example + '</div>' : '') +
         '</div>' +
