@@ -125,13 +125,13 @@ function showHome() {
                <div class="entry-btn-icon">📝</div>
                <div class="entry-btn-title">复习</div>
                <div class="entry-btn-desc">${dueCount}词待复习</div>
-           </button>` : '';
+           </button>` : '<div class="entry-btn entry-review" style="opacity:0.3;cursor:not-allowed"><div class="entry-btn-icon">📝</div><div class="entry-btn-title">复习</div><div class="entry-btn-desc">暂无待复习</div></div>';
     const learnBtn = newAllowed > 0
         ? `<button class="entry-btn entry-learn" onclick="startNewLearn()">
                <div class="entry-btn-icon">📖</div>
                <div class="entry-btn-title">学习新词</div>
                <div class="entry-btn-desc">还可学${newAllowed}词</div>
-           </button>` : '';
+           </button>` : '<div class="entry-btn entry-learn" style="opacity:0.3;cursor:not-allowed"><div class="entry-btn-icon">📖</div><div class="entry-btn-title">学习新词</div><div class="entry-btn-desc">今日已学完</div></div>';
 
     const app = document.getElementById('app');
     app.innerHTML = `
@@ -173,11 +173,11 @@ function showHome() {
         <!-- Quick access -->
         <div class="quick-row">
             <button class="quick-chip" onclick="showWordBank()">
-                <span>★</span> 生词本
+                <span style="color:var(--warning)">★</span> 生词本
                 ${stats.bankCount > 0 ? `<span class="chip-badge">${stats.bankCount}</span>` : ''}
             </button>
             <button class="quick-chip" onclick="showErrorBook()">
-                <span>✗</span> 错题本
+                <span style="color:var(--danger)">x</span> 错题本
                 ${stats.errorCount > 0 ? `<span class="chip-badge danger">${stats.errorCount}</span>` : ''}
             </button>
         </div>
