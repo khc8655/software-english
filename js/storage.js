@@ -303,6 +303,26 @@ const Storage = {
         return JSON.parse(this.get(this.KEYS.STREAK_DATES) || '[]');
     },
 
+    // ===== Daily Summary (for calendar) =====
+    _getDailySummary() {
+        return JSON.parse(this.get('dailySummary') || '{}');
+    },
+
+    getDaily() {
+        // Returns { "2026-04-03": { done: true, learned: 10 }, ... }
+        const summary = this._getDailySummary();
+        // Also back-fill from NEW_WORD_DATES for compatibility
+        const dates = this._getNewWordDates();
+        const today = new Date().toDateString();
+        const result = {};
+        for (const ds in dates) {
+            const d = new Date(ds);
+            const key = d.toISOString().slice(0, 10);
+            result[key] = { done: dates[ds] >= 10, learned: dates[ds] || 0 };
+        }
+        return result;
+    },
+
     _setStreakDates(dates) {
         this.set(this.KEYS.STREAK_DATES, dates);
     },
