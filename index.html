@@ -174,6 +174,87 @@
 
         /* ===== Utility ===== */
         .hidden { display: none !important; }
+
+        /* ===== Calendar ===== */
+        .cal-card { background: var(--card); border-radius: var(--radius-lg); padding: 18px 16px; margin-bottom: 14px; box-shadow: var(--shadow-md); border: 1px solid var(--border); }
+        .cal-header-row { margin-bottom: 10px; }
+        .cal-month-label { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px; text-align: center; }
+        .cal-weekday-row { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; margin-bottom: 4px; }
+        .cal-wday-cell { text-align: center; font-size: 11px; font-weight: 600; color: var(--text-secondary); padding: 3px 0; }
+        .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+        .cal-day-empty { aspect-ratio: 1; }
+        .cal-day-cell { aspect-ratio: 1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; color: var(--text-secondary); }
+        .cal-today { border: 2px solid var(--primary); color: var(--primary); font-weight: 700; }
+        .cal-learned { background: var(--primary); color: #fff; font-weight: 700; }
+        .cal-future { opacity: 0.25; }
+
+        /* ===== Today's Task Card ===== */
+        .task-card { background: var(--card); border-radius: var(--radius-md); padding: 14px 16px; margin-bottom: 12px; box-shadow: var(--shadow-sm); border: 1px solid var(--border); }
+        .task-today-row { display: flex; justify-content: center; align-items: center; gap: 0; }
+        .task-today-stat { text-align: center; flex: 1; }
+        .task-today-num { font-size: 32px; font-weight: 800; line-height: 1.2; }
+        .task-today-lbl { font-size: 11px; color: var(--text-secondary); margin-top: 2px; font-weight: 500; }
+        .task-today-divider { width: 1px; height: 40px; background: var(--border); margin: 0 8px; }
+        .task-done { background: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(34,197,94,0.04)); border-radius: var(--radius-md); padding: 16px; margin-bottom: 12px; text-align: center; border: 1px solid rgba(34,197,94,0.2); }
+        .task-done-title { font-size: 15px; font-weight: 700; color: var(--success); margin-bottom: 2px; }
+        .task-done-desc { font-size: 12px; color: var(--text-secondary); }
+
+        /* ===== Entry Grid (学习 / 复习) ===== */
+        .entry-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+        .entry-btn { background: var(--card); border-radius: var(--radius-md); padding: 18px 14px; display: flex; flex-direction: column; align-items: center; gap: 4px; box-shadow: var(--shadow-md); border: 1px solid var(--border); cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; text-align: center; }
+        .entry-btn:active { transform: scale(0.96); }
+        .entry-disabled { opacity: 0.45; pointer-events: none; }
+        .entry-btn-icon { font-size: 28px; margin-bottom: 2px; }
+        .entry-btn-title { font-size: 15px; font-weight: 800; color: var(--text); }
+        .entry-btn-desc { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
+        .entry-review { border-color: rgba(239,68,68,0.2); background: linear-gradient(135deg, var(--card), rgba(239,68,68,0.04)); }
+        .entry-learn { border-color: rgba(91,95,247,0.2); background: linear-gradient(135deg, var(--card), rgba(91,95,247,0.04)); }
+
+        /* ===== Quick Chips ===== */
+        .quick-row { display: flex; gap: 8px; margin-bottom: 16px; }
+        .quick-chip { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 8px 12px; font-size: 13px; font-weight: 600; color: var(--text); cursor: pointer; box-shadow: var(--shadow-sm); transition: transform 0.1s; }
+        .quick-chip:active { transform: scale(0.97); }
+        .chip-badge { font-size: 11px; background: var(--warning-bg); color: var(--warning); padding: 1px 6px; border-radius: 10px; font-weight: 700; }
+        .chip-badge.danger { background: var(--danger-bg); color: var(--danger); }
+
+        /* ===== Inline Speak Icon ===== */
+        .speak-icon { background: none; border: none; cursor: pointer; font-size: 14px; padding: 2px 4px; color: var(--text-secondary); border-radius: 6px; line-height: 1; transition: background 0.15s, color 0.15s; vertical-align: middle; }
+        .speak-icon:active { background: var(--bg); color: var(--primary); }
+        .speak-icon-lg { background: var(--bg); border: none; cursor: pointer; font-size: 20px; padding: 8px; color: var(--text-secondary); border-radius: 50%; line-height: 1; transition: background 0.15s, color 0.15s; }
+        .speak-icon-lg:active { background: var(--primary); color: #fff; }
+        .speak-icon-sm { background: none; border: none; cursor: pointer; font-size: 14px; padding: 2px; color: var(--text-secondary); border-radius: 4px; line-height: 1; }
+
+        /* ===== Star Button ===== */
+        .star-btn { background: none; border: none; cursor: pointer; font-size: 18px; padding: 4px; color: var(--text-secondary); border-radius: 6px; line-height: 1; transition: color 0.15s, transform 0.1s; }
+        .star-btn:active { transform: scale(1.2); }
+        .star-btn.active { color: var(--warning); }
+
+        /* ===== Error Tag ===== */
+        .error-tag { font-size: 10px; background: var(--danger-bg); color: var(--danger); padding: 2px 6px; border-radius: 6px; font-weight: 700; margin-left: 4px; vertical-align: middle; }
+
+        /* ===== Learn Card ===== */
+        .learn-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; }
+        .learn-word { font-size: 18px; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 4px; flex-wrap: wrap; margin-bottom: 2px; }
+        .learn-nav-btns { display: flex; gap: 8px; margin-top: 12px; }
+        .learn-progress-text { font-size: 13px; font-weight: 600; color: var(--text-secondary); white-space: nowrap; }
+
+        /* ===== Study Card ===== */
+        .study-word-row { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 12px; }
+        .study-word-en { font-size: 18px; font-weight: 700; color: var(--text-secondary); }
+        .result-actions { display: flex; justify-content: center; margin-top: 8px; }
+        .result-wrong { font-size: 13px; color: var(--danger); background: var(--danger-bg); padding: 6px 12px; border-radius: 8px; margin-top: 6px; }
+        .result-correct { font-size: 13px; color: var(--success); background: var(--success-bg); padding: 6px 12px; border-radius: 8px; margin-top: 4px; }
+
+        /* ===== Complete Card ===== */
+        .complete-card { background: var(--card); border-radius: var(--radius-lg); padding: 32px 20px; text-align: center; box-shadow: var(--shadow-lg); border: 1px solid var(--border); }
+        .complete-emoji { font-size: 56px; margin-bottom: 12px; }
+        .complete-score-big { font-size: 52px; font-weight: 800; color: var(--primary); line-height: 1.1; margin: 8px 0; }
+        .complete-pct { font-size: 16px; font-weight: 600; color: var(--text-secondary); margin-bottom: 4px; }
+
+        /* ===== Error Summary Card ===== */
+        .error-summary-card { background: linear-gradient(135deg, rgba(239,68,68,0.08), rgba(239,68,68,0.03)); border-radius: var(--radius-md); padding: 14px 16px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(239,68,68,0.15); }
+        .error-summary-title { font-size: 15px; font-weight: 700; color: var(--danger); }
+        .error-summary-count { font-size: 28px; font-weight: 800; color: var(--danger); }
     </style>
 </head>
 <body>
