@@ -135,56 +135,54 @@ function showHome() {
 
     const app = document.getElementById('app');
     app.innerHTML = `
-        <!-- Word count banner -->
-        <div class="word-count-banner">
-            <span>${stats.totalWords}词 · ${WORDS_VERSION || '2026-03-31'}</span>
-            <span class="banner-right">${stats.mastered}已掌握</span>
+        <!-- Compact header row: banner + today's stats -->
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+            <div style="flex:1;background:var(--card);border-radius:var(--radius-md);padding:10px 12px;box-shadow:var(--shadow-sm);border:1px solid var(--border);font-size:12px;font-weight:600;color:var(--text-secondary)">
+                ${stats.totalWords}词 · ${WORDS_VERSION || '2026-03-31'}
+            </div>
+            <div style="display:flex;gap:8px">
+                <div style="background:var(--card);border-radius:var(--radius-md);padding:8px 12px;box-shadow:var(--shadow-sm);border:1px solid var(--border);text-align:center;min-width:60px">
+                    <div style="font-size:16px;font-weight:800;color:var(--primary)">${newAllowed}</div>
+                    <div style="font-size:10px;color:var(--text-secondary);font-weight:500">新词空位</div>
+                </div>
+                <div style="background:var(--card);border-radius:var(--radius-md);padding:8px 12px;box-shadow:var(--shadow-sm);border:1px solid var(--border);text-align:center;min-width:60px">
+                    <div style="font-size:16px;font-weight:800;color:var(--danger)">${dueCount}</div>
+                    <div style="font-size:10px;color:var(--text-secondary);font-weight:500">待复习</div>
+                </div>
+            </div>
         </div>
 
         <!-- Calendar -->
         <div class="cal-card" id="homeCal"></div>
 
-        <!-- Today's status -->
+        <!-- Today's status (if done) -->
         ${todayDone ? `
-        <div class="task-done">
+        <div class="task-done" style="padding:12px;margin-bottom:10px">
             <div class="task-done-title">今日任务已全部完成</div>
             <div class="task-done-desc">明天继续加油</div>
-        </div>` : `
-        <div class="task-card">
-            <div class="task-today-row">
-                <div class="task-today-stat">
-                    <div class="task-today-num" style="color:var(--primary)">${newAllowed}</div>
-                    <div class="task-today-lbl">新词空位</div>
-                </div>
-                <div class="task-today-divider"></div>
-                <div class="task-today-stat">
-                    <div class="task-today-num" style="color:var(--danger)">${dueCount}</div>
-                    <div class="task-today-lbl">待复习</div>
-                </div>
-            </div>
-        </div>`}
+        </div>` : ''}
 
         <!-- Two entry points -->
-        <div class="entry-grid">
+        <div class="entry-grid" style="margin-bottom:10px">
             ${reviewBtn}
             ${learnBtn}
         </div>
 
         <!-- Quick access -->
-        <div class="quick-row">
-            <button class="quick-chip" onclick="showWordBank()">
-                <span style="color:var(--warning)">★</span> 生词本
+        <div class="quick-row" style="margin-bottom:8px">
+            <button class="quick-chip" onclick="showWordBank()" style="padding:6px 10px;font-size:12px">
+                <span style="color:var(--warning)">*</span> 生词本
                 ${stats.bankCount > 0 ? `<span class="chip-badge">${stats.bankCount}</span>` : ''}
             </button>
-            <button class="quick-chip" onclick="showErrorBook()">
+            <button class="quick-chip" onclick="showErrorBook()" style="padding:6px 10px;font-size:12px">
                 <span style="color:var(--danger)">x</span> 错题本
                 ${stats.errorCount > 0 ? `<span class="chip-badge danger">${stats.errorCount}</span>` : ''}
             </button>
         </div>
 
         <!-- Browse section -->
-        <div class="section-title">词库浏览</div>
-        <div class="category-tabs" id="categoryTabs"></div>
+        <div class="section-title" style="font-size:13px;margin-bottom:6px">词库浏览</div>
+        <div class="category-tabs" id="categoryTabs" style="margin-bottom:8px"></div>
         <div class="card-grid" id="browseWordList"></div>
     `;
 
@@ -230,10 +228,10 @@ function renderCalendarHome() {
     const calEl = document.getElementById('homeCal');
     if (calEl) {
         calEl.innerHTML = `
-            <div class="cal-header-row">
-                <div class="cal-month-label">${calY}年 ${months[calM]}</div>
-                <div class="cal-weekday-row">${weekdays.map(w => `<div class="cal-wday-cell">${w}</div>`).join('')}</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+                <div class="cal-month-label" style="margin:0;text-align:left">${calY}年 ${months[calM]}</div>
             </div>
+            <div class="cal-weekday-row">${weekdays.map(w => `<div class="cal-wday-cell">${w}</div>`).join('')}</div>
             <div class="cal-grid">${daysHtml}</div>
         `;
     }
