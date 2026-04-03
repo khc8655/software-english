@@ -119,8 +119,28 @@ function showHome() {
     const newAllowed = Math.max(0, 10 - stats.newWordToday);
     const todayDone = stats.newWordToday >= 10 && dueCount === 0;
 
+    // Build entry buttons — only show if available
+    const reviewBtn = dueCount > 0
+        ? `<button class="entry-btn entry-review" onclick="startLearnMode()">
+               <div class="entry-btn-icon">📝</div>
+               <div class="entry-btn-title">复习</div>
+               <div class="entry-btn-desc">${dueCount}词待复习</div>
+           </button>` : '';
+    const learnBtn = newAllowed > 0
+        ? `<button class="entry-btn entry-learn" onclick="startNewLearn()">
+               <div class="entry-btn-icon">📖</div>
+               <div class="entry-btn-title">学习新词</div>
+               <div class="entry-btn-desc">还可学${newAllowed}词</div>
+           </button>` : '';
+
     const app = document.getElementById('app');
     app.innerHTML = `
+        <!-- Word count banner -->
+        <div class="word-count-banner">
+            <span>${stats.totalWords}词 · ${WORDS_VERSION || '2026-03-31'}</span>
+            <span class="banner-right">${stats.mastered}已掌握</span>
+        </div>
+
         <!-- Calendar -->
         <div class="cal-card" id="homeCal"></div>
 
@@ -133,7 +153,7 @@ function showHome() {
         <div class="task-card">
             <div class="task-today-row">
                 <div class="task-today-stat">
-                    <div class="task-today-num" style="color:var(--success)">${newAllowed}</div>
+                    <div class="task-today-num" style="color:var(--primary)">${newAllowed}</div>
                     <div class="task-today-lbl">新词空位</div>
                 </div>
                 <div class="task-today-divider"></div>
@@ -146,16 +166,8 @@ function showHome() {
 
         <!-- Two entry points -->
         <div class="entry-grid">
-            <button class="entry-btn entry-review ${dueCount === 0 ? 'entry-disabled' : ''}" onclick="startLearnMode()">
-                <div class="entry-btn-icon">📝</div>
-                <div class="entry-btn-title">复习</div>
-                <div class="entry-btn-desc">${dueCount > 0 ? dueCount + '词待复习' : '暂无待复习'}</div>
-            </button>
-            <button class="entry-btn entry-learn ${newAllowed === 0 ? 'entry-disabled' : ''}" onclick="startNewLearn()">
-                <div class="entry-btn-icon">📖</div>
-                <div class="entry-btn-title">学习新词</div>
-                <div class="entry-btn-desc">${newAllowed > 0 ? '还可学' + newAllowed + '词' : '已达上限'}</div>
-            </button>
+            ${reviewBtn}
+            ${learnBtn}
         </div>
 
         <!-- Quick access -->
@@ -178,7 +190,10 @@ function showHome() {
 
     renderCalendarHome();
     renderTabs();
-    renderBrowseWords();
+    // Defer browse render to ensure DOM is painted first
+    requestAnimationFrame(() => {
+        renderBrowseWords();
+    });
     updateBottomBar('idle');
 }
 
