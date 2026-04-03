@@ -1,5 +1,5 @@
 {
-  "version": "2026-03-31-v1",
+  "version": "2026-04-03-v1",
   "categories": [
     "config",
     "log",
@@ -5234,6 +5234,636 @@
       "example": "CI/CD workflow automates build and deploy",
       "tags": [
         "devops"
+      ]
+    },
+    {
+      "en": "yaml",
+      "zh": "YAML格式",
+      "phon": "/ˈjæməl/",
+      "category": "config",
+      "example": "config.yaml",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "toml",
+      "zh": "TOML格式",
+      "phon": "/tɒməl/",
+      "category": "config",
+      "example": "pyproject.toml",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "ini",
+      "zh": "INI配置格式",
+      "phon": "/ˈɪni/",
+      "category": "config",
+      "example": "app.ini",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "manifest",
+      "zh": "清单文件",
+      "phon": "/ˈmænɪfɛst/",
+      "category": "config",
+      "example": "app manifest",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "flags",
+      "zh": "命令行标志",
+      "phon": "/flæɡz/",
+      "category": "config",
+      "example": "config flags",
+      "tags": [
+        "cli"
+      ]
+    },
+    {
+      "en": "race condition",
+      "zh": "竞态条件",
+      "phon": "/reɪs kənˈdɪʃən/",
+      "category": "error",
+      "example": "race condition bug",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "null pointer",
+      "zh": "空指针",
+      "phon": "/nʌl ˈpɔɪntər/",
+      "category": "error",
+      "example": "null pointer exception",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "segmentation fault",
+      "zh": "段错误",
+      "phon": "/ˌsɛɡmɛnˈteɪʃən fɔlt/",
+      "category": "error",
+      "example": "segfault",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "panic",
+      "zh": "程序崩溃",
+      "phon": "/ˈpænɪk/",
+      "category": "error",
+      "example": "kernel panic",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "assertion",
+      "zh": "断言失败",
+      "phon": "/əˈsɜrʃən/",
+      "category": "error",
+      "example": "assertion failed",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "unauthorized",
+      "zh": "未授权",
+      "phon": "/ˌʌnˌɔθəˈraɪzd/",
+      "category": "error",
+      "example": "401 unauthorized",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "forbidden",
+      "zh": "禁止访问",
+      "phon": "/fərˈbɪdən/",
+      "category": "error",
+      "example": "403 forbidden",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "stdin",
+      "zh": "标准输入",
+      "phon": "/ˈɛsdɪn/",
+      "category": "cli",
+      "example": "stdin input",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "stdout",
+      "zh": "标准输出",
+      "phon": "/ˈɛsdaʊt/",
+      "category": "cli",
+      "example": "print to stdout",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "stderr",
+      "zh": "标准错误",
+      "phon": "/ˈɛstɜr/",
+      "category": "cli",
+      "example": "2>&1 stderr",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "sudo",
+      "zh": "超级用户执行",
+      "phon": "/ˈsuːduː/",
+      "category": "cli",
+      "example": "sudo apt install",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "cron",
+      "zh": "定时任务",
+      "phon": "/krɒn/",
+      "category": "cli",
+      "example": "crontab -e",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "daemon",
+      "zh": "守护进程",
+      "phon": "/ˈdiːmən/",
+      "category": "cli",
+      "example": "systemd daemon",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "thread",
+      "zh": "线程",
+      "phon": "/θrɛd/",
+      "category": "cli",
+      "example": "multi-threaded",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "liveness",
+      "zh": "存活探针",
+      "phon": "/ˈlaɪvnes/",
+      "category": "devops",
+      "example": "liveness probe",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "readiness",
+      "zh": "就绪探针",
+      "phon": "/ˈrɛdɪnes/",
+      "category": "devops",
+      "example": "readiness probe",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "rollout",
+      "zh": "版本发布",
+      "phon": "/ˈroʊlaʊt/",
+      "category": "devops",
+      "example": "canary rollout",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "scaling",
+      "zh": "水平伸缩",
+      "phon": "/ˈskeɪlɪŋ/",
+      "category": "devops",
+      "example": "auto scaling",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "resource limit",
+      "zh": "资源限制",
+      "phon": "/ˈriːzɔrs ˈlɪmɪt/",
+      "category": "devops",
+      "example": "CPU resource limit",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "secrets",
+      "zh": "密钥管理",
+      "phon": "/ˈsiːkrɪts/",
+      "category": "devops",
+      "example": "k8s secrets",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "metric",
+      "zh": "监控指标",
+      "phon": "/ˈmɛtrɪk/",
+      "category": "devops",
+      "example": "system metrics",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "alert",
+      "zh": "告警",
+      "phon": "/əˈlɜrt/",
+      "category": "devops",
+      "example": "alerting rule",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "dashboard",
+      "zh": "监控面板",
+      "phon": "/ˈdæʃbɔːrd/",
+      "category": "devops",
+      "example": "Grafana dashboard",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "uptime",
+      "zh": "运行时间",
+      "phon": "/ˈʌptaɪm/",
+      "category": "devops",
+      "example": "99.9% uptime",
+      "tags": [
+        "devops"
+      ]
+    },
+    {
+      "en": "payload",
+      "zh": "请求载荷",
+      "phon": "/ˈpeɪloʊd/",
+      "category": "dev",
+      "example": "request payload",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "serialization",
+      "zh": "序列化",
+      "phon": "/ˌsɪərɪəlaɪˈzeɪʃən/",
+      "category": "dev",
+      "example": "JSON serialization",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "deserialization",
+      "zh": "反序列化",
+      "phon": "/diːˌsɪərɪəlaɪˈzeɪʃən/",
+      "category": "dev",
+      "example": "JSON deserialization",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "iterator",
+      "zh": "迭代器",
+      "phon": "/ɪtəˈreɪtər/",
+      "category": "dev",
+      "example": "for-of iterator",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "generics",
+      "zh": "泛型",
+      "phon": "/dʒɪˈnɛrɪks/",
+      "category": "dev",
+      "example": "TypeScript generics",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "polymorphism",
+      "zh": "多态",
+      "phon": "/ˌpɒlɪˈmɔːrfɪzəm/",
+      "category": "dev",
+      "example": "OOP polymorphism",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "encapsulation",
+      "zh": "封装",
+      "phon": "/ɪnˌkæpsjuˈleɪʃən/",
+      "category": "dev",
+      "example": "data encapsulation",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "recursive",
+      "zh": "递归",
+      "phon": "/rɪˈkɜrsɪv/",
+      "category": "dev",
+      "example": "recursive function",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "dependency injection",
+      "zh": "依赖注入",
+      "phon": "/dɪˈpɛndənsi ɪnˈdʒɛkʃən/",
+      "category": "dev",
+      "example": "DI container",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "singleton",
+      "zh": "单例模式",
+      "phon": "/ˈsɪŋɡltən/",
+      "category": "dev",
+      "example": "singleton pattern",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "factory",
+      "zh": "工厂模式",
+      "phon": "/ˈfæktri/",
+      "category": "dev",
+      "example": "factory method",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "repository",
+      "zh": "仓储模式",
+      "phon": "/rɪˈpɒzɪtɔːri/",
+      "category": "dev",
+      "example": "data repository",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "parallel",
+      "zh": "并行",
+      "phon": "/ˈpærəlɛl/",
+      "category": "dev",
+      "example": "parallel execution",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "en": "seed data",
+      "zh": "初始化数据",
+      "phon": "/siːd ˈdeɪtə/",
+      "category": "dev",
+      "example": "database seed data",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "stored procedure",
+      "zh": "存储过程",
+      "phon": "/stɔːrd prəˈsiːdʒər/",
+      "category": "db",
+      "example": "MySQL stored procedure",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "trigger",
+      "zh": "数据库触发器",
+      "phon": "/ˈtrɪɡər/",
+      "category": "db",
+      "example": "SQL trigger",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "isolation level",
+      "zh": "事务隔离级别",
+      "phon": "/ˌaɪsəˈleɪʃən ˈlɛvəl/",
+      "category": "db",
+      "example": "READ COMMITTED",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "query builder",
+      "zh": "查询构建器",
+      "phon": "/ˈkwɪri ˈbɪldər/",
+      "category": "db",
+      "example": "SQL query builder",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "migrations",
+      "zh": "数据库迁移",
+      "phon": "/maɪˈɡreɪʃənz/",
+      "category": "db",
+      "example": "Alembic migrations",
+      "tags": [
+        "db"
+      ]
+    },
+    {
+      "en": "amend",
+      "zh": "修改提交信息",
+      "phon": "/əˈmɛnd/",
+      "category": "git",
+      "example": "git commit --amend",
+      "tags": [
+        "git"
+      ]
+    },
+    {
+      "en": "chain of thought",
+      "zh": "思维链",
+      "phon": "/tʃeɪn əv θɔːt/",
+      "category": "ai",
+      "example": "chain of thought prompting",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "instruction tuning",
+      "zh": "指令微调",
+      "phon": "/ɪnˈstrʌkʃən ˈtjuːnɪŋ/",
+      "category": "ai",
+      "example": "instruction tuning dataset",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "reward model",
+      "zh": "奖励模型",
+      "phon": "/rɪˈwɔːrd ˈmɒdəl/",
+      "category": "ai",
+      "example": "reward model training",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "policy",
+      "zh": "策略模型",
+      "phon": "/ˈpɒləsi/",
+      "category": "ai",
+      "example": "policy model",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "logits",
+      "zh": "模型原始分数",
+      "phon": "/ˈlɒdʒɪts/",
+      "category": "ai",
+      "example": "sample from logits",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "softmax",
+      "zh": "归一化指数函数",
+      "phon": "/ˈsɒftmæks/",
+      "category": "ai",
+      "example": "apply softmax to logits",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "cross-entropy",
+      "zh": "交叉熵损失",
+      "phon": "/krɒs ˈɛntrəpi/",
+      "category": "ai",
+      "example": "cross-entropy loss",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "gradient descent",
+      "zh": "梯度下降",
+      "phon": "/ˈɡreɪdiənt dɪˈsɛnt/",
+      "category": "ai",
+      "example": "backpropagate gradient descent",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "backpropagation",
+      "zh": "反向传播",
+      "phon": "/ˌbækˌprɒpəˈɡeɪʃən/",
+      "category": "ai",
+      "example": "backpropagation through time",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "attention mechanism",
+      "zh": "注意力机制",
+      "phon": "/əˈtɛnʃən ˈmɛkənɪzəm/",
+      "category": "ai",
+      "example": "multi-head attention",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "transformer",
+      "zh": "Transformer架构",
+      "phon": "/trænzˈfɔːrmər/",
+      "category": "ai",
+      "example": "transformer model",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "vocabulary",
+      "zh": "词表",
+      "phon": "/voʊˈkæbjʊləri/",
+      "category": "ai",
+      "example": "model vocabulary",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "retrieval",
+      "zh": "信息检索",
+      "phon": "/rɪˈtriːvəl/",
+      "category": "ai",
+      "example": "RAG retrieval",
+      "tags": [
+        "ai"
+      ]
+    },
+    {
+      "en": "training",
+      "zh": "模型训练",
+      "phon": "/ˈtreɪnɪŋ/",
+      "category": "ai",
+      "example": "LLM training",
+      "tags": [
+        "ai"
       ]
     }
   ]
