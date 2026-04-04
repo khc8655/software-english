@@ -290,6 +290,7 @@ function showLearnCards() {
 
     const word1 = studyQueue[learnIndex];
     const word2 = left >= 2 ? studyQueue[learnIndex + 1] : null;
+    const word3 = left >= 3 ? studyQueue[learnIndex + 2] : null;
 
     function wordCard(w) {
         if (!w) return '';
@@ -313,7 +314,7 @@ function showLearnCards() {
 
     app.innerHTML = `
         <div class="learn-header">
-            <span class="learn-progress-text">${learnIndex + 1}–${Math.min(learnIndex + 2, studyQueue.length)} / ${studyQueue.length}</span>
+            <span class="learn-progress-text">${learnIndex + 1}–${Math.min(learnIndex + 3, studyQueue.length)} / ${studyQueue.length}</span>
             <div class="progress-bar" style="flex:1;margin:0 12px">
                 <div class="progress-fill" style="width:${(learnIndex / studyQueue.length) * 100}%"></div>
             </div>
@@ -321,6 +322,7 @@ function showLearnCards() {
         <div class="learn-grid">
             ${wordCard(word1)}
             ${wordCard(word2)}
+            ${wordCard(word3)}
         </div>
         <div class="learn-nav-btns">
             <button class="btn btn-secondary" style="flex:1" onclick="skipToPractice()">跳过 → 练习</button>
@@ -334,9 +336,11 @@ function showLearnCards() {
 window.nextLearnCards = function() {
     const w1 = studyQueue[learnIndex];
     const w2 = studyQueue[learnIndex + 1];
+    const w3 = studyQueue[learnIndex + 2];
     if (w1 && !learnedSessionQueue.find(q => q.en === w1.en)) learnedSessionQueue.push(w1);
     if (w2 && !learnedSessionQueue.find(q => q.en === w2.en)) learnedSessionQueue.push(w2);
-    learnIndex += 2;
+    if (w3 && !learnedSessionQueue.find(q => q.en === w3.en)) learnedSessionQueue.push(w3);
+    learnIndex += 3;
     showLearnCards();
 };
 
