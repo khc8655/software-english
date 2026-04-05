@@ -707,19 +707,45 @@ window.toggleBankBrowse = function(en) {
     renderBrowseWords();
 };
 
-// ===== TTS — always use Youdao (handles multi-word phrases correctly) =====
+// ===== TTS — always use Youdao (split multi-word phrases for better coverage) =====
 function speak(text) {
-    const audioUrl = `https://dict.youdao.com/dictvoice?type=1&word=${encodeURIComponent(text)}`;
+    const words = text.split(/\s+/);
+    if (words.length <= 1) {
+        // Single word: try Youdao directly
+        const audioUrl = `https://dict.youdao.com/dictvoice?type=1&word=${encodeURIComponent(text)}`;
+        const audio = new Audio(audioUrl);
+        audio.play().catch(() => fallbackTTS(text));
+    } else {
+        // Multi-word phrase: play each word sequentially via Youdao
+        playWordsSequentially(words, 0);
+    }
+}
+
+function playWordsSequentially(words, index) {
+    if (index >= words.length) return;
+    const word = words[index];
+    const audioUrl = `https://dict.youdao.com/dictvoice?type=1&word=${encodeURIComponent(word)}`;
     const audio = new Audio(audioUrl);
+    audio.onended = () => playWordsSequentially(words, index + 1);
+    audio.onerror = () => {
+        // Fall back to Web Speech for the remaining words
+        const remaining = words.slice(index).join(' ');
+        fallbackTTS(remaining);
+    };
     audio.play().catch(() => {
-        if (window.speechSynthesis) {
-            window.speechSynthesis.cancel();
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'en-US';
-            utterance.rate = 0.88;
-            window.speechSynthesis.speak(utterance);
-        }
+        const remaining = words.slice(index).join(' ');
+        fallbackTTS(remaining);
     });
+}
+
+function fallbackTTS(text) {
+    if (window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.88;
+        window.speechSynthesis.speak(utterance);
+    }
 }
 
 // ===== THEME =====
