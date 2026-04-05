@@ -117,15 +117,22 @@ function addError(en) {
 // ── Word Data ──
 let WORDS = [];
 async function loadWords() {
-    const cached = localStorage.getItem('se_words_cache');
-    if (cached) { try { WORDS = JSON.parse(cached); } catch(e) {} }
-    if (!WORDS.length) {
-        try {
-            const r = await fetch('words.json');
-            const data = await r.json();
-            WORDS = Array.isArray(data) ? data : (data.words || []);
+    try {
+        const r = await fetch('words.json?t=' + Date.now());
+        const data = await r.json();
+        const freshWords = Array.isArray(data) ? data : (data.words || []);
+        const cached = localStorage.getItem('se_words_cache');
+        const cachedVersion = localStorage.getItem('se_words_version');
+        if (cached && cachedVersion === data.version) {
+            try { WORDS = JSON.parse(cached); } catch(e) { WORDS = freshWords; }
+        } else {
+            WORDS = freshWords;
             localStorage.setItem('se_words_cache', JSON.stringify(WORDS));
-        } catch(e) {}
+            localStorage.setItem('se_words_version', data.version || '');
+        }
+    } catch(e) {
+        const cached = localStorage.getItem('se_words_cache');
+        if (cached) { try { WORDS = JSON.parse(cached); } catch(e) {} }
     }
 }
 function findWord(en) { return WORDS.find(w => w.en === en) || null; }
@@ -313,7 +320,7 @@ function buildPairCard(w, mode) {
             <div class="pair-word">${w.en}</div>
             <div class="pair-phon">${w.phon || ''}</div>
             <div class="pair-zh">${w.zh}</div>
-            ${w.example ? `<div class="pair-example">${w.example}</div>` : ''}
+            ${w.example ? `<div class="pair-example"><span style="color:var(--text-dim)">${w.example}</span><br><span style="color:var(--primary)">${w.example_zh || ''}</span></div>` : ''}
         </div>
     `;
 }

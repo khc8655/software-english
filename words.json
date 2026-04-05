@@ -1,5 +1,5 @@
 {
-  "version": "2026-04-03-v1",
+  "version": "2026-04-05-translated",
   "categories": [
     "config",
     "log",
@@ -21,7 +21,8 @@
       "tags": [
         "devops",
         "ai"
-      ]
+      ],
+      "example_zh": "A/B 测试生产中的两个模型版本"
     },
     {
       "en": "abort",
@@ -31,7 +32,8 @@
       "example": "Transaction aborted",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "交易中止"
     },
     {
       "en": "ACID",
@@ -41,7 +43,8 @@
       "example": "transaction guarantees ACID properties",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "事务保证 ACID 属性"
     },
     {
       "en": "agent",
@@ -51,7 +54,8 @@
       "example": "build an AI agent that uses multiple tools",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "构建使用多种工具的 AI 代理"
     },
     {
       "en": "aggregate",
@@ -61,7 +65,8 @@
       "example": "aggregate logs by error type and count",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "按错误类型和计数聚合日志"
     },
     {
       "en": "AI gateway",
@@ -72,7 +77,8 @@
       "tags": [
         "devops",
         "ai"
-      ]
+      ],
+      "example_zh": "部署AI网关进行模型路由和限速"
     },
     {
       "en": "alerting",
@@ -82,7 +88,8 @@
       "example": "configure alerting rules in Prometheus",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "在 Prometheus 中配置警报规则"
     },
     {
       "en": "alias",
@@ -92,7 +99,8 @@
       "example": "alias ll='ls -la' in .bashrc",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": ".bashrc 中的别名 ll='ls -la'"
     },
     {
       "en": "alignment",
@@ -102,7 +110,8 @@
       "example": "RLHF for aligning model with human values",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "RLHF 用于使模型与人类价值观保持一致"
     },
     {
       "en": "ansible",
@@ -112,7 +121,8 @@
       "example": "ansible-playbook site.yml to provision servers",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "ansible-playbook site.yml 用于配置服务器"
     },
     {
       "en": "Anthropic SDK",
@@ -123,7 +133,8 @@
       "tags": [
         "dev",
         "ai"
-      ]
+      ],
+      "example_zh": "pip install anthropic for Claude API"
     },
     {
       "en": "API key",
@@ -133,7 +144,8 @@
       "example": "export OPENAI_API_KEY=sk-...",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "导出 OPENAI_API_KEY=sk-..."
     },
     {
       "en": "api_base",
@@ -144,7 +156,8 @@
       "tags": [
         "config",
         "ai"
-      ]
+      ],
+      "example_zh": "为自定义 LLM 端点设置 api_base"
     },
     {
       "en": "api_version",
@@ -155,7 +168,8 @@
       "tags": [
         "config",
         "ai"
-      ]
+      ],
+      "example_zh": "为 Azure OpenAI 设置 api_version=2024-01-01"
     },
     {
       "en": "archive",
@@ -165,7 +179,8 @@
       "example": "git archive -o files.tar HEAD",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "git archive -o files.tar HEAD"
     },
     {
       "en": "archived",
@@ -175,7 +190,8 @@
       "example": "archived logs are compressed and stored",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "归档日志被压缩并存储"
     },
     {
       "en": "artifact",
@@ -185,7 +201,8 @@
       "example": "CI artifact: docker image uploaded to registry",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "CI神器：docker镜像上传到注册表"
     },
     {
       "en": "assistant message",
@@ -196,7 +213,8 @@
       "tags": [
         "dev",
         "ai"
-      ]
+      ],
+      "example_zh": "将助手消息存储在对话历史记录中"
     },
     {
       "en": "async",
@@ -206,7 +224,8 @@
       "example": "async function fetchData()",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "异步函数 fetchData()"
     },
     {
       "en": "asyncio",
@@ -216,7 +235,8 @@
       "example": "use asyncio.gather for concurrent LLM calls",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "使用 asyncio.gather 进行并发 LLM 调用"
     },
     {
       "en": "authentication",
@@ -226,7 +246,8 @@
       "example": "implement JWT authentication",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "实施 JWT 身份验证"
     },
     {
       "en": "authentication error",
@@ -237,7 +258,8 @@
       "tags": [
         "error",
         "ai"
-      ]
+      ],
+      "example_zh": "错误：API 密钥不正确，身份验证失败"
     },
     {
       "en": "authorization",
@@ -247,7 +269,8 @@
       "example": "check authorization before access",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "访问前检查授权"
     },
     {
       "en": "await",
@@ -257,7 +280,8 @@
       "example": "await fetch(url)",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "等待获取（url）"
     },
     {
       "en": "awk",
@@ -267,7 +291,8 @@
       "example": "awk -F: '{print $1}' /etc/passwd",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "awk -F: '{print $1}' /etc/passwd"
     },
     {
       "en": "backoff",
@@ -277,7 +302,8 @@
       "example": "exponential backoff after API rate limit",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "API 速率限制后的指数退避"
     },
     {
       "en": "backup",
@@ -287,7 +313,8 @@
       "example": "backup database to S3",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "备份数据库到S3"
     },
     {
       "en": "base_url",
@@ -298,7 +325,8 @@
       "tags": [
         "config",
         "ai"
-      ]
+      ],
+      "example_zh": "base_url=https://api.openai.com/v1"
     },
     {
       "en": "batch processing",
@@ -308,7 +336,8 @@
       "example": "batch process 1000 prompts via API",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "通过 API 批处理 1000 个提示"
     },
     {
       "en": "benchmark",
@@ -318,7 +347,8 @@
       "example": "benchmark query performance with EXPLAIN ANALYZE",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "使用 EXPLAIN ANALYZE ||| 对查询性能进行基准测试"
     },
     {
       "en": "bias",
@@ -328,7 +358,8 @@
       "example": "check for demographic bias in model outputs",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "检查模型输出中的人口统计偏差"
     },
     {
       "en": "bisect",
@@ -338,7 +369,8 @@
       "example": "git bisect to find the buggy commit",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "git bisect 找到有问题的提交"
     },
     {
       "en": "blame",
@@ -348,7 +380,8 @@
       "example": "git blame file.txt to see who changed lines",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "git Blame file.txt 查看谁更改了行"
     },
     {
       "en": "blue-green deployment",
@@ -358,7 +391,8 @@
       "example": "blue-green deployment reduces downtime",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "蓝绿部署减少停机时间"
     },
     {
       "en": "branch",
@@ -368,7 +402,8 @@
       "example": "create a new branch",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "创建一个新分支"
     },
     {
       "en": "buffered",
@@ -378,7 +413,8 @@
       "example": "buffered writes reduce log I/O overhead",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "缓冲写入减少日志 I/O 开销"
     },
     {
       "en": "build",
@@ -388,7 +424,8 @@
       "example": "build the Docker image",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "构建 Docker 镜像"
     },
     {
       "en": "cache",
@@ -398,7 +435,8 @@
       "example": "clear the browser cache",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "清除浏览器缓存"
     },
     {
       "en": "callback",
@@ -408,7 +446,8 @@
       "example": "pass callback function",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "传递回调函数"
     },
     {
       "en": "canary",
@@ -418,7 +457,8 @@
       "example": "canary release: 5% traffic to new version",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "金丝雀发布：新版本流量增加 5%"
     },
     {
       "en": "cascade",
@@ -428,7 +468,8 @@
       "example": "ON DELETE CASCADE for foreign key",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "ON DELETE CASCADE 外键"
     },
     {
       "en": "chain-of-thought",
@@ -438,7 +479,8 @@
       "example": "chain-of-thought prompting for reasoning tasks",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "推理任务的思维链提示"
     },
     {
       "en": "charset",
@@ -448,7 +490,8 @@
       "example": "mysql charset is utf8mb4",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "mysql 字符集是 utf8mb4"
     },
     {
       "en": "chat completion",
@@ -459,7 +502,8 @@
       "tags": [
         "dev",
         "ai"
-      ]
+      ],
+      "example_zh": "client.chat.completions.create(messages=[...])"
     },
     {
       "en": "checkout",
@@ -469,7 +513,8 @@
       "example": "git checkout -b feature",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "git checkout -b 功能"
     },
     {
       "en": "checkpoint",
@@ -479,7 +524,8 @@
       "example": "checkpoint writes dirty pages to disk",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "检查点将脏页写入磁盘"
     },
     {
       "en": "cherry-pick",
@@ -489,7 +535,8 @@
       "example": "cherry-pick commit hash",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "择优挑选提交哈希"
     },
     {
       "en": "chmod",
@@ -499,7 +546,8 @@
       "example": "chmod +x script.sh to make executable",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "chmod +x script.sh 使可执行文件"
     },
     {
       "en": "chown",
@@ -509,7 +557,8 @@
       "example": "chown -R www-data:www-data /var/www",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "chown -R www-data:www-data /var/www"
     },
     {
       "en": "circuit breaker",
@@ -519,7 +568,8 @@
       "example": "circuit breaker open after 5 failures",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "5 次故障后断路器断开"
     },
     {
       "en": "class",
@@ -529,7 +579,8 @@
       "example": "create a new class",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "创建一个新类"
     },
     {
       "en": "claude",
@@ -540,7 +591,8 @@
       "tags": [
         "cli",
         "ai"
-      ]
+      ],
+      "example_zh": "claude --print '解释递归'"
     },
     {
       "en": "clone",
@@ -550,7 +602,8 @@
       "example": "git clone https://github.com/user/repo.git",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "git 克隆 https://github.com/user/repo.git"
     },
     {
       "en": "cluster",
@@ -560,7 +613,8 @@
       "example": "kubernetes cluster",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "kubernetes 集群"
     },
     {
       "en": "commit",
@@ -570,7 +624,8 @@
       "example": "git commit -m 'fix bug'",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "git commit -m '修复错误'"
     },
     {
       "en": "compile",
@@ -580,7 +635,8 @@
       "example": "compile TypeScript to JS",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "将 TypeScript 编译为 JS"
     },
     {
       "en": "completion",
@@ -591,7 +647,8 @@
       "tags": [
         "dev",
         "ai"
-      ]
+      ],
+      "example_zh": "client.completion(model='gpt-4',prompt='...')"
     },
     {
       "en": "compress",
@@ -601,7 +658,8 @@
       "example": "zip -r backup.zip data/",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "zip -r 备份.zip 数据/"
     },
     {
       "en": "compression",
@@ -611,7 +669,8 @@
       "example": "enable gzip compression in nginx.conf",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "在 nginx.conf 中启用 gzip 压缩"
     },
     {
       "en": "concurrent",
@@ -621,7 +680,8 @@
       "example": "run 10 concurrent API requests with asyncio",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "使用 asyncio ||| 运行 10 个并发 API 请求"
     },
     {
       "en": "configmap",
@@ -631,7 +691,8 @@
       "example": "mount configmap as environment variables",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "将 configmap 挂载为环境变量"
     },
     {
       "en": "configure",
@@ -641,7 +702,8 @@
       "example": "sudo ./configure --prefix=/usr/local",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "sudo ./configure --prefix=/usr/local"
     },
     {
       "en": "conflict",
@@ -651,7 +713,8 @@
       "example": "Port conflict detected",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "检测到端口冲突"
     },
     {
       "en": "connection pool",
@@ -661,7 +724,8 @@
       "example": "configure HikariCP connection pool size",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "配置 HikariCP 连接池大小"
     },
     {
       "en": "constraint",
@@ -671,7 +735,8 @@
       "example": "UNIQUE constraint on email column",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "电子邮件列的唯一约束"
     },
     {
       "en": "container",
@@ -681,7 +746,8 @@
       "example": "run in Docker container",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "在 Docker 容器中运行"
     },
     {
       "en": "containerize",
@@ -691,7 +757,8 @@
       "example": "containerize legacy app with Docker",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "使用 Docker 将遗留应用程序容器化"
     },
     {
       "en": "content filtered",
@@ -702,7 +769,8 @@
       "tags": [
         "error",
         "ai"
-      ]
+      ],
+      "example_zh": "错误：内容被安全系统过滤"
     },
     {
       "en": "context length",
@@ -713,7 +781,8 @@
       "tags": [
         "error",
         "ai"
-      ]
+      ],
+      "example_zh": "错误：超出最大上下文长度 4096 个标记"
     },
     {
       "en": "context window",
@@ -723,7 +792,8 @@
       "example": "Claude has 200k token context window",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "Claude 有 200k 令牌上下文窗口"
     },
     {
       "en": "copy",
@@ -733,7 +803,8 @@
       "example": "cp source dest",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "cp 源目标"
     },
     {
       "en": "corrupt",
@@ -743,7 +814,8 @@
       "example": "Corrupt disk image",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "磁盘映像损坏"
     },
     {
       "en": "cost",
@@ -754,7 +826,8 @@
       "tags": [
         "log",
         "ai"
-      ]
+      ],
+      "example_zh": "日志：此请求的 API 成本=$0.03"
     },
     {
       "en": "crash",
@@ -764,7 +837,8 @@
       "example": "Application crashed unexpectedly",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "应用程序意外崩溃"
     },
     {
       "en": "CRUD",
@@ -774,7 +848,8 @@
       "example": "implement CRUD operations for resource",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "对资源实施CRUD操作"
     },
     {
       "en": "curl",
@@ -784,7 +859,8 @@
       "example": "curl -X POST https://api.example.com",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "卷曲 -X POST https://api.example.com"
     },
     {
       "en": "cursor",
@@ -794,7 +870,8 @@
       "example": "use cursor to iterate large result set",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "使用游标迭代大结果集"
     },
     {
       "en": "daemonset",
@@ -804,7 +881,8 @@
       "example": "daemonset ensures pod runs on every node",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "daemonset 确保 pod 在每个节点上运行"
     },
     {
       "en": "dataset",
@@ -814,7 +892,8 @@
       "example": "split dataset into train/val/test sets",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "将数据集拆分为训练/验证/测试集"
     },
     {
       "en": "deadlock",
@@ -824,7 +903,8 @@
       "example": "database deadlock detected, transaction rolled back",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "检测到数据库死锁，事务回滚"
     },
     {
       "en": "debug",
@@ -834,7 +914,8 @@
       "example": "[DEBUG] Variable x = 42",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "[调试] 变量 x = 42"
     },
     {
       "en": "decryption",
@@ -844,7 +925,8 @@
       "example": "decrypt ciphertext with AES key",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "使用 AES 密钥解密密文"
     },
     {
       "en": "default",
@@ -854,7 +936,8 @@
       "example": "The default port is 8080",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "默认端口是8080"
     },
     {
       "en": "degraded",
@@ -864,7 +947,8 @@
       "example": "service degraded due to high load",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "由于高负载导致服务降级"
     },
     {
       "en": "delete",
@@ -874,7 +958,8 @@
       "example": "DELETE FROM table WHERE id=1",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "从表中删除，其中 id=1"
     },
     {
       "en": "denied",
@@ -884,7 +969,8 @@
       "example": "Permission denied",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "权限被拒绝"
     },
     {
       "en": "dependency",
@@ -894,7 +980,8 @@
       "example": "manage npm dependencies in package.json",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "管理 package.json 中的 npm 依赖项"
     },
     {
       "en": "deploy",
@@ -904,7 +991,8 @@
       "example": "deploy to production",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "部署到生产"
     },
     {
       "en": "deserialize",
@@ -914,7 +1002,8 @@
       "example": "deserialize JSON response to model",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "反序列化 JSON 响应到模型"
     },
     {
       "en": "df",
@@ -924,7 +1013,8 @@
       "example": "df -h shows disk space usage",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "df -h 显示磁盘空间使用情况"
     },
     {
       "en": "diff",
@@ -934,7 +1024,8 @@
       "example": "git diff HEAD~1 file.txt",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "git diff HEAD~1 file.txt"
     },
     {
       "en": "directive",
@@ -944,7 +1035,8 @@
       "example": "the rewrite directive in nginx.conf",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "nginx.conf 中的重写指令"
     },
     {
       "en": "disable",
@@ -954,7 +1046,8 @@
       "example": "disable the firewall temporarily",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "暂时禁用防火墙"
     },
     {
       "en": "du",
@@ -964,7 +1057,8 @@
       "example": "du -sh * shows size of each item",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "du -sh * 显示每个项目的大小"
     },
     {
       "en": "dump",
@@ -974,7 +1068,8 @@
       "example": "core dump generated",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "生成核心转储"
     },
     {
       "en": "embedding",
@@ -984,7 +1079,8 @@
       "example": "use OpenAI embedding for semantic search",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "使用 OpenAI 嵌入进行语义搜索"
     },
     {
       "en": "enable",
@@ -994,7 +1090,8 @@
       "example": "enable ssl_verify_peer=1 in php.ini",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "在 php.ini 中启用 ssl_verify_peer=1"
     },
     {
       "en": "encoding",
@@ -1004,7 +1101,8 @@
       "example": "set encoding=utf-8 in the connection string",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "在连接字符串中设置encoding=utf-8"
     },
     {
       "en": "encryption",
@@ -1014,7 +1112,8 @@
       "example": "enable TLS encryption in transit",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "启用传输中的 TLS 加密"
     },
     {
       "en": "endpoint",
@@ -1024,7 +1123,8 @@
       "example": "POST /api/v1/users endpoint",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "POST /api/v1/users 端点"
     },
     {
       "en": "entry",
@@ -1034,7 +1134,8 @@
       "example": "Parse each log entry with regex",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "使用正则表达式 ||| 解析每个日志条目"
     },
     {
       "en": "env",
@@ -1044,7 +1145,8 @@
       "example": "set NODE_ENV=production in your env",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "在您的环境中设置 NODE_ENV=product"
     },
     {
       "en": "epoch",
@@ -1054,7 +1156,8 @@
       "example": "train for 3 epochs over the dataset",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "在数据集上训练 3 个 epoch"
     },
     {
       "en": "error",
@@ -1064,7 +1167,8 @@
       "example": "[ERROR] Connection refused",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "[错误] 连接被拒绝"
     },
     {
       "en": "evaluation",
@@ -1074,7 +1178,8 @@
       "example": "run automated evaluation on test set",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "在测试集上运行自动评估"
     },
     {
       "en": "exception",
@@ -1084,7 +1189,8 @@
       "example": "Unhandled exception in main",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "main ||| 中未处理的异常"
     },
     {
       "en": "execute",
@@ -1094,7 +1200,8 @@
       "example": "execute the script",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "执行脚本"
     },
     {
       "en": "exhausted",
@@ -1104,7 +1211,8 @@
       "example": "connection pool exhausted",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "连接池耗尽"
     },
     {
       "en": "export",
@@ -1114,7 +1222,8 @@
       "example": "export default App",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "导出默认应用程序"
     },
     {
       "en": "extract",
@@ -1124,7 +1233,8 @@
       "example": "tar -xzf archive.tar.gz",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "tar -xzf archive.tar.gz"
     },
     {
       "en": "facility",
@@ -1134,7 +1244,8 @@
       "example": "syslog facility local0 in rsyslog.conf",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "rsyslog.conf 中的 syslog 工具 local0"
     },
     {
       "en": "failed",
@@ -1144,7 +1255,8 @@
       "example": "Build failed with exit code 1",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "构建失败，退出代码 1"
     },
     {
       "en": "fallback",
@@ -1154,7 +1266,8 @@
       "example": "Use 8.8.8.8 as DNS fallback",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "使用 8.8.8.8 作为 DNS 后备"
     },
     {
       "en": "fatal",
@@ -1164,7 +1277,8 @@
       "example": "[FATAL] Out of memory, exiting",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "[致命] 内存不足，正在退出"
     },
     {
       "en": "feature flag",
@@ -1174,7 +1288,8 @@
       "example": "enable feature flag to control rollout",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "启用功能标志来控制推出"
     },
     {
       "en": "fetch",
@@ -1184,7 +1299,8 @@
       "example": "git fetch origin",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "git 获取原点"
     },
     {
       "en": "few-shot",
@@ -1194,7 +1310,8 @@
       "example": "few-shot learning with 3 examples in prompt",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "在提示中使用 3 个示例进行少样本学习"
     },
     {
       "en": "fine-tune",
@@ -1204,7 +1321,8 @@
       "example": "fine-tune GPT-3.5 with company knowledge base",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "使用公司知识库微调 GPT-3.5"
     },
     {
       "en": "fine-tuning",
@@ -1214,7 +1332,8 @@
       "example": "fine-tune Llama2 with custom dataset",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "使用自定义数据集微调 Llama2"
     },
     {
       "en": "fixture",
@@ -1224,7 +1343,8 @@
       "example": "load test fixtures in pytest",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "在 pytest ||| 中加载测试装置"
     },
     {
       "en": "flag",
@@ -1234,7 +1354,8 @@
       "example": "enable the --verbose flag in the config",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "在配置中启用 --verbose 标志"
     },
     {
       "en": "flush",
@@ -1244,7 +1365,8 @@
       "example": "flush log buffer to disk",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "将日志缓冲区刷新到磁盘"
     },
     {
       "en": "foreign key",
@@ -1254,7 +1376,8 @@
       "example": "FOREIGN KEY (user_id)",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "外键（用户 ID）"
     },
     {
       "en": "fork",
@@ -1264,7 +1387,8 @@
       "example": "fork repo on GitHub to your account",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "将 GitHub 上的存储库 fork 到您的帐户"
     },
     {
       "en": "framework",
@@ -1274,7 +1398,8 @@
       "example": "Spring is a popular Java framework",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "Spring是一个流行的Java框架"
     },
     {
       "en": "frequency penalty",
@@ -1285,7 +1410,8 @@
       "tags": [
         "dev",
         "ai"
-      ]
+      ],
+      "example_zh": "Frequency_penalty=0.5 减少标记重复"
     },
     {
       "en": "frozen",
@@ -1295,7 +1421,8 @@
       "example": "application frozen on deadlock",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "应用程序因死锁而冻结"
     },
     {
       "en": "full-text search",
@@ -1305,7 +1432,8 @@
       "example": "enable full-text search on article content",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "启用文章内容全文搜索"
     },
     {
       "en": "function",
@@ -1315,7 +1443,8 @@
       "example": "define a function",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "定义一个函数"
     },
     {
       "en": "function calling",
@@ -1325,7 +1454,8 @@
       "example": "use function calling to get weather data",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "使用函数调用获取天气数据"
     },
     {
       "en": "gitignore",
@@ -1335,7 +1465,8 @@
       "example": "add node_modules to .gitignore",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "将node_modules添加到.gitignore"
     },
     {
       "en": "GPU",
@@ -1345,7 +1476,8 @@
       "example": "A100 GPU with 80GB VRAM for LLM training",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "A100 GPU 和 80GB VRAM，用于 LLM 训练"
     },
     {
       "en": "GPU cluster",
@@ -1356,7 +1488,8 @@
       "tags": [
         "devops",
         "ai"
-      ]
+      ],
+      "example_zh": "为LLM训练提供GPU集群"
     },
     {
       "en": "grafana",
@@ -1366,7 +1499,8 @@
       "example": "import dashboard in Grafana for server metrics",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "在 Grafana 中导入仪表板以获取服务器指标"
     },
     {
       "en": "grep",
@@ -1376,7 +1510,8 @@
       "example": "grep -r 'error' /var/log",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "grep -r '错误' /var/log"
     },
     {
       "en": "grounding",
@@ -1386,7 +1521,8 @@
       "example": "web search grounding for factual responses",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "事实回应的网络搜索基础"
     },
     {
       "en": "hallucination",
@@ -1396,7 +1532,8 @@
       "example": "LLMs may produce hallucination on rare facts",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "法学硕士可能会对罕见的事实产生幻觉"
     },
     {
       "en": "hang",
@@ -1406,7 +1543,8 @@
       "example": "Process hang detected",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "检测到进程挂起"
     },
     {
       "en": "hashing",
@@ -1416,7 +1554,8 @@
       "example": "password hashing with bcrypt",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "使用 bcrypt 进行密码散列"
     },
     {
       "en": "health check",
@@ -1426,7 +1565,8 @@
       "example": "liveness health check",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "活力健康检查"
     },
     {
       "en": "helm",
@@ -1436,7 +1576,8 @@
       "example": "helm install mychart in Kubernetes cluster",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "helm 在 Kubernetes 集群中安装 mychart"
     },
     {
       "en": "hook",
@@ -1446,7 +1587,8 @@
       "example": "useEffect hook in React",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "React 中的 useEffect 钩子"
     },
     {
       "en": "hyperparameter",
@@ -1456,7 +1598,8 @@
       "example": "tune hyperparameters like learning rate",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "调整超参数，例如学习率"
     },
     {
       "en": "IaC",
@@ -1466,7 +1609,8 @@
       "example": "Terraform is a popular IaC tool",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "Terraform 是一种流行的 IaC 工具"
     },
     {
       "en": "image",
@@ -1476,7 +1620,8 @@
       "example": "pull nginx image from Docker Hub",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "从 Docker Hub 拉取 nginx 镜像"
     },
     {
       "en": "import",
@@ -1486,7 +1631,8 @@
       "example": "import React from 'react'",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "从 'react' 导入 React"
     },
     {
       "en": "import error",
@@ -1496,7 +1642,8 @@
       "example": "ImportError: No module named 'requests'",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "导入错误：没有名为“请求”的模块"
     },
     {
       "en": "incident",
@@ -1506,7 +1653,8 @@
       "example": "declare incident when SLA is breached",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "当违反 SLA 时宣布事件"
     },
     {
       "en": "index",
@@ -1516,7 +1664,8 @@
       "example": "create index on column",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "在列 ||| 上创建索引"
     },
     {
       "en": "inference",
@@ -1526,7 +1675,8 @@
       "example": "run LLM inference on GPU cluster",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "在 GPU 集群上运行 LLM 推理"
     },
     {
       "en": "inference endpoint",
@@ -1536,7 +1686,8 @@
       "example": "deploy model as serverless inference endpoint",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "将模型部署为无服务器推理端点"
     },
     {
       "en": "info",
@@ -1546,7 +1697,8 @@
       "example": "[INFO] Server started on port 3000",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "[INFO] 服务器在端口 3000 上启动"
     },
     {
       "en": "ingest",
@@ -1556,7 +1708,8 @@
       "example": "log ingestion pipeline with Filebeat",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "使用 Filebeat 进行日志摄取管道"
     },
     {
       "en": "ingress",
@@ -1566,7 +1719,8 @@
       "example": "configure ingress rules",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "配置入口规则"
     },
     {
       "en": "inherit",
@@ -1576,7 +1730,8 @@
       "example": "Child theme inherits parent styles",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "子主题继承父样式"
     },
     {
       "en": "initialize",
@@ -1586,7 +1741,8 @@
       "example": "git init",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "git 初始化"
     },
     {
       "en": "insert",
@@ -1596,7 +1752,8 @@
       "example": "INSERT INTO users VALUES()",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "插入用户值()"
     },
     {
       "en": "install",
@@ -1606,7 +1763,8 @@
       "example": "npm install express",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "npm 安装 Express"
     },
     {
       "en": "interface",
@@ -1616,7 +1774,8 @@
       "example": "define an interface",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "定义一个接口"
     },
     {
       "en": "interrupted",
@@ -1626,7 +1785,8 @@
       "example": "operation interrupted by user",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "操作被用户中断"
     },
     {
       "en": "interval",
@@ -1636,7 +1796,8 @@
       "example": "health check log interval set to 30s",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "健康检查日志间隔设置为 30s"
     },
     {
       "en": "invalid",
@@ -1646,7 +1807,8 @@
       "example": "Invalid argument supplied",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "提供的参数无效"
     },
     {
       "en": "invalid request",
@@ -1656,7 +1818,8 @@
       "example": "Error: invalid request - missing required field",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "错误：请求无效 - 缺少必填字段"
     },
     {
       "en": "iterate",
@@ -1666,7 +1829,8 @@
       "example": "iterate over array with forEach",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "使用 forEach ||| 迭代数组"
     },
     {
       "en": "join",
@@ -1676,7 +1840,8 @@
       "example": "LEFT JOIN orders ON users.id = orders.user_id",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "LEFT JOIN 订单 ON users.id =orders.user_id"
     },
     {
       "en": "JSON mode",
@@ -1686,7 +1851,8 @@
       "example": "enable JSON mode for reliable parsing",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "启用 JSON 模式以进行可靠解析"
     },
     {
       "en": "JSON schema",
@@ -1697,7 +1863,8 @@
       "tags": [
         "dev",
         "ai"
-      ]
+      ],
+      "example_zh": "为结构化输出定义 JSON 模式"
     },
     {
       "en": "kill",
@@ -1707,7 +1874,8 @@
       "example": "kill -9 1234",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "杀-9 1234"
     },
     {
       "en": "langchain",
@@ -1718,7 +1886,8 @@
       "tags": [
         "cli",
         "ai"
-      ]
+      ],
+      "example_zh": "pip install langchain 用于 LLM 应用程序开发"
     },
     {
       "en": "latency",
@@ -1729,7 +1898,8 @@
       "tags": [
         "log",
         "ai"
-      ]
+      ],
+      "example_zh": "日志：LLM 推理延迟=2.3s"
     },
     {
       "en": "leak",
@@ -1739,7 +1909,8 @@
       "example": "Memory leak detected",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "检测到内存泄漏"
     },
     {
       "en": "learning rate",
@@ -1749,7 +1920,8 @@
       "example": "set learning rate to 1e-4 for Adam optimizer",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "将 Adam 优化器的学习率设置为 1e-4"
     },
     {
       "en": "level",
@@ -1759,7 +1931,8 @@
       "example": "Set log level to DEBUG",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "将日志级别设置为 DEBUG"
     },
     {
       "en": "limit",
@@ -1769,7 +1942,8 @@
       "example": "ulimit -n 65535 to set file descriptor limit",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "ulimit -n 65535 设置文件描述符限制"
     },
     {
       "en": "lint",
@@ -1779,7 +1953,8 @@
       "example": "run ESLint to check code quality",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "运行 ESLint 检查代码质量"
     },
     {
       "en": "list",
@@ -1789,7 +1964,8 @@
       "example": "ls -la",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "ls -la"
     },
     {
       "en": "LLM",
@@ -1799,7 +1975,8 @@
       "example": "GPT-4 and Claude are popular LLMs",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "GPT-4 和 Claude 是受欢迎的法学硕士"
     },
     {
       "en": "lock",
@@ -1809,7 +1986,8 @@
       "example": "row-level lock prevents concurrent update",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "行级锁防止并发更新"
     },
     {
       "en": "log",
@@ -1819,7 +1997,8 @@
       "example": "Check the access log for details",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "检查访问日志以了解详细信息"
     },
     {
       "en": "loop",
@@ -1829,7 +2008,8 @@
       "example": "infinite loop detected in script",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "脚本中检测到无限循环"
     },
     {
       "en": "loss",
@@ -1839,7 +2019,8 @@
       "example": "monitor loss convergence during training",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "在训练期间监控损失收敛"
     },
     {
       "en": "malformed",
@@ -1849,7 +2030,8 @@
       "example": "malformed JSON in config file",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "配置文件中的 JSON 格式错误"
     },
     {
       "en": "man",
@@ -1859,7 +2041,8 @@
       "example": "man grep shows manual for grep",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "man grep 显示 grep 手册"
     },
     {
       "en": "max tokens",
@@ -1869,7 +2052,8 @@
       "example": "set max_tokens=500 to limit response length",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "设置 max_tokens=500 限制响应长度"
     },
     {
       "en": "merge",
@@ -1879,7 +2063,8 @@
       "example": "merge feature branch",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "合并功能分支"
     },
     {
       "en": "message",
@@ -1890,7 +2075,8 @@
       "tags": [
         "dev",
         "ai"
-      ]
+      ],
+      "example_zh": "messages=[{'角色':'用户','内容':'hi'}]"
     },
     {
       "en": "method",
@@ -1900,7 +2086,8 @@
       "example": "call the method",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "调用方法"
     },
     {
       "en": "middleware",
@@ -1910,7 +2097,8 @@
       "example": "add logging middleware to Express",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "将日志记录中间件添加到 Express"
     },
     {
       "en": "migrate",
@@ -1920,7 +2108,8 @@
       "example": "migrate data from MySQL to PostgreSQL",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "将数据从 MySQL 迁移到 PostgreSQL"
     },
     {
       "en": "migration",
@@ -1930,7 +2119,8 @@
       "example": "run database migration",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "运行数据库迁移"
     },
     {
       "en": "mismatch",
@@ -1940,7 +2130,8 @@
       "example": "Checksum mismatch",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "校验和不匹配"
     },
     {
       "en": "mock",
@@ -1950,7 +2141,8 @@
       "example": "use mock in unit testing",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "在单元测试中使用模拟"
     },
     {
       "en": "mode",
@@ -1960,7 +2152,8 @@
       "example": "run nginx in daemon mode",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "以守护进程模式运行 nginx"
     },
     {
       "en": "model",
@@ -1971,7 +2164,8 @@
       "tags": [
         "config",
         "ai"
-      ]
+      ],
+      "example_zh": "OpenAI API 调用中的 model=gpt-4o"
     },
     {
       "en": "model drift",
@@ -1982,7 +2176,8 @@
       "tags": [
         "devops",
         "ai"
-      ]
+      ],
+      "example_zh": "监控生产中模型随时间的漂移"
     },
     {
       "en": "model registry",
@@ -1993,7 +2188,8 @@
       "tags": [
         "devops",
         "ai"
-      ]
+      ],
+      "example_zh": "将微调后的模型上传到模型注册表"
     },
     {
       "en": "model serving",
@@ -2004,7 +2200,8 @@
       "tags": [
         "devops",
         "ai"
-      ]
+      ],
+      "example_zh": "使用 vLLM 进行高通量模型服务"
     },
     {
       "en": "model unavailable",
@@ -2015,7 +2212,8 @@
       "tags": [
         "error",
         "ai"
-      ]
+      ],
+      "example_zh": "错误 503：模型暂时不可用"
     },
     {
       "en": "model weights",
@@ -2025,7 +2223,8 @@
       "example": "fine-tune model weights on custom corpus",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "在自定义语料库上微调模型权重"
     },
     {
       "en": "moderation",
@@ -2035,7 +2234,8 @@
       "example": "use OpenAI moderation API for content safety",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "使用 OpenAI 审核 API 保证内容安全"
     },
     {
       "en": "module",
@@ -2045,7 +2245,8 @@
       "example": "import a module",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "导入模块"
     },
     {
       "en": "monitor",
@@ -2055,7 +2256,8 @@
       "example": "monitor server metrics",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "监控服务器指标"
     },
     {
       "en": "mount",
@@ -2065,7 +2267,8 @@
       "example": "mount /dev/sdb1 /mnt/usb",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "挂载 /dev/sdb1 /mnt/usb"
     },
     {
       "en": "move",
@@ -2075,7 +2278,8 @@
       "example": "mv file.txt /tmp/",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "mv 文件.txt /tmp/"
     },
     {
       "en": "multimodal",
@@ -2085,7 +2289,8 @@
       "example": "GPT-4V is a multimodal vision language model",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "GPT-4V是一种多模态视觉语言模型"
     },
     {
       "en": "MVCC",
@@ -2095,7 +2300,8 @@
       "example": "PostgreSQL uses MVCC for concurrency",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "PostgreSQL 使用 MVCC 实现并发"
     },
     {
       "en": "namespace",
@@ -2105,7 +2311,8 @@
       "example": "default namespace",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "默认命名空间"
     },
     {
       "en": "nice",
@@ -2115,7 +2322,8 @@
       "example": "nice -n 10 long-running-script.sh",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "好 -n 10 长时间运行的脚本.sh"
     },
     {
       "en": "node",
@@ -2125,7 +2333,8 @@
       "example": "worker node is ready",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "工作节点已准备就绪"
     },
     {
       "en": "nohup",
@@ -2135,7 +2344,8 @@
       "example": "nohup ./script.sh &",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "nohup ./script.sh &"
     },
     {
       "en": "normalize",
@@ -2145,7 +2355,8 @@
       "example": "normalize database to 3NF",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "将数据库规范化为 3NF"
     },
     {
       "en": "not found",
@@ -2155,7 +2366,8 @@
       "example": "404 Not Found",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "404 未找到"
     },
     {
       "en": "null",
@@ -2165,7 +2377,8 @@
       "example": "NullPointerException",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "空指针异常"
     },
     {
       "en": "observability",
@@ -2175,7 +2388,8 @@
       "example": "three pillars: metrics, logs, traces",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "三大支柱：指标、日志、跟踪"
     },
     {
       "en": "OLAP",
@@ -2185,7 +2399,8 @@
       "example": "ClickHouse for OLAP analytical queries",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "ClickHouse 用于 OLAP 分析查询"
     },
     {
       "en": "ollama",
@@ -2196,7 +2411,8 @@
       "tags": [
         "cli",
         "ai"
-      ]
+      ],
+      "example_zh": "ollama 运行 llama3 进行本地推理"
     },
     {
       "en": "OLTP",
@@ -2206,7 +2422,8 @@
       "example": "MySQL optimized for OLTP workloads",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "MySQL 针对 OLTP 工作负载进行了优化"
     },
     {
       "en": "on-call",
@@ -2216,7 +2433,8 @@
       "example": "engineer on-call rotates weekly",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "待命工程师每周轮换"
     },
     {
       "en": "openai",
@@ -2227,7 +2445,8 @@
       "tags": [
         "cli",
         "ai"
-      ]
+      ],
+      "example_zh": "pip install openai 使用SDK"
     },
     {
       "en": "OpenAI SDK",
@@ -2238,7 +2457,8 @@
       "tags": [
         "dev",
         "ai"
-      ]
+      ],
+      "example_zh": "使用OpenAI SDK调用gpt-4 API"
     },
     {
       "en": "operator",
@@ -2248,7 +2468,8 @@
       "example": "use etcd operator to manage etcd cluster",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "使用etcd操作符来管理etcd集群"
     },
     {
       "en": "option",
@@ -2258,7 +2479,8 @@
       "example": "--with-openssl is an optional configure option",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "--with-openssl 是可选的配置选项"
     },
     {
       "en": "orchestration",
@@ -2268,7 +2490,8 @@
       "example": "Kubernetes orchestration of containers",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "Kubernetes 容器编排"
     },
     {
       "en": "organization",
@@ -2279,7 +2502,8 @@
       "tags": [
         "config",
         "ai"
-      ]
+      ],
+      "example_zh": "为 OpenAI 帐户设置organization=org-xxx"
     },
     {
       "en": "origin",
@@ -2289,7 +2513,8 @@
       "example": "git push origin main",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "git push origin 主要"
     },
     {
       "en": "ORM",
@@ -2299,7 +2524,8 @@
       "example": "use Prisma ORM with PostgreSQL",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "将 Prisma ORM 与 PostgreSQL 结合使用"
     },
     {
       "en": "orphaned",
@@ -2309,7 +2535,8 @@
       "example": "orphaned process still holding locks",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "孤立进程仍持有锁"
     },
     {
       "en": "out of memory",
@@ -2319,7 +2546,8 @@
       "example": "out of memory: killed process python",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "内存不足：杀死进程 python"
     },
     {
       "en": "override",
@@ -2329,7 +2557,8 @@
       "example": "Environment variables override config files",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "环境变量覆盖配置文件"
     },
     {
       "en": "package",
@@ -2339,7 +2568,8 @@
       "example": "npm package",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "npm 包"
     },
     {
       "en": "parameter",
@@ -2349,7 +2579,8 @@
       "example": "timeout is a critical parameter",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "超时是一个关键参数"
     },
     {
       "en": "parse",
@@ -2359,7 +2590,8 @@
       "example": "parse JSON schema output from AI response",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "解析 AI 响应的 JSON 模式输出"
     },
     {
       "en": "parse error",
@@ -2369,7 +2601,8 @@
       "example": "Error: failed to parse JSON from AI response",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "错误：无法从 AI 响应中解析 JSON"
     },
     {
       "en": "partition",
@@ -2379,7 +2612,8 @@
       "example": "partition table by date range",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "按日期范围分区表"
     },
     {
       "en": "path",
@@ -2389,7 +2623,8 @@
       "example": "add /usr/local/bin to your PATH",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "将 /usr/local/bin 添加到您的 PATH"
     },
     {
       "en": "pattern",
@@ -2399,7 +2634,8 @@
       "example": "grep with regex pattern to filter logs",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "grep 使用正则表达式模式来过滤日志"
     },
     {
       "en": "persistent",
@@ -2409,7 +2645,8 @@
       "example": "enable persistent connections in nginx",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "在 nginx 中启用持久连接"
     },
     {
       "en": "pip install",
@@ -2419,7 +2656,8 @@
       "example": "pip install anthropic openai",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "pip install anthropic openai"
     },
     {
       "en": "pipe",
@@ -2429,7 +2667,8 @@
       "example": "cat file.txt | grep error | wc -l",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "猫文件.txt"
     },
     {
       "en": "pipeline",
@@ -2439,7 +2678,8 @@
       "example": "Jenkins pipeline with stages: build, test, deploy",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "grep 错误"
     },
     {
       "en": "pod",
@@ -2449,7 +2689,8 @@
       "example": "kubectl get pods",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "wc -l"
     },
     {
       "en": "polyfill",
@@ -2459,7 +2700,8 @@
       "example": "add polyfill for older browser support",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "具有阶段的 Jenkins 管道：构建、测试、部署"
     },
     {
       "en": "pre-training",
@@ -2469,7 +2711,8 @@
       "example": "LLM pre-training on large text corpus",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "kubectl 获取 Pod"
     },
     {
       "en": "presence penalty",
@@ -2480,7 +2723,8 @@
       "tags": [
         "dev",
         "ai"
-      ]
+      ],
+      "example_zh": "添加polyfill以支持旧版浏览器"
     },
     {
       "en": "primary key",
@@ -2490,7 +2734,8 @@
       "example": "PRIMARY KEY (id)",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "大型文本语料库上的LLM预训练"
     },
     {
       "en": "profile",
@@ -2500,7 +2745,8 @@
       "example": "edit your ~/.bash_profile",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "Presence_penalty=1.0 鼓励主题多样性"
     },
     {
       "en": "prometheus",
@@ -2510,7 +2756,8 @@
       "example": "Prometheus scrapes metrics from node_exporter",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "主键（id）"
     },
     {
       "en": "promise",
@@ -2520,7 +2767,8 @@
       "example": "return new Promise()",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "编辑你的~/.bash_profile"
     },
     {
       "en": "prompt",
@@ -2530,7 +2778,8 @@
       "example": "write a clear prompt for the AI model",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "Prometheus 从 node_exporter ||| 抓取指标"
     },
     {
       "en": "prompt engineering",
@@ -2540,7 +2789,8 @@
       "example": "prompt engineering improves AI output quality",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "返回新的 Promise()"
     },
     {
       "en": "ps",
@@ -2550,7 +2800,8 @@
       "example": "ps aux | grep nginx",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "辅助"
     },
     {
       "en": "pull",
@@ -2560,7 +2811,8 @@
       "example": "git pull from remote",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "grep nginx"
     },
     {
       "en": "pull request",
@@ -2570,7 +2822,8 @@
       "example": "open pull request on GitHub",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "git 从远程拉"
     },
     {
       "en": "purge",
@@ -2580,7 +2833,8 @@
       "example": "purge logs older than 7 days",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "在 GitHub 上打开拉取请求"
     },
     {
       "en": "push",
@@ -2590,7 +2844,8 @@
       "example": "git push origin main",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "清除超过 7 天的日志"
     },
     {
       "en": "quantization",
@@ -2600,7 +2855,8 @@
       "example": "4-bit quantization reduces model size by 75%",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "git push origin 主要"
     },
     {
       "en": "query",
@@ -2610,7 +2866,8 @@
       "example": "execute SQL query",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "4 位量化将模型大小减少 75%"
     },
     {
       "en": "quota",
@@ -2620,7 +2877,8 @@
       "example": "disk quota exceeded on the server",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "执行SQL查询"
     },
     {
       "en": "quota exceeded",
@@ -2631,7 +2889,8 @@
       "tags": [
         "error",
         "ai"
-      ]
+      ],
+      "example_zh": "服务器上超出磁盘配额"
     },
     {
       "en": "RAG",
@@ -2641,7 +2900,8 @@
       "example": "RAG combines retrieval with LLM generation",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "错误：超出每月 API 配额"
     },
     {
       "en": "rate",
@@ -2651,7 +2911,8 @@
       "example": "log rate: 1000 events per second",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "RAG 将检索与 LLM 生成结合起来"
     },
     {
       "en": "rate limit",
@@ -2661,7 +2922,8 @@
       "example": "handle 429 rate limit error with backoff",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "日志速率：每秒 1000 个事件"
     },
     {
       "en": "rate limit exceeded",
@@ -2672,7 +2934,8 @@
       "tags": [
         "error",
         "ai"
-      ]
+      ],
+      "example_zh": "使用退避处理 429 速率限制错误"
     },
     {
       "en": "rate limited",
@@ -2683,7 +2946,8 @@
       "tags": [
         "log",
         "ai"
-      ]
+      ],
+      "example_zh": "错误 429：超出 API 调用速率限制"
     },
     {
       "en": "reasoning model",
@@ -2693,7 +2957,8 @@
       "example": "o1 is OpenAI's reasoning model",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "日志：429 速率受限，60 秒后重试"
     },
     {
       "en": "rebase",
@@ -2703,7 +2968,8 @@
       "example": "rebase onto main",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "o1是OpenAI的推理模型"
     },
     {
       "en": "recursion",
@@ -2713,7 +2979,8 @@
       "example": "use recursion instead of loop",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "变基到主"
     },
     {
       "en": "red teaming",
@@ -2724,7 +2991,8 @@
       "tags": [
         "devops",
         "ai"
-      ]
+      ],
+      "example_zh": "使用递归代替循环"
     },
     {
       "en": "redirect",
@@ -2734,7 +3002,8 @@
       "example": "command > output.txt 2>&1",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "开展红队查找人工智能安全问题"
     },
     {
       "en": "refactor",
@@ -2744,7 +3013,8 @@
       "example": "refactor the authentication module",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "命令 > 输出.txt 2>&1"
     },
     {
       "en": "reflog",
@@ -2754,7 +3024,8 @@
       "example": "git reflog to find lost commits",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "重构认证模块"
     },
     {
       "en": "refused",
@@ -2764,7 +3035,8 @@
       "example": "connection refused by remote host",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "git reflog 查找丢失的提交"
     },
     {
       "en": "registry",
@@ -2774,7 +3046,8 @@
       "example": "push image to Docker Hub registry",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "连接被远程主机拒绝"
     },
     {
       "en": "release",
@@ -2784,7 +3057,8 @@
       "example": "new release v2.0",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "将镜像推送到 Docker Hub 注册表"
     },
     {
       "en": "reload",
@@ -2794,7 +3068,8 @@
       "example": "reload nginx configuration",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "新版本v2.0"
     },
     {
       "en": "remote",
@@ -2804,7 +3079,8 @@
       "example": "add remote origin git@github.com:user/repo.git",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "重新加载 nginx 配置"
     },
     {
       "en": "remove",
@@ -2814,7 +3090,8 @@
       "example": "rm -rf node_modules",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "添加远程源 git@github.com:user/repo.git"
     },
     {
       "en": "replica",
@@ -2824,7 +3101,8 @@
       "example": "set replicas=3",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "rm -rf 节点模块"
     },
     {
       "en": "replica set",
@@ -2834,7 +3112,8 @@
       "example": "MongoDB replica set with 3 members",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "设置副本=3"
     },
     {
       "en": "replication",
@@ -2844,7 +3123,8 @@
       "example": "async replication to read replica",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "具有 3 个成员的 MongoDB 副本集"
     },
     {
       "en": "reset",
@@ -2854,7 +3134,8 @@
       "example": "git reset --hard HEAD~1 to undo commit",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "异步复制到只读副本"
     },
     {
       "en": "response",
@@ -2865,7 +3146,8 @@
       "tags": [
         "dev",
         "ai"
-      ]
+      ],
+      "example_zh": "git reset --hard HEAD~1 撤消提交"
     },
     {
       "en": "restart",
@@ -2875,7 +3157,8 @@
       "example": "systemctl restart nginx",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "response.choices[0].message.content"
     },
     {
       "en": "restore",
@@ -2885,7 +3168,8 @@
       "example": "restore from backup",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "systemctl 重新启动 nginx"
     },
     {
       "en": "retention",
@@ -2895,7 +3179,8 @@
       "example": "log retention period is 30 days",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "从备份恢复"
     },
     {
       "en": "retry",
@@ -2905,7 +3190,8 @@
       "example": "retry connection after 5 seconds",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "日志保留期限为30天"
     },
     {
       "en": "RLHF",
@@ -2915,7 +3201,8 @@
       "example": "RLHF uses human feedback for model alignment",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "5 秒后重试连接"
     },
     {
       "en": "role",
@@ -2926,7 +3213,8 @@
       "tags": [
         "dev",
         "ai"
-      ]
+      ],
+      "example_zh": "RLHF 使用人类反馈进行模型对齐"
     },
     {
       "en": "rollback",
@@ -2936,7 +3224,8 @@
       "example": "rollback to previous version",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "消息角色：系统、用户、助理"
     },
     {
       "en": "rolling",
@@ -2946,7 +3235,8 @@
       "example": "log rolling policy: daily or size-based",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "回滚到以前的版本"
     },
     {
       "en": "rotate",
@@ -2956,7 +3246,8 @@
       "example": "Logs rotate daily",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "日志滚动策略：每日或基于大小"
     },
     {
       "en": "route",
@@ -2966,7 +3257,8 @@
       "example": "define GET /users route in Express",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "日志每天轮换"
     },
     {
       "en": "rsync",
@@ -2976,7 +3268,8 @@
       "example": "rsync -avz source/ dest/",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "在 Express ||| 中定义 GET /users 路由"
     },
     {
       "en": "runbook",
@@ -2986,7 +3279,8 @@
       "example": "follow runbook steps to restart the service",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "rsync -avz 源/目标/"
     },
     {
       "en": "runtime",
@@ -2996,7 +3290,8 @@
       "example": "runtime error",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "按照 Runbook 步骤重新启动服务"
     },
     {
       "en": "safety filter",
@@ -3006,7 +3301,8 @@
       "example": "safety filter blocks harmful content",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "运行时错误"
     },
     {
       "en": "scale",
@@ -3016,7 +3312,8 @@
       "example": "scale up to 10 replicas",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "安全过滤器阻挡有害内容"
     },
     {
       "en": "schema",
@@ -3026,7 +3323,8 @@
       "example": "database schema design",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "扩展到 10 个副本"
     },
     {
       "en": "scope",
@@ -3036,7 +3334,8 @@
       "example": "variable scope in config is global",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "数据库架构设计"
     },
     {
       "en": "scp",
@@ -3046,7 +3345,8 @@
       "example": "scp file.txt user@host:/path/",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "配置中的变量范围是全局的"
     },
     {
       "en": "SDK",
@@ -3056,7 +3356,8 @@
       "example": "install AWS SDK for Python",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "安装适用于 Python 的 AWS 开发工具包"
     },
     {
       "en": "secret",
@@ -3066,7 +3367,8 @@
       "example": "store database password as a K8s secret",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "将数据库密码存储为 K8s 机密"
     },
     {
       "en": "sed",
@@ -3076,7 +3378,8 @@
       "example": "sed -i 's/old/new/g' file.txt",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "sed -i 's/old/new/g' file.txt"
     },
     {
       "en": "seed",
@@ -3087,7 +3390,8 @@
       "tags": [
         "dev",
         "ai"
-      ]
+      ],
+      "example_zh": "设置seed=42以获得可重现的结果"
     },
     {
       "en": "segfault",
@@ -3097,7 +3401,8 @@
       "example": "segmentation fault (segfault) in C program",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "C 程序中的分段错误（segfault）"
     },
     {
       "en": "select",
@@ -3107,7 +3412,8 @@
       "example": "SELECT * FROM users WHERE id = 1",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "从用户中选择 *，其中 id = 1"
     },
     {
       "en": "serialize",
@@ -3117,7 +3423,8 @@
       "example": "serialize object to JSON string",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "将对象序列化为 JSON 字符串"
     },
     {
       "en": "service mesh",
@@ -3127,7 +3434,8 @@
       "example": "Istio provides service mesh for microservices",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "Istio 为微服务提供服务网格"
     },
     {
       "en": "session",
@@ -3137,7 +3445,8 @@
       "example": "session stored in Redis with 30min TTL",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "会话存储在 Redis 中，TTL 为 30 分钟"
     },
     {
       "en": "set",
@@ -3147,7 +3456,8 @@
       "example": "set JAVA_HOME=/usr/lib/jvm/java",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "设置 JAVA_HOME=/usr/lib/jvm/java"
     },
     {
       "en": "severity",
@@ -3157,7 +3467,8 @@
       "example": "log severity levels: DEBUG INFO WARN ERROR FATAL",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "日志严重级别：调试信息警告错误致命"
     },
     {
       "en": "shadow mode",
@@ -3168,7 +3479,8 @@
       "tags": [
         "devops",
         "ai"
-      ]
+      ],
+      "example_zh": "在影子模式下运行新模型进行评估"
     },
     {
       "en": "shard",
@@ -3178,7 +3490,8 @@
       "example": "shard MongoDB collection by user_id",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "按 user_id ||| 分片 MongoDB 集合"
     },
     {
       "en": "sidecar",
@@ -3188,7 +3501,8 @@
       "example": "inject sidecar proxy for observability",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "注入 sidecar 代理以实现可观察性"
     },
     {
       "en": "sink",
@@ -3198,7 +3512,8 @@
       "example": "configure log sink to Elasticsearch",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "配置日志接收器到 Elasticsearch"
     },
     {
       "en": "SLA",
@@ -3208,7 +3523,8 @@
       "example": "SLA guarantees 99.95% availability",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "SLA 保证 99.95% 的可用性"
     },
     {
       "en": "SLO",
@@ -3218,7 +3534,8 @@
       "example": "99.9% uptime SLO for the API",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "API 99.9% 的正常运行时间 SLO"
     },
     {
       "en": "speech-to-text",
@@ -3228,7 +3545,8 @@
       "example": "transcribe audio with speech-to-text",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "使用语音到文本转录音频"
     },
     {
       "en": "squash",
@@ -3238,7 +3556,8 @@
       "example": "squash multiple commits with interactive rebase",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "使用交互式变基压缩多个提交"
     },
     {
       "en": "ssh",
@@ -3248,7 +3567,8 @@
       "example": "ssh user@hostname -p 2222",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "ssh 用户@主机名 -p 2222"
     },
     {
       "en": "stack overflow",
@@ -3258,7 +3578,8 @@
       "example": "stack overflow in recursive function call",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "递归函数调用中的堆栈溢出"
     },
     {
       "en": "stack trace",
@@ -3268,7 +3589,8 @@
       "example": "See full stack trace in error.log",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "查看 error.log 中的完整堆栈跟踪"
     },
     {
       "en": "stale",
@@ -3278,7 +3600,8 @@
       "example": "stale cache entry caused wrong response",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "陈旧的缓存条目导致错误的响应"
     },
     {
       "en": "start",
@@ -3288,7 +3611,8 @@
       "example": "start the service",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "启动服务"
     },
     {
       "en": "stash",
@@ -3298,7 +3622,8 @@
       "example": "git stash pop",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "git stash pop"
     },
     {
       "en": "statefulset",
@@ -3308,7 +3633,8 @@
       "example": "statefulset for database deployment in K8s",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "K8s 中数据库部署的有状态集"
     },
     {
       "en": "status",
@@ -3318,7 +3644,8 @@
       "example": "docker ps status",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "docker ps 状态"
     },
     {
       "en": "stop",
@@ -3328,7 +3655,8 @@
       "example": "stop the background job",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "停止后台作业"
     },
     {
       "en": "stop sequence",
@@ -3339,7 +3667,8 @@
       "tags": [
         "dev",
         "ai"
-      ]
+      ],
+      "example_zh": "设置 stop=['END'] 停止生成"
     },
     {
       "en": "stream",
@@ -3350,7 +3679,8 @@
       "tags": [
         "dev",
         "ai"
-      ]
+      ],
+      "example_zh": "对于分块 AI 响应，stream=True"
     },
     {
       "en": "streaming",
@@ -3360,7 +3690,8 @@
       "example": "enable streaming for real-time AI response",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "启用实时 AI 响应流"
     },
     {
       "en": "structured output",
@@ -3370,7 +3701,8 @@
       "example": "use structured output for JSON response schema",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "使用 JSON 响应模式的结构化输出"
     },
     {
       "en": "submodule",
@@ -3380,7 +3712,8 @@
       "example": "add submodule for shared library repo",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "为共享库存储库添加子模块"
     },
     {
       "en": "success",
@@ -3390,7 +3723,8 @@
       "example": "Deployment success",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "部署成功"
     },
     {
       "en": "symlink",
@@ -3400,7 +3734,8 @@
       "example": "ln -s /path/to/file symlink",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "ln -s /路径/到/文件符号链接"
     },
     {
       "en": "sync",
@@ -3410,7 +3745,8 @@
       "example": "rsync -avz source/ dest/",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "rsync -avz 源/目标/"
     },
     {
       "en": "syntax error",
@@ -3420,7 +3756,8 @@
       "example": "syntax error near unexpected token",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "意外标记附近的语法错误"
     },
     {
       "en": "syslog",
@@ -3430,7 +3767,8 @@
       "example": "forward syslog to central server",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "将系统日志转发到中央服务器"
     },
     {
       "en": "system message",
@@ -3441,7 +3779,8 @@
       "tags": [
         "dev",
         "ai"
-      ]
+      ],
+      "example_zh": "设置系统消息来定义AI角色"
     },
     {
       "en": "system prompt",
@@ -3451,7 +3790,8 @@
       "example": "set system prompt to define AI assistant role",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "设置系统提示定义AI助手角色"
     },
     {
       "en": "tag",
@@ -3461,7 +3801,8 @@
       "example": "git tag -a v1.0.0 -m 'release 1.0'",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "git tag -a v1.0.0 -m 'release 1.0'"
     },
     {
       "en": "tail",
@@ -3471,7 +3812,8 @@
       "example": "tail -f /var/log/syslog",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "tail -f /var/log/syslog"
     },
     {
       "en": "tar",
@@ -3481,7 +3823,8 @@
       "example": "tar -cvf archive.tar ./dir",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "tar -cvf archive.tar ./dir"
     },
     {
       "en": "temperature",
@@ -3491,7 +3834,8 @@
       "example": "set temperature=0.7 for creative responses",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "设置温度 = 0.7 以获得创意响应"
     },
     {
       "en": "template",
@@ -3501,7 +3845,8 @@
       "example": "nginx config template for virtual hosts",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "虚拟主机的 nginx 配置模板"
     },
     {
       "en": "terminate",
@@ -3511,7 +3856,8 @@
       "example": "Terminate the process",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "终止进程"
     },
     {
       "en": "terraform",
@@ -3521,7 +3867,8 @@
       "example": "terraform apply to provision AWS resources",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "terraform 适用于配置 AWS 资源"
     },
     {
       "en": "text-to-speech",
@@ -3531,7 +3878,8 @@
       "example": "use text-to-speech API for voice output",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "使用文本转语音 API 进行语音输出"
     },
     {
       "en": "threshold",
@@ -3541,7 +3889,8 @@
       "example": "set memory threshold to 80%",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "将内存阈值设置为 80%"
     },
     {
       "en": "throughput",
@@ -3552,7 +3901,8 @@
       "tags": [
         "log",
         "ai"
-      ]
+      ],
+      "example_zh": "日志：吞吐量=50 个令牌/秒"
     },
     {
       "en": "timeout",
@@ -3562,7 +3912,8 @@
       "example": "set timeout=30 in ssh_config",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "在 ssh_config 中设置超时=30"
     },
     {
       "en": "timeout",
@@ -3572,7 +3923,8 @@
       "example": "Connection timeout after 30s",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "30秒后连接超时"
     },
     {
       "en": "timestamp",
@@ -3582,7 +3934,8 @@
       "example": "2026-03-29T10:30:00Z",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "2026-03-29T10:30:00Z"
     },
     {
       "en": "token",
@@ -3592,7 +3945,8 @@
       "example": "bearer token for API authentication",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "用于 API 身份验证的承载令牌"
     },
     {
       "en": "token usage",
@@ -3603,7 +3957,8 @@
       "tags": [
         "log",
         "ai"
-      ]
+      ],
+      "example_zh": "日志：prompt_tokens=120completion_tokens=80"
     },
     {
       "en": "tool use",
@@ -3613,7 +3968,8 @@
       "example": "tool use enables AI to search the web",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "工具的使用使人工智能能够搜索网络"
     },
     {
       "en": "top",
@@ -3623,7 +3979,8 @@
       "example": "top -c shows all running processes",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "top -c 显示所有正在运行的进程"
     },
     {
       "en": "top-p",
@@ -3633,7 +3990,8 @@
       "example": "top_p=0.9 for nucleus sampling",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "top_p=0​​.9 用于核采样"
     },
     {
       "en": "trace",
@@ -3643,7 +4001,8 @@
       "example": "[TRACE] Entering function calculate()",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "[TRACE] 输入函数calculate()"
     },
     {
       "en": "training corpus",
@@ -3653,7 +4012,8 @@
       "example": "curate high-quality training corpus",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "策划高质量的培训语料库"
     },
     {
       "en": "transaction",
@@ -3663,7 +4023,8 @@
       "example": "BEGIN TRANSACTION",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "开始交易"
     },
     {
       "en": "transpile",
@@ -3673,7 +4034,8 @@
       "example": "TypeScript transpiles to JavaScript",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "TypeScript 转换为 JavaScript"
     },
     {
       "en": "truncated",
@@ -3684,7 +4046,8 @@
       "tags": [
         "log",
         "ai"
-      ]
+      ],
+      "example_zh": "日志：由于 max_tokens 限制，响应被截断"
     },
     {
       "en": "type error",
@@ -3694,7 +4057,8 @@
       "example": "TypeError: cannot read property of undefined",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "类型错误：无法读取未定义的属性"
     },
     {
       "en": "undefined",
@@ -3704,7 +4068,8 @@
       "example": "ReferenceError: x is undefined",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "ReferenceError: x 未定义"
     },
     {
       "en": "uninstall",
@@ -3714,7 +4079,8 @@
       "example": "pip uninstall requests",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "pip 卸载请求"
     },
     {
       "en": "unreachable",
@@ -3724,7 +4090,8 @@
       "example": "host unreachable via network",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "无法通过网络访问主机"
     },
     {
       "en": "update",
@@ -3734,7 +4101,8 @@
       "example": "UPDATE table SET column=value",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "UPDATE 表 SET 列=值"
     },
     {
       "en": "upstream",
@@ -3744,7 +4112,8 @@
       "example": "git fetch upstream to sync fork",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "git fetch 上游同步 fork"
     },
     {
       "en": "usage",
@@ -3755,7 +4124,8 @@
       "tags": [
         "dev",
         "ai"
-      ]
+      ],
+      "example_zh": "打印（response.usage.total_tokens）"
     },
     {
       "en": "user message",
@@ -3766,7 +4136,8 @@
       "tags": [
         "dev",
         "ai"
-      ]
+      ],
+      "example_zh": "将用户消息附加到对话历史记录"
     },
     {
       "en": "uv",
@@ -3776,7 +4147,8 @@
       "example": "uv pip install langchain for fast installs",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "uv pip install langchain 实现快速安装"
     },
     {
       "en": "vacuum",
@@ -3786,7 +4158,8 @@
       "example": "VACUUM reclaims dead tuple space",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "VACUUM 回收死元组空间"
     },
     {
       "en": "variable",
@@ -3796,7 +4169,8 @@
       "example": "declare a variable",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "声明一个变量"
     },
     {
       "en": "vector database",
@@ -3806,7 +4180,8 @@
       "example": "Pinecone is a managed vector database",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "Pinecone 是一个托管矢量数据库"
     },
     {
       "en": "venv",
@@ -3816,7 +4191,8 @@
       "example": "python -m venv .venv && source .venv/bin/activate",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "python -m venv .venv && 源.venv/bin/activate"
     },
     {
       "en": "verbose",
@@ -3826,7 +4202,8 @@
       "example": "run make verbose=1 for detailed logs",
       "tags": [
         "config"
-      ]
+      ],
+      "example_zh": "运行 make verbose=1 获取详细日志"
     },
     {
       "en": "view",
@@ -3836,7 +4213,8 @@
       "example": "create view as SELECT with aggregated data",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "使用聚合数据创建视图作为 SELECT"
     },
     {
       "en": "vision",
@@ -3846,7 +4224,8 @@
       "example": "upload image for AI vision analysis",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "上传图像进行AI视觉分析"
     },
     {
       "en": "volume",
@@ -3856,7 +4235,8 @@
       "example": "mount host volume into container",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "将主机卷挂载到容器中"
     },
     {
       "en": "vRAM",
@@ -3866,7 +4246,8 @@
       "example": "LLaMA-70B needs ~140GB vRAM to run",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "LLaMA-70B 需要 ~140GB vRAM 才能运行"
     },
     {
       "en": "warning",
@@ -3876,7 +4257,8 @@
       "example": "[WARN] Memory usage above 80%",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "[警告] 内存使用率超过 80%"
     },
     {
       "en": "webhook",
@@ -3886,7 +4268,8 @@
       "example": "set webhook URL for async AI task completion",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "设置异步 AI 任务完成的 webhook URL"
     },
     {
       "en": "wget",
@@ -3896,7 +4279,8 @@
       "example": "wget https://example.com/file.zip",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "wget https://example.com/file.zip"
     },
     {
       "en": "which",
@@ -3906,7 +4290,8 @@
       "example": "which python returns /usr/bin/python",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "哪个 python 返回 /usr/bin/python"
     },
     {
       "en": "worktree",
@@ -3916,7 +4301,8 @@
       "example": "git worktree add ../feature feature-branch",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "git worktree add ../feature 功能分支"
     },
     {
       "en": "xargs",
@@ -3926,7 +4312,8 @@
       "example": "find . -name '*.log' | xargs rm",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "寻找 。"
     },
     {
       "en": "zero-shot",
@@ -3936,7 +4323,8 @@
       "example": "zero-shot classification without training data",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "-名称 '*.log'"
     },
     {
       "en": "zombie",
@@ -3946,7 +4334,8 @@
       "example": "zombie process with defunct status",
       "tags": [
         "error"
-      ]
+      ],
+      "example_zh": "xargs rm"
     },
     {
       "en": "agentic",
@@ -3956,7 +4345,8 @@
       "example": "agentic AI can plan multi-step tasks autonomously",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "无需训练数据的零样本分类"
     },
     {
       "en": "batch inference",
@@ -3966,7 +4356,8 @@
       "example": "batch inference for 10k prompts",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "具有失效状态的僵尸进程"
     },
     {
       "en": "cargo",
@@ -3976,7 +4367,8 @@
       "example": "cargo build --release",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "代理人工智能可以自主规划多步骤任务"
     },
     {
       "en": "chainlit",
@@ -3987,7 +4379,8 @@
       "tags": [
         "dev",
         "ai"
-      ]
+      ],
+      "example_zh": "10k 提示的批量推理"
     },
     {
       "en": "chunking",
@@ -3997,7 +4390,8 @@
       "example": "chunking long documents for RAG",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "货物构建--发布"
     },
     {
       "en": "clickhouse",
@@ -4007,7 +4401,8 @@
       "example": "ClickHouse handles billions of rows",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "使用 Chainlit 构建 ChatGPT 克隆"
     },
     {
       "en": "dag",
@@ -4017,7 +4412,8 @@
       "example": "Airflow dag defines workflow",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "将长文档分块为 RAG"
     },
     {
       "en": "dbt",
@@ -4027,7 +4423,8 @@
       "example": "dbt transforms data in warehouse",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "ClickHouse 处理数十亿行"
     },
     {
       "en": "declarative",
@@ -4037,7 +4434,8 @@
       "example": "Kubernetes uses declarative config",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "Airflow dag 定义工作流程"
     },
     {
       "en": "deduplication",
@@ -4047,7 +4445,8 @@
       "example": "enable deduplication in syslog",
       "tags": [
         "log"
-      ]
+      ],
+      "example_zh": "dbt 转换仓库中的数据"
     },
     {
       "en": "diffusion model",
@@ -4057,7 +4456,8 @@
       "example": "Stable Diffusion is a diffusion model",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "Kubernetes 使用声明式配置"
     },
     {
       "en": "docker compose",
@@ -4067,7 +4467,8 @@
       "example": "docker compose up -d",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "docker compose up -d"
     },
     {
       "en": "elasticsearch",
@@ -4077,7 +4478,8 @@
       "example": "store logs in Elasticsearch",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "在 Elasticsearch 中存储日志"
     },
     {
       "en": "endpoint routing",
@@ -4088,7 +4490,8 @@
       "tags": [
         "devops",
         "ai"
-      ]
+      ],
+      "example_zh": "AI网关处理路由"
     },
     {
       "en": "event driven",
@@ -4098,7 +4501,8 @@
       "example": "event driven architecture",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "事件驱动架构"
     },
     {
       "en": "fallback model",
@@ -4108,7 +4512,8 @@
       "example": "use GPT-4 as fallback",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "使用 GPT-4 作为后备"
     },
     {
       "en": "fuzzy search",
@@ -4118,7 +4523,8 @@
       "example": "fuzzy search finds typos",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "模糊搜索发现拼写错误"
     },
     {
       "en": "gcp",
@@ -4128,7 +4534,8 @@
       "example": "deploy to GCP Cloud Run",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "部署到 GCP Cloud Run"
     },
     {
       "en": "gitops",
@@ -4138,7 +4545,8 @@
       "example": "gitops auto-deploys via ArgoCD",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "gitops 通过 ArgoCD 自动部署"
     },
     {
       "en": "gradio",
@@ -4149,7 +4557,8 @@
       "tags": [
         "dev",
         "ai"
-      ]
+      ],
+      "example_zh": "使用 Gradio 演示 AI 模型"
     },
     {
       "en": "grayscale",
@@ -4159,7 +4568,8 @@
       "example": "grayscale: 10% traffic to new version",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "灰度：10% 流量到新版本"
     },
     {
       "en": "guardrail",
@@ -4169,7 +4579,8 @@
       "example": "add guardrails to prevent harmful outputs",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "添加护栏以防止有害输出"
     },
     {
       "en": "hnsw",
@@ -4179,7 +4590,8 @@
       "example": "pgvector with hnsw index",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "带有 hnsw 索引的 pgvector"
     },
     {
       "en": "hotfix",
@@ -4189,7 +4601,8 @@
       "example": "push hotfix to production",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "将修补程序推送到生产环境"
     },
     {
       "en": "hybrid search",
@@ -4199,7 +4612,8 @@
       "example": "hybrid search combines vector and keyword",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "混合搜索结合了向量和关键字"
     },
     {
       "en": "idempotent",
@@ -4209,7 +4623,8 @@
       "example": "PUT is idempotent, POST is not",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "PUT 是幂等的，POST 不是"
     },
     {
       "en": "image generation",
@@ -4219,7 +4634,8 @@
       "example": "DALL-E 3 for image generation",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "用于图像生成的 DALL-E 3"
     },
     {
       "en": "immutable",
@@ -4229,7 +4645,8 @@
       "example": "immutable infrastructure",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "不可变的基础设施"
     },
     {
       "en": "inference cost",
@@ -4239,7 +4656,8 @@
       "example": "reduce inference cost with quantization",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "通过量化降低推理成本"
     },
     {
       "en": "influxdb",
@@ -4249,7 +4667,8 @@
       "example": "store metrics in InfluxDB",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "在 InfluxDB 中存储指标"
     },
     {
       "en": "init container",
@@ -4259,7 +4678,8 @@
       "example": "init container sets up database",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "初始化容器设置数据库"
     },
     {
       "en": "k6",
@@ -4269,7 +4689,8 @@
       "example": "k6 run load-test.js",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "k6 运行 load-test.js"
     },
     {
       "en": "key vault",
@@ -4279,7 +4700,8 @@
       "example": "Azure Key Vault stores secrets",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "Azure Key Vault 存储机密"
     },
     {
       "en": "langgraph",
@@ -4289,7 +4711,8 @@
       "example": "build multi-agent workflow with LangGraph",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "使用 LangGraph 构建多代理工作流程"
     },
     {
       "en": "liveness probe",
@@ -4299,7 +4722,8 @@
       "example": "liveness probe checks if container needs restart",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "活性探针检查容器是否需要重新启动"
     },
     {
       "en": "load balancer",
@@ -4309,7 +4733,8 @@
       "example": "nginx as load balancer",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "nginx 作为负载均衡器"
     },
     {
       "en": "lora",
@@ -4319,7 +4744,8 @@
       "example": "fine-tune LLM with LoRA",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "使用 LoRA 微调 LLM"
     },
     {
       "en": "managed service",
@@ -4329,7 +4755,8 @@
       "example": "use managed service like RDS",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "使用 RDS 等托管服务"
     },
     {
       "en": "mem0",
@@ -4339,7 +4766,8 @@
       "example": "Mem0 provides persistent memory for AI agents",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "Mem0 为 AI 代理提供持久内存"
     },
     {
       "en": "mirror",
@@ -4349,7 +4777,8 @@
       "example": "mirror Docker Hub images",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "镜像 Docker Hub 镜像"
     },
     {
       "en": "mlops",
@@ -4360,7 +4789,8 @@
       "tags": [
         "devops",
         "ai"
-      ]
+      ],
+      "example_zh": "MLOps 自动执行模型训练和部署"
     },
     {
       "en": "model hub",
@@ -4370,7 +4800,8 @@
       "example": "download llama3 from Hugging Face model hub",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "从 Hugging Face 模型中心下载 llama3"
     },
     {
       "en": "multi-agent",
@@ -4380,7 +4811,8 @@
       "example": "multi-agent: planner researcher executor",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "多智能体：规划者研究员执行者"
     },
     {
       "en": "mutual tls",
@@ -4390,7 +4822,8 @@
       "example": "enable mTLS between services",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "在服务之间启用 mTLS"
     },
     {
       "en": "nginx",
@@ -4400,7 +4833,8 @@
       "example": "nginx reverse proxy",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "nginx 反向代理"
     },
     {
       "en": "node pool",
@@ -4410,7 +4844,8 @@
       "example": "scale node pool during peak",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "在高峰期间扩展节点池"
     },
     {
       "en": "non-blocking",
@@ -4420,7 +4855,8 @@
       "example": "non-blocking IO for high concurrency",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "高并发的非阻塞IO"
     },
     {
       "en": "opentelemetry",
@@ -4430,7 +4866,8 @@
       "example": "OpenTelemetry for distributed tracing",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "用于分布式跟踪的 OpenTelemetry"
     },
     {
       "en": "output parser",
@@ -4440,7 +4877,8 @@
       "example": "use output parser for structured AI output",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "使用输出解析器进行结构化 AI 输出"
     },
     {
       "en": "overfitting",
@@ -4450,7 +4888,8 @@
       "example": "overfitting: model memorizes training data",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "过度拟合：模型记住训练数据"
     },
     {
       "en": "pgvector",
@@ -4461,7 +4900,8 @@
       "tags": [
         "db",
         "ai"
-      ]
+      ],
+      "example_zh": "pgvector 在 PostgreSQL 中启用相似性搜索"
     },
     {
       "en": "playwright",
@@ -4471,7 +4911,8 @@
       "example": "playwright codegen generates test scripts",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "playwright codegen 生成测试脚本"
     },
     {
       "en": "poison pill",
@@ -4481,7 +4922,8 @@
       "example": "send poison pill to shutdown worker gracefully",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "优雅地发送毒丸来关闭工人"
     },
     {
       "en": "postgresql",
@@ -4491,7 +4933,8 @@
       "example": "PostgreSQL with pgvector",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "PostgreSQL 与 pgvector"
     },
     {
       "en": "prepared statement",
@@ -4501,7 +4944,8 @@
       "example": "use prepared statement to prevent SQL injection",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "使用prepared语句防止SQL注入"
     },
     {
       "en": "priority queue",
@@ -4511,7 +4955,8 @@
       "example": "priority queue processes urgent tasks first",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "优先队列先处理紧急任务"
     },
     {
       "en": "prompt cache",
@@ -4521,7 +4966,8 @@
       "example": "use prompt cache to reduce API cost",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "使用提示缓存来降低 API 成本"
     },
     {
       "en": "prompt injection",
@@ -4531,7 +4977,8 @@
       "example": "prompt injection hijacks AI behavior",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "提示注入劫持人工智能行为"
     },
     {
       "en": "prompt layer",
@@ -4541,7 +4988,8 @@
       "example": "use prompt layer to version AI prompts",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "使用提示层来版本AI提示"
     },
     {
       "en": "provider",
@@ -4551,7 +4999,8 @@
       "example": "Anthropic and OpenAI are LLM providers",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "Anthropic 和 OpenAI 是法学硕士提供商"
     },
     {
       "en": "provision",
@@ -4561,7 +5010,8 @@
       "example": "terraform provision EC2 on AWS",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "AWS 上的 terraform 配置 EC2"
     },
     {
       "en": "proxy",
@@ -4571,7 +5021,8 @@
       "example": "http proxy forwards requests",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "http代理转发请求"
     },
     {
       "en": "pydantic",
@@ -4581,7 +5032,8 @@
       "example": "pydantic BaseModel for API validation",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "用于 API 验证的 pydantic BaseModel"
     },
     {
       "en": "pytorch",
@@ -4591,7 +5043,8 @@
       "example": "train neural network with PyTorch",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "使用 PyTorch 训练神经网络"
     },
     {
       "en": "queue",
@@ -4601,7 +5054,8 @@
       "example": "put job in queue for async processing",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "将作业放入队列中进行异步处理"
     },
     {
       "en": "rabbitmq",
@@ -4611,7 +5065,8 @@
       "example": "RabbitMQ between producers and consumers",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "生产者和消费者之间的 RabbitMQ"
     },
     {
       "en": "raft",
@@ -4621,7 +5076,8 @@
       "example": "etcd uses Raft for leader election",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "etcd 使用 Raft 进行领导者选举"
     },
     {
       "en": "re-ranker",
@@ -4631,7 +5087,8 @@
       "example": "cross-encoder re-ranker improves RAG quality",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "跨编码器重新排序提高了 RAG 质量"
     },
     {
       "en": "read replica",
@@ -4641,7 +5098,8 @@
       "example": "route SELECT to read replica",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "将 SELECT 路由到只读副本"
     },
     {
       "en": "readiness probe",
@@ -4651,7 +5109,8 @@
       "example": "readiness probe ensures pod is ready",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "就绪探针确保 pod 已就绪"
     },
     {
       "en": "reasoning effort",
@@ -4661,7 +5120,8 @@
       "example": "set reasoning_effort=high for complex problems",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "对于复杂问题设置 Reasoning_effort=high"
     },
     {
       "en": "redis",
@@ -4671,7 +5131,8 @@
       "example": "Redis caches session with TTL",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "Redis 使用 TTL 缓存会话"
     },
     {
       "en": "render",
@@ -4681,7 +5142,8 @@
       "example": "deploy to Render.com",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "部署到 Render.com"
     },
     {
       "en": "replication lag",
@@ -4691,7 +5153,8 @@
       "example": "replication lag caused stale data",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "复制滞后导致数据过时"
     },
     {
       "en": "reserved instance",
@@ -4701,7 +5164,8 @@
       "example": "reserved instance saves 60% vs on-demand",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "预留实例比按需实例节省 60%"
     },
     {
       "en": "resource limits",
@@ -4711,7 +5175,8 @@
       "example": "set CPU and memory limits in K8s",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "在 K8s 中设置 CPU 和内存限制"
     },
     {
       "en": "response time",
@@ -4721,7 +5186,8 @@
       "example": "P99 response time under 200ms",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "P99 响应时间低于200ms"
     },
     {
       "en": "restart policy",
@@ -4731,7 +5197,8 @@
       "example": "restart policy: Always for web Never for batch",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "重启策略： 始终用于网络 从不用于批处理"
     },
     {
       "en": "reverse proxy",
@@ -4741,7 +5208,8 @@
       "example": "nginx reverse proxy hides backend IPs",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "nginx 反向代理隐藏后端 IP"
     },
     {
       "en": "rig",
@@ -4752,7 +5220,8 @@
       "tags": [
         "dev",
         "ai"
-      ]
+      ],
+      "example_zh": "rig 用 Rust 构建 AI 代理"
     },
     {
       "en": "router",
@@ -4763,7 +5232,8 @@
       "tags": [
         "devops",
         "ai"
-      ]
+      ],
+      "example_zh": "AI网关路由器选择最佳型号"
     },
     {
       "en": "rubber duck",
@@ -4773,7 +5243,8 @@
       "example": "rubber duck debugging",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "橡皮鸭调试"
     },
     {
       "en": "rules engine",
@@ -4783,7 +5254,8 @@
       "example": "use rules engine to enforce policies",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "使用规则引擎来执行策略"
     },
     {
       "en": "rust",
@@ -4793,7 +5265,8 @@
       "example": "rewrite perf-critical code in Rust",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "用 Rust 重写性能关键代码"
     },
     {
       "en": "s3",
@@ -4803,7 +5276,8 @@
       "example": "upload backup to S3 bucket",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "将备份上传到 S3 存储桶"
     },
     {
       "en": "scheduler",
@@ -4813,7 +5287,8 @@
       "example": "cron scheduler runs job daily",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "cron 调度程序每天运行作业"
     },
     {
       "en": "score",
@@ -4823,7 +5298,8 @@
       "example": "retrieval score 0.85 means high relevance",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "检索得分 0.85 表示相关性高"
     },
     {
       "en": "self-hosted",
@@ -4833,7 +5309,8 @@
       "example": "self-hosted GitLab on your own server",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "在您自己的服务器上自托管 GitLab"
     },
     {
       "en": "semantic cache",
@@ -4843,7 +5320,8 @@
       "example": "semantic cache for similar prompts",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "类似提示的语义缓存"
     },
     {
       "en": "semantic search",
@@ -4853,7 +5331,8 @@
       "example": "semantic search understands intent",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "语义搜索理解意图"
     },
     {
       "en": "sft",
@@ -4863,7 +5342,8 @@
       "example": "SFT supervised fine-tuning",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "SFT 监督微调"
     },
     {
       "en": "shard key",
@@ -4873,7 +5353,8 @@
       "example": "choose user_id as shard key",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "选择 user_id 作为分片键"
     },
     {
       "en": "sharding",
@@ -4883,7 +5364,8 @@
       "example": "sharding splits table across databases",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "分片跨数据库分割表"
     },
     {
       "en": "sliding window",
@@ -4894,7 +5376,8 @@
       "tags": [
         "dev",
         "ai"
-      ]
+      ],
+      "example_zh": "Transformer 中的滑动窗口注意力"
     },
     {
       "en": "slot",
@@ -4904,7 +5387,8 @@
       "example": "context slot: 200k tokens max",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "上下文槽：最多 200k 个令牌"
     },
     {
       "en": "smol",
@@ -4914,7 +5398,8 @@
       "example": "smol-LM: under 1B params runs on phone",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "smol-LM：在 1B 参数下在手机上运行"
     },
     {
       "en": "socket",
@@ -4924,7 +5409,8 @@
       "example": "webSocket for real-time communication",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "用于实时通信的 webSocket"
     },
     {
       "en": "soft delete",
@@ -4934,7 +5420,8 @@
       "example": "soft delete: set deleted_at",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "软删除：设置deleted_at"
     },
     {
       "en": "spot instance",
@@ -4944,7 +5431,8 @@
       "example": "spot instance 70% cheaper can be interrupted",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "现货实例便宜 70% 可中断"
     },
     {
       "en": "sqlite",
@@ -4954,7 +5442,8 @@
       "example": "sqlite3 app.db for local dev",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "用于本地开发的 sqlite3 app.db"
     },
     {
       "en": "sre",
@@ -4964,7 +5453,8 @@
       "example": "SRE combines software engineering with ops",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "SRE 将软件工程与运维结合起来"
     },
     {
       "en": "stateful",
@@ -4974,7 +5464,8 @@
       "example": "stateful app maintains session",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "有状态应用程序维护会话"
     },
     {
       "en": "step",
@@ -4984,7 +5475,8 @@
       "example": "o1 uses 30+ reasoning steps",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "o1 使用 30 多个推理步骤"
     },
     {
       "en": "sticky session",
@@ -4994,7 +5486,8 @@
       "example": "enable sticky session",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "启用粘性会话"
     },
     {
       "en": "storage class",
@@ -5004,7 +5497,8 @@
       "example": "storage class: SSD vs HDD",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "存储类别：SSD 与 HDD"
     },
     {
       "en": "stress test",
@@ -5014,7 +5508,8 @@
       "example": "run stress test to find breaking point",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "运行压力测试以找到突破点"
     },
     {
       "en": "supabase",
@@ -5024,7 +5519,8 @@
       "example": "Supabase: Postgres Auth Realtime Storage",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "Supabase：Postgres Auth 实时存储"
     },
     {
       "en": "supervisor",
@@ -5034,7 +5530,8 @@
       "example": "supervisord manages worker processes",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "Supervisord 管理工作进程"
     },
     {
       "en": "symbolic",
@@ -5044,7 +5541,8 @@
       "example": "symbolic AI uses rules vs neural networks",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "符号人工智能使用规则与神经网络"
     },
     {
       "en": "tabular",
@@ -5054,7 +5552,8 @@
       "example": "use Claude for tabular data analysis",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "使用 Claude 进行表格数据分析"
     },
     {
       "en": "tdigest",
@@ -5064,7 +5563,8 @@
       "example": "use tdigest for accurate percentiles",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "使用 tdigest 获得准确的百分位数"
     },
     {
       "en": "tensor",
@@ -5074,7 +5574,8 @@
       "example": "tensor is n-dimensional array in PyTorch",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "张量是 PyTorch 中的 n 维数组"
     },
     {
       "en": "test set",
@@ -5084,7 +5585,8 @@
       "example": "evaluate model on held-out test set",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "在保留的测试集上评估模型"
     },
     {
       "en": "ticker",
@@ -5094,7 +5596,8 @@
       "example": "set ticker to refresh data",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "设置股票行情刷新数据"
     },
     {
       "en": "time-to-live",
@@ -5104,7 +5607,8 @@
       "example": "set TTL=3600 for cache to expire",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "设置 TTL=3600 以使缓存过期"
     },
     {
       "en": "tokenizer",
@@ -5114,7 +5618,8 @@
       "example": "tokenizer converts text into tokens",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "tokenizer 将文本转换为标记"
     },
     {
       "en": "tolerance",
@@ -5124,7 +5629,8 @@
       "example": "fault tolerance with replicas",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "副本容错"
     },
     {
       "en": "tool call",
@@ -5134,7 +5640,8 @@
       "example": "AI uses tool call to search or run code",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "AI 使用工具调用来搜索或运行代码"
     },
     {
       "en": "torch",
@@ -5144,7 +5651,8 @@
       "example": "import torch for tensor computation",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "导入 torch 用于张量计算"
     },
     {
       "en": "transfer learning",
@@ -5154,7 +5662,8 @@
       "example": "transfer learning: fine-tune pretrained model",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "迁移学习：微调预训练模型"
     },
     {
       "en": "tuning",
@@ -5164,7 +5673,8 @@
       "example": "hyperparameter tuning for optimal performance",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "超参数调整以获得最佳性能"
     },
     {
       "en": "validation set",
@@ -5174,7 +5684,8 @@
       "example": "tune hyperparameters on validation set",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "调整验证集上的超参数"
     },
     {
       "en": "vector",
@@ -5184,7 +5695,8 @@
       "example": "embedding converts text to vector",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "嵌入将文本转换为向量"
     },
     {
       "en": "vercel",
@@ -5194,7 +5706,8 @@
       "example": "deploy to Vercel with git push",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "使用 git push ||| 部署到 Vercel"
     },
     {
       "en": "virtualization",
@@ -5204,7 +5717,8 @@
       "example": "virtualization enables multiple VMs",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "虚拟化支持多个虚拟机"
     },
     {
       "en": "vllm",
@@ -5214,7 +5728,8 @@
       "example": "vLLM for high-throughput LLM inference",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "用于高通量 LLM 推理的 vLLM"
     },
     {
       "en": "workload",
@@ -5224,7 +5739,8 @@
       "example": "distribute workload across replicas",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "跨副本分配工作负载"
     },
     {
       "en": "workflow",
@@ -5234,7 +5750,8 @@
       "example": "CI/CD workflow automates build and deploy",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "CI/CD 工作流程自动构建和部署"
     },
     {
       "en": "yaml",
@@ -5244,7 +5761,8 @@
       "example": "config.yaml",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "配置.yaml"
     },
     {
       "en": "toml",
@@ -5254,7 +5772,8 @@
       "example": "pyproject.toml",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "pyproject.toml"
     },
     {
       "en": "ini",
@@ -5264,7 +5783,8 @@
       "example": "app.ini",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "应用程序.ini"
     },
     {
       "en": "manifest",
@@ -5274,7 +5794,8 @@
       "example": "app manifest",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "应用程序清单"
     },
     {
       "en": "flags",
@@ -5284,7 +5805,8 @@
       "example": "config flags",
       "tags": [
         "cli"
-      ]
+      ],
+      "example_zh": "配置标志"
     },
     {
       "en": "race condition",
@@ -5294,7 +5816,8 @@
       "example": "race condition bug",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "竞争条件错误"
     },
     {
       "en": "null pointer",
@@ -5304,7 +5827,8 @@
       "example": "null pointer exception",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "空指针异常"
     },
     {
       "en": "segmentation fault",
@@ -5314,7 +5838,8 @@
       "example": "segfault",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "段错误"
     },
     {
       "en": "panic",
@@ -5324,7 +5849,8 @@
       "example": "kernel panic",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "内核恐慌"
     },
     {
       "en": "assertion",
@@ -5334,7 +5860,8 @@
       "example": "assertion failed",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "断言失败"
     },
     {
       "en": "unauthorized",
@@ -5344,7 +5871,8 @@
       "example": "401 unauthorized",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "401 未经授权"
     },
     {
       "en": "forbidden",
@@ -5354,7 +5882,8 @@
       "example": "403 forbidden",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "403 禁止"
     },
     {
       "en": "stdin",
@@ -5364,7 +5893,8 @@
       "example": "stdin input",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "标准输入"
     },
     {
       "en": "stdout",
@@ -5374,7 +5904,8 @@
       "example": "print to stdout",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "打印到标准输出"
     },
     {
       "en": "stderr",
@@ -5384,7 +5915,8 @@
       "example": "2>&1 stderr",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "2>&1 标准错误"
     },
     {
       "en": "sudo",
@@ -5394,7 +5926,8 @@
       "example": "sudo apt install",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "sudo apt install"
     },
     {
       "en": "cron",
@@ -5404,7 +5937,8 @@
       "example": "crontab -e",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "crontab -e"
     },
     {
       "en": "daemon",
@@ -5414,7 +5948,8 @@
       "example": "systemd daemon",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "systemd 守护进程"
     },
     {
       "en": "thread",
@@ -5424,7 +5959,8 @@
       "example": "multi-threaded",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "多线程"
     },
     {
       "en": "liveness",
@@ -5434,7 +5970,8 @@
       "example": "liveness probe",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "活性探针"
     },
     {
       "en": "readiness",
@@ -5444,7 +5981,8 @@
       "example": "readiness probe",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "就绪探针"
     },
     {
       "en": "rollout",
@@ -5454,7 +5992,8 @@
       "example": "canary rollout",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "金丝雀推出"
     },
     {
       "en": "scaling",
@@ -5464,7 +6003,8 @@
       "example": "auto scaling",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "自动缩放"
     },
     {
       "en": "resource limit",
@@ -5474,7 +6014,8 @@
       "example": "CPU resource limit",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "CPU资源限制"
     },
     {
       "en": "secrets",
@@ -5484,7 +6025,8 @@
       "example": "k8s secrets",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "k8s 的秘密"
     },
     {
       "en": "metric",
@@ -5494,7 +6036,8 @@
       "example": "system metrics",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "系统指标"
     },
     {
       "en": "alert",
@@ -5504,7 +6047,8 @@
       "example": "alerting rule",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "报警规则"
     },
     {
       "en": "dashboard",
@@ -5514,7 +6058,8 @@
       "example": "Grafana dashboard",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "Grafana 仪表板"
     },
     {
       "en": "uptime",
@@ -5524,7 +6069,8 @@
       "example": "99.9% uptime",
       "tags": [
         "devops"
-      ]
+      ],
+      "example_zh": "99.9% 正常运行时间"
     },
     {
       "en": "payload",
@@ -5534,7 +6080,8 @@
       "example": "request payload",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "请求负载"
     },
     {
       "en": "serialization",
@@ -5544,7 +6091,8 @@
       "example": "JSON serialization",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "JSON 序列化"
     },
     {
       "en": "deserialization",
@@ -5554,7 +6102,8 @@
       "example": "JSON deserialization",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "JSON 反序列化"
     },
     {
       "en": "iterator",
@@ -5564,7 +6113,8 @@
       "example": "for-of iterator",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "for-of 迭代器"
     },
     {
       "en": "generics",
@@ -5574,7 +6124,8 @@
       "example": "TypeScript generics",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "TypeScript 泛型"
     },
     {
       "en": "polymorphism",
@@ -5584,7 +6135,8 @@
       "example": "OOP polymorphism",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "面向对象多态"
     },
     {
       "en": "encapsulation",
@@ -5594,7 +6146,8 @@
       "example": "data encapsulation",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "数据封装"
     },
     {
       "en": "recursive",
@@ -5604,7 +6157,8 @@
       "example": "recursive function",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "递归函数"
     },
     {
       "en": "dependency injection",
@@ -5614,7 +6168,8 @@
       "example": "DI container",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "DI 容器"
     },
     {
       "en": "singleton",
@@ -5624,7 +6179,8 @@
       "example": "singleton pattern",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "单例模式"
     },
     {
       "en": "factory",
@@ -5634,7 +6190,8 @@
       "example": "factory method",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "工厂方法"
     },
     {
       "en": "repository",
@@ -5644,7 +6201,8 @@
       "example": "data repository",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "数据存储库"
     },
     {
       "en": "parallel",
@@ -5654,7 +6212,8 @@
       "example": "parallel execution",
       "tags": [
         "dev"
-      ]
+      ],
+      "example_zh": "并行执行"
     },
     {
       "en": "seed data",
@@ -5664,7 +6223,8 @@
       "example": "database seed data",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "数据库种子数据"
     },
     {
       "en": "stored procedure",
@@ -5674,7 +6234,8 @@
       "example": "MySQL stored procedure",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "MySQL 存储过程"
     },
     {
       "en": "trigger",
@@ -5684,7 +6245,8 @@
       "example": "SQL trigger",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "SQL 触发器"
     },
     {
       "en": "isolation level",
@@ -5694,7 +6256,8 @@
       "example": "READ COMMITTED",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "已提交读"
     },
     {
       "en": "query builder",
@@ -5704,7 +6267,8 @@
       "example": "SQL query builder",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "SQL 查询生成器"
     },
     {
       "en": "migrations",
@@ -5714,7 +6278,8 @@
       "example": "Alembic migrations",
       "tags": [
         "db"
-      ]
+      ],
+      "example_zh": "蒸馏器迁移"
     },
     {
       "en": "amend",
@@ -5724,7 +6289,8 @@
       "example": "git commit --amend",
       "tags": [
         "git"
-      ]
+      ],
+      "example_zh": "git commit --修改"
     },
     {
       "en": "chain of thought",
@@ -5734,7 +6300,8 @@
       "example": "chain of thought prompting",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "思路提示"
     },
     {
       "en": "instruction tuning",
@@ -5744,7 +6311,8 @@
       "example": "instruction tuning dataset",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "指令调优数据集"
     },
     {
       "en": "reward model",
@@ -5754,7 +6322,8 @@
       "example": "reward model training",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "奖励模型训练"
     },
     {
       "en": "policy",
@@ -5764,7 +6333,8 @@
       "example": "policy model",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "政策模型"
     },
     {
       "en": "logits",
@@ -5774,7 +6344,8 @@
       "example": "sample from logits",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "来自 logits 的样本"
     },
     {
       "en": "softmax",
@@ -5784,7 +6355,8 @@
       "example": "apply softmax to logits",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "将 softmax 应用于 logits"
     },
     {
       "en": "cross-entropy",
@@ -5794,7 +6366,8 @@
       "example": "cross-entropy loss",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "交叉熵损失"
     },
     {
       "en": "gradient descent",
@@ -5804,7 +6377,8 @@
       "example": "backpropagate gradient descent",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "反向传播梯度下降"
     },
     {
       "en": "backpropagation",
@@ -5814,7 +6388,8 @@
       "example": "backpropagation through time",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "随时间反向传播"
     },
     {
       "en": "attention mechanism",
@@ -5824,7 +6399,8 @@
       "example": "multi-head attention",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "多头注意力"
     },
     {
       "en": "transformer",
@@ -5834,7 +6410,8 @@
       "example": "transformer model",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "变压器型号"
     },
     {
       "en": "vocabulary",
@@ -5844,7 +6421,8 @@
       "example": "model vocabulary",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "模型词汇"
     },
     {
       "en": "retrieval",
@@ -5854,7 +6432,8 @@
       "example": "RAG retrieval",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "RAG 检索"
     },
     {
       "en": "training",
@@ -5864,7 +6443,8 @@
       "example": "LLM training",
       "tags": [
         "ai"
-      ]
+      ],
+      "example_zh": "法学硕士培训"
     }
   ]
 }
