@@ -1,5 +1,5 @@
 /* =============================================
-   app.js - 极简移动端英语学习应用
+   app.js - 极简移动端英语学习应用 v3
    ============================================= */
 
 const TODAY = new Date().toISOString().slice(0, 10);
@@ -29,9 +29,34 @@ function goHome() {
     if (currentView !== 'home') switchView('home');
 }
 
+// ── Theme ──
+function initTheme() {
+    const saved = localStorage.getItem('se_theme') || 'dark';
+    applyTheme(saved);
+}
+
+function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('se_theme', theme);
+    // Update icon: sun for dark mode (click to light), moon for light mode (click to dark)
+    const icon = document.getElementById('theme-icon');
+    if (icon) {
+        if (theme === 'dark') {
+            icon.innerHTML = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+        } else {
+            icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+        }
+    }
+}
+
+function toggleTheme() {
+    const current = localStorage.getItem('se_theme') || 'dark';
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+}
+
 // ── Storage helpers ──
 function S(key) { return localStorage.getItem('se_' + key); }
-function SG(key) { try { return JSON.parse(S(key)); } catch(e) { return null; } }
+function SG(key) { try { const v = S(key); return v ? JSON.parse(v) : null; } catch(e) { return null; } }
 function SS(key, val) { localStorage.setItem('se_' + key, JSON.stringify(val)); }
 
 function getDaily() { return SG('daily') || {}; }
@@ -79,6 +104,7 @@ function toggleBank(en) {
     const i = b.indexOf(en);
     if (i > -1) b.splice(i, 1); else b.push(en);
     SS('wordbank', b);
+    return b;
 }
 function inBank(en) { return getBank().indexOf(en) > -1; }
 
@@ -112,7 +138,7 @@ function getReviewPool() {
     const bank = getBank();
     const pool = {};
     for (const en in rd) if (rd[en].reps === 0) pool[en] = true;
-    bank.forEach(en => pool[en] = true);
+    bank.forEach(en => { pool[en] = true; });
     return Object.keys(pool).map(findWord).filter(Boolean);
 }
 
@@ -137,8 +163,6 @@ function renderCalendar(container) {
     if (!calY) { calY = now.getFullYear(); calM = now.getMonth(); }
     const months = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
     const weekdays = ['一','二','三','四','五','六','日'];
-    const isCurMonth = (calY === now.getFullYear() && calM === now.getMonth());
-
     container.innerHTML = `
         <div class="cal-nav">
             <button class="cal-nav-btn" onclick="calNav(-1)">◀</button>
@@ -153,19 +177,16 @@ function renderCalendar(container) {
 }
 
 function buildCalGrid() {
-    const now = new Date();
     const firstDay = new Date(calY, calM, 1).getDay();
     const daysIn = new Date(calY, calM + 1, 0).getDate();
-    const todayStr = TODAY;
     const daily = getDaily();
     let html = '';
-    // offset for Monday-first (firstDay: 0=Sun, 1=Mon...)
     const offset = firstDay === 0 ? 6 : firstDay - 1;
     for (let i = 0; i < offset; i++) html += '<div class="cal-cell cal-empty"></div>';
     for (let d = 1; d <= daysIn; d++) {
         const ds = calY + '-' + String(calM + 1).padStart(2, '0') + '-' + String(d).padStart(2, '0');
-        const isToday = ds === todayStr;
-        const isFuture = ds > todayStr;
+        const isToday = ds === TODAY;
+        const isFuture = ds > TODAY;
         const rec = daily[ds];
         let cls = 'cal-cell';
         if (isToday) cls += ' cal-today';
@@ -217,7 +238,6 @@ function renderHome() {
         </div>
     `;
     renderCalendar(document.getElementById('cal-inner'));
-    updateBottomProgress(rec.learned, MAX_NEW, '学习');
 }
 
 function updateBottomProgress(current, total, label) {
@@ -229,25 +249,22 @@ function updateBottomProgress(current, total, label) {
     labelEl.textContent = label;
 }
 
-// ── Learn ──
+// ── Learn (Pair mode: 2 cards per page) ──
 let learnQueue = [], learnIdx = 0, learnTodayCount = 0;
 
 function startLearn() {
     const unlearned = getUnlearnedWords();
     const rec = getTodayRec();
     const left = MAX_NEW - rec.learned;
-    if (left <= 0 || !unlearned.length) {
-        switchView('home');
-        return;
-    }
+    if (left <= 0 || !unlearned.length) { switchView('home'); return; }
     learnQueue = unlearned.slice().sort(() => Math.random() - 0.5).slice(0, Math.min(left, unlearned.length));
     learnIdx = 0;
     learnTodayCount = rec.learned;
     switchView('learn');
-    renderLearnCard();
+    renderLearnPair();
 }
 
-function renderLearnCard() {
+function renderLearnPair() {
     const area = document.getElementById('view-learn');
     if (learnIdx >= learnQueue.length) {
         setTodayLearned(learnTodayCount);
@@ -259,53 +276,68 @@ function renderLearnCard() {
         setTimeout(() => switchView('home'), 1500);
         return;
     }
-    const w = learnQueue[learnIdx];
-    const safe = w.en.replace(/'/g, "\\'");
-    const starred = inBank(w.en);
+    const w1 = learnQueue[learnIdx];
+    const w2 = learnQueue[learnIdx + 1];
     const total = learnQueue.length;
-    updateBottomProgress(learnIdx, total, '学习');
+    updateBottomProgress(learnIdx + 1, total, '学习');
 
     area.innerHTML = `
         <div style="font-size:13px;color:var(--text-muted);text-align:center;margin-bottom:10px;font-weight:600">
-            ${learnIdx + 1} / ${total}
+            ${learnIdx + 1}–${learnIdx + 2} / ${total}
         </div>
-        <div class="flashcard">
-            <div class="fc-top">
-                <span class="fc-cat">${w.category || ''}</span>
-                <button class="fc-btn${starred ? ' starred' : ''}" onclick="toggleBank('${safe}');this.classList.toggle('starred')">
-                    ${starred ? '★' : '☆'}
-                </button>
-            </div>
-            <div class="fc-word">${w.en}
-                <button class="fc-btn" onclick="speak('${safe}')" title="发音">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-                </button>
-            </div>
-            <div class="fc-phon">${w.phon || ''}</div>
-            <div class="fc-zh">${w.zh}</div>
-            ${w.example ? `<div class="fc-example">${w.example}</div>` : ''}
+        <div class="card-pair">
+            ${buildPairCard(w1, 'learn')}
+            ${w2 ? buildPairCard(w2, 'learn') : '<div></div>'}
         </div>
         <div class="rating-row">
-            <button class="rate-btn wrong" onclick="rateLearn(false)">不认识</button>
-            <button class="rate-btn right" onclick="rateLearn(true)">记住了</button>
+            <button class="rate-btn wrong" onclick="ratePair(false)">不认识</button>
+            <button class="rate-btn right" onclick="ratePair(true)">记住了</button>
         </div>
     `;
 }
 
-function rateLearn(correct) {
-    const w = learnQueue[learnIdx];
-    if (correct) {
-        markCorrect(w.en);
-    } else {
-        markWrong(w.en);
-        addError(w.en);
-    }
-    learnTodayCount = Math.min(learnTodayCount + 1, MAX_NEW);
-    learnIdx++;
-    renderLearnCard();
+function buildPairCard(w, mode) {
+    if (!w) return '';
+    const safe = w.en.replace(/'/g, "\\'");
+    const starred = inBank(w.en);
+    return `
+        <div class="pair-card" id="pc-${safe.replace(/[^a-zA-Z0-9]/g,'')}" onclick="revealCard(this, '${safe.replace(/'/g,"\\'")}')">
+            <div class="pair-cat">${w.category || ''}</div>
+            <div class="pair-word">${w.en}
+                <button class="pair-btn" onclick="event.stopPropagation();speak('${safe}')">🔊</button>
+            </div>
+            <div class="pair-phon">${w.phon || ''}</div>
+            <div class="pair-zh" id="pz-${safe.replace(/[^a-zA-Z0-9]/g,'')}" style="display:none">${w.zh}</div>
+            ${w.example ? `<div class="pair-example">${w.example}</div>` : ''}
+            <div class="pair-btn-row">
+                <button class="pair-btn${starred ? '' : ''}" onclick="event.stopPropagation();toggleBank('${safe}');this.innerHTML=this.innerHTML==='★'?'☆':'★'" style="font-size:13px">${starred ? '★' : '☆'}</button>
+            </div>
+        </div>
+    `;
 }
 
-// ── Review ──
+function revealCard(el, en) {
+    const id = 'pz-' + en.replace(/[^a-zA-Z0-9]/g, '');
+    const zhEl = document.getElementById(id);
+    if (zhEl) {
+        const visible = zhEl.style.display !== 'none';
+        zhEl.style.display = visible ? 'none' : 'block';
+        el.classList.toggle('revealed', !visible);
+    }
+}
+
+function ratePair(correct) {
+    [learnQueue[learnIdx], learnQueue[learnIdx + 1]].forEach(w => {
+        if (!w) return;
+        if (correct) markCorrect(w.en);
+        else { markWrong(w.en); addError(w.en); }
+    });
+    learnTodayCount = Math.min(learnTodayCount + 2, MAX_NEW);
+    learnIdx += 2;
+    renderLearnPair();
+}
+
+// ── Review (Pair mode: 2 cards per page) ──
 let reviewQueue = [], reviewIdx = 0;
 
 function startReview() {
@@ -314,10 +346,10 @@ function startReview() {
     reviewQueue = pool.sort(() => Math.random() - 0.5);
     reviewIdx = 0;
     switchView('review');
-    renderReviewCard();
+    renderReviewPair();
 }
 
-function renderReviewCard() {
+function renderReviewPair() {
     const area = document.getElementById('view-review');
     if (reviewIdx >= reviewQueue.length) {
         area.innerHTML = `
@@ -328,49 +360,34 @@ function renderReviewCard() {
         setTimeout(() => switchView('home'), 1500);
         return;
     }
-    const w = reviewQueue[reviewIdx];
-    const safe = w.en.replace(/'/g, "\\'");
-    const starred = inBank(w.en);
+    const w1 = reviewQueue[reviewIdx];
+    const w2 = reviewQueue[reviewIdx + 1];
     const total = reviewQueue.length;
     updateBottomProgress(reviewIdx + 1, total, '复习');
 
     area.innerHTML = `
         <div style="font-size:13px;color:var(--text-muted);text-align:center;margin-bottom:10px;font-weight:600">
-            ${reviewIdx + 1} / ${total}
+            ${reviewIdx + 1}–${reviewIdx + 2} / ${total}
         </div>
-        <div class="flashcard">
-            <div class="fc-top">
-                <span class="fc-cat">${w.category || ''}</span>
-                <button class="fc-btn${starred ? ' starred' : ''}" onclick="toggleBank('${safe}');this.classList.toggle('starred')">
-                    ${starred ? '★' : '☆'}
-                </button>
-            </div>
-            <div class="fc-word">${w.en}
-                <button class="fc-btn" onclick="speak('${safe}')" title="发音">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-                </button>
-            </div>
-            <div class="fc-phon">${w.phon || ''}</div>
-            <div class="fc-zh">${w.zh}</div>
-            ${w.example ? `<div class="fc-example">${w.example}</div>` : ''}
+        <div class="card-pair">
+            ${buildPairCard(w1, 'review')}
+            ${w2 ? buildPairCard(w2, 'review') : '<div></div>'}
         </div>
         <div class="rating-row">
-            <button class="rate-btn wrong" onclick="rateReview(false)">不认识</button>
-            <button class="rate-btn right" onclick="rateReview(true)">记住了</button>
+            <button class="rate-btn wrong" onclick="rateReviewPair(false)">不认识</button>
+            <button class="rate-btn right" onclick="rateReviewPair(true)">记住了</button>
         </div>
     `;
 }
 
-function rateReview(correct) {
-    const w = reviewQueue[reviewIdx];
-    if (correct) {
-        markCorrect(w.en);
-    } else {
-        markWrong(w.en);
-        addError(w.en);
-    }
-    reviewIdx++;
-    renderReviewCard();
+function rateReviewPair(correct) {
+    [reviewQueue[reviewIdx], reviewQueue[reviewIdx + 1]].forEach(w => {
+        if (!w) return;
+        if (correct) markCorrect(w.en);
+        else { markWrong(w.en); addError(w.en); }
+    });
+    reviewIdx += 2;
+    renderReviewPair();
 }
 
 // ── Modals ──
@@ -382,59 +399,52 @@ function openBank() {
     const errBook = getErrorBook();
     const total = getTotalLearned();
     const bankWords = bank.map(en => findWord(en)).filter(Boolean);
+
     document.getElementById('bank-body').innerHTML = `
         <div class="bank-stat-row">
             <div class="bank-stat"><div class="bank-stat-n">${bank.length}</div><div class="bank-stat-l">生词</div></div>
             <div class="bank-stat"><div class="bank-stat-n">${errBook.length}</div><div class="bank-stat-l">错题</div></div>
             <div class="bank-stat"><div class="bank-stat-n">${total}</div><div class="bank-stat-l">已学</div></div>
         </div>
-        ${bankWords.length === 0 ? '<div class="empty-state">生词本为空</div>' :
-            bankWords.map(w => `
+        ${bankWords.length === 0
+            ? '<div class="empty-state">生词本为空</div>'
+            : bankWords.map(w => `
                 <div class="modal-item">
                     <div>
                         <div class="modal-item-en">${w.en}</div>
                         <div class="modal-item-zh">${w.zh}</div>
                     </div>
                     <div class="modal-item-right">
-                        <button class="fc-btn" onclick="speak('${w.en.replace(/'/g,"\\'")}')">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-                        </button>
-                        <button class="modal-item-rm" onclick="removeFromBank('${w.en.replace(/'/g,"\\'")}')">×</button>
+                        <button class="fc-btn" onclick="speak('${w.en.replace(/'/g,"\\'")}')" title="发音">🔊</button>
+                        <button class="modal-item-rm" onclick="openBank();toggleBank('${w.en.replace(/'/g,"\\'")}');openBank()">×</button>
                     </div>
-                </div>
-            `).join('')
+                </div>`).join('')
         }
     `;
     openModal('modal-bank');
 }
 
-function removeFromBank(en) {
-    toggleBank(en);
-    openBank();
-}
-
 function openErrors() {
     const errBook = getErrorBook();
     const errWords = errBook.map(en => findWord(en)).filter(Boolean);
+
     document.getElementById('errors-body').innerHTML = `
         <div class="bank-stat-row">
             <div class="bank-stat"><div class="bank-stat-n">${errWords.length}</div><div class="bank-stat-l">错题数</div></div>
         </div>
-        ${errWords.length === 0 ? '<div class="empty-state">错题本为空，继续保持</div>' :
-            errWords.map(w => `
+        ${errWords.length === 0
+            ? '<div class="empty-state">错题本为空，继续保持</div>'
+            : errWords.map(w => `
                 <div class="modal-item">
                     <div>
                         <div class="modal-item-en">${w.en}</div>
                         <div class="modal-item-zh">${w.zh}</div>
                     </div>
                     <div class="modal-item-right">
-                        <button class="fc-btn" onclick="speak('${w.en.replace(/'/g,"\\'")}')">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-                        </button>
+                        <button class="fc-btn" onclick="speak('${w.en.replace(/'/g,"\\'")}')" title="发音">🔊</button>
                         <button class="modal-item-rm" onclick="removeError('${w.en.replace(/'/g,"\\'")}')">×</button>
                     </div>
-                </div>
-            `).join('')
+                </div>`).join('')
         }
     `;
     openModal('modal-errors');
@@ -444,18 +454,16 @@ function removeError(en) {
     const b = getErrorBook();
     const i = b.indexOf(en);
     if (i > -1) { b.splice(i, 1); SS('errorBook', b); }
-    openErrors();
+    openErrors(); // re-render after removal
 }
 
 // ── Init ──
 document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
     loadWords().then(() => {
         renderHome();
-        // close modals on overlay click
         document.querySelectorAll('.modal-overlay').forEach(m => {
-            m.addEventListener('click', e => {
-                if (e.target === m) m.classList.remove('show');
-            });
+            m.addEventListener('click', e => { if (e.target === m) m.classList.remove('show'); });
         });
     });
 });
