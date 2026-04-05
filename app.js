@@ -302,7 +302,7 @@ function buildPairCard(w, mode) {
     const id = safe.replace(/[^a-zA-Z0-9]/g, '');
     const starred = inBank(w.en);
     return `
-        <div class="pair-card" onclick="revealCard('${id}')">
+        <div class="pair-card">
             <div class="pair-top">
                 <span class="pair-cat">${w.category || ''}</span>
                 <div class="pair-btn-row" style="margin:0">
@@ -312,7 +312,7 @@ function buildPairCard(w, mode) {
             </div>
             <div class="pair-word">${w.en}</div>
             <div class="pair-phon">${w.phon || ''}</div>
-            <div class="pair-zh" id="pz-${id}" style="display:none">${w.zh}</div>
+            <div class="pair-zh">${w.zh}</div>
             ${w.example ? `<div class="pair-example">${w.example}</div>` : ''}
         </div>
     `;
