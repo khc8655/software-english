@@ -299,30 +299,31 @@ function renderLearnPair() {
 function buildPairCard(w, mode) {
     if (!w) return '';
     const safe = w.en.replace(/'/g, "\\'");
+    const id = safe.replace(/[^a-zA-Z0-9]/g, '');
     const starred = inBank(w.en);
     return `
-        <div class="pair-card" id="pc-${safe.replace(/[^a-zA-Z0-9]/g,'')}" onclick="revealCard(this, '${safe.replace(/'/g,"\\'")}')">
-            <div class="pair-cat">${w.category || ''}</div>
-            <div class="pair-word">${w.en}
-                <button class="pair-btn" onclick="event.stopPropagation();speak('${safe}')">🔊</button>
+        <div class="pair-card" onclick="revealCard('${id}')">
+            <div class="pair-top">
+                <span class="pair-cat">${w.category || ''}</span>
+                <div class="pair-btn-row" style="margin:0">
+                    <button class="pair-btn${starred ? ' starred' : ''}" onclick="event.stopPropagation();toggleBank('${safe}');render${mode==='learn'?'Learn':'Review'}Pair()">${starred ? '★' : '☆'}</button>
+                    <button class="pair-btn" onclick="event.stopPropagation();speak('${safe}')">🔊</button>
+                </div>
             </div>
+            <div class="pair-word">${w.en}</div>
             <div class="pair-phon">${w.phon || ''}</div>
-            <div class="pair-zh" id="pz-${safe.replace(/[^a-zA-Z0-9]/g,'')}" style="display:none">${w.zh}</div>
+            <div class="pair-zh" id="pz-${id}" style="display:none">${w.zh}</div>
             ${w.example ? `<div class="pair-example">${w.example}</div>` : ''}
-            <div class="pair-btn-row">
-                <button class="pair-btn${starred ? '' : ''}" onclick="event.stopPropagation();toggleBank('${safe}');this.innerHTML=this.innerHTML==='★'?'☆':'★'" style="font-size:13px">${starred ? '★' : '☆'}</button>
-            </div>
         </div>
     `;
 }
 
-function revealCard(el, en) {
-    const id = 'pz-' + en.replace(/[^a-zA-Z0-9]/g, '');
-    const zhEl = document.getElementById(id);
+function revealCard(id) {
+    const zhEl = document.getElementById('pz-' + id);
     if (zhEl) {
         const visible = zhEl.style.display !== 'none';
         zhEl.style.display = visible ? 'none' : 'block';
-        el.classList.toggle('revealed', !visible);
+        zhEl.closest('.pair-card').classList.toggle('revealed', !visible);
     }
 }
 
@@ -408,20 +409,27 @@ function openBank() {
         </div>
         ${bankWords.length === 0
             ? '<div class="empty-state">生词本为空</div>'
-            : bankWords.map(w => `
-                <div class="modal-item">
+            : bankWords.map(w => {
+                const safe = w.en.replace(/'/g, "\\'");
+                return `<div class="modal-item">
                     <div>
                         <div class="modal-item-en">${w.en}</div>
                         <div class="modal-item-zh">${w.zh}</div>
                     </div>
                     <div class="modal-item-right">
-                        <button class="fc-btn" onclick="speak('${w.en.replace(/'/g,"\\'")}')" title="发音">🔊</button>
-                        <button class="modal-item-rm" onclick="openBank();toggleBank('${w.en.replace(/'/g,"\\'")}');openBank()">×</button>
+                        <button class="fc-btn" onclick="speak('${safe}')" title="发音">🔊</button>
+                        <button class="modal-item-rm" onclick="removeFromBank('${safe}')">×</button>
                     </div>
-                </div>`).join('')
+                </div>`;
+            }).join('')
         }
     `;
     openModal('modal-bank');
+}
+
+function removeFromBank(en) {
+    toggleBank(en);
+    openBank();
 }
 
 function openErrors() {
@@ -434,17 +442,19 @@ function openErrors() {
         </div>
         ${errWords.length === 0
             ? '<div class="empty-state">错题本为空，继续保持</div>'
-            : errWords.map(w => `
-                <div class="modal-item">
+            : errWords.map(w => {
+                const safe = w.en.replace(/'/g, "\\'");
+                return `<div class="modal-item">
                     <div>
                         <div class="modal-item-en">${w.en}</div>
                         <div class="modal-item-zh">${w.zh}</div>
                     </div>
                     <div class="modal-item-right">
-                        <button class="fc-btn" onclick="speak('${w.en.replace(/'/g,"\\'")}')" title="发音">🔊</button>
-                        <button class="modal-item-rm" onclick="removeError('${w.en.replace(/'/g,"\\'")}')">×</button>
+                        <button class="fc-btn" onclick="speak('${safe}')" title="发音">🔊</button>
+                        <button class="modal-item-rm" onclick="removeError('${safe}')">×</button>
                     </div>
-                </div>`).join('')
+                </div>`;
+            }).join('')
         }
     `;
     openModal('modal-errors');
@@ -454,6 +464,7 @@ function removeError(en) {
     const b = getErrorBook();
     const i = b.indexOf(en);
     if (i > -1) { b.splice(i, 1); SS('errorBook', b); }
+    document.getElementById('errors-body').innerHTML = ''; // clear first
     openErrors(); // re-render after removal
 }
 
