@@ -1,400 +1,461 @@
-var TODAY = new Date().toISOString().slice(0, 10);
-var MAX_NEW = 10;
+/* =============================================
+   app.js - 极简移动端英语学习应用
+   ============================================= */
 
-function sget(k) { try { return JSON.parse(localStorage.getItem(k)); } catch(e) { return null; } }
-function sset(k, v) { localStorage.setItem(k, JSON.stringify(v)); }
+const TODAY = new Date().toISOString().slice(0, 10);
+const MAX_NEW = 10;
 
-function getBank() { return sget('se_wordbank') || []; }
-function inBank(en) { return getBank().indexOf(en) > -1; }
-function toggleBank(en) {
-    var b = getBank();
-    var i = b.indexOf(en);
-    if (i > -1) b.splice(i, 1); else b.push(en);
-    sset('se_wordbank', b);
+// ── View Routing ──
+let currentView = 'home';
+
+function switchView(name) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.getElementById('view-' + name).classList.add('active');
+    currentView = name;
+    updateBottomBar();
+    window.scrollTo(0, 0);
 }
 
-function getDaily() { return sget('se_daily') || {}; }
-function getTodayRec() { return getDaily()[TODAY] || { done: false, learned: 0 }; }
+function updateBottomBar() {
+    const bar = document.getElementById('bottombar');
+    if (currentView === 'home') {
+        bar.classList.add('hidden');
+    } else {
+        bar.classList.remove('hidden');
+    }
+}
+
+function goHome() {
+    if (currentView !== 'home') switchView('home');
+}
+
+// ── Storage helpers ──
+function S(key) { return localStorage.getItem('se_' + key); }
+function SG(key) { try { return JSON.parse(S(key)); } catch(e) { return null; } }
+function SS(key, val) { localStorage.setItem('se_' + key, JSON.stringify(val)); }
+
+function getDaily() { return SG('daily') || {}; }
+function getTodayRec() {
+    const d = getDaily();
+    return d[TODAY] || { done: false, learned: 0 };
+}
 function setTodayLearned(n) {
-    var d = getDaily();
+    const d = getDaily();
     d[TODAY] = { done: n >= MAX_NEW, learned: n };
-    sset('se_daily', d);
+    SS('daily', d);
 }
 function getTotalLearned() {
-    var d = getDaily(), t = 0;
-    for (var k in d) t += (d[k].learned || 0);
+    const d = getDaily();
+    let t = 0;
+    for (const k in d) t += (d[k].learned || 0);
     return t;
 }
-function getStreak() {
-    var d = getDaily(), streak = 0;
-    var cur = new Date();
-    cur.setHours(0, 0, 0, 0);
-    for (var i = 0; i < 365; i++) {
-        var key = cur.toISOString().slice(0, 10);
-        if (d[key] && d[key].done) { streak++; }
-        else if (i > 0) break;
-        cur.setDate(cur.getDate() - 1);
-    }
-    return streak;
-}
 
-function getRevData() { return sget('se_review') || {}; }
-function srm(en, data) { var d = getRevData(); d[en] = data; sset('se_review', d); }
-function markWrong(en) { srm(en, { reps: 0, ease: 2.5, interval: 0, nextReview: Date.now() }); }
+function getReviewData() { return SG('review') || {}; }
 function markCorrect(en) {
-    var d = getRevData(), now = Date.now();
-    if (!d[en]) { d[en] = { reps: 1, ease: 2.5, interval: 1, nextReview: now + 86400000 }; }
-    else {
-        var r = d[en]; r.reps++;
+    const d = getReviewData();
+    const now = Date.now();
+    if (!d[en]) {
+        d[en] = { reps: 1, ease: 2.5, interval: 1, nextReview: now + 86400000 };
+    } else {
+        const r = d[en];
+        r.reps++;
         if (r.reps === 1) r.interval = 1;
         else if (r.reps === 2) r.interval = 3;
         else r.interval = Math.max(1, Math.round(r.interval * r.ease));
         r.nextReview = now + r.interval * 86400000;
     }
-    sset('se_review', d);
+    SS('review', d);
 }
-function revOf(en) { return getRevData()[en] || null; }
+function markWrong(en) {
+    const d = getReviewData();
+    d[en] = { reps: 0, ease: 2.5, interval: 0, nextReview: Date.now() };
+    SS('review', d);
+}
 
-var WORDS = [];
+function getBank() { return SG('wordbank') || []; }
+function toggleBank(en) {
+    const b = getBank();
+    const i = b.indexOf(en);
+    if (i > -1) b.splice(i, 1); else b.push(en);
+    SS('wordbank', b);
+}
+function inBank(en) { return getBank().indexOf(en) > -1; }
+
+function getErrorBook() { return SG('errorBook') || []; }
+function addError(en) {
+    const b = getErrorBook();
+    if (!b.includes(en)) { b.push(en); SS('errorBook', b); }
+}
+
+// ── Word Data ──
+let WORDS = [];
 async function loadWords() {
-    var cached = localStorage.getItem('se_words_cache');
-    if (cached) { try { WORDS = JSON.parse(cached); } catch(e) { WORDS = []; } }
+    const cached = localStorage.getItem('se_words_cache');
+    if (cached) { try { WORDS = JSON.parse(cached); } catch(e) {} }
     if (!WORDS.length) {
         try {
-            var r = await fetch('words.json');
-            var data = await r.json();
+            const r = await fetch('words.json');
+            const data = await r.json();
             WORDS = Array.isArray(data) ? data : (data.words || []);
             localStorage.setItem('se_words_cache', JSON.stringify(WORDS));
-        } catch(e) { WORDS = []; }
+        } catch(e) {}
     }
 }
-function findWord(en) { return WORDS.find(function(w) { return w.en === en; }) || null; }
+function findWord(en) { return WORDS.find(w => w.en === en) || null; }
 function getUnlearnedWords() {
-    var rd = getRevData();
-    return WORDS.filter(function(w) { return !rd[w.en]; });
+    const rd = getReviewData();
+    return WORDS.filter(w => !rd[w.en]);
 }
 function getReviewPool() {
-    var rd = getRevData(), bank = getBank(), pool = {};
-    for (var en in rd) if (rd[en].reps === 0) pool[en] = true;
-    bank.forEach(function(en) { pool[en] = true; });
+    const rd = getReviewData();
+    const bank = getBank();
+    const pool = {};
+    for (const en in rd) if (rd[en].reps === 0) pool[en] = true;
+    bank.forEach(en => pool[en] = true);
     return Object.keys(pool).map(findWord).filter(Boolean);
 }
 
+// ── TTS ──
 function speak(text) {
     if (!text) return;
-    var audio = new Audio('https://dict.youdao.com/dictvoice?type=1&word=' + encodeURIComponent(text));
-    audio.play().catch(function() {
+    const audio = new Audio('https://dict.youdao.com/dictvoice?type=1&word=' + encodeURIComponent(text));
+    audio.play().catch(() => {
         if (window.speechSynthesis) {
             window.speechSynthesis.cancel();
-            var utt = new SpeechSynthesisUtterance(text);
+            const utt = new SpeechSynthesisUtterance(text);
             utt.lang = 'en-US'; utt.rate = 0.88;
-            var vs = window.speechSynthesis.getVoices();
-            var enV = vs.find(function(v) { return v.lang.startsWith('en'); }) || vs[0];
-            if (enV) utt.voice = enV;
             window.speechSynthesis.speak(utt);
         }
     });
 }
-if (window.speechSynthesis) window.speechSynthesis.onvoiceschanged = function() { window.speechSynthesis.getVoices(); };
 
-var learnQueue = [], learnIdx = 0, learnTodayCount = 0;
-var reviewQueue = [], reviewIdx = 0;
-var calY, calM;
-var currentCat = 'all';
-
-function showView(v) {
-    ['home', 'learn', 'review', 'browse'].forEach(function(x) {
-        document.getElementById('view-' + x).classList.toggle('hidden', x !== v);
-    });
-    document.querySelectorAll('.mode-tab').forEach(function(t) {
-        t.classList.toggle('active', t.dataset.mode === v);
-    });
-    if (v === 'home') renderHome();
-    else if (v === 'browse') renderBrowse();
-}
-
-function onMainBtnClick() {
-    var rec = getTodayRec();
-    if (!rec.done) startLearn();
-    else startReview();
-}
-
-function renderHome() {
-    var rec = getTodayRec();
-    var streak = getStreak();
-    var total = getTotalLearned();
-    var pool = getReviewPool();
-    document.getElementById('s-streak').textContent = streak;
-    document.getElementById('s-today').textContent = rec.learned + '/' + MAX_NEW;
-    document.getElementById('s-total').textContent = total;
-    document.getElementById('p-text').textContent = rec.learned + '/' + MAX_NEW;
-    document.getElementById('p-fill').style.width = (rec.learned / MAX_NEW * 100) + '%';
-    var btn = document.getElementById('btn-main');
-    if (rec.done) {
-        btn.textContent = '\u2713 今日学习已完成';
-        btn.classList.add('done');
-    } else {
-        btn.textContent = '开始学习 (' + (MAX_NEW - rec.learned) + '\u8bcd)';
-        btn.classList.remove('done');
-    }
-    var btnRev = document.getElementById('btn-review');
-    if (pool.length > 0) {
-        btnRev.style.display = 'block';
-        btnRev.textContent = '开始复习';
-    } else {
-        btnRev.style.display = 'none';
-    }
-    renderCalendar();
-}
-
-function renderCalendar() {
-    var now = new Date();
+// ── Calendar ──
+let calY, calM;
+function renderCalendar(container) {
+    const now = new Date();
     if (!calY) { calY = now.getFullYear(); calM = now.getMonth(); }
-    var months = ['1\u6708', '2\u6708', '3\u6708', '4\u6708', '5\u6708', '6\u6708', '7\u6708', '8\u6708', '9\u6708', '10\u6708', '11\u6708', '12\u6708'];
-    document.getElementById('cal-title').textContent = calY + '\u5e74 ' + months[calM];
-    var isCurMonth = (calY === now.getFullYear() && calM === now.getMonth());
-    document.getElementById('cal-next-btn').style.visibility = isCurMonth ? 'hidden' : 'visible';
-    var firstWday = new Date(calY, calM, 1).getDay();
-    var daysIn = new Date(calY, calM + 1, 0).getDate();
-    var todayStr = TODAY;
-    var daily = getDaily();
-    var grid = document.getElementById('cal-grid');
-    var html = '';
-    for (var i = 0; i < firstWday; i++) html += '<div class="cal-day empty"></div>';
-    for (var d = 1; d <= daysIn; d++) {
-        var ds = calY + '-' + String(calM + 1).padStart(2, '0') + '-' + String(d).padStart(2, '0');
-        var isToday = ds === todayStr;
-        var isFuture = ds > todayStr;
-        var rec = daily[ds];
-        var cls = 'cal-day';
-        var dot = '';
-        if (isToday) cls += ' today';
-        if (isFuture) cls += ' future';
-        else if (rec && rec.done) { cls += ' done-full'; dot = '<div class="cal-dot full"></div>'; }
-        else if (rec && rec.learned > 0) { cls += ' done-partial'; dot = '<div class="cal-dot partial"></div>'; }
-        html += '<div class="' + cls + '">' + d + dot + '</div>';
+    const months = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+    const weekdays = ['一','二','三','四','五','六','日'];
+    const isCurMonth = (calY === now.getFullYear() && calM === now.getMonth());
+
+    container.innerHTML = `
+        <div class="cal-nav">
+            <button class="cal-nav-btn" onclick="calNav(-1)">◀</button>
+            <span class="cal-month">${calY}年 ${months[calM]}</span>
+            <button class="cal-nav-btn" onclick="calNav(1)">▶</button>
+        </div>
+        <div class="cal-grid">
+            ${weekdays.map(d => `<div class="cal-wday">${d}</div>`).join('')}
+            ${buildCalGrid()}
+        </div>
+    `;
+}
+
+function buildCalGrid() {
+    const now = new Date();
+    const firstDay = new Date(calY, calM, 1).getDay();
+    const daysIn = new Date(calY, calM + 1, 0).getDate();
+    const todayStr = TODAY;
+    const daily = getDaily();
+    let html = '';
+    // offset for Monday-first (firstDay: 0=Sun, 1=Mon...)
+    const offset = firstDay === 0 ? 6 : firstDay - 1;
+    for (let i = 0; i < offset; i++) html += '<div class="cal-cell cal-empty"></div>';
+    for (let d = 1; d <= daysIn; d++) {
+        const ds = calY + '-' + String(calM + 1).padStart(2, '0') + '-' + String(d).padStart(2, '0');
+        const isToday = ds === todayStr;
+        const isFuture = ds > todayStr;
+        const rec = daily[ds];
+        let cls = 'cal-cell';
+        if (isToday) cls += ' cal-today';
+        else if (isFuture) cls += ' cal-future';
+        else if (rec && rec.done) cls += ' cal-done-full';
+        html += `<div class="${cls}">${d}</div>`;
     }
-    grid.innerHTML = html;
+    return html;
 }
 
 function calNav(dir) {
     calM += dir;
     if (calM > 11) { calM = 0; calY++; }
     if (calM < 0) { calM = 11; calY--; }
-    renderCalendar();
+    renderCalendar(document.getElementById('cal-inner'));
 }
+
+// ── Home View ──
+function renderHome() {
+    const rec = getTodayRec();
+    const pool = getReviewPool();
+    const bank = getBank();
+    const errCount = getErrorBook().length;
+    const total = getTotalLearned();
+
+    document.getElementById('view-home').innerHTML = `
+        <div class="cal-card" id="cal-inner"></div>
+        <div class="entry-grid">
+            <div class="entry-btn learn" onclick="startLearn()">
+                <span class="entry-btn-label">学习</span>
+                <span class="entry-btn-sub">${rec.done ? '已完成' : '剩余' + (MAX_NEW - rec.learned) + '词'}</span>
+            </div>
+            <div class="entry-btn review" onclick="startReview()" ${pool.length === 0 ? 'style="opacity:0.4;pointer-events:none"' : ''}>
+                <span class="entry-btn-label">复习</span>
+                <span class="entry-btn-sub">${pool.length === 0 ? '无待复习' : pool.length + '词待复'}</span>
+            </div>
+        </div>
+        <div class="quick-chips">
+            <div class="chip" onclick="openBank()">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                生词本
+                <span class="chip-count${bank.length === 0 ? ' warn' : ''}">${bank.length}</span>
+            </div>
+            <div class="chip" onclick="openErrors()">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                错题本
+                <span class="chip-count">${errCount}</span>
+            </div>
+        </div>
+    `;
+    renderCalendar(document.getElementById('cal-inner'));
+    updateBottomProgress(rec.learned, MAX_NEW, '学习');
+}
+
+function updateBottomProgress(current, total, label) {
+    const fill = document.getElementById('bp-fill');
+    const text = document.getElementById('bp-text');
+    const labelEl = document.getElementById('bp-label');
+    fill.style.width = Math.min(100, (current / total * 100)) + '%';
+    text.textContent = current + '/' + total;
+    labelEl.textContent = label;
+}
+
+// ── Learn ──
+let learnQueue = [], learnIdx = 0, learnTodayCount = 0;
 
 function startLearn() {
-    var unlearned = getUnlearnedWords();
-    var rec = getTodayRec();
-    var left = MAX_NEW - rec.learned;
-    if (left <= 0 || !unlearned.length) { showView('home'); return; }
-    var shuffled = unlearned.slice().sort(function() { return Math.random() - 0.5; });
-    learnQueue = shuffled.slice(0, Math.min(left, shuffled.length));
+    const unlearned = getUnlearnedWords();
+    const rec = getTodayRec();
+    const left = MAX_NEW - rec.learned;
+    if (left <= 0 || !unlearned.length) {
+        switchView('home');
+        return;
+    }
+    learnQueue = unlearned.slice().sort(() => Math.random() - 0.5).slice(0, Math.min(left, unlearned.length));
     learnIdx = 0;
     learnTodayCount = rec.learned;
-    showView('learn');
-    showLearnCard();
+    switchView('learn');
+    renderLearnCard();
 }
 
-function showLearnCard() {
-    var area = document.getElementById('learn-area');
+function renderLearnCard() {
+    const area = document.getElementById('view-learn');
     if (learnIdx >= learnQueue.length) {
         setTodayLearned(learnTodayCount);
-        area.innerHTML = '<div class="complete-card"><div class="complete-emoji">&#127882;</div><div class="complete-title">今日学习完成！</div><div class="complete-stats">学了 ' + learnTodayCount + ' 个新词</div><div class="complete-detail">明天继续加油</div></div>';
+        area.innerHTML = `
+            <div class="complete-card">
+                <div class="complete-title">今日学习完成</div>
+                <div class="complete-sub">学了 ${learnTodayCount} 个新词</div>
+            </div>`;
+        setTimeout(() => switchView('home'), 1500);
         return;
     }
-    var w1 = learnQueue[learnIdx];
-    var w2 = learnQueue[learnIdx + 1];
-    var total = learnQueue.length;
-    document.getElementById('lp-text').textContent = (learnIdx + 1) + ' / ' + total;
-    document.getElementById('lp-fill').style.width = (learnIdx / total * 100) + '%';
-    area.innerHTML = '<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:12px">' +
-        lCard(w1, true) + (w2 ? lCard(w2, true) : '') + '</div>' +
-        '<div class="rating-area show"><div class="rating-btns">' +
-        '<button class="rate-btn wrong" onclick="rateLPair(false)">不认识</button>' +
-        '<button class="rate-btn right" onclick="rateLPair(true)">记住了</button>' +
-        '</div></div>';
+    const w = learnQueue[learnIdx];
+    const safe = w.en.replace(/'/g, "\\'");
+    const starred = inBank(w.en);
+    const total = learnQueue.length;
+    updateBottomProgress(learnIdx, total, '学习');
+
+    area.innerHTML = `
+        <div style="font-size:13px;color:var(--text-muted);text-align:center;margin-bottom:10px;font-weight:600">
+            ${learnIdx + 1} / ${total}
+        </div>
+        <div class="flashcard">
+            <div class="fc-top">
+                <span class="fc-cat">${w.category || ''}</span>
+                <button class="fc-btn${starred ? ' starred' : ''}" onclick="toggleBank('${safe}');this.classList.toggle('starred')">
+                    ${starred ? '★' : '☆'}
+                </button>
+            </div>
+            <div class="fc-word">${w.en}
+                <button class="fc-btn" onclick="speak('${safe}')" title="发音">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                </button>
+            </div>
+            <div class="fc-phon">${w.phon || ''}</div>
+            <div class="fc-zh">${w.zh}</div>
+            ${w.example ? `<div class="fc-example">${w.example}</div>` : ''}
+        </div>
+        <div class="rating-row">
+            <button class="rate-btn wrong" onclick="rateLearn(false)">不认识</button>
+            <button class="rate-btn right" onclick="rateLearn(true)">记住了</button>
+        </div>
+    `;
 }
 
-function lCard(word, showBack) {
-    var safe = word.en.replace(/'/g, "\\'");
-
-    var starred = inBank(word.en);
-    var star = starred ? '&#9733;' : '&#9734;';
-    var starCls = starred ? ' active' : '';
-    if (showBack) {
-        return '<div class="flashcard" style="text-align:left;padding:14px 16px">' +
-            '<div class="card-top">' +
-                '<span class="card-cat">' + word.category + '</span>' +
-                '<button class="card-star' + starCls + '" onclick="toggleBank(\x27 + safe + \x27);this.classList.toggle(\x27active\x27);this.innerHTML=this.classList.contains(\x27active\x27)?\x27&#9733;\x27:\x27&#9734;\x27"> ' + star + '</button>' +
-            '</div>' +
-            '<div class="card-word-row"><div class="card-word">' + word.en + '</div><button class="speak-btn" onclick="speak(\x27 + safe + \x27)">&#128266;</button></div>' +
-            '<div class="card-zh">' + word.zh + '</div>' +
-            '<div class="card-phon">' + (word.phon || '') + '</div>' +
-            (word.example ? '<div class="card-example">' + word.example + '</div>' : '') +
-        '</div>' +
+function rateLearn(correct) {
+    const w = learnQueue[learnIdx];
+    if (correct) {
+        markCorrect(w.en);
+    } else {
+        markWrong(w.en);
+        addError(w.en);
     }
-    return '<div class="flashcard" onclick="this.classList.toggle(\x27revealed\x27)">' +
-        '<div class="card-top">' +
-            '<span class="card-cat">' + word.category + '</span>' +
-            '<button class="card-star' + starCls + '" onclick="event.stopPropagation();toggleBank(\x27 + safe + \x27);this.classList.toggle(\x27active\x27);this.innerHTML=this.classList.contains(\x27active\x27)?\x27&#9733;\x27:\x27&#9734;\x27"> ' + star + '</button>' +
-        '</div>' +
-        '<div class="card-front">' +
-            '<div class="card-word-row"><div class="card-word">' + word.en + '</div><button class="speak-btn" onclick="event.stopPropagation();speak(\x27 + safe + \x27)">&#128266;</button></div>' +
-            '<div class="card-hint">点击查看</div>' +
-        '</div>' +
-        '<div class="card-back">' +
-            '<div class="card-word-row"><div class="card-zh">' + word.zh + '</div><button class="speak-btn" onclick="event.stopPropagation();speak(\x27 + safe + \x27)">&#128266;</button></div>' +
-            '<div class="card-phon">' + (word.phon || '') + '</div>' +
-            (word.example ? '<div class="card-example">' + word.example + '</div>' : '') +
-        '</div>' +
-    '</div>' +
+    learnTodayCount = Math.min(learnTodayCount + 1, MAX_NEW);
+    learnIdx++;
+    renderLearnCard();
 }
 
-function rateLPair(correct) {
-    [learnQueue[learnIdx], learnQueue[learnIdx + 1]].forEach(function(word) {
-        if (!word) return;
-        if (correct) markCorrect(word.en);
-        else markWrong(word.en);
-    });
-    learnTodayCount = Math.min(learnTodayCount + 2, MAX_NEW);
-    learnIdx += 2;
-    showLearnCard();
-}
-
-function confirmExitLearn() { document.getElementById('exit-modal').style.display = 'flex'; }
-function closeExitLearn() { document.getElementById('exit-modal').style.display = 'none'; }
-function doExitLearn() {
-    setTodayLearned(learnTodayCount);
-    closeExitLearn();
-    showView('home');
-}
+// ── Review ──
+let reviewQueue = [], reviewIdx = 0;
 
 function startReview() {
-    var pool = getReviewPool();
-    if (!pool.length) { showView('home'); return; }
-    reviewQueue = pool.sort(function() { return Math.random() - 0.5; });
+    const pool = getReviewPool();
+    if (!pool.length) { switchView('home'); return; }
+    reviewQueue = pool.sort(() => Math.random() - 0.5);
     reviewIdx = 0;
-    showView('review');
-    showReviewCard();
+    switchView('review');
+    renderReviewCard();
 }
 
-function showReviewCard() {
-    var area = document.getElementById('review-area');
+function renderReviewCard() {
+    const area = document.getElementById('view-review');
     if (reviewIdx >= reviewQueue.length) {
-        area.innerHTML = '<div class="complete-card"><div class="complete-emoji">&#127881;</div><div class="complete-title">本轮复习完毕</div><div class="complete-stats">共复习 ' + reviewQueue.length + ' 词</div><div class="complete-detail">继续加油</div></div><button class="btn-primary" onclick="showView(\'home\')">返回首页</button>';
+        area.innerHTML = `
+            <div class="complete-card">
+                <div class="complete-title">本轮复习完毕</div>
+                <div class="complete-sub">共复习 ${reviewQueue.length} 词</div>
+            </div>`;
+        setTimeout(() => switchView('home'), 1500);
         return;
     }
-    var word = reviewQueue[reviewIdx];
-    var safe = word.en.replace(/'/g, "\\'");
+    const w = reviewQueue[reviewIdx];
+    const safe = w.en.replace(/'/g, "\\'");
+    const starred = inBank(w.en);
+    const total = reviewQueue.length;
+    updateBottomProgress(reviewIdx + 1, total, '复习');
 
-    var starred = inBank(word.en);
-    var star = starred ? '&#9733;' : '&#9734;';
-    var starCls = starred ? ' active' : '';
-    var total = reviewQueue.length;
-    document.getElementById('rp-text').textContent = (reviewIdx + 1) + ' / ' + total;
-    document.getElementById('rp-fill').style.width = (reviewIdx / total * 100) + '%';
-    area.innerHTML = '<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:12px">' +
-        '<div class="flashcard" style="text-align:left;padding:14px 16px">' +
-            '<div class="card-top">' +
-                '<span class="card-cat">' + word.category + '</span>' +
-                '<button class="card-star' + starCls + '" onclick="toggleBank(\x27 + safe + \x27);this.classList.toggle(\x27active\x27);this.innerHTML=this.classList.contains(\x27active\x27)?\x27&#9733;\x27:\x27&#9734;\x27"> ' + star + '</button>' +
-            '</div>' +
-            '<div class="card-word-row"><div class="card-word">' + word.en + '</div><button class="speak-btn" onclick="speak(\x27 + safe + \x27)">&#128266;</button></div>' +
-            '<div class="card-zh">' + word.zh + '</div>' +
-            '<div class="card-phon">' + (word.phon || '') + '</div>' +
-            (word.example ? '<div class="card-example">' + word.example + '</div>' : '') +
-        '</div>' +
-    '</div>' +
-    '<div class="rating-area show"><div class="rating-btns">' +
-        '<button class="rate-btn wrong" onclick="rateReviewWord(false)">不认识</button>' +
-        '<button class="rate-btn right" onclick="rateReviewWord(true)">记住了</button>' +
-    '</div></div>';
+    area.innerHTML = `
+        <div style="font-size:13px;color:var(--text-muted);text-align:center;margin-bottom:10px;font-weight:600">
+            ${reviewIdx + 1} / ${total}
+        </div>
+        <div class="flashcard">
+            <div class="fc-top">
+                <span class="fc-cat">${w.category || ''}</span>
+                <button class="fc-btn${starred ? ' starred' : ''}" onclick="toggleBank('${safe}');this.classList.toggle('starred')">
+                    ${starred ? '★' : '☆'}
+                </button>
+            </div>
+            <div class="fc-word">${w.en}
+                <button class="fc-btn" onclick="speak('${safe}')" title="发音">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                </button>
+            </div>
+            <div class="fc-phon">${w.phon || ''}</div>
+            <div class="fc-zh">${w.zh}</div>
+            ${w.example ? `<div class="fc-example">${w.example}</div>` : ''}
+        </div>
+        <div class="rating-row">
+            <button class="rate-btn wrong" onclick="rateReview(false)">不认识</button>
+            <button class="rate-btn right" onclick="rateReview(true)">记住了</button>
+        </div>
+    `;
 }
 
-function rateReviewWord(correct) {
-    var word = reviewQueue[reviewIdx];
-    if (correct) markCorrect(word.en);
-    else markWrong(word.en);
+function rateReview(correct) {
+    const w = reviewQueue[reviewIdx];
+    if (correct) {
+        markCorrect(w.en);
+    } else {
+        markWrong(w.en);
+        addError(w.en);
+    }
     reviewIdx++;
-    showReviewCard();
+    renderReviewCard();
 }
 
-function renderBrowse() {
-    var catSet = {};
-    WORDS.forEach(function(w) { catSet[w.category] = true; });
-    var cats = ['all'].concat(Object.keys(catSet));
-    var filter = document.getElementById('cat-filter');
-    filter.innerHTML = cats.map(function(c) {
-        return '<button class="cat-btn' + (c === currentCat ? ' active' : '') + '" onclick="setCat(\'' + c + '\')">' + (c === 'all' ? '\u5168\u90e8' : c) + '</button>';
-    }).join('');
-    var filtered = currentCat === 'all' ? WORDS : WORDS.filter(function(w) { return w.category === currentCat; });
-    var list = document.getElementById('word-list');
-    list.innerHTML = '<div class="word-list-title">' + (currentCat === 'all' ? '\u5168\u90e8' : currentCat) + ' \u00b7 ' + filtered.length + ' \u8bcd</div>';
-    list.innerHTML += filtered.slice(0, 50).map(function(w) {
-        var safe = w.en.replace(/'/g, "\\'");
-        var starred = inBank(w.en);
-        var star = starred ? '&#9733;' : '&#9734;';
-        var starCls = starred ? ' active' : '';
-        var r = revOf(w.en);
-        var nextText = '\u672a\u5b66\u4e60';
-        var nextCls = '';
-        if (r) {
-            if (r.reps === 0) { nextText = '\u9519\u8bef'; nextCls = ' overdue'; }
-            else if (r.reps >= 3) { nextText = '\u5df2\u638c\u63e1'; }
-            else { nextText = '\u5b66\u4e60\u4e2d'; }
+// ── Modals ──
+function openModal(id) { document.getElementById(id).classList.add('show'); }
+function closeModal(id) { document.getElementById(id).classList.remove('show'); }
+
+function openBank() {
+    const bank = getBank();
+    const errBook = getErrorBook();
+    const total = getTotalLearned();
+    const bankWords = bank.map(en => findWord(en)).filter(Boolean);
+    document.getElementById('bank-body').innerHTML = `
+        <div class="bank-stat-row">
+            <div class="bank-stat"><div class="bank-stat-n">${bank.length}</div><div class="bank-stat-l">生词</div></div>
+            <div class="bank-stat"><div class="bank-stat-n">${errBook.length}</div><div class="bank-stat-l">错题</div></div>
+            <div class="bank-stat"><div class="bank-stat-n">${total}</div><div class="bank-stat-l">已学</div></div>
+        </div>
+        ${bankWords.length === 0 ? '<div class="empty-state">生词本为空</div>' :
+            bankWords.map(w => `
+                <div class="modal-item">
+                    <div>
+                        <div class="modal-item-en">${w.en}</div>
+                        <div class="modal-item-zh">${w.zh}</div>
+                    </div>
+                    <div class="modal-item-right">
+                        <button class="fc-btn" onclick="speak('${w.en.replace(/'/g,"\\'")}')">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                        </button>
+                        <button class="modal-item-rm" onclick="removeFromBank('${w.en.replace(/'/g,"\\'")}')">×</button>
+                    </div>
+                </div>
+            `).join('')
         }
-        return '<div class="word-item">' +
-            '<div><div class="word-item-en">' + w.en + '</div><div class="word-item-zh">' + w.zh + '</div></div>' +
-            '<div class="word-item-actions">' +
-                '<span class="word-next' + nextCls + '">' + nextText + '</span>' +
-                '<button class="word-star' + starCls + '" onclick="toggleBank(\'' + safe + '\');renderBrowse()">' + star + '</button>' +
-                '<button class="speak-btn-sm" onclick="speak(\'' + safe + '\')">&#128266;</button>' +
-            '</div>' +
-        '</div>';
-    }).join('');
-    if (filtered.length > 50) {
-        list.innerHTML += '<div style="text-align:center;color:var(--text-secondary);font-size:13px;padding:10px">\u663e\u793a\u524d50\u8bcd\uff0c\u5171' + filtered.length + '\u8bcd</div>';
-    }
+    `;
+    openModal('modal-bank');
 }
 
-function setCat(cat) { currentCat = cat; renderBrowse(); }
-
-function setTheme(theme) {
-    document.body.setAttribute('data-theme', theme === 'blue' ? '' : theme);
-    sset('se_theme', theme);
-    document.querySelectorAll('.theme-btn').forEach(function(b) { b.classList.toggle('active', b.dataset.theme === theme); });
+function removeFromBank(en) {
+    toggleBank(en);
+    openBank();
 }
 
-function init() {
-    var savedTheme = sget('se_theme') || 'blue';
-    setTheme(savedTheme);
-    loadWords().then(function() { renderHome(); });
+function openErrors() {
+    const errBook = getErrorBook();
+    const errWords = errBook.map(en => findWord(en)).filter(Boolean);
+    document.getElementById('errors-body').innerHTML = `
+        <div class="bank-stat-row">
+            <div class="bank-stat"><div class="bank-stat-n">${errWords.length}</div><div class="bank-stat-l">错题数</div></div>
+        </div>
+        ${errWords.length === 0 ? '<div class="empty-state">错题本为空，继续保持</div>' :
+            errWords.map(w => `
+                <div class="modal-item">
+                    <div>
+                        <div class="modal-item-en">${w.en}</div>
+                        <div class="modal-item-zh">${w.zh}</div>
+                    </div>
+                    <div class="modal-item-right">
+                        <button class="fc-btn" onclick="speak('${w.en.replace(/'/g,"\\'")}')">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                        </button>
+                        <button class="modal-item-rm" onclick="removeError('${w.en.replace(/'/g,"\\'")}')">×</button>
+                    </div>
+                </div>
+            `).join('')
+        }
+    `;
+    openModal('modal-errors');
 }
 
-(function migrate() {
-    var oldSrs = localStorage.getItem('srs_v2');
-    var oldDaily = localStorage.getItem('reviewed_t');
-    if (oldSrs && !sget('se_review')) {
-        try {
-            var old = JSON.parse(oldSrs);
-            var newd = {};
-            for (var en in old) {
-                if (old[en] && old[en].learned !== undefined) {
-                    newd[en] = { reps: old[en].reviewCount || 0, ease: 2.5, interval: old[en].interval || 0, nextReview: old[en].nextReview ? new Date(old[en].nextReview).getTime() : 0 };
-                }
-            }
-            if (Object.keys(newd).length > 0) sset('se_review', newd);
-        } catch(e) {}
-    }
-    if (oldDaily && !sget('se_daily')) {
-        try {
-            var count = parseInt(oldDaily);
-            var d = {}; d[TODAY] = { done: count >= MAX_NEW, learned: count };
-            sset('se_daily', d);
-        } catch(e) {}
-    }
-})();
+function removeError(en) {
+    const b = getErrorBook();
+    const i = b.indexOf(en);
+    if (i > -1) { b.splice(i, 1); SS('errorBook', b); }
+    openErrors();
+}
 
-init();
+// ── Init ──
+document.addEventListener('DOMContentLoaded', () => {
+    loadWords().then(() => {
+        renderHome();
+        // close modals on overlay click
+        document.querySelectorAll('.modal-overlay').forEach(m => {
+            m.addEventListener('click', e => {
+                if (e.target === m) m.classList.remove('show');
+            });
+        });
+    });
+});
