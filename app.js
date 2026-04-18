@@ -307,29 +307,59 @@ function renderHome() {
         <div class="cal-card" id="cal-inner"></div>
         <div class="entry-grid">
             <div class="entry-btn learn" onclick="startLearn()">
-                <span class="entry-btn-icon">📖</span>
+                <span class="entry-btn-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                    </svg>
+                </span>
                 <span class="entry-btn-label">学习</span>
                 <span class="entry-btn-sub">${rec.done ? '✅ 已完成' : '剩余 ' + left + ' 词'}</span>
             </div>
             <div class="entry-btn review" onclick="startReview()" ${pool.length === 0 ? 'style="opacity:0.4;pointer-events:none"' : ''}>
-                <span class="entry-btn-icon">🔄</span>
+                <span class="entry-btn-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="23 4 23 10 17 10"/>
+                        <polyline points="1 20 1 14 7 14"/>
+                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                    </svg>
+                </span>
                 <span class="entry-btn-label">复习</span>
                 <span class="entry-btn-sub">${pool.length === 0 ? '无待复习' : pool.length + ' 词待复'}</span>
             </div>
         </div>
         <div class="entry-grid" style="grid-template-columns: 1fr 1fr 1fr;">
             <div class="entry-btn" onclick="startSpell()" style="padding:12px 8px">
-                <span class="entry-btn-icon">✏️</span>
+                <span class="entry-btn-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+                        <path d="m15 5 4 4"/>
+                    </svg>
+                </span>
                 <span class="entry-btn-label" style="font-size:14px">拼写</span>
                 <span class="entry-btn-sub">主动回忆</span>
             </div>
             <div class="entry-btn" onclick="openBank()" style="padding:12px 8px">
-                <span class="entry-btn-icon">⭐</span>
+                <span class="entry-btn-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                        <polyline points="10 9 9 9 8 9"/>
+                    </svg>
+                </span>
                 <span class="entry-btn-label" style="font-size:14px">生词本</span>
                 <span class="entry-btn-sub">${bank.length} 词</span>
             </div>
             <div class="entry-btn" onclick="openErrors()" style="padding:12px 8px">
-                <span class="entry-btn-icon">❌</span>
+                <span class="entry-btn-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                </span>
                 <span class="entry-btn-label" style="font-size:14px">错题本</span>
                 <span class="entry-btn-sub">${errCount} 词</span>
             </div>
@@ -424,8 +454,8 @@ function renderLearnCard() {
             <div class="pair-top">
                 <span class="pair-cat">${esc(w.category || '')}</span>
                 <div class="pair-btn-row" style="margin:0">
-                    <button class="pair-btn${inBank(w.en) ? ' starred' : ''}" onclick="event.stopPropagation();toggleBank('${esc(w.en)}');renderLearnCard()">⭐</button>
-                    <button class="pair-btn play-btn" onclick="event.stopPropagation();speak('${esc(w.en)}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg></button>
+                    <button class="pair-btn${inBank(w.en) ? ' starred' : ''}" onclick="event.stopPropagation();toggleBank('${esc(w.en)}');renderLearnCard()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button>
+                    <button class="pair-btn play-btn" onclick="event.stopPropagation();speak('${esc(w.en)}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v18l14-9z"></path></svg></button>
                 </div>
             </div>
             <div class="pair-word">${esc(w.en)}</div>
@@ -526,8 +556,8 @@ function renderReviewCard() {
             <div class="pair-top">
                 <span class="pair-cat">${esc(w.category || '')}</span>
                 <div class="pair-btn-row" style="margin:0">
-                    <button class="pair-btn${inBank(w.en) ? ' starred' : ''}" onclick="event.stopPropagation();toggleBank('${esc(w.en)}');renderReviewCard()">⭐</button>
-                    <button class="pair-btn play-btn" onclick="event.stopPropagation();speak('${esc(w.en)}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg></button>
+                    <button class="pair-btn${inBank(w.en) ? ' starred' : ''}" onclick="event.stopPropagation();toggleBank('${esc(w.en)}');renderReviewCard()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></button>
+                    <button class="pair-btn play-btn" onclick="event.stopPropagation();speak('${esc(w.en)}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v18l14-9z"></path></svg></button>
                 </div>
             </div>
             <div class="pair-word">${esc(w.en)}</div>
