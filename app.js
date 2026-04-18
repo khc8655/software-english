@@ -431,7 +431,7 @@ function renderLearnCard() {
                 <div class="complete-sub">学了 ${learnTodayCount} 个新词</div>
                 <div class="complete-stats">
                     <div><div class="complete-stat-n text-success">${learnCorrect}</div><div class="complete-stat-l">记住了</div></div>
-                    <div><div class="complete-stat-n text-danger">${learnWrong}</div><div class="complete-stat-l">不认识</div></div>
+                    <div><div class="complete-stat-n text-danger">${learnWrong}</div><div class="complete-stat-l">重点记</div></div>
                 </div>
                 ${streak > 1 ? `<div class="complete-streak">🔥 连续学习 ${streak} 天</div>` : ''}
                 <button class="complete-home-btn" onclick="goHome()">
@@ -464,7 +464,7 @@ function renderLearnCard() {
             <div id="learn-example" style="display:none">${w.example ? `<div class="pair-example"><span style="color:var(--text-dim)">${esc(w.example)}</span><br><span style="color:var(--primary)">${esc(w.example_zh || '')}</span></div>` : ''}</div>
         </div>
         <div class="rating-row" id="learn-rating" style="opacity:0.3;pointer-events:none">
-            <button class="rate-btn wrong" onclick="rateLearn(false)">😕 不认识</button>
+            <button class="rate-btn wrong" onclick="rateLearn(false)">📝 重点记</button>
             <button class="rate-btn right" onclick="rateLearn(true)">😊 记住了</button>
         </div>
     `;
@@ -533,7 +533,7 @@ function renderReviewCard() {
                 <div class="complete-sub">共复习 ${reviewQueue.length} 词</div>
                 <div class="complete-stats">
                     <div><div class="complete-stat-n text-success">${reviewCorrect}</div><div class="complete-stat-l">记住了</div></div>
-                    <div><div class="complete-stat-n text-danger">${reviewWrong}</div><div class="complete-stat-l">不认识</div></div>
+                    <div><div class="complete-stat-n text-danger">${reviewWrong}</div><div class="complete-stat-l">重点记</div></div>
                 </div>
                 <button class="complete-home-btn" onclick="goHome()">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
@@ -565,7 +565,7 @@ function renderReviewCard() {
             <div id="review-example" style="display:none">${w.example ? `<div class="pair-example"><span style="color:var(--text-dim)">${esc(w.example)}</span><br><span style="color:var(--primary)">${esc(w.example_zh || '')}</span></div>` : ''}</div>
         </div>
         <div class="rating-row" id="review-rating" style="opacity:0.3;pointer-events:none">
-            <button class="rate-btn wrong" onclick="rateReview(false)">😕 不认识</button>
+            <button class="rate-btn wrong" onclick="rateReview(false)">📝 重点记</button>
             <button class="rate-btn right" onclick="rateReview(true)">😊 记住了</button>
         </div>
     `;
