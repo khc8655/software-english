@@ -35,28 +35,67 @@ function goHome() {
 
 // ── Theme ──
 function initTheme() {
-    const saved = localStorage.getItem('se_theme') || 'dark';
+    const saved = localStorage.getItem('se_theme') || 'light';
     applyTheme(saved);
 }
 
 function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('se_theme', theme);
-    const icon = document.getElementById('theme-icon');
-    if (icon) {
-        icon.innerHTML = theme === 'dark'
-            ? '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>'
-            : '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
-    }
     // Update theme-color meta
     const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.content = theme === 'dark' ? '#0D0D14' : '#F0F1F5';
+    if (meta) {
+        const themeColors = {
+            light: '#F8F9FA',
+            blue: '#F8F9FA',
+            orange: '#F8F9FA',
+            pink: '#F8F9FA',
+            teal: '#F8F9FA',
+            green: '#F8F9FA'
+        };
+        meta.content = themeColors[theme] || '#F8F9FA';
+    }
 }
 
-function toggleTheme() {
-    const current = localStorage.getItem('se_theme') || 'dark';
-    applyTheme(current === 'dark' ? 'light' : 'dark');
+// 打开主题选择器
+function openThemeSelector() {
+    const theme = localStorage.getItem('se_theme') || 'light';
+    
+    document.getElementById('themeBody').innerHTML = `
+        <div style="padding:12px 0;">
+            <div style="font-size:14px;font-weight:600;color:var(--text-dim);margin-bottom:12px;">选择主题</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                ${[
+                    { value: 'light', label: '默认 (亮色红橙)', color: '#FA5252' },
+                    { value: 'blue', label: '蓝色', color: '#3b82f6' },
+                    { value: 'orange', label: '橙色', color: '#f97316' },
+                    { value: 'pink', label: '粉色', color: '#ec4899' },
+                    { value: 'teal', label: '青色', color: '#14b8a6' },
+                    { value: 'green', label: '墨绿色', color: '#2f6627' }
+                ].map(t => `
+                    <div style="padding:16px;background:var(--bg);border:1px solid ${theme === t.value ? t.color : 'var(--border)'};
+                        border-radius:var(--radius-lg);cursor:pointer;transition:var(--transition);
+                        ${theme === t.value ? 'box-shadow: 0 0 20px ' + t.color + '33;' : ''}
+                        " onclick="applyTheme('${t.value}');closeModal('themeModal')">
+                        <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px;">${t.label}</div>
+                        <div style="width:32px;height:4px;background:${t.color};border-radius:2px;"></div>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `;
+    
+    openModal('themeModal');
 }
+
+// 移除主题切换功能，因为已经删除了主题切换按钮
+// function toggleTheme() {
+//     const current = localStorage.getItem('se_theme') || 'dark';
+//     const themes = ['dark', 'light', 'blue', 'orange', 'pink', 'teal'];
+//     const currentIndex = themes.indexOf(current);
+//     const nextIndex = (currentIndex + 1) % themes.length;
+//     applyTheme(themes[nextIndex]);
+// }
 
 // ── XSS Escape ──
 function esc(str) {
@@ -1087,11 +1126,15 @@ function openSettings() {
         <div class="settings-item">
             <div>
                 <div class="settings-label">主题</div>
-                <div class="settings-desc">切换深色/浅色模式</div>
+                <div class="settings-desc">选择界面配色方案</div>
             </div>
             <select class="settings-select" onchange="applyTheme(this.value)">
-                <option value="dark" ${theme === 'dark' ? 'selected' : ''}>深色</option>
-                <option value="light" ${theme === 'light' ? 'selected' : ''}>浅色</option>
+                <option value="light" ${theme === 'light' ? 'selected' : ''}>默认 (亮色红橙)</option>
+                <option value="blue" ${theme === 'blue' ? 'selected' : ''}>蓝色</option>
+                <option value="orange" ${theme === 'orange' ? 'selected' : ''}>橙色</option>
+                <option value="pink" ${theme === 'pink' ? 'selected' : ''}>粉色</option>
+                <option value="teal" ${theme === 'teal' ? 'selected' : ''}>青色</option>
+                <option value="green" ${theme === 'green' ? 'selected' : ''}>墨绿色</option>
             </select>
         </div>
         <div class="settings-item">
