@@ -166,13 +166,13 @@ function inBank(en) { return getBank().indexOf(en) > -1; }
 
 // ── Custom Words ──
 function getCustomWords() {
-    return (SG('customWords') || []).map(w => ({ ...w, category: 'custom', tags: w.tags || ['custom'] }));
+    return (SG('customWords') || []).map(w => ({ ...w, category: w.category || CATEGORIES[0] || 'dev', tags: w.tags || ['custom'] }));
 }
 function addCustomWord(word) {
     const words = getCustomWords();
     if (words.find(w => w.en.toLowerCase() === word.en.toLowerCase())) return { success: false, error: '单词已存在' };
     if (!word.en || !word.zh) return { success: false, error: '英文和中文不能为空' };
-    words.push({ en: word.en.trim(), zh: word.zh.trim(), phon: word.phon || '', category: 'custom', example: word.example || '', tags: ['custom'] });
+    words.push({ en: word.en.trim(), zh: word.zh.trim(), phon: word.phon || '', category: word.category || CATEGORIES[0] || 'dev', example: word.example || '', tags: ['custom'] });
     SS('customWords', words);
     return { success: true };
 }
@@ -429,16 +429,23 @@ function startLearn() {
 
     let toLearn = left > 0 ? left : maxNew;
 
-    // Prioritize custom words
-    const customWords = unlearned.filter(w => w.category === 'custom');
-    const regularWords = unlearned.filter(w => w.category !== 'custom');
-    const customCount = Math.min(customWords.length, toLearn);
-    const regularCount = toLearn - customCount;
-
+    // Prioritize newly added words (custom words with tags: ['custom'])
+    const newWords = unlearned.filter(w => w.tags && w.tags.includes('custom'));
+    const regularWords = unlearned.filter(w => !w.tags || !w.tags.includes('custom'));
+    
+    // Newly added words are always prioritized and included first
     learnQueue = [
-        ...customWords.slice().sort(() => Math.random() - 0.5).slice(0, customCount),
-        ...regularWords.slice().sort(() => Math.random() - 0.5).slice(0, regularCount)
+        ...newWords.slice(), // All newly added words first
+        ...regularWords.slice().sort(() => Math.random() - 0.5).slice(0, toLearn - newWords.length)
     ];
+    
+    // Ensure we have enough words to learn
+    if (learnQueue.length < toLearn) {
+        learnQueue = [
+            ...learnQueue,
+            ...regularWords.slice().sort(() => Math.random() - 0.5).slice(0, toLearn - learnQueue.length)
+        ];
+    }
     if (learnQueue.length === 0) {
         learnQueue = [...unlearned.slice().sort(() => Math.random() - 0.5).slice(0, maxNew)];
     }
@@ -904,7 +911,7 @@ function renderDict() {
     document.getElementById('dictBody').innerHTML = `
         <div class="bank-stat-row">
             <div class="bank-stat"><div class="bank-stat-n">${WORDS.length}</div><div class="bank-stat-l">总词数</div></div>
-            <div class="bank-stat"><div class="bank-stat-n">${customWords.length}</div><div class="bank-stat-l">自定义</div></div>
+            <div class="bank-stat"><div class="bank-stat-n">${CATEGORIES.length}</div><div class="bank-stat-l">分类数</div></div>
             <div class="bank-stat" style="cursor:pointer" onclick="toggleAddForm()">
                 <div class="bank-stat-n" style="font-size:16px">+</div>
                 <div class="bank-stat-l">添加</div>
@@ -912,7 +919,7 @@ function renderDict() {
         </div>
 
         <div id="addForm" style="padding:12px;background:var(--bg);border-radius:var(--radius);margin-bottom:12px;display:none">
-            <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--text-secondary)">添加自定义单词</div>
+            <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--text-secondary)">添加单词</div>
             <div style="display:grid;gap:8px">
                 <input type="text" id="dict-input-en" placeholder="输入英文单词，回车查询" style="padding:8px;border:1px solid var(--border);border-radius:var(--radius);background:var(--card);font-size:14px;color:var(--text);outline:none">
                 <div id="dict-preview" style="display:none;padding:10px;background:var(--card);border-radius:var(--radius)">
@@ -920,9 +927,16 @@ function renderDict() {
                     <div style="font-size:12px;color:var(--text-dim);margin-bottom:4px" id="preview-phon"></div>
                     <div style="font-size:13px;color:var(--primary)" id="preview-zh"></div>
                 </div>
+                <select id="dict-category" style="padding:8px;border:1px solid var(--border);border-radius:var(--radius);background:var(--card);font-size:14px;color:var(--text);outline:none">
+                    ${CATEGORIES.map(c => `<option value="${c}">${catLabels[c] || c}</option>`).join('')}
+                    <option value="new">新建分类</option>
+                </select>
+                <div id="new-category-input" style="display:none">
+                    <input type="text" id="dict-new-category" placeholder="输入新分类名称" style="padding:8px;border:1px solid var(--border);border-radius:var(--radius);background:var(--card);font-size:14px;color:var(--text);outline:none">
+                </div>
                 <div style="display:flex;gap:8px">
-                    <button id="btn-add-word" onclick="addDictWord()" style="flex:1;padding:10px;background:var(--primary);color:white;border:none;border-radius:var(--radius);font-size:14px;font-weight:600;cursor:pointer">添加</button>
-                    <button onclick="toggleAddForm()" style="padding:10px;background:var(--bg);color:var(--text-dim);border:1px solid var(--border);border-radius:var(--radius);font-size:14px;cursor:pointer">取消</button>
+                    <button id="btn-add-word" onclick="addDictWord()" style="flex:1;padding:14px;background:var(--primary);color:white;border:none;border-radius:var(--radius);font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.15);transition:all 0.3s ease">添加</button>
+                    <button onclick="toggleAddForm()" style="padding:14px 20px;background:var(--bg);color:var(--text-dim);border:1px solid var(--border);border-radius:var(--radius);font-size:16px;cursor:pointer;transition:all 0.3s ease">取消</button>
                 </div>
             </div>
         </div>
@@ -942,15 +956,14 @@ function renderDict() {
         ${filtered.length === 0
             ? '<div class="empty-state">未找到匹配的单词</div>'
             : filtered.map(w => {
-                const isCustom = w.category === 'custom';
                 return `<div class="modal-item">
                     <div>
-                        <div class="modal-item-en">${esc(w.en)} ${isCustom ? '<span style="font-size:10px;color:var(--primary);margin-left:4px">自定义</span>' : ''}</div>
+                        <div class="modal-item-en">${esc(w.en)}</div>
                         <div class="modal-item-zh">${esc(w.zh)}</div>
                     </div>
                     <div class="modal-item-right">
                         <button class="play-btn" onclick="speak('${esc(w.en)}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg></button>
-                        ${isCustom ? `<button class="modal-item-rm" onclick="removeDictWord('${esc(w.en)}')">×</button>` : ''}
+                        <button class="modal-item-rm" onclick="removeDictWord('${esc(w.en)}')">×</button>
                     </div>
                 </div>`;
             }).join('')
@@ -971,6 +984,15 @@ function toggleAddForm() {
                 input.focus();
                 input.removeEventListener('keypress', handleDictInput);
                 input.addEventListener('keypress', handleDictInput);
+            }
+            
+            // 添加分类选择事件监听
+            const categorySelect = document.getElementById('dict-category');
+            const newCategoryInput = document.getElementById('new-category-input');
+            if (categorySelect && newCategoryInput) {
+                categorySelect.addEventListener('change', function() {
+                    newCategoryInput.style.display = this.value === 'new' ? 'block' : 'none';
+                });
             }
         }, 100);
     }
@@ -997,23 +1019,54 @@ async function lookupWord(word) {
     if (btn) btn.disabled = true;
 
     try {
-        const response = await fetch(`https://dict.youdao.com/jsonapi?q=${encodeURIComponent(word)}&jsonp=1`);
+        // 使用更可靠的 API
+        const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`);
+        if (!response.ok) throw new Error('API 响应失败');
         const data = await response.json();
-        let phon = '', zh = '';
-        if (data.simple && data.simple.word && data.simple.word[0]) {
-            const w = data.simple.word[0];
-            phon = w.usphone || w.ukphone || '';
+        
+        let phon = '', zh = '', example = '';
+        
+        if (data[0]) {
+            // 获取音标
+            if (data[0].phonetics && data[0].phonetics.length > 0) {
+                const phonetic = data[0].phonetics.find(p => p.text);
+                phon = phonetic ? phonetic.text : '';
+            }
+            
+            // 获取释义（只取第一个，限制长度）
+            if (data[0].meanings && data[0].meanings.length > 0) {
+                const firstMeaning = data[0].meanings[0];
+                if (firstMeaning.definitions && firstMeaning.definitions[0]) {
+                    let definition = firstMeaning.definitions[0].definition;
+                    // 限制长度，使其更美观
+                    if (definition.length > 80) {
+                        definition = definition.substring(0, 80) + '...';
+                    }
+                    zh = definition;
+                }
+            }
+            
+            // 获取示例
+            if (data[0].meanings && data[0].meanings.length > 0) {
+                const meaningWithExample = data[0].meanings.find(m => m.definitions[0].example);
+                if (meaningWithExample && meaningWithExample.definitions[0].example) {
+                    example = meaningWithExample.definitions[0].example;
+                }
+            }
         }
-        if (data.ec && data.ec.word && data.ec.word[0] && data.ec.word[0].trs) {
-            zh = data.ec.word[0].trs.map(t => t.tr[0].l.i).join('；');
-        }
+        
         previewPhon.textContent = phon || '';
         previewZh.textContent = zh || '未找到释义';
+        // 显示示例句子
+        if (example) {
+            previewZh.textContent += `\n示例: ${example}`;
+        }
         if (btn) btn.disabled = false;
-        window._dictLookupCache = { en: word, zh, phon };
+        window._dictLookupCache = { en: word, zh, phon, example };
     } catch (e) {
+        console.error('查询错误:', e);
         previewPhon.textContent = '查询失败';
-        previewZh.textContent = '';
+        previewZh.textContent = '请检查网络连接或尝试其他单词';
         if (btn) btn.disabled = false;
     }
 }
@@ -1021,17 +1074,49 @@ async function lookupWord(word) {
 function addDictWord() {
     const en = document.getElementById('dict-input-en').value.trim();
     if (!en) { alert('请输入英文单词'); return; }
-    let zh = '', phon = '';
+    
+    let zh = '', phon = '', example = '';
     if (window._dictLookupCache && window._dictLookupCache.en === en) {
         zh = window._dictLookupCache.zh;
         phon = window._dictLookupCache.phon;
+        example = window._dictLookupCache.example || '';
     } else {
         alert('请按回车先查询单词');
         return;
     }
-    const result = addCustomWord({ en, zh, phon, example: '' });
+    
+    let category = document.getElementById('dict-category')?.value;
+    
+    // 处理新建分类
+    if (category === 'new') {
+        const newCategory = document.getElementById('dict-new-category')?.value.trim();
+        if (!newCategory) {
+            alert('请输入新分类名称');
+            return;
+        }
+        category = newCategory;
+    }
+    
+    if (!category) {
+        alert('请选择分类');
+        return;
+    }
+    
+    const result = addCustomWord({ en, zh, phon, example, category });
     if (result.success) {
         window._dictLookupCache = null;
+        // 清空表单
+        document.getElementById('dict-input-en').value = '';
+        document.getElementById('dict-preview').style.display = 'none';
+        if (document.getElementById('dict-category')) {
+            document.getElementById('dict-category').value = CATEGORIES[0] || 'dev';
+        }
+        if (document.getElementById('new-category-input')) {
+            document.getElementById('new-category-input').style.display = 'none';
+        }
+        if (document.getElementById('dict-new-category')) {
+            document.getElementById('dict-new-category').value = '';
+        }
         loadWords().then(() => renderDict());
     } else {
         alert(result.error);
