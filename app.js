@@ -65,12 +65,11 @@ function openThemeSelector() {
     document.getElementById('themeBody').innerHTML = `
         <div style="padding:12px 0;">
             <div style="font-size:14px;font-weight:600;color:var(--text-dim);margin-bottom:12px;">选择主题</div>
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
                 ${[
                     { value: 'light', label: '默认 (亮色红橙)', color: '#FA5252' },
                     { value: 'blue', label: '蓝色', color: '#3b82f6' },
                     { value: 'orange', label: '橙色', color: '#f97316' },
-                    { value: 'pink', label: '粉色', color: '#ec4899' },
                     { value: 'teal', label: '青色', color: '#14b8a6' },
                     { value: 'green', label: '墨绿色', color: '#2f6627' },
                     { value: 'copilot', label: 'Copilot (紫色)', color: '#6B46C1' }
