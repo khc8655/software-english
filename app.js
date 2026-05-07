@@ -51,7 +51,8 @@ function applyTheme(theme) {
             orange: '#F8F9FA',
             pink: '#F8F9FA',
             teal: '#F8F9FA',
-            green: '#F8F9FA'
+            green: '#F8F9FA',
+            copilot: '#F3F0FF'
         };
         meta.content = themeColors[theme] || '#F8F9FA';
     }
@@ -1220,6 +1221,7 @@ function openSettings() {
                 <option value="pink" ${theme === 'pink' ? 'selected' : ''}>粉色</option>
                 <option value="teal" ${theme === 'teal' ? 'selected' : ''}>青色</option>
                 <option value="green" ${theme === 'green' ? 'selected' : ''}>墨绿色</option>
+                <option value="copilot" ${theme === 'copilot' ? 'selected' : ''}>Copilot (紫色)</option>
             </select>
         </div>
         <div class="settings-item">
