@@ -35,7 +35,7 @@ function goHome() {
 
 // ── Theme ──
 function initTheme() {
-    const saved = localStorage.getItem('se_theme') || 'light';
+    const saved = localStorage.getItem('se_theme') || 'blue';
     applyTheme(saved);
 }
 
