@@ -72,7 +72,7 @@ function openThemeSelector() {
                     { value: 'orange', label: '橙色', color: '#f97316' },
                     { value: 'teal', label: '青色', color: '#14b8a6' },
                     { value: 'green', label: '墨绿色', color: '#2f6627' },
-                    { value: 'copilot', label: 'Copilot (紫色)', color: '#6B46C1' }
+                    { value: 'copilot', label: 'Copilot (紫色)', color: '#8B5CF6' }
                 ].map(t => `
                     <div style="padding:16px;background:var(--bg);border:1px solid ${theme === t.value ? t.color : 'var(--border)'};
                         border-radius:var(--radius-lg);cursor:pointer;transition:var(--transition);
